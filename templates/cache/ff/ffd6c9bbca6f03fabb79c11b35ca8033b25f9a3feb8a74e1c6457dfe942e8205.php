@@ -28,97 +28,109 @@ class __TwigTemplate_f0c185b9a4e00e1a19365c36c3b168aece165c5e80465094346ced322e0
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        echo "Register | Scoopm";
+        echo "Register";
     }
 
     // line 5
     public function block_content($context, array $blocks = array())
     {
         // line 6
-        echo "<h1>Register</h1>
-
-";
-        // line 8
-        if (twig_get_attribute($this->env, $this->getSourceContext(), ($context["form"] ?? null), "firstName", array(), "any", true, true)) {
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["form"] ?? null), "firstName", array()), "html", null, true);
-        }
-        // line 9
         echo "
-<form method=\"post\" action=\"";
-        // line 10
+<div class=\"container\">
+
+    <br>
+
+    <h1 class=\"display-4 text-center\">Register</h1>
+
+    <br>
+
+    <p class=\"h4 text-center\">
+        <a id=\"aboutYouLink\" href=\"#\">About You</a> &raquo; <a href=\"\">Your Car</a> &raquo; <a href=\"\">Insurance Info</a> &raquo; <a href=\"\">Application</a>
+    </p>
+    
+    <br>
+</div>
+
+<form id=\"needs-validation\" method=\"post\" action=\"";
+        // line 22
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("register"), "html", null, true);
         echo "\">
 
-    ";
-        // line 12
-        if ((($context["currentStep"] ?? null) == 1)) {
-            // line 13
-            echo "        <div class=\"container\">
-            <h2>Info about you</h2>
-
-            <div class=\"row\">
-                <div class=\"col text-right\">First name</div>
+        <!-- ABOUT YOU -->
+        <div id=\"aboutYou\" class=\"container d-none\">
+            <h2>About You</h2>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">First Name</div>
                 <div class=\"col\">
-                    <div class=\"col\"><input name=\"firstName\" type=\"text\" placeholder=\"First name\"/></div>
-                    ";
-            // line 20
-            if (twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "firstName", array()), "empty", array())) {
-                echo "<div class=\"col alert-warning\">Required</div>";
-            }
-            // line 21
-            echo "                </div>
-            </div>
-
-            </div>
-
-            <div class=\"row\">
-                <div class=\"col text-right\">Last name</div>
-                <div class=\"col\"><input name=\"lastName\" type=\"text\" placeholder=\"Last name\"/>
+                    <input name=\"firstName\" type=\"text\" class=\"form-control\" placeholder=\"First Name\" required/>
+                    <div class=\"invalid-feedback\">Required</div>
                 </div>
             </div>
 
-            <div class=\"row\">
-                <div class=\"col text-right\">Email</div>
-                <div class=\"col\"><input name=\"email\" type=\"text\" placeholder=\"Email\"/></div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Last Name</div>
+                <div class=\"col\">
+                        <input name=\"lastName\" type=\"text\" class=\"form-control\"  placeholder=\"Last Name\"/>
+                        <div class=\"invalid-feedback\">Required</div>
+                </div>
             </div>
 
-            <div class=\"row\">
-                <div class=\"col text-right\">Phone number</div>
-                <div class=\"col\"><input name=\"phoneNumber\" type=\"text\" placeholder=\"Phone number\"/></div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Phone Number</div>
+                <div class=\"col\">
+                        <input name=\"phone\" type=\"text\" class=\"form-control\"  placeholder=\"Phone Number\"/>
+                        <div class=\"invalid-feedback\">Required</div>
+                </div>
             </div>
 
-            <div class=\"row\">
-                <div class=\"col text-right\">Social Security number</div>
-                <div class=\"col\"><input name=\"ssn\" type=\"text\" placeholder=\"Social Security number\"/></div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Email</div>
+                <div class=\"col\">
+                        <input name=\"email\" type=\"text\" class=\"form-control\"  placeholder=\"Email\"/>
+                        <div class=\"invalid-feedback\">Required</div>
+                </div>
             </div>
 
-            <div class=\"row\">
-                <input name=\"step\" type=\"hidden\" value=\"aboutYou\">
-                <div class=\"col\"><button id=\"aboutYouNextButton\" value=\"test\">Next...</button></div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Password</div>
+                <div class=\"col\">
+                        <input name=\"password\" type=\"text\" class=\"form-control\"  placeholder=\"Password\"/>
+                        <div class=\"invalid-feedback\">Required</div>
+                </div>
+            </div>
+
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Confirm Password</div>
+                <div class=\"col\">
+                    <input name=\"confirmPassword\" type=\"text\" class=\"form-control\"  placeholder=\"Confirm Password\">
+                    <div class=\"invalid-feedback\">Required</div>
+                </div>
+            </div>
+
+            <div class=\"form-group row\">
+                <div class=\"col\">
+                    <button id=\"aboutCarNextButton\">Next...</button>
+                </div>
             </div>
         </div>
-    ";
-        }
-        // line 53
-        echo "
-    ";
-        // line 54
-        if ((($context["step"] ?? null) == 2)) {
-            // line 55
-            echo "        <div class=\"container\">
+
+        <!-- YOUR CAR -->
+        <div id=\"aboutCar\" class=\"container d-none\">
             <h2>About your car</h2>
-            <div class=\"row\">
-                <div class=\"col text-right\">Driver's license</div>
-                <div class=\"col\"><button name=\"driversLicenseUpload\">Upload...</button></div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Driver's license</div>
+                <div class=\"col\">
+                    <button name=\"driversLicenseUpload\">Upload...</button>
+                </div>
             </div>
 
-            <div class=\"row\">
-                <div class=\"col text-right\">Registration</div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Registration</div>
                 <div class=\"col\"><button name=\"registrationUpload\">Upload...</button></div>
             </div>
 
-            <div class=\"row\">
-                <div class=\"col text-right\">Vehicle make</div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Vehicle make</div>
                 <div class=\"col\">
                     <select>
                         <option value=\"test\">make...</option>
@@ -126,8 +138,8 @@ class __TwigTemplate_f0c185b9a4e00e1a19365c36c3b168aece165c5e80465094346ced322e0
                 </div>
             </div>
 
-            <div class=\"row\">
-                <div class=\"col text-right\">Vehicle model</div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Vehicle model</div>
                 <div class=\"col\">
                     <select>
                         <option value=\"test\">model...</option>
@@ -135,8 +147,8 @@ class __TwigTemplate_f0c185b9a4e00e1a19365c36c3b168aece165c5e80465094346ced322e0
                 </div>
             </div>
 
-            <div class=\"row\">
-                <div class=\"col text-right\">Color</div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Color</div>
                 <div class=\"col\">
                     <select>
                         <option value=\"test\">color...</option>
@@ -144,28 +156,23 @@ class __TwigTemplate_f0c185b9a4e00e1a19365c36c3b168aece165c5e80465094346ced322e0
                 </div>
             </div>
 
-            <div class=\"row\">
-                <div class=\"col text-right\">License plate number</div>
-                <div class=\"col\"><input name=\"licenseNumber\" type=\"text\" placeholder=\"License number\"></div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">License plate number</div>
+                <div class=\"col\"><input name=\"licenseNumber\" type=\"text\" class=\"form-control\"  placeholder=\"License number\"></div>
             </div>
 
-            <div class=\"row\">
+            <div class=\"form-group row\">
                 <input name=\"step\" type=\"aboutCar\" value=\"aboutYou\">
                 <div class=\"col\"><button id=\"aboutCarNextButton\">Next...</button></div>
             </div>
         </div>
-    ";
-        }
-        // line 105
-        echo "
-    ";
-        // line 106
-        if ((($context["step"] ?? null) == 3)) {
-            // line 107
-            echo "        <div class=\"container\">
+
+
+        <!-- INSURANCE -->
+        <div id=\"insuranceInfo\" class=\"container d-none\">
             <h2>Insurance info</h2>
-            <div class=\"row\">
-                <div class=\"col text-right\">Insurance provider</div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Insurance provider</div>
                 <div class=\"col\">
                     <select>
                         <option value=\"test\">test</option>
@@ -173,29 +180,102 @@ class __TwigTemplate_f0c185b9a4e00e1a19365c36c3b168aece165c5e80465094346ced322e0
                 </div>
             </div>
 
-            <div class=\"row\">
-                <div class=\"col text-right\">Policy number</div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Policy number</div>
                 <div class=\"col\">
-                    <input name=\"policyNumber\" type=\"text\" placeholder=\"Policy number\"/>
+                    <input name=\"policyNumber\" type=\"text\" class=\"form-control\"  placeholder=\"Policy number\"/>
                 </div>
             </div>
 
-            <div class=\"row\">
-                <div class=\"col text-right\">Insurance card</div>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Insurance card</div>
                 <div class=\"col\"><button name=\"insuranceUpload\">Upload...</button></div>
             </div>
 
-            <div class=\"row\">
-                <input name=\"step\" type=\"insuranceInfo\" value=\"aboutYou\">
-                <div class=\"col\"><button id=\"submitButton\">Submit</button></div>
+            <div class=\"form-group row\">
+                <div class=\"col\"><button id=\"submitButton\">Next...</button></div>
             </div>
         </div>
-    ";
-        }
-        // line 136
-        echo "
+
+
+         <!-- APPLICATION -->
+        <div id=\"applicationInfo\" class=\"container d-none\">
+            <h2>Application</h2>
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Social Security Number</div>
+                <div class=\"col\">
+                    <div class=\"col\">
+                        <button name=\"ssn\">Upload...</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Upload a Photo of Yourself</div>
+                <div class=\"col\">
+                        <input name=\"lastName\" type=\"text\" class=\"form-control\"  placeholder=\"Last Name\"/>
+                </div>
+            </div>
+
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Upload W-9</div>
+                <div class=\"col\">
+                    <div class=\"col\">
+                        <button name=\"w9\">Upload...</button>
+                        <p>
+                            Download a blank copy of the W-9 <a href=\"\">here</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Upload Resume</div>
+                <div class=\"col\">
+                        <button name=\"resume\">Upload...</button>
+                </div>
+            </div>
+
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\"></div>
+                <div class=\"col\">
+                        <h1>Please Provide Two References</h1>
+                </div>
+            </div>
+
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Reference 1</div>
+                <div class=\"col\">
+                    <input name=\"ref1Name\" type=\"text\" class=\"form-control\"  placeholder=\"Name\" class=\"form-control\">
+                    <input name=\"ref1Phone\" type=\"text\" class=\"form-control\"  placeholder=\"Phone Number\" class=\"form-control\">
+                    <input name=\"ref1Email\" type=\"text\" class=\"form-control\"  placeholder=\"Email\" class=\"form-control\">
+                </div>
+            </div>
+
+            <div class=\"form-group row\">
+                <div class=\"col-sm-3 col-form-label text-right\">Reference 2</div>
+                <div class=\"col\">
+                    <input name=\"ref2Name\" type=\"text\" class=\"form-control\"  placeholder=\"Name\" class=\"form-control\">
+                    <input name=\"ref2Phone\" type=\"text\" class=\"form-control\"  placeholder=\"Phone Number\" class=\"form-control\">
+                    <input name=\"ref2Email\" type=\"text\" class=\"form-control\"  placeholder=\"Email\" class=\"form-control\">
+                </div>
+            </div>
+
+            <div class=\"form-group row\">
+                <div class=\"col\">
+                    <button id=\"aboutCarNextButton\">Next...</button>
+                </div>
+            </div>
+        </div>
 </form>
 
+<script>
+\$('#aboutYouLink').on('click', function(e) {
+    
+    alert('hi');
+    \$('\$aboutYou').removeClass('d-none');
+});
+</script>
 ";
     }
 
@@ -211,7 +291,7 @@ class __TwigTemplate_f0c185b9a4e00e1a19365c36c3b168aece165c5e80465094346ced322e0
 
     public function getDebugInfo()
     {
-        return array (  196 => 136,  165 => 107,  163 => 106,  160 => 105,  108 => 55,  106 => 54,  103 => 53,  69 => 21,  65 => 20,  56 => 13,  54 => 12,  49 => 10,  46 => 9,  42 => 8,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  56 => 22,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
