@@ -1,0 +1,44 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: "3.1"
+services:
+
+    mailhog:
+      image: mailhog/mailhog:latest
+      container_name: scoopm-mailhog
+      ports:
+        - "1026:8025"
+
+    mysql:
+      image: mysql:5.7
+      container_name: scoopm-mysql
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - MYSQL_ROOT_PASSWORD=ShareTheRideRoot
+        - MYSQL_DATABASE=scoopm
+        - MYSQL_USER=scoopm
+        - MYSQL_PASSWORD=ShareTheRide
+      ports:
+        - "1027:3306"
+
+    webserver:
+      image: nginx:alpine
+      container_name: scoopm-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "1025:80"
+
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: scoopm-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php5/fpm/conf.d/99-overrides.ini
+

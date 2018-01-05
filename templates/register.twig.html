@@ -1,0 +1,101 @@
+{% extends "base.twig.html" %}
+
+{% block title %}Register | Scoopm{% endblock %}
+
+{% block content %}
+<h1>Register</h1>
+
+{% if form.firstName is defined %}{{ form.firstName }}{% endif %}
+
+<form method="post" action="{{ path_for('register') }}">
+
+    {% if currentStep == 1 %}
+`
+    {% endif %}
+
+    {% if step == 2 %}
+        <div class="container">
+            <h2>About your car</h2>
+            <div class="row">
+                <div class="col text-right">Driver's license</div>
+                <div class="col"><button name="driversLicenseUpload">Upload...</button></div>
+            </div>
+
+            <div class="row">
+                <div class="col text-right">Registration</div>
+                <div class="col"><button name="registrationUpload">Upload...</button></div>
+            </div>
+
+            <div class="row">
+                <div class="col text-right">Vehicle make</div>
+                <div class="col">
+                    <select>
+                        <option value="test">make...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-right">Vehicle model</div>
+                <div class="col">
+                    <select>
+                        <option value="test">model...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-right">Color</div>
+                <div class="col">
+                    <select>
+                        <option value="test">color...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-right">License plate number</div>
+                <div class="col"><input name="licenseNumber" type="text" placeholder="License number"></div>
+            </div>
+
+            <div class="row">
+                <input name="step" type="aboutCar" value="aboutYou">
+                <div class="col"><button id="aboutCarNextButton">Next...</button></div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if step == 3 %}
+        <div class="container">
+            <h2>Insurance info</h2>
+            <div class="row">
+                <div class="col text-right">Insurance provider</div>
+                <div class="col">
+                    <select>
+                        <option value="test">test</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-right">Policy number</div>
+                <div class="col">
+                    <input name="policyNumber" type="text" placeholder="Policy number"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-right">Insurance card</div>
+                <div class="col"><button name="insuranceUpload">Upload...</button></div>
+            </div>
+
+            <div class="row">
+                <input name="step" type="insuranceInfo" value="aboutYou">
+                <div class="col"><button id="submitButton">Submit</button></div>
+            </div>
+        </div>
+    {% endif %}
+
+</form>
+
+{% endblock %}
