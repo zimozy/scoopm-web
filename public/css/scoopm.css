@@ -1,3 +1,7 @@
 .row {
     /* padding-top: 30px; */
 }
+
+.underlined {
+    text-decoration: underline;
+}
