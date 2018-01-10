@@ -1,44 +1,44 @@
-{% macro textInput(title, name, value='') %}
+{% macro textInput(title, name, value, errors=null) %}
     <div class="form-group row">
         <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
         <div class="col-sm">
-            <input id="{{name}}" name="{{name}}" type="text" class="form-control" value="{{value}}" placeholder="{{title}}" required/>
-            <div class="invalid-feedback">Required</div>
+            <input id="{{name}}" name="{{name}}" type="text" class="form-control {% if errors == 'passed' %}is-valid{% elseif errors.empty %}is-invalid{% endif %}" value="{{value}}" placeholder="{{title}}" required/>
+            <div class="invalid-feedback {% if errors.empty %}d-block{% endif %}">Required</div>
         </div>
     </div>
 {% endmacro %}
 
-{% macro password(title, name, value='') %}
+{% macro password(title, name, value, errors) %}
     <div class="form-group row">
         <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
         <div class="col-sm">
             <input id="{{name}}" name="{{name}}" type="password" class="form-control" value="{{value}}" placeholder="{{title}}" maxlength="20" required/>
-            <small class="form-text text-muted">Password must be between 6 and 20 characters</small>
+            <small id="password-size" class="form-text text-muted">Password must be between 6 and 20 characters</small>
         </div>
     </div>
 {% endmacro %}
 
-{% macro confirm(title, name, value='') %}
+{% macro confirm(title, name, value, errors) %}
     <div class="form-group row">
         <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
         <div class="col-sm">
-            <input id="{{name}}" name="{{name}}" type="password" class="confirm-password form-control" value="{{value}}" placeholder="{{title}}" maxlength="20" required/>
-            <small class="form-text text-invalid d-none">Passwords don't match</small>
+            <input id="{{name}}" name="{{name}}" type="password" class="form-control" value="{{value}}" placeholder="{{title}}" maxlength="20" required/>
+            <small id="password-match" class="form-text invalid-feedback d-none">Passwords don't match</small>
         </div>
     </div>
 {% endmacro %}
 
-{% macro email(title, name, value='') %}
+{% macro email(title, name, value, errors) %}
     <div class="form-group row">
         <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
         <div class="col-sm">
             <input id="{{name}}" name="{{name}}" type="email" class="email form-control" value="{{value}}" placeholder="{{title}}" required/>
-            <div class="invalid-feedback">Required</div>
+            <div class="invalid-feedback">Must use a valid email address</div>
         </div>
     </div>
 {% endmacro %}
 
-{% macro upload(title, name, hint='') %}
+{% macro upload(title, name, errors, hint) %}
     <div class="form-group row">
         <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
         <div class="col-sm">
@@ -48,7 +48,7 @@
     </div>
 {% endmacro %}
 
-{% macro select(title, name, options) %}
+{% macro select(title, name, options, errors) %}
     <div class="form-group row">
         <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
         <div class="col-sm">
@@ -77,7 +77,7 @@
 {% macro subHeading(text) %}
     <div class="row">
         <div class="col-sm-9 offset-sm-3">
-                <h5 class="text-muted">{{text}}</h5>
+                <h5 class="text-muted">{{text|raw}}</h5>
         </div>
     </div>
 {% endmacro %}
@@ -87,13 +87,13 @@
     <div class="form-group" style="text-align:center;">
 
         {% if goingBack %}
-            <button id="{{thisPage}}Back" class="back-button btn btn-outline-secondary mr-5 px-5">Back</button>
+            <button id="{{thisPage}}Back" class="back-button btn btn-outline-secondary mr-5 px-5"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;Back</button>
         {% endif %}
 
         {% if not submitting %}
-            <button id="{{thisPage}}Next" class="next-button btn btn-outline-primary px-5">Next</button>
+            <button id="{{thisPage}}Next" class="next-button btn btn-outline-primary px-5">Next&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></button>
         {% else %}
-            <input type="submit" class="btn btn-primary px-5" value="Submit"/>
+            <input id="submit" type="submit" class="btn btn-primary px-5" value="Submit"/>
         {% endif %}
 
     </div>

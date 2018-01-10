@@ -72,12 +72,25 @@ class __TwigTemplate_18e41b0b8e96478c2ac096c79986b85376b7edf22e7b8e85d087e740a97
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" name=\"";
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
-            echo "\" type=\"text\" class=\"form-control\" value=\"";
-            echo twig_escape_filter($this->env, ($context["value"] ?? null), "html", null, true);
+            echo "\" type=\"text\" class=\"form-control ";
+            if (twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "name", array())) {
+                echo "is-invalid";
+            } else {
+                echo "is-valid";
+            }
+            echo "\" value=\"";
+            if (twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "name", array()), "empty", array())) {
+                echo "it is empty";
+            }
             echo "\" placeholder=\"";
             echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
             echo "\" required/>
-            <div class=\"invalid-feedback\">Required</div>
+            <div class=\"invalid-feedback ";
+            // line 6
+            if (twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "name", array())) {
+                echo "d-block";
+            }
+            echo "\">Required</div>
         </div>
     </div>
 ";
@@ -121,7 +134,7 @@ class __TwigTemplate_18e41b0b8e96478c2ac096c79986b85376b7edf22e7b8e85d087e740a97
             echo "\" placeholder=\"";
             echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
             echo "\" maxlength=\"20\" required/>
-            <small class=\"form-text text-muted\">Password must be between 6 and 20 characters</small>
+            <small id=\"password-size\" class=\"form-text text-muted\">Password must be between 6 and 20 characters</small>
         </div>
     </div>
 ";
@@ -160,12 +173,12 @@ class __TwigTemplate_18e41b0b8e96478c2ac096c79986b85376b7edf22e7b8e85d087e740a97
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" name=\"";
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
-            echo "\" type=\"password\" class=\"confirm-password form-control\" value=\"";
+            echo "\" type=\"password\" class=\"form-control\" value=\"";
             echo twig_escape_filter($this->env, ($context["value"] ?? null), "html", null, true);
             echo "\" placeholder=\"";
             echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
             echo "\" maxlength=\"20\" required/>
-            <small class=\"form-text text-invalid d-none\">Passwords don't match</small>
+            <small id=\"password-match\" class=\"form-text invalid-feedback d-none\">Passwords don't match</small>
         </div>
     </div>
 ";
@@ -209,7 +222,7 @@ class __TwigTemplate_18e41b0b8e96478c2ac096c79986b85376b7edf22e7b8e85d087e740a97
             echo "\" placeholder=\"";
             echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
             echo "\" required/>
-            <div class=\"invalid-feedback\">Required</div>
+            <div class=\"invalid-feedback\">Must use a valid email address</div>
         </div>
     </div>
 ";
@@ -384,7 +397,7 @@ class __TwigTemplate_18e41b0b8e96478c2ac096c79986b85376b7edf22e7b8e85d087e740a97
         <div class=\"col-sm-9 offset-sm-3\">
                 <h5 class=\"text-muted\">";
             // line 80
-            echo twig_escape_filter($this->env, ($context["text"] ?? null), "html", null, true);
+            echo ($context["text"] ?? null);
             echo "</h5>
         </div>
     </div>
@@ -420,7 +433,7 @@ class __TwigTemplate_18e41b0b8e96478c2ac096c79986b85376b7edf22e7b8e85d087e740a97
                 // line 90
                 echo "            <button id=\"";
                 echo twig_escape_filter($this->env, ($context["thisPage"] ?? null), "html", null, true);
-                echo "Back\" class=\"back-button btn btn-outline-secondary mr-5 px-5\">Back</button>
+                echo "Back\" class=\"back-button btn btn-outline-secondary mr-5 px-5\"><i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back</button>
         ";
             }
             // line 92
@@ -431,11 +444,11 @@ class __TwigTemplate_18e41b0b8e96478c2ac096c79986b85376b7edf22e7b8e85d087e740a97
                 // line 94
                 echo "            <button id=\"";
                 echo twig_escape_filter($this->env, ($context["thisPage"] ?? null), "html", null, true);
-                echo "Next\" class=\"next-button btn btn-outline-primary px-5\">Next</button>
+                echo "Next\" class=\"next-button btn btn-outline-primary px-5\">Next&nbsp;&nbsp;<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></button>
         ";
             } else {
                 // line 96
-                echo "            <input type=\"submit\" class=\"btn btn-primary px-5\" value=\"Submit\"/>
+                echo "            <input id=\"submit\" type=\"submit\" class=\"btn btn-primary px-5\" value=\"Submit\"/>
         ";
             }
             // line 98
@@ -461,7 +474,7 @@ class __TwigTemplate_18e41b0b8e96478c2ac096c79986b85376b7edf22e7b8e85d087e740a97
 
     public function getDebugInfo()
     {
-        return array (  442 => 98,  438 => 96,  432 => 94,  430 => 93,  427 => 92,  421 => 90,  419 => 89,  414 => 86,  400 => 85,  387 => 80,  383 => 78,  371 => 77,  358 => 72,  354 => 70,  342 => 69,  329 => 65,  317 => 64,  305 => 59,  294 => 57,  290 => 56,  282 => 53,  279 => 52,  265 => 51,  252 => 46,  248 => 45,  241 => 43,  238 => 42,  224 => 41,  204 => 35,  197 => 33,  194 => 32,  180 => 31,  160 => 25,  153 => 23,  150 => 22,  136 => 21,  116 => 15,  109 => 13,  106 => 12,  92 => 11,  72 => 5,  65 => 3,  62 => 2,  48 => 1,  43 => 84,  40 => 76,  37 => 68,  34 => 63,  31 => 50,  28 => 40,  25 => 30,  22 => 20,  19 => 10,);
+        return array (  455 => 98,  451 => 96,  445 => 94,  443 => 93,  440 => 92,  434 => 90,  432 => 89,  427 => 86,  413 => 85,  400 => 80,  396 => 78,  384 => 77,  371 => 72,  367 => 70,  355 => 69,  342 => 65,  330 => 64,  318 => 59,  307 => 57,  303 => 56,  295 => 53,  292 => 52,  278 => 51,  265 => 46,  261 => 45,  254 => 43,  251 => 42,  237 => 41,  217 => 35,  210 => 33,  207 => 32,  193 => 31,  173 => 25,  166 => 23,  163 => 22,  149 => 21,  129 => 15,  122 => 13,  119 => 12,  105 => 11,  90 => 6,  72 => 5,  65 => 3,  62 => 2,  48 => 1,  43 => 84,  40 => 76,  37 => 68,  34 => 63,  31 => 50,  28 => 40,  25 => 30,  22 => 20,  19 => 10,);
     }
 
     public function getSourceContext()

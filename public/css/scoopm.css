@@ -5,3 +5,17 @@
 .underlined {
     text-decoration: underline;
 }
+/* 
+#form.scoopm-validated .form-control.scoopm-is-valid {
+    border-color: #28a745;
+}
+
+#form.scoopm-validated .form-control.scoopm-is-invalid {
+    border-color: #dc3545;
+}
+
+#form.scoopm-validated .scoopm-invalid-feedback {
+    margin-top: .25rem;
+    font-size: .875rem;
+    color: #dc3545;
+} */

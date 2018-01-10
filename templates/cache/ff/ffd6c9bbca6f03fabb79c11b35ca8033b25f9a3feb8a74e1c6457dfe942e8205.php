@@ -41,68 +41,84 @@ class __TwigTemplate_f0c185b9a4e00e1a19365c36c3b168aece165c5e80465094346ced322e0
         echo "
 <br>
 <h1 class=\"display-4 text-center\">Register</h1>
+<h1>";
+        // line 10
+        if (twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "firstName", array()), "empty", array())) {
+            echo "HI ";
+        }
+        echo "</h1>
 <br>
-<p id=\"progressLinks\" class=\"h3 text-center text-muted\">
-    <a id=\"aboutYouLink\" href=\"#\" class=\"underlined\">About You</a> &raquo; <a id=\"yourCarLink\" href=\"#\" class=\"text-muted\">Your Car</a> &raquo; <a id=\"insuranceLink\" href=\"#\" class=\"text-muted\">Insurance Info</a> &raquo; <a id=\"applicationLink\" href=\"#\" class=\"text-muted\">Application</a>
+<p id=\"progress-links\" class=\"h3 text-center text-muted\">
+    <a id=\"aboutYouLink\" href=\"#\" class=\"underlined\">About&nbsp;You</a> &raquo; <a id=\"yourCarLink\" href=\"#\" class=\"text-muted\">Your&nbsp;Car</a> &raquo; <a id=\"insuranceLink\" href=\"#\" class=\"text-muted\">Insurance&nbsp;Info</a> &raquo; <a id=\"applicationLink\" href=\"#\" class=\"text-muted\">Application</a>
 </p>
 <br>
 
 
-<form id=\"needs-validation\" method=\"post\" action=\"";
-        // line 17
+<form id=\"form\" method=\"post\" action=\"";
+        // line 18
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("register"), "html", null, true);
-        echo "\">
+        echo "\"  enctype=\"multipart/form-data\" novalidate>
+    <input type=\"submit\"/>
 
     <!-- ABOUT YOU -->
-    <div id=\"aboutYouPage\" class=\"current-page\">
-        ";
-        // line 21
+    <div id=\"aboutYouPage\" class=\"current-page page\">
+            ";
+        // line 23
+        echo twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "name", array()), "empty", array());
+        echo "
+            ";
+        // line 24
+        if (twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "name", array()), "empty", array())) {
+            echo "test ";
+        }
+        // line 25
+        echo "        ";
         echo $context["form"]->macro_title("About You");
         echo "  
         ";
-        // line 22
+        // line 26
         echo $context["form"]->macro_textInput("First Name", "firstName", ($context["firstName"] ?? null));
         echo "
         ";
-        // line 23
+        // line 27
         echo $context["form"]->macro_textInput("Last Name", "lastName", ($context["lastName"] ?? null));
         echo "
         ";
-        // line 24
+        // line 28
         echo $context["form"]->macro_textInput("Phone Number", "phone", ($context["phone"] ?? null));
         echo "
         ";
-        // line 25
+        // line 29
         echo $context["form"]->macro_email("Email", "email", ($context["email"] ?? null));
         echo "
         ";
-        // line 26
+        // line 30
         echo $context["form"]->macro_password("Password", "password", ($context["password"] ?? null));
         echo "
         ";
-        // line 27
+        // line 31
         echo $context["form"]->macro_confirm("Confirm Password", "confirmPassword", ($context["confirmPassword"] ?? null));
         echo "
 
         ";
-        // line 29
+        // line 33
         echo $context["form"]->macro_buttons("aboutYou");
         echo "
     </div>
 
     <!-- YOUR CAR -->
-    <div id=\"yourCarPage\" class=\"container d-none\">
+    <div id=\"yourCarPage\" class=\"page container d-none\">
         ";
-        // line 34
+        // line 38
         echo $context["form"]->macro_title("About your car");
         echo "  
         ";
-        // line 35
-        echo $context["form"]->macro_upload("Driver's License", "driversLicenseUpload");
+        // line 39
+        echo $context["form"]->macro_upload("Driver's License", "licenseImage");
         echo "
         ";
-        // line 36
-        echo $context["form"]->macro_upload("Registration", "registrationUpload");
+        // line 40
+        echo $context["form"]->macro_upload("Registration", "registration");
         echo "
 
         <div class=\"form-group row\">
@@ -131,110 +147,111 @@ class __TwigTemplate_f0c185b9a4e00e1a19365c36c3b168aece165c5e80465094346ced322e0
         </div>
 
         ";
-        // line 63
+        // line 67
         echo $context["form"]->macro_textInput("License plate number", "licenseNumber", ($context["licenseNumber"] ?? null));
         echo "
         ";
-        // line 64
+        // line 68
         echo $context["form"]->macro_buttons("yourCar", true);
         echo "
     </div>
 
 
     <!-- INSURANCE -->
-    <div id=\"insurancePage\" class=\"container d-none\">
+    <div id=\"insurancePage\" class=\"page container d-none\">
         ";
-        // line 70
+        // line 74
         echo $context["form"]->macro_title("Insurance info");
         echo "
         ";
-        // line 71
-        echo $context["form"]->macro_email("Email", "email", ($context["email"] ?? null));
+        // line 75
+        echo $context["form"]->macro_textInput("Policy Provider", "provider", ($context["provider"] ?? null));
         echo "
         ";
-        // line 72
+        // line 76
         echo $context["form"]->macro_select("Policy number", "policyNumber", array());
         echo "
         ";
-        // line 73
-        echo $context["form"]->macro_upload("Insurance card", "insuranceUpload");
+        // line 77
+        echo $context["form"]->macro_upload("Insurance card", "insurance");
         echo "
         ";
-        // line 74
+        // line 78
         echo $context["form"]->macro_buttons("insurance", true);
         echo "
     </div>
 
 
         <!-- APPLICATION -->
-    <div id=\"applicationPage\" class=\"container d-none\">
-        ";
-        // line 80
-        echo $context["form"]->macro_title("Application");
-        echo "
-        ";
-        // line 81
-        echo $context["form"]->macro_textInput("Social Security Number", "ssn", ($context["ssn"] ?? null));
-        echo "
-        ";
-        // line 82
-        echo $context["form"]->macro_upload("Upload a Photo of Yourself", "photoUpload");
-        echo "
-        ";
-        // line 83
-        echo $context["form"]->macro_upload("Upload W-9", "w9Upload", "Download a blank copy of the W-9 <a href=\"\">here</a>.");
-        echo "
+    <div id=\"applicationPage\" class=\"page container d-none\">
         ";
         // line 84
-        echo $context["form"]->macro_upload("Upload Resume", "resumeUpload");
+        echo $context["form"]->macro_title("Application");
         echo "
 
         ";
         // line 86
-        echo $context["form"]->macro_heading("Please Provide Two References");
+        echo $context["form"]->macro_textInput("Social Security Number", "ssn", ($context["ssn"] ?? null));
         echo "
         ";
         // line 87
-        echo $context["form"]->macro_subHeading("Reference 1");
+        echo $context["form"]->macro_upload("Upload a Photo of Yourself", "photo");
         echo "
         ";
         // line 88
-        echo $context["form"]->macro_textInput("Name", "ref1Name", ($context["ref1Name"] ?? null));
+        echo $context["form"]->macro_upload("Upload W-9", "w9", "Download a blank copy of the W-9 <a href=\"\">here</a>.");
         echo "
         ";
         // line 89
+        echo $context["form"]->macro_upload("Upload Resume", "resume");
+        echo "
+
+        ";
+        // line 91
+        echo $context["form"]->macro_heading("Please Provide Two References");
+        echo "
+        ";
+        // line 92
+        echo $context["form"]->macro_subHeading("<i class=\"fa fa-user-circle\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Reference 1");
+        echo "
+        ";
+        // line 93
+        echo $context["form"]->macro_textInput("Name", "ref1Name", ($context["ref1Name"] ?? null));
+        echo "
+        ";
+        // line 94
         echo $context["form"]->macro_textInput("Phone Number", "ref1Phone", ($context["ref1Phone"] ?? null));
         echo "
         ";
-        // line 90
+        // line 95
         echo $context["form"]->macro_email("Email Address", "ref1Email", ($context["ref1Email"] ?? null));
         echo "
         
         ";
-        // line 92
-        echo $context["form"]->macro_subHeading("Reference 2");
+        // line 97
+        echo $context["form"]->macro_subHeading("<i class=\"fa fa-user-circle\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Reference 2");
         echo "
         ";
-        // line 93
+        // line 98
         echo $context["form"]->macro_textInput("Name", "ref2Name", ($context["ref2Name"] ?? null));
         echo "
         ";
-        // line 94
+        // line 99
         echo $context["form"]->macro_textInput("Phone Number", "ref2Phone", ($context["ref2Phone"] ?? null));
         echo "
         ";
-        // line 95
+        // line 100
         echo $context["form"]->macro_email("Email Address", "ref2Email", ($context["ref2Email"] ?? null));
         echo "
 
         ";
-        // line 97
+        // line 102
         echo $context["form"]->macro_buttons("application", true, true);
         echo "
     </div>
 </form>
  
-<script type=\"text/javascript\" src=\"/js/scoopm.js\"></script>
+<script type=\"text/javascript\" src=\"/js/register.js\"></script>
 
 ";
     }
@@ -251,7 +268,7 @@ class __TwigTemplate_f0c185b9a4e00e1a19365c36c3b168aece165c5e80465094346ced322e0
 
     public function getDebugInfo()
     {
-        return array (  232 => 97,  227 => 95,  223 => 94,  219 => 93,  215 => 92,  210 => 90,  206 => 89,  202 => 88,  198 => 87,  194 => 86,  189 => 84,  185 => 83,  181 => 82,  177 => 81,  173 => 80,  164 => 74,  160 => 73,  156 => 72,  152 => 71,  148 => 70,  139 => 64,  135 => 63,  105 => 36,  101 => 35,  97 => 34,  89 => 29,  84 => 27,  80 => 26,  76 => 25,  72 => 24,  68 => 23,  64 => 22,  60 => 21,  53 => 17,  41 => 7,  38 => 6,  32 => 4,  28 => 1,  26 => 2,  11 => 1,);
+        return array (  249 => 102,  244 => 100,  240 => 99,  236 => 98,  232 => 97,  227 => 95,  223 => 94,  219 => 93,  215 => 92,  211 => 91,  206 => 89,  202 => 88,  198 => 87,  194 => 86,  189 => 84,  180 => 78,  176 => 77,  172 => 76,  168 => 75,  164 => 74,  155 => 68,  151 => 67,  121 => 40,  117 => 39,  113 => 38,  105 => 33,  100 => 31,  96 => 30,  92 => 29,  88 => 28,  84 => 27,  80 => 26,  75 => 25,  71 => 24,  67 => 23,  59 => 18,  46 => 10,  41 => 7,  38 => 6,  32 => 4,  28 => 1,  26 => 2,  11 => 1,);
     }
 
     public function getSourceContext()

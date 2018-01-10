@@ -6,4 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'scoopm\\Validator' => $baseDir . '/app/validator.php',
 );

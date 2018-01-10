@@ -28,6 +28,7 @@ class __TwigTemplate_6f6812ee07e0e5024e939c1d8f33effbe98f3af258d3c9d3d00847cdd48
         echo "</title>
     <!--<link href=\"../vendor/twbs/bootstrap/dist/css/bootstrap.min.css\" rel=\"stylesheet\"/>-->
     <link rel=\"stylesheet\" href=\"/bootstrap/css/bootstrap.min.css\">
+    <link rel=\"stylesheet\" href=\"/css/fa/css/font-awesome.min.css\">
     <link rel=\"stylesheet\" href=\"/css/scoopm.css\">
     <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
 </head>
@@ -36,9 +37,9 @@ class __TwigTemplate_6f6812ee07e0e5024e939c1d8f33effbe98f3af258d3c9d3d00847cdd48
         <div class=\"row\">
             <div class=\"col-lg-8 offset-lg-2\">
                     ";
-        // line 15
-        $this->displayBlock('content', $context, $blocks);
         // line 16
+        $this->displayBlock('content', $context, $blocks);
+        // line 17
         echo "            </div>
         </div>
         
@@ -53,7 +54,7 @@ class __TwigTemplate_6f6812ee07e0e5024e939c1d8f33effbe98f3af258d3c9d3d00847cdd48
         echo " | ScoopM";
     }
 
-    // line 15
+    // line 16
     public function block_content($context, array $blocks = array())
     {
     }
@@ -65,7 +66,7 @@ class __TwigTemplate_6f6812ee07e0e5024e939c1d8f33effbe98f3af258d3c9d3d00847cdd48
 
     public function getDebugInfo()
     {
-        return array (  57 => 15,  51 => 5,  42 => 16,  40 => 15,  27 => 5,  21 => 1,);
+        return array (  58 => 16,  52 => 5,  43 => 17,  41 => 16,  27 => 5,  21 => 1,);
     }
 
     public function getSourceContext()

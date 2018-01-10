@@ -1,6 +1,13 @@
 {
     "require": {
         "slim/slim": "^3.9",
-        "slim/twig-view": "^2.3"
+        "slim/twig-view": "^2.3",
+        "giggsey/libphonenumber-for-php": "^8.8"
+    },
+    "autoload": {
+        "classmap": [
+            "app/",
+            "vendor/giggsey/libphonenumber-for-php/src"
+        ]
     }
 }

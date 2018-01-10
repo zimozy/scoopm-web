@@ -12,6 +12,10 @@ class ComposerStaticInited11e39429cd96ac9f1ec4deb29bdd1b
     );
 
     public static $prefixLengthsPsr4 = array (
+        'l' => 
+        array (
+            'libphonenumber\\' => 15,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -31,6 +35,10 @@ class ComposerStaticInited11e39429cd96ac9f1ec4deb29bdd1b
         array (
             'Interop\\Container\\' => 18,
         ),
+        'G' => 
+        array (
+            'Giggsey\\Locale\\' => 15,
+        ),
         'F' => 
         array (
             'FastRoute\\' => 10,
@@ -38,6 +46,10 @@ class ComposerStaticInited11e39429cd96ac9f1ec4deb29bdd1b
     );
 
     public static $prefixDirsPsr4 = array (
+        'libphonenumber\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -66,6 +78,10 @@ class ComposerStaticInited11e39429cd96ac9f1ec4deb29bdd1b
         array (
             0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
         ),
+        'Giggsey\\Locale\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giggsey/locale/src',
+        ),
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
@@ -89,12 +105,17 @@ class ComposerStaticInited11e39429cd96ac9f1ec4deb29bdd1b
         ),
     );
 
+    public static $classMap = array (
+        'scoopm\\Validator' => __DIR__ . '/../..' . '/app/validator.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInited11e39429cd96ac9f1ec4deb29bdd1b::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInited11e39429cd96ac9f1ec4deb29bdd1b::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInited11e39429cd96ac9f1ec4deb29bdd1b::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInited11e39429cd96ac9f1ec4deb29bdd1b::$classMap;
 
         }, null, ClassLoader::class);
     }

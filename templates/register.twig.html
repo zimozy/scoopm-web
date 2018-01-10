@@ -7,33 +7,37 @@
 
 <br>
 <h1 class="display-4 text-center">Register</h1>
+<h1>{% if errors.firstName %}HI {% endif %}</h1>
 <br>
-<p id="progressLinks" class="h3 text-center text-muted">
-    <a id="aboutYouLink" href="#" class="underlined">About You</a> &raquo; <a id="yourCarLink" href="#" class="text-muted">Your Car</a> &raquo; <a id="insuranceLink" href="#" class="text-muted">Insurance Info</a> &raquo; <a id="applicationLink" href="#" class="text-muted">Application</a>
+<p id="progress-links" class="h3 text-center text-muted">
+    <a id="aboutYouLink" href="#" class="underlined">About&nbsp;You</a> &raquo; <a id="yourCarLink" href="#" class="text-muted">Your&nbsp;Car</a> &raquo; <a id="insuranceLink" href="#" class="text-muted">Insurance&nbsp;Info</a> &raquo; <a id="applicationLink" href="#" class="text-muted">Application</a>
 </p>
 <br>
 
 
-<form id="needs-validation" method="post" action="{{ path_for('register') }}">
+<form id="form" method="post" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-validated"{% endif %} novalidate>
+    <input type="submit"/>
 
     <!-- ABOUT YOU -->
-    <div id="aboutYouPage" class="current-page">
+    <div id="aboutYouPage" class="current-page page">
+            {# {{ dump(errors.firstName.empty) }} #}
+            
         {{form.title('About You')}}  
-        {{form.textInput('First Name', 'firstName', firstName)}}
-        {{form.textInput('Last Name', 'lastName', lastName)}}
-        {{form.textInput('Phone Number', 'phone', phone)}}
-        {{form.email('Email', 'email', email)}}
-        {{form.password('Password', 'password', password)}}
-        {{form.confirm('Confirm Password', 'confirmPassword', confirmPassword)}}
+        {{form.textInput('First Name', 'firstName', firstName, errors.firstName)}}
+        {{form.textInput('Last Name', 'lastName', lastName, errors.lastName)}}
+        {{form.textInput('Phone Number', 'phone', phone, errors.phone)}}
+        {{form.email('Email', 'email', email, errors.email)}}
+        {{form.password('Password', 'password', password, errors.password)}}
+        {{form.confirm('Confirm Password', 'confirmPassword', confirmPassword, errors.confirmPassword)}}
 
         {{form.buttons('aboutYou')}}
     </div>
 
     <!-- YOUR CAR -->
-    <div id="yourCarPage" class="container d-none">
+    <div id="yourCarPage" class="page container d-none">
         {{form.title('About your car')}}  
-        {{form.upload('Driver\'s License', 'driversLicenseUpload')}}
-        {{form.upload('Registration', 'registrationUpload')}}
+        {{form.upload('Driver\'s License', 'licenseImage', errors.licenseImage)}}
+        {{form.upload('Registration', 'registration', errors.registration)}}
 
         <div class="form-group row">
             <div class="col-sm-3 col-form-label text-right">Vehicle make</div>
@@ -60,44 +64,45 @@
             </div>
         </div>
 
-        {{form.textInput('License plate number', 'licenseNumber', licenseNumber)}}
+        {{form.textInput('License plate number', 'licenseNumber', licenseNumber, errors.licenseNumber)}}
         {{form.buttons('yourCar', true)}}
     </div>
 
 
     <!-- INSURANCE -->
-    <div id="insurancePage" class="container d-none">
+    <div id="insurancePage" class="page container d-none">
         {{form.title('Insurance info')}}
-        {{form.email('Email', 'email', email)}}
-        {{form.select('Policy number', 'policyNumber', [] )}}
-        {{form.upload('Insurance card', 'insuranceUpload')}}
+        {{form.textInput('Policy Provider', 'provider', provider, errors.provider)}}
+        {{form.select('Policy number', 'policyNumber', [] , errors.policyNumber)}}
+        {{form.upload('Insurance card', 'insurance', errors.insurance)}}
         {{form.buttons('insurance', true)}}
     </div>
 
 
         <!-- APPLICATION -->
-    <div id="applicationPage" class="container d-none">
+    <div id="applicationPage" class="page container d-none">
         {{form.title('Application')}}
-        {{form.textInput('Social Security Number', 'ssn', ssn)}}
-        {{form.upload('Upload a Photo of Yourself', 'photoUpload')}}
-        {{form.upload('Upload W-9', 'w9Upload', 'Download a blank copy of the W-9 <a href="">here</a>.')}}
-        {{form.upload('Upload Resume', 'resumeUpload')}}
+
+        {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn)}}
+        {{form.upload('Upload a Photo of Yourself', 'photo', errors.photo)}}
+        {{form.upload('Upload W-9', 'w9', errors.w9, 'Download a blank copy of the W-9 <a href="">here</a>.')}}
+        {{form.upload('Upload Resume', 'resume', errors.resume)}}
 
         {{form.heading('Please Provide Two References')}}
-        {{form.subHeading('Reference 1')}}
-        {{form.textInput('Name', 'ref1Name', ref1Name)}}
-        {{form.textInput('Phone Number', 'ref1Phone', ref1Phone)}}
-        {{form.email('Email Address', 'ref1Email', ref1Email)}}
+        {{form.subHeading('<i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;Reference 1')}}
+        {{form.textInput('Name', 'ref1Name', ref1Name, errors.ref1Name)}}
+        {{form.textInput('Phone Number', 'ref1Phone', ref1Phone, errors.ref1Phone)}}
+        {{form.email('Email Address', 'ref1Email', ref1Email, errors.ref1Email)}}
         
-        {{form.subHeading('Reference 2')}}
-        {{form.textInput('Name', 'ref2Name', ref2Name)}}
-        {{form.textInput('Phone Number', 'ref2Phone', ref2Phone)}}
-        {{form.email('Email Address', 'ref2Email', ref2Email)}}
+        {{form.subHeading('<i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;Reference 2')}}
+        {{form.textInput('Name', 'ref2Name', ref2Name, errors.ref2Name)}}
+        {{form.textInput('Phone Number', 'ref2Phone', ref2Phone, errors.ref2Phone)}}
+        {{form.email('Email Address', 'ref2Email', ref2Email, errors.ref2Email)}}
 
         {{form.buttons('application', true, true)}}
     </div>
 </form>
  
-<script type="text/javascript" src="/js/scoopm.js"></script>
+<script type="text/javascript" src="/js/register.js"></script>
 
 {% endblock %}
