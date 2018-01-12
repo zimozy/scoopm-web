@@ -66,21 +66,21 @@ function getPageForLinkID(linkID) {;
 }
 
 function firstPageWithErrors() {
-    return $('.page:has(.is-invalid)').first().attr('id').replace('Page', '');
+    return $('.page:has(.scoopm-is-invalid)').first().attr('id').replace('Page', '');
 }
 
 
 
 /* VALIDATION */
 function markAsValid(obj) {
-    obj.removeClass('is-invalid');
-    obj.addClass('is-valid');
+    obj.removeClass('.scoopm-is-invalid');
+    obj.addClass('.scoopm-is-valid');
     obj.addClass(':valid');
 }
 
 function markAsInvalid(obj) {
     obj.addClass(':invalid');
-    obj.addClass('is-invalid');
+    obj.addClass('.scoopm-is-invalid');
     formIsValid = false;
 }
 
@@ -142,6 +142,11 @@ function formValidates() {
 
 
 /* CONTROL FLOW */
+
+if (form.attr('class') == 'scoopm-was-validated') { //if they've submitted with errors to to the relevant page
+    goTo(firstPageWithErrors());
+}
+
 $('.next-button').on('click', function(event) {
     event.preventDefault();
     goTo(getNextPage());
@@ -179,5 +184,13 @@ $('input').keypress(function(event) {
 
     }
 });
+
+//custom upload field
+$('input:file').on('change', function() {
+    $(this).parent().parent().children('.form-control').val(this.files[0].name);
+})
+
+
+
 
 }); //END OF $(document).ready()

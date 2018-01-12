@@ -31,15 +31,25 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
     <link rel=\"stylesheet\" href=\"/css/fa/css/font-awesome.min.css\">
     <link rel=\"stylesheet\" href=\"/css/scoopm.css\">
     <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
+    <script type=\"text/javascript\" src=\"http://www.carqueryapi.com/js/carquery.0.3.4.js\"></script>
+    <!--CAR QUERY-->
+    <script type=\"text/javascript\">
+        \$(document).ready(function() {
+             var carquery = new CarQuery();
+             carquery.init();
+             carquery.setFilters( {sold_in_us:true} );
+             carquery.initYearMakeModelTrim('year', 'make', 'model', 'na');
+        });
+    </script>
 </head>
 <body>
     <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-lg-8 offset-lg-2\">
                     ";
-        // line 16
+        // line 26
         $this->displayBlock('content', $context, $blocks);
-        // line 17
+        // line 27
         echo "            </div>
         </div>
         
@@ -54,7 +64,7 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
         echo " | ScoopM";
     }
 
-    // line 16
+    // line 26
     public function block_content($context, array $blocks = array())
     {
     }
@@ -66,7 +76,7 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
 
     public function getDebugInfo()
     {
-        return array (  58 => 16,  52 => 5,  43 => 17,  41 => 16,  27 => 5,  21 => 1,);
+        return array (  68 => 26,  62 => 5,  53 => 27,  51 => 26,  27 => 5,  21 => 1,);
     }
 
     public function getSourceContext()
@@ -81,6 +91,16 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
     <link rel=\"stylesheet\" href=\"/css/fa/css/font-awesome.min.css\">
     <link rel=\"stylesheet\" href=\"/css/scoopm.css\">
     <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
+    <script type=\"text/javascript\" src=\"http://www.carqueryapi.com/js/carquery.0.3.4.js\"></script>
+    <!--CAR QUERY-->
+    <script type=\"text/javascript\">
+        \$(document).ready(function() {
+             var carquery = new CarQuery();
+             carquery.init();
+             carquery.setFilters( {sold_in_us:true} );
+             carquery.initYearMakeModelTrim('year', 'make', 'model', 'na');
+        });
+    </script>
 </head>
 <body>
     <div class=\"container\">

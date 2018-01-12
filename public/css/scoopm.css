@@ -1,21 +1,25 @@
-.row {
-    /* padding-top: 30px; */
-}
+/* FORMATTING */
+.underlined { text-decoration: underline; }
+/*.form-group { margin-bottom: 2rem; } /* More space */
 
-.underlined {
-    text-decoration: underline;
-}
-/* 
-#form.scoopm-validated .form-control.scoopm-is-valid {
-    border-color: #28a745;
-}
+/* VALIDATION */
+#form.scoopm-was-validated .scoopm-is-invalid,
+#form.scoopm-was-validated .scoopm-is-invalid .input-group-addon,
+#form.scoopm-was-validated .scoopm-is-invalid .form-control { border-color: #dc3545; }
 
-#form.scoopm-validated .form-control.scoopm-is-invalid {
-    border-color: #dc3545;
-}
+#form.scoopm-was-validated .scoopm-is-valid,
+#form.scoopm-was-validated .scoopm-is-valid .input-group-addon,
+#form.scoopm-was-validated .scoopm-is-valid .form-control  { border-color: #28a745;}
 
-#form.scoopm-validated .scoopm-invalid-feedback {
-    margin-top: .25rem;
-    font-size: .875rem;
+#form .scoopm-error {
+    display: none; /* BY DEFAULT */
     color: #dc3545;
-} */
+}
+#form .scoopm-hint { color: #868e96; }
+
+/* SHOW THE ERROR MESSAGES */
+#form.scoopm-was-validated .scoopm-is-invalid + .scoopm-error,
+#form.scoopm-was-validated .scoopm-is-invalid + .scoopm-hint {
+    display: block;
+    color: #dc3545;
+}

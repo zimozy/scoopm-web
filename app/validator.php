@@ -30,11 +30,10 @@ class Validator
     }
 
     private function setAsPassed($field_name) {
-        $this->errors_array[$field_name] = 'passed';
+        $this->errors_array[$field_name]['passed'] = true;
     }
 
     private function isEmpty($string) {
-        echo "isEmpty(): $string<br>\n";
         return $string == NULL && $string == '' && trim($string) == '';
     }
 
@@ -69,12 +68,14 @@ class Validator
     
     public function validatePassword($field1_name, $field2_name) {
         $length = strlen($this->fields_array[$field1_name]);
+        
         if ($length < 6 or $length > 20) {
             $this->setError($field1_name, 'size');
         } elseif ($this->fields_array[$field1_name] !== $this->fields_array[$field2_name]) {
-            $this->setError($field1_name, 'mismatch');
+            $this->setError($field2_name, 'mismatch');
         } else {
-            $this->setAsPassed($field_name);
+            $this->setAsPassed($field1_name);
+            $this->setAsPassed($field2_name);
         }
     }
 
@@ -95,6 +96,10 @@ class Validator
 
                 case 'img':
                     $allowed_types = ['image/png', 'image/jpg', 'image/gif'];
+                    break;
+
+                case 'img/pdf':
+                    $allowed_types = ['image/png', 'image/jpg', 'image/gif', 'application/pdf'];
                     break;
 
                 default:
@@ -121,7 +126,55 @@ class Validator
         $this->validateFile($field_name, 'doc');
     }
 
-    public function validateSelect($field_name) {
-        // TODO: ...
+    public function validateImageOrPDF($field_name) {
+        $this->validateFile($field_name, 'img/pdf');
+    }
+
+    public function validateCar($year_field_name, $make_field_name, $model_field_name) {
+
+        echo ("=== CAR VALIDATION IS CURRENTLY DISABLED ===");
+
+        // MUST ENABLE FOR LIVE SITE
+
+        // $url = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModels&make="
+        //     . $this->fields_array[$make_field_name]
+        //     . "&year="
+        //     . $this->fields_array[$year_field_name]
+        //     . "&sold_in_us=1";
+
+        // $ch = curl_init($url);
+        
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        // curl_setopt($ch, CURLOPT_HEADER, false);
+
+        // $result = curl_exec($ch);
+        
+        // curl_close($ch);
+
+        // $regex = '/"model_name": ?"' . $this->fields_array[$model_field_name] . '"/';
+
+        // if (!preg_match($regex, $result)) {
+        //     $this->setError($year_field_name, 'invalid');
+        //     $this->setError($make_field_name, 'invalid');
+        //     $this->setError($model_field_name, 'invalid');
+        // } else {
+        //     $this->setAsPassed($year_field_name);
+        //     $this->setAsPassed($make_field_name);
+        //     $this->setAsPassed($model_field_name);
+        // }
+    
+    }
+
+    public function validateColor($field_name) {
+        $colors = ["Beige","Black","Blue","Brown","Burgundy","Charcoal","Gold","Gray","Green","Off White","Orange","Pink","Purple" ,"Red","Silver","Tan","Turquoise","White","Yellow"];
+        if (
+            $this->isEmpty($this->fields_array[$field_name]) 
+            or !in_array($this->fields_array[$field_name] , $colors)
+            ) {
+                $this->setError($field_name, 'invalid');
+            } else {
+                $this->setAsPassed($field_name);
+            }
+        
     }
 }

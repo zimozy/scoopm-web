@@ -437,7 +437,7 @@ class __TwigTemplate_c9e368b842ac15b1c93ae73d76fd1cb0dee7e2bc86f55051e086faabcb0
                 // line 90
                 echo "            <button id=\"";
                 echo twig_escape_filter($this->env, ($context["thisPage"] ?? null), "html", null, true);
-                echo "Back\" class=\"back-button btn btn-outline-secondary mr-5 px-5\"><i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back</button>
+                echo "Back\" class=\"back-button btn btn-outline-secondary mr-5 px-5\"><i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back&nbsp;</button>
         ";
             }
             // line 92
@@ -448,7 +448,7 @@ class __TwigTemplate_c9e368b842ac15b1c93ae73d76fd1cb0dee7e2bc86f55051e086faabcb0
                 // line 94
                 echo "            <button id=\"";
                 echo twig_escape_filter($this->env, ($context["thisPage"] ?? null), "html", null, true);
-                echo "Next\" class=\"next-button btn btn-outline-primary px-5\">Next&nbsp;&nbsp;<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></button>
+                echo "Next\" class=\"next-button btn btn-outline-primary px-5\">&nbsp;Next&nbsp;&nbsp;<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></button>
         ";
             } else {
                 // line 96
@@ -572,11 +572,11 @@ class __TwigTemplate_c9e368b842ac15b1c93ae73d76fd1cb0dee7e2bc86f55051e086faabcb0
     <div class=\"form-group\" style=\"text-align:center;\">
 
         {% if goingBack %}
-            <button id=\"{{thisPage}}Back\" class=\"back-button btn btn-outline-secondary mr-5 px-5\"><i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back</button>
+            <button id=\"{{thisPage}}Back\" class=\"back-button btn btn-outline-secondary mr-5 px-5\"><i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back&nbsp;</button>
         {% endif %}
 
         {% if not submitting %}
-            <button id=\"{{thisPage}}Next\" class=\"next-button btn btn-outline-primary px-5\">Next&nbsp;&nbsp;<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></button>
+            <button id=\"{{thisPage}}Next\" class=\"next-button btn btn-outline-primary px-5\">&nbsp;Next&nbsp;&nbsp;<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></button>
         {% else %}
             <input id=\"submit\" type=\"submit\" class=\"btn btn-primary px-5\" value=\"Submit\"/>
         {% endif %}

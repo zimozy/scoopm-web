@@ -30,20 +30,19 @@ $app->post('/register', function (Request $request, Response $response) {
     // YOUR CAR //
     $validator->validateImage('licenseImage');
     $validator->validateImage('registration');
-    $validator->validateSelect('make');
-    $validator->validateSelect('model');
-    $validator->validateSelect('color');
+    $validator->validateCar('year', 'make', 'model');
+    $validator->validateColor('color');
     $validator->validateText('licenseNumber');
 
     // INSURANCE INFO //
-    // $validator->validateImage('registration');
-    // $validator->validateImage('registration');
-    $validator->validateImage('registration');
+    $validator->validateText('policyProvider');
+    $validator->validateText('policyNumber');
+    $validator->validateImage('insurance');
 
     // APPLICATION //
     $validator->validateText('ssn');
     $validator->validateImage('photo');
-    $validator->validatePDF('w9');
+    $validator->validateImageOrPDF('w9');
     $validator->validateDoc('resume');
     //ref1
     $validator->validateText('ref1Name');
@@ -57,6 +56,7 @@ $app->post('/register', function (Request $request, Response $response) {
     
     if($validator->hasErrors()) {
         $response_array['errors'] = $validator->getErrors();
+        // var_dump($response_array);
         return $this->view->render($response, 'register.twig.html', $response_array);
     } else {
         //DB INSERT

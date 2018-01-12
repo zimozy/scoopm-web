@@ -1,0 +1,212 @@
+{# INPUT TYPES #}
+
+{% macro textInput(title, name, value, errors=null) %}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+    <div class="form-group row">
+        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        <div class="col-sm">
+            <input id="{{name}}" name="{{name}}" type="text" class="form-control {{validation_class}}" value="{{value}}" placeholder="{{title}}" required/>
+            <small class="form-text scoopm-error">Required</small>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro password(title, name, value, errors) %}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+    <div class="form-group row">
+        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        <div class="col-sm">
+            <input id="{{name}}" name="{{name}}" type="password" class="form-control {{validation_class}}" value="{{value}}" placeholder="{{title}}" maxlength="20" required/>
+            <small id="password-size" class="form-text scoopm-hint">Password must be between 6 and 20 characters</small>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro confirm(title, name, value, errors) %}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+    <div class="form-group row">
+        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        <div class="col-sm">
+            <input id="{{name}}" name="{{name}}" type="password" class="form-control" value="{{value}}" placeholder="{{title}}" maxlength="20" required/>
+            <small id="password-match" class="form-text scoopm-error">Passwords don't match</small>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro email(title, name, value, errors) %}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+    <div class="form-group row">
+        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        <div class="col-sm">
+            <input id="{{name}}" name="{{name}}" type="email" class="email form-control {{validation_class}}" value="{{value}}" placeholder="{{title}}" required/>
+            <small class="form-text scoopm-error">Must use a valid email address</small>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro upload(title, name, value, type, errors, hint) %}
+
+    {# CSS ERROR CLASS #}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+
+    {# INPUT FILE TYPES (accepts="...") #}
+    {% if type == 'img' %}
+
+        {% set type_phrase = '<i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed types: JPEG, PNG, GIF' %}
+    
+        {% set allowed_types = 'image/png, image/jpeg, image/gif, .png, .jpeg, .jpg, .gif' %}
+
+    {% elseif type == 'pdf' %}
+    
+        {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed types: PDF' %}
+    
+        {% set allowed_types = 'application/pdf, .pdf' %}
+
+    {% elseif type == 'doc' %}
+
+        {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Allowed types: PDF, Word Document' %}
+
+        {% set allowed_types = 'application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, .pdf, .doc, .docx' %}
+        
+    {% elseif type == 'img/pdf' %}
+
+        {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed types: PDF, JPEG, PNG, GIF' %}
+
+        {% set allowed_types = 'image/png, image/jpeg, image/gif, application/pdf, .png, .jpeg, .jpg, .gif, .pdf' %}
+
+    {% endif %}
+
+    <div class="form-group row">
+
+        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        
+        <div class="col-sm">
+
+            {% if hint %}
+                <p>{{hint|raw}}</p>
+            {% endif %}
+
+            <div class="input-group {{validation_class}}">
+                <input type="text" class="form-control upload-text">
+                {# {% if value %}value="{{value}}"{% endif %} #}
+                <div class="input-group-addon p-0">
+                    <input id="{{name}}-input" type="file" name="{{name}}" class="d-none" accept="{{allowed_types}}">
+                    <label class="input-group-text mb-0 px-3 py-1 w-100 h-100" for="{{name}}-input">Browse...</label>
+                </div>
+            </div>
+            
+            {% if errors.empty %}
+                <small class="form-text scoopm-error">Required. Please try again</small>
+            {% elseif errors.invalid %}
+                <small class="form-text scoopm-error">Incorrect file type. Please try again</small>
+            {% endif %}
+
+            <small class="form-text scoopm-hint">{{type_phrase|raw}}</small>
+
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro select(title, name, errors, options=null, value=null) %}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+    <div class="form-group row">
+        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
+        <div class="col-sm">
+            <select id="{{name}}" name="{{name}}" class="custom-select form-control {{validation_class}}">
+                {% if options %}
+                    <option value="">Choose...</option>
+                    {% for option in options %}
+                        <option value="{{option}}" {% if option == value %}selected{% endif %}>{{option}}</option>    
+                    {% endfor %}
+                {% endif %}
+            </select>
+            {% if errors.invalid %}
+                <small class="form-text scoopm-error">Required</small>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+
+
+
+
+
+
+
+
+{# FORMATTING #}
+
+{% macro title(text) %}
+    <!-- <h1 class="text-center">{{text}}</h1> -->
+    <!-- <br> -->
+{% endmacro %}
+
+{% macro heading(text) %}
+    <div class="row pt-4">
+        <div class="col-sm-9 offset-sm-3">
+                <h4>{{text}}</h4>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro subHeading(text) %}
+    <div class="row">
+        <div class="col-sm-9 offset-sm-3">
+                <p>{{text|raw}}</p>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro buttons(thisPage, goingBack=false, submitting=false) %}
+    <br>
+    <div class="form-group" style="text-align:center;">
+
+        {% if goingBack %}
+            <button id="{{thisPage}}Back" class="back-button btn btn-outline-secondary mr-5 px-5"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;Back&nbsp;</button>
+        {% endif %}
+
+        {% if not submitting %}
+            <button id="{{thisPage}}Next" class="next-button btn btn-outline-primary px-5">&nbsp;Next&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></button>
+        {% else %}
+            <input id="submit" type="submit" class="btn btn-primary px-5" value="Submit"/>
+        {% endif %}
+
+    </div>
+{% endmacro %}
