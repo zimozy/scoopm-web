@@ -179,7 +179,7 @@ class __TwigTemplate_bdd6a894d52d2e34e6e34d252e3d40040c2a3a789359871bb81c07f743e
         echo "
         ";
         // line 64
-        echo $context["form"]->macro_upload("Upload W-9", "w9", twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["files"] ?? null), "w9", array()), "getClientFilename", array(), "method"), "img/pdf", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "w9", array()), "<a href=\"https://www.irs.gov/pub/irs-pdf/fw9.pdf\">Download</a> and fill out a blank copy of the W-9.");
+        echo $context["form"]->macro_upload("Upload W-9", "w9", twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["files"] ?? null), "w9", array()), "getClientFilename", array(), "method"), "img/pdf", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "w9", array()), "<a href=\"https://www.irs.gov/pub/irs-pdf/fw9.pdf\"  target=\"_blank\">Download</a> and fill out a blank copy of the W-9.");
         echo "
         ";
         // line 65
@@ -316,7 +316,7 @@ class __TwigTemplate_bdd6a894d52d2e34e6e34d252e3d40040c2a3a789359871bb81c07f743e
         {{form.title('Application')}}
         {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn)}}
         {{form.upload('Upload a Photo of Yourself', 'photo', files.photo.getClientFilename(), 'img', errors.photo)}}
-        {{form.upload('Upload W-9', 'w9', files.w9.getClientFilename(), 'img/pdf', errors.w9, '<a href=\"https://www.irs.gov/pub/irs-pdf/fw9.pdf\">Download</a> and fill out a blank copy of the W-9.')}}
+        {{form.upload('Upload W-9', 'w9', files.w9.getClientFilename(), 'img/pdf', errors.w9, '<a href=\"https://www.irs.gov/pub/irs-pdf/fw9.pdf\"  target=\"_blank\">Download</a> and fill out a blank copy of the W-9.')}}
         {{form.upload('Upload Resume', 'resume', files.resume.getClientFilename(), 'doc', errors.resume)}}
 
         {{form.heading('Please Provide Two References')}}
