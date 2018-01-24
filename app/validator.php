@@ -136,32 +136,32 @@ class Validator
 
         // MUST ENABLE FOR LIVE SITE
 
-        // $url = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModels&make="
-        //     . $this->fields_array[$make_field_name]
-        //     . "&year="
-        //     . $this->fields_array[$year_field_name]
-        //     . "&sold_in_us=1";
+        $url = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModels&make="
+            . $this->fields_array[$make_field_name]
+            . "&year="
+            . $this->fields_array[$year_field_name]
+            . "&sold_in_us=1";
 
-        // $ch = curl_init($url);
+        $ch = curl_init($url);
         
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        // curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, false);
 
-        // $result = curl_exec($ch);
+        $result = curl_exec($ch);
         
-        // curl_close($ch);
+        curl_close($ch);
 
-        // $regex = '/"model_name": ?"' . $this->fields_array[$model_field_name] . '"/';
+        $regex = '/"model_name": ?"' . $this->fields_array[$model_field_name] . '"/';
 
-        // if (!preg_match($regex, $result)) {
-        //     $this->setError($year_field_name, 'invalid');
-        //     $this->setError($make_field_name, 'invalid');
-        //     $this->setError($model_field_name, 'invalid');
-        // } else {
-        //     $this->setAsPassed($year_field_name);
-        //     $this->setAsPassed($make_field_name);
-        //     $this->setAsPassed($model_field_name);
-        // }
+        if (!preg_match($regex, $result)) {
+            $this->setError($year_field_name, 'invalid');
+            $this->setError($make_field_name, 'invalid');
+            $this->setError($model_field_name, 'invalid');
+        } else {
+            $this->setAsPassed($year_field_name);
+            $this->setAsPassed($make_field_name);
+            $this->setAsPassed($model_field_name);
+        }
     
     }
 

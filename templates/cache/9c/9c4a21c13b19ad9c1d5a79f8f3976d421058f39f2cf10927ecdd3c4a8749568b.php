@@ -759,11 +759,11 @@ class __TwigTemplate_30a50cc10b313f5582519d3fceb5f37458729a0a60ea5901a61917654a2
         try {
             // line 216
             echo "    <div class=\"row\">
-        <div class=\"col-sm-3\">
-                <p class=\"h4 fw-400\"><u>";
+        <div class=\"col-sm-9 offset-sm-3\">
+                <p class=\"h5 fw-400\">";
             // line 218
             echo ($context["text"] ?? null);
-            echo "</u></p>
+            echo "</p>
         </div>
     </div>
 ";
@@ -1059,8 +1059,8 @@ class __TwigTemplate_30a50cc10b313f5582519d3fceb5f37458729a0a60ea5901a61917654a2
 
 {% macro subHeading(text) %}
     <div class=\"row\">
-        <div class=\"col-sm-3\">
-                <p class=\"h4 fw-400\"><u>{{text|raw}}</u></p>
+        <div class=\"col-sm-9 offset-sm-3\">
+                <p class=\"h5 fw-400\">{{text|raw}}</p>
         </div>
     </div>
 {% endmacro %}

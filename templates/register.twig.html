@@ -5,12 +5,9 @@
 
 {% block content %}
 
+<h1 class="fw-400 text-center">Register</h1>
 
-<h1 class="fw-200 text-center">Register</h1>
-
-<br>
-
-<p id="progress-links" class="h4 fw-400 text-center text-muted">
+<p id="progress-links" class="h4 fw-400 text-center text-muted mt-4">
     <a id="aboutYouLink" href="#" class="underlined">About&nbsp;You</a> &raquo; <a id="yourCarLink" href="#" class="text-muted">Your&nbsp;Car</a> &raquo; <a id="insuranceLink" href="#" class="text-muted">Insurance&nbsp;Info</a> &raquo; <a id="applicationLink" href="#" class="text-muted">Application</a> &raquo; <a id="referencesLink" href="#" class="text-muted">References</a>
 </p>
 
@@ -18,6 +15,7 @@
 
 <form id="form" method="post" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-was-validated"{% endif %} novalidate>
           
+
     <!-- ABOUT YOU -->
     <div id="aboutYouPage" class="current-page page">
         {{form.title('About You')}}  
@@ -29,6 +27,7 @@
         {{form.confirm('Confirm Password', 'confirmPassword', confirmPassword, errors.confirmPassword)}}
         {{form.buttons('aboutYou')}}
     </div>
+
 
     <!-- YOUR CAR -->
     <div id="yourCarPage" class="page d-none">
@@ -62,7 +61,7 @@
         {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn)}}
         {{form.upload('Upload W-9', 'w9', files.w9.getClientFilename(), 'img/pdf', errors.w9, '<a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf"  target="_blank">Download</a> and fill out a blank copy of the W-9.')}}
         {{form.upload('Upload Resume', 'resume', files.resume.getClientFilename(), 'doc', errors.resume)}}
-        {{form.upload('Fingerprints', 'fingerprints', files.fingerprints.getClientFilename(), 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station. Scan an image of them or upload a PDF.')}}
+        {{form.upload('Fingerprints', 'fingerprints', files.fingerprints.getClientFilename(), 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station. Scan the fingerprint document or upload a PDF.')}}
         {{form.textArea('Felonies Committed, if applicable', 'felonies', felonies, errors.felonies)}}
         {{form.buttons('application', true)}}
     </div>

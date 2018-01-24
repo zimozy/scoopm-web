@@ -48,7 +48,7 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
     <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-lg-8 offset-lg-2\">
-                <h1 class=\"display-2 text-center logo-font blue-text\"><a href=\"";
+                <h1 class=\"display-2 text-center logo-font blue-text mt-2\"><a href=\"";
         // line 27
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("home"), "html", null, true);
         echo "\">ScoopM</a><small>&nbsp;</small></h1>
@@ -144,7 +144,7 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
     <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-lg-8 offset-lg-2\">
-                <h1 class=\"display-2 text-center logo-font blue-text\"><a href=\"{{path_for('home')}}\">ScoopM</a><small>&nbsp;</small></h1>
+                <h1 class=\"display-2 text-center logo-font blue-text mt-2\"><a href=\"{{path_for('home')}}\">ScoopM</a><small>&nbsp;</small></h1>
                 {% block content %}{% endblock %}
             </div>
         </div>
