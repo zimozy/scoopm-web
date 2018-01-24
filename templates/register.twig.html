@@ -62,8 +62,8 @@
         {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn)}}
         {{form.upload('Upload W-9', 'w9', files.w9.getClientFilename(), 'img/pdf', errors.w9, '<a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf"  target="_blank">Download</a> and fill out a blank copy of the W-9.')}}
         {{form.upload('Upload Resume', 'resume', files.resume.getClientFilename(), 'doc', errors.resume)}}
-        {{form.upload('Fingerprints', 'fingerprints', files.fingerprints.getClientFilename(), 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station.')}}
-        {{form.textArea('Felonies', 'felonies', felonies, errors.felonies, 'Please list any felonies.')}}
+        {{form.upload('Fingerprints', 'fingerprints', files.fingerprints.getClientFilename(), 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station. Scan an image of them or upload a PDF.')}}
+        {{form.textArea('Felonies Committed, if applicable', 'felonies', felonies, errors.felonies)}}
         {{form.buttons('application', true)}}
     </div>
 
@@ -86,6 +86,8 @@
 
 </form>
  
-<script type="text/javascript" src="/js/register.js"></script>
+{% endblock %}
 
+{% block body_scripts %}
+    <script type="text/javascript" src="/js/navigation.js"></script>
 {% endblock %}

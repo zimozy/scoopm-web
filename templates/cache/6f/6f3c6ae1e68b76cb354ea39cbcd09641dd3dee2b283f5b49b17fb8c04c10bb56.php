@@ -12,6 +12,7 @@ class __TwigTemplate_bdd6a894d52d2e34e6e34d252e3d40040c2a3a789359871bb81c07f743e
         $this->blocks = array(
             'title' => array($this, 'block_title'),
             'content' => array($this, 'block_content'),
+            'body_scripts' => array($this, 'block_body_scripts'),
         );
     }
 
@@ -186,11 +187,11 @@ class __TwigTemplate_bdd6a894d52d2e34e6e34d252e3d40040c2a3a789359871bb81c07f743e
         echo "
         ";
         // line 65
-        echo $context["form"]->macro_upload("Fingerprints", "fingerprints", twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["files"] ?? null), "fingerprints", array()), "getClientFilename", array(), "method"), "img/pdf", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "fingerprints", array()), "You can get your fingerprints taken at the local police station.");
+        echo $context["form"]->macro_upload("Fingerprints", "fingerprints", twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["files"] ?? null), "fingerprints", array()), "getClientFilename", array(), "method"), "img/pdf", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "fingerprints", array()), "You can get your fingerprints taken at the local police station. Scan an image of them or upload a PDF.");
         echo "
         ";
         // line 66
-        echo $context["form"]->macro_textArea("Felonies", "felonies", ($context["felonies"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "felonies", array()), "Please list any felonies.");
+        echo $context["form"]->macro_textArea("Felonies Committed, if applicable", "felonies", ($context["felonies"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "felonies", array()));
         echo "
         ";
         // line 67
@@ -248,8 +249,14 @@ class __TwigTemplate_bdd6a894d52d2e34e6e34d252e3d40040c2a3a789359871bb81c07f743e
 
 </form>
  
-<script type=\"text/javascript\" src=\"/js/register.js\"></script>
+";
+    }
 
+    // line 91
+    public function block_body_scripts($context, array $blocks = array())
+    {
+        // line 92
+        echo "    <script type=\"text/javascript\" src=\"/js/navigation.js\"></script>
 ";
     }
 
@@ -265,7 +272,7 @@ class __TwigTemplate_bdd6a894d52d2e34e6e34d252e3d40040c2a3a789359871bb81c07f743e
 
     public function getDebugInfo()
     {
-        return array (  247 => 85,  244 => 84,  239 => 82,  235 => 81,  231 => 80,  227 => 79,  222 => 77,  218 => 76,  214 => 75,  210 => 74,  206 => 73,  197 => 67,  193 => 66,  189 => 65,  185 => 64,  181 => 63,  177 => 62,  173 => 61,  169 => 60,  160 => 54,  156 => 53,  152 => 52,  148 => 51,  144 => 50,  135 => 44,  131 => 43,  126 => 42,  122 => 40,  118 => 39,  114 => 38,  110 => 37,  106 => 36,  102 => 35,  94 => 30,  90 => 29,  86 => 28,  82 => 27,  78 => 26,  74 => 25,  70 => 24,  66 => 23,  55 => 19,  41 => 7,  38 => 6,  32 => 4,  28 => 1,  26 => 2,  11 => 1,);
+        return array (  259 => 92,  256 => 91,  248 => 85,  245 => 84,  240 => 82,  236 => 81,  232 => 80,  228 => 79,  223 => 77,  219 => 76,  215 => 75,  211 => 74,  207 => 73,  198 => 67,  194 => 66,  190 => 65,  186 => 64,  182 => 63,  178 => 62,  174 => 61,  170 => 60,  161 => 54,  157 => 53,  153 => 52,  149 => 51,  145 => 50,  136 => 44,  132 => 43,  127 => 42,  123 => 40,  119 => 39,  115 => 38,  111 => 37,  107 => 36,  103 => 35,  95 => 30,  91 => 29,  87 => 28,  83 => 27,  79 => 26,  75 => 25,  71 => 24,  67 => 23,  56 => 19,  42 => 7,  39 => 6,  33 => 4,  29 => 1,  27 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -334,8 +341,8 @@ class __TwigTemplate_bdd6a894d52d2e34e6e34d252e3d40040c2a3a789359871bb81c07f743e
         {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn)}}
         {{form.upload('Upload W-9', 'w9', files.w9.getClientFilename(), 'img/pdf', errors.w9, '<a href=\"https://www.irs.gov/pub/irs-pdf/fw9.pdf\"  target=\"_blank\">Download</a> and fill out a blank copy of the W-9.')}}
         {{form.upload('Upload Resume', 'resume', files.resume.getClientFilename(), 'doc', errors.resume)}}
-        {{form.upload('Fingerprints', 'fingerprints', files.fingerprints.getClientFilename(), 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station.')}}
-        {{form.textArea('Felonies', 'felonies', felonies, errors.felonies, 'Please list any felonies.')}}
+        {{form.upload('Fingerprints', 'fingerprints', files.fingerprints.getClientFilename(), 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station. Scan an image of them or upload a PDF.')}}
+        {{form.textArea('Felonies Committed, if applicable', 'felonies', felonies, errors.felonies)}}
         {{form.buttons('application', true)}}
     </div>
 
@@ -358,9 +365,10 @@ class __TwigTemplate_bdd6a894d52d2e34e6e34d252e3d40040c2a3a789359871bb81c07f743e
 
 </form>
  
-<script type=\"text/javascript\" src=\"/js/register.js\"></script>
-
 {% endblock %}
-", "register.twig.html", "/var/www/scoopm/templates/register.twig.html");
+
+{% block body_scripts %}
+    <script type=\"text/javascript\" src=\"/js/navigation.js\"></script>
+{% endblock %}", "register.twig.html", "/var/www/scoopm/templates/register.twig.html");
     }
 }

@@ -7,13 +7,19 @@ var currentPage = pages[0];
 var length      = pages.length;
 var formIsValid = true;
 var form        = $('#form');
- 
+var password            = $('#password');
+var passwordHint        = password.siblings('#password-size');
+var confirmPassword     = $('#confirmPassword');
+var confirmPasswordHint = confirmPassword.siblings('#password-match'); 
+
+var storageRef = firebase.storage().ref();
+
 
 /* NAVIGATION FUNCTIONS */
 function goTo(newPage) {
     currentPageObj = $('#' + currentPage + 'Page');
     currentPageObj.addClass('d-none');
-    currentPageObj.removeClass('.current-page');
+    currentPageObj.removeClass('current-page');
 
     newPageObj = $('#' + newPage + 'Page');
     newPageObj.addClass('current-page');
@@ -73,14 +79,15 @@ function firstPageWithErrors() {
 
 /* VALIDATION */
 function markAsValid(obj) {
-    obj.removeClass('.scoopm-is-invalid');
-    obj.addClass('.scoopm-is-valid');
+    obj.removeClass('scoopm-is-invalid');
+    obj.addClass('scoopm-is-valid');
     obj.addClass(':valid');
 }
 
 function markAsInvalid(obj) {
+    form.addClass('scoopm-was-validated');
     obj.addClass(':invalid');
-    obj.addClass('.scoopm-is-invalid');
+    obj.addClass('scoopm-is-invalid');
     formIsValid = false;
 }
 
@@ -97,22 +104,24 @@ function formValidates() {
     });
 
     // EMAIL
-    $('input.email').each(function() {
-        if (! /.+@.+\..+/.test( $(this).val() ) ) {
-            console.log('email is invalid');
-            markAsInvalid($(this))
-        } else {
-            console.log('email is valid');
-            markAsValid($(this))
-        }
-    });
+    // $('input.email').each(function() {
+    //     if (! /.+@.+\..+/.test( $(this).val() ) ) {
+    //         console.log('email is invalid');
+    //         markAsInvalid($(this))
+    //     } else {
+    //         console.log('email is valid');
+    //         markAsValid($(this))
+    //     }
+    // });
 
-    // PASSWORD
-    var password            = $('#password');
-    var passwordHint        = password.siblings('#password-size');
-    var confirmPassword     = $('#confirmPassword');
-    var confirmPasswordHint = confirmPassword.siblings('#password-match');
-    
+    checkPassword();
+
+    // $('#form').addClass('was-validated'); //not using because the browsers get in the way
+
+    return formIsValid;
+}
+
+function checkPassword() {
     //check first password
     if (password.val().length < 6) {
         markAsInvalid(password);
@@ -134,12 +143,7 @@ function formValidates() {
             }    
         }
     }
-
-    // $('#form').addClass('was-validated'); //not using because the browsers get in the way
-    return formIsValid;
 }
-
-
 
 /* CONTROL FLOW */
 
@@ -163,20 +167,24 @@ $('#progress-links a').on('click', function(event) {
 });
 
 form.submit(function( event ) {
-    if (!formValidates()) {   /// DISABLED FOR TESTING!!!!!!
-        //carry on...
-    } else {
-        console.log("There were errors.");
-        event.preventDefault();
-        goTo(firstPageWithErrors());
-    }
+    $('input:file').each(function() {
+        $(this).files
+    });
+    // if (formValidates()) {
+    //     event.preventDefault();
+    //     //carry on...
+    // } else {
+    //     event.preventDefault();
+    //     console.log("There were errors.");
+    //     goTo(firstPageWithErrors());
+    // }
   });
 
 //keypress 'enter'
 $('input').keypress(function(event) {
     if ( event.which == 13 ) {
        event.preventDefault();
-       if (currentPage == pages[3]) {
+       if (currentPage == pages[4]) {
         form.submit();
        } else {
         goTo(getNextPage());
@@ -186,8 +194,60 @@ $('input').keypress(function(event) {
 });
 
 //custom upload field
-$('input:file').on('change', function() {
-    $(this).parent().parent().children('.form-control').val(this.files[0].name);
+$('input:file').each(function() {
+    var input      = $(this);
+    var inputGroup = $(this).parent().parent().first();
+    var button     = $(this).siblings('label').first();
+    var label      = inputGroup.children('.form-control').first();
+
+    label.on('focus', function() {
+        $(this).blur();
+        input.click();
+    });
+
+    input.on('change', function() {
+        label.val(this.files[0].name);
+
+        button.text('Uploading...');
+
+        inputGroup.removeClass('scoopm-is-valid');    
+        inputGroup.removeClass('scoopm-is-invalid');
+        inputGroup.addClass('scoopm-is-uploading');
+
+        var file = this.files[0];
+        var uploadTask = storageRef.child('images/' + file.name).put(file);
+
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function(snapshot) {
+            switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                    console.log(file.name + ' upload is paused');
+                    break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                    console.log(file.name + ' upload is running');
+                    break;
+            }
+
+        }, function(error) {
+            button.text('Try Again...');
+            
+            inputGroup.removeClass('scoopm-is-valid');
+            inputGroup.removeClass('scoopm-is-uploading');
+            inputGroup.addClass('scoopm-is-invalid');
+            
+        }, function() { //success
+            button.text('Change File...');
+            
+            inputGroup.removeClass('scoopm-is-invalid');
+            inputGroup.removeClass('scoopm-is-uploading');
+            inputGroup.addClass('scoopm-is-valid');
+
+            console.log('Upload success.');
+        });
+    });
+});
+
+$('input:password').keyup(function() {
+    checkPassword();
 })
 
 

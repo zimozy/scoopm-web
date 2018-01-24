@@ -12,6 +12,7 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
         $this->blocks = array(
             'title' => array($this, 'block_title'),
             'content' => array($this, 'block_content'),
+            'body_scripts' => array($this, 'block_body_scripts'),
         );
     }
 
@@ -47,19 +48,40 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
     <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-lg-8 offset-lg-2\">
-                <h1 class=\"display-2 text-center logo-font blue-text\">ScoopM</h1>
+                <h1 class=\"display-2 text-center logo-font blue-text\"><a href=\"";
+        // line 27
+        echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("home"), "html", null, true);
+        echo "\">ScoopM</a><small>&nbsp;</small></h1>
                 ";
         // line 28
         $this->displayBlock('content', $context, $blocks);
         // line 29
         echo "            </div>
         </div>
-        
     </div>
     <footer class=\"footer\">
         <div class=\"container text-center\">&copy; ScoopM 2018</div>
     </footer>
-</body>
+
+    <script src=\"https://www.gstatic.com/firebasejs/4.9.0/firebase.js\"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: \"AIzaSyAjBxmEhdP51alX7u26mSiMwSXtCMxYMpc\",
+        authDomain: \"scoopm-8975f.firebaseapp.com\",
+        databaseURL: \"https://scoopm-8975f.firebaseio.com\",
+        projectId: \"scoopm-8975f\",
+        storageBucket: \"scoopm-8975f.appspot.com\",
+        messagingSenderId: \"342193276323\"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+    ";
+        // line 50
+        $this->displayBlock('body_scripts', $context, $blocks);
+        // line 51
+        echo "</body>
 </html>";
     }
 
@@ -74,14 +96,24 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
     {
     }
 
+    // line 50
+    public function block_body_scripts($context, array $blocks = array())
+    {
+    }
+
     public function getTemplateName()
     {
         return "base.twig.html";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  73 => 28,  67 => 5,  55 => 29,  53 => 28,  27 => 5,  21 => 1,);
+        return array (  100 => 50,  95 => 28,  89 => 5,  84 => 51,  82 => 50,  59 => 29,  57 => 28,  53 => 27,  28 => 5,  22 => 1,);
     }
 
     public function getSourceContext()
@@ -112,15 +144,30 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
     <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-lg-8 offset-lg-2\">
-                <h1 class=\"display-2 text-center logo-font blue-text\">ScoopM</h1>
+                <h1 class=\"display-2 text-center logo-font blue-text\"><a href=\"{{path_for('home')}}\">ScoopM</a><small>&nbsp;</small></h1>
                 {% block content %}{% endblock %}
             </div>
         </div>
-        
     </div>
     <footer class=\"footer\">
         <div class=\"container text-center\">&copy; ScoopM 2018</div>
     </footer>
+
+    <script src=\"https://www.gstatic.com/firebasejs/4.9.0/firebase.js\"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: \"AIzaSyAjBxmEhdP51alX7u26mSiMwSXtCMxYMpc\",
+        authDomain: \"scoopm-8975f.firebaseapp.com\",
+        databaseURL: \"https://scoopm-8975f.firebaseio.com\",
+        projectId: \"scoopm-8975f\",
+        storageBucket: \"scoopm-8975f.appspot.com\",
+        messagingSenderId: \"342193276323\"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+    {% block body_scripts %}{% endblock %}
 </body>
 </html>", "base.twig.html", "/var/www/scoopm/templates/base.twig.html");
     }

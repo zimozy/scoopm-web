@@ -30,11 +30,15 @@ body {
 
 .logo-font { font-family: 'Kaushan Script', cursive; }
 
+.logo-font a { color: inherit; }
+.logo-font a:hover { color: inherit; text-decoration: none; }
+
 .fw-200 {font-weight: 200;}
 .fw-400 {font-weight: 400;}
 
 .blue-text, a, .btn-outline-primary { color: #009AEE; }
 a:hover { color: rgb(0, 139, 214); }
+
 .btn-primary { background-color: #009AEE; border-color: rgb(0, 139, 214)}
 .btn-primary:hover { background-color: rgb(0, 139, 214); border-color: rgb(0, 129, 199)}
 
@@ -46,23 +50,41 @@ a:hover { color: rgb(0, 139, 214); }
 
 
 /* VALIDATION */
-#form.scoopm-was-validated .scoopm-is-invalid,
-#form.scoopm-was-validated .scoopm-is-invalid .input-group-addon,
-#form.scoopm-was-validated .scoopm-is-invalid .form-control { border-color: #dc3545; }
+#form .scoopm-is-invalid,
+#form .scoopm-is-invalid .input-group-addon,
+#form .scoopm-is-invalid .form-control { border-color: #dc3545; }
 
-#form.scoopm-was-validated .scoopm-is-valid,
-#form.scoopm-was-validated .scoopm-is-valid .input-group-addon,
-#form.scoopm-was-validated .scoopm-is-valid .form-control  { border-color: #28a745;}
+#form .scoopm-is-valid,
+#form .scoopm-is-valid .input-group-addon,
+#form .scoopm-is-valid .form-control  { border-color: #28a745;}
 
 #form .scoopm-error {
     display: none; /* BY DEFAULT */
-    color: #dc3545;
 }
+
 #form .scoopm-hint { color: #868e96; }
 
 /* SHOW THE ERROR MESSAGES */
-#form.scoopm-was-validated .scoopm-is-invalid + .scoopm-error,
-#form.scoopm-was-validated .scoopm-is-invalid + .scoopm-hint {
+#form .scoopm-is-invalid + .scoopm-error,
+#form .scoopm-is-invalid + .scoopm-hint {
     display: block;
     color: #dc3545;
+}
+
+@keyframes pulse-blue {
+    from {border-color: rgb(0, 137, 211);}
+    to {border-color: rgb(148, 217, 255);}
+}
+
+.scoopm-is-uploading .form-control,
+.scoopm-is-uploading .input-group-addon {
+    animation-name: pulse-blue;
+    animation-duration: 0.4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+.scoopm-is-uploading .input-group-addon {
+  background-color: rgb(192, 212, 223);
 }

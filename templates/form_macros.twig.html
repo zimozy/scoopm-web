@@ -140,7 +140,7 @@
                 <p>{{hint|raw}}</p>
             {% endif %}
 
-            <div class="input-group {{validation_class}}">
+            <div class="input-group {{validation_class}} .align-items-baseline">
                 <input type="text" class="form-control upload-text">
                 {# {% if value %}value="{{value}}"{% endif %} #}
                 <div class="input-group-addon p-0">
@@ -154,8 +154,10 @@
             {% elseif errors.invalid %}
                 <small class="form-text scoopm-error">Incorrect file type. Please try again</small>
             {% endif %}
+            
+            <small class="form-text scoopm-error">Oops, there was an error. Please try again</small>
 
-            <small class="form-text scoopm-hint">{{type_phrase|raw}}</small>
+            <small class="form-text scoopm-hint">{{type_phrase|raw}} (under 5MB)</small>
 
         </div>
     </div>

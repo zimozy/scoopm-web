@@ -24,14 +24,29 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <h1 class="display-2 text-center logo-font blue-text">ScoopM</h1>
+                <h1 class="display-2 text-center logo-font blue-text"><a href="{{path_for('home')}}">ScoopM</a><small>&nbsp;</small></h1>
                 {% block content %}{% endblock %}
             </div>
         </div>
-        
     </div>
     <footer class="footer">
         <div class="container text-center">&copy; ScoopM 2018</div>
     </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAjBxmEhdP51alX7u26mSiMwSXtCMxYMpc",
+        authDomain: "scoopm-8975f.firebaseapp.com",
+        databaseURL: "https://scoopm-8975f.firebaseio.com",
+        projectId: "scoopm-8975f",
+        storageBucket: "scoopm-8975f.appspot.com",
+        messagingSenderId: "342193276323"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+    {% block body_scripts %}{% endblock %}
 </body>
 </html>
