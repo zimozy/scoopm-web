@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 
 /* VARIABLES */
-var pages       = ["aboutYou", "yourCar", "insurance", "application"];
+var pages       = ["aboutYou", "yourCar", "insurance", "application", "references"];
 var currentPage = pages[0];
 var length      = pages.length;
 var formIsValid = true;

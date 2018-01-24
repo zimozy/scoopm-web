@@ -1,6 +1,49 @@
+/* LAYOUT */
+
+/* sticky footer */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 50px;   /* Margin bottom by footer height */
+  background-color: #fcfcfc;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 50px; /* Set the fixed height of the footer here */
+  line-height: 50px; /* Vertically center the text there */
+  color: #ccc;
+  font-size: 80%;
+}
+
+
+
+
 /* FORMATTING */
 .underlined { text-decoration: underline; }
 /*.form-group { margin-bottom: 2rem; } /* More space */
+
+.logo-font { font-family: 'Kaushan Script', cursive; }
+
+.fw-200 {font-weight: 200;}
+.fw-400 {font-weight: 400;}
+
+.blue-text, a, .btn-outline-primary { color: #009AEE; }
+a:hover { color: rgb(0, 139, 214); }
+.btn-primary { background-color: #009AEE; border-color: rgb(0, 139, 214)}
+.btn-primary:hover { background-color: rgb(0, 139, 214); border-color: rgb(0, 129, 199)}
+
+.btn-outline-primary { border-color: #009AEE; }
+.btn-outline-primary:hover { background-color: #009AEE; }
+
+.form-group p { padding-top: 7px;}
+
+
 
 /* VALIDATION */
 #form.scoopm-was-validated .scoopm-is-invalid,

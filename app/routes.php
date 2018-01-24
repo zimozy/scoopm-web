@@ -4,7 +4,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use scoopm\Validator;
 
 $app->get("/", function (Request $request, Response $response) {
-    $response->getBody()->write("Home page.<br> <a href=\"/register\">Register</a>.");
+    $response->getBody()->write("Home page.<br> <h1><a href=\"/register\">Register</a></h1>.");
 });
 
 $app->get('/register', function (Request $request, Response $response) {
@@ -40,10 +40,14 @@ $app->post('/register', function (Request $request, Response $response) {
     $validator->validateImage('insurance');
 
     // APPLICATION //
-    $validator->validateText('ssn');
     $validator->validateImage('photo');
+    $validator->validateText('ssn');
     $validator->validateImageOrPDF('w9');
     $validator->validateDoc('resume');
+    $validator->validateImageOrPDF('fingerprints');
+    $validator->validateText('felonies');
+
+    // REFERENCES //
     //ref1
     $validator->validateText('ref1Name');
     $validator->validatePhone('ref1Phone');

@@ -29,6 +29,7 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
     <!--<link href=\"../vendor/twbs/bootstrap/dist/css/bootstrap.min.css\" rel=\"stylesheet\"/>-->
     <link rel=\"stylesheet\" href=\"/bootstrap/css/bootstrap.min.css\">
     <link rel=\"stylesheet\" href=\"/css/fa/css/font-awesome.min.css\">
+    <link href=\"https://fonts.googleapis.com/css?family=Kaushan+Script\" rel=\"stylesheet\"><!--Google Font-->
     <link rel=\"stylesheet\" href=\"/css/scoopm.css\">
     <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
     <script type=\"text/javascript\" src=\"http://www.carqueryapi.com/js/carquery.0.3.4.js\"></script>
@@ -46,14 +47,18 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
     <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-lg-8 offset-lg-2\">
-                    ";
-        // line 26
+                <h1 class=\"display-2 text-center logo-font blue-text\">ScoopM</h1>
+                ";
+        // line 28
         $this->displayBlock('content', $context, $blocks);
-        // line 27
+        // line 29
         echo "            </div>
         </div>
         
     </div>
+    <footer class=\"footer\">
+        <div class=\"container text-center\">&copy; ScoopM 2018</div>
+    </footer>
 </body>
 </html>";
     }
@@ -64,7 +69,7 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
         echo " | ScoopM";
     }
 
-    // line 26
+    // line 28
     public function block_content($context, array $blocks = array())
     {
     }
@@ -76,7 +81,7 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
 
     public function getDebugInfo()
     {
-        return array (  68 => 26,  62 => 5,  53 => 27,  51 => 26,  27 => 5,  21 => 1,);
+        return array (  73 => 28,  67 => 5,  55 => 29,  53 => 28,  27 => 5,  21 => 1,);
     }
 
     public function getSourceContext()
@@ -89,6 +94,7 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
     <!--<link href=\"../vendor/twbs/bootstrap/dist/css/bootstrap.min.css\" rel=\"stylesheet\"/>-->
     <link rel=\"stylesheet\" href=\"/bootstrap/css/bootstrap.min.css\">
     <link rel=\"stylesheet\" href=\"/css/fa/css/font-awesome.min.css\">
+    <link href=\"https://fonts.googleapis.com/css?family=Kaushan+Script\" rel=\"stylesheet\"><!--Google Font-->
     <link rel=\"stylesheet\" href=\"/css/scoopm.css\">
     <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
     <script type=\"text/javascript\" src=\"http://www.carqueryapi.com/js/carquery.0.3.4.js\"></script>
@@ -106,11 +112,15 @@ class __TwigTemplate_00f979c2a097eb783b8373103564dc0879066f9d717454d77f3ba2d8d89
     <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-lg-8 offset-lg-2\">
-                    {% block content %}{% endblock %}
+                <h1 class=\"display-2 text-center logo-font blue-text\">ScoopM</h1>
+                {% block content %}{% endblock %}
             </div>
         </div>
         
     </div>
+    <footer class=\"footer\">
+        <div class=\"container text-center\">&copy; ScoopM 2018</div>
+    </footer>
 </body>
 </html>", "base.twig.html", "/var/www/scoopm/templates/base.twig.html");
     }

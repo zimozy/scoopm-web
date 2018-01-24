@@ -5,14 +5,13 @@
 
 {% block content %}
 
+
+<h1 class="fw-200 text-center">Register</h1>
+
 <br>
 
-<h1 class="display-4 text-center">Register</h1>
-
-<br>
-
-<p id="progress-links" class="h3 text-center text-muted">
-    <a id="aboutYouLink" href="#" class="underlined">About&nbsp;You</a> &raquo; <a id="yourCarLink" href="#" class="text-muted">Your&nbsp;Car</a> &raquo; <a id="insuranceLink" href="#" class="text-muted">Insurance&nbsp;Info</a> &raquo; <a id="applicationLink" href="#" class="text-muted">Application</a>
+<p id="progress-links" class="h4 fw-400 text-center text-muted">
+    <a id="aboutYouLink" href="#" class="underlined">About&nbsp;You</a> &raquo; <a id="yourCarLink" href="#" class="text-muted">Your&nbsp;Car</a> &raquo; <a id="insuranceLink" href="#" class="text-muted">Insurance&nbsp;Info</a> &raquo; <a id="applicationLink" href="#" class="text-muted">Application</a> &raquo; <a id="referencesLink" href="#" class="text-muted">References</a>
 </p>
 
 <br>
@@ -32,7 +31,7 @@
     </div>
 
     <!-- YOUR CAR -->
-    <div id="yourCarPage" class="page container d-none">
+    <div id="yourCarPage" class="page d-none">
         {{form.title('About your car')}}  
         {{form.upload('Driver\'s License', 'licenseImage', files.licenseImage.getClientFilename(), 'img', errors.licenseImage)}}
         {{form.upload('Registration', 'registration', files.registration.getClientFilename(), 'img', errors.registration)}}
@@ -47,7 +46,7 @@
 
 
     <!-- INSURANCE -->
-    <div id="insurancePage" class="page container d-none">
+    <div id="insurancePage" class="page d-none">
         {{form.title('Insurance info')}}
         {{form.textInput('Policy provider', 'policyProvider', policyProvider, errors.policyProvider)}}
         {{form.textInput('Policy number', 'policyNumber', policyNumber, errors.policyNumber)}}
@@ -57,26 +56,34 @@
 
 
         <!-- APPLICATION -->
-    <div id="applicationPage" class="page container d-none">
+    <div id="applicationPage" class="page d-none">
         {{form.title('Application')}}
-        {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn)}}
         {{form.upload('Upload a Photo of Yourself', 'photo', files.photo.getClientFilename(), 'img', errors.photo)}}
+        {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn)}}
         {{form.upload('Upload W-9', 'w9', files.w9.getClientFilename(), 'img/pdf', errors.w9, '<a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf"  target="_blank">Download</a> and fill out a blank copy of the W-9.')}}
         {{form.upload('Upload Resume', 'resume', files.resume.getClientFilename(), 'doc', errors.resume)}}
+        {{form.upload('Fingerprints', 'fingerprints', files.fingerprints.getClientFilename(), 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station.')}}
+        {{form.textArea('Felonies', 'felonies', felonies, errors.felonies, 'Please list any felonies.')}}
+        {{form.buttons('application', true)}}
+    </div>
 
-        {{form.heading('Please Provide Two References')}}
-        {{form.subHeading('<i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;Reference 1')}}
+
+    <!-- REFFERENCES -->
+    <div id="referencesPage" class="page d-none">
+        {{form.title('Please Provide Two References')}}
+        {{form.subHeading('Reference 1')}}
         {{form.textInput('Name', 'ref1Name', ref1Name, errors.ref1Name)}}
         {{form.textInput('Phone Number', 'ref1Phone', ref1Phone, errors.ref1Phone)}}
         {{form.email('Email Address', 'ref1Email', ref1Email, errors.ref1Email)}}
         
-        {{form.subHeading('<i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;Reference 2')}}
+        {{form.subHeading('Reference 2')}}
         {{form.textInput('Name', 'ref2Name', ref2Name, errors.ref2Name)}}
         {{form.textInput('Phone Number', 'ref2Phone', ref2Phone, errors.ref2Phone)}}
         {{form.email('Email Address', 'ref2Email', ref2Email, errors.ref2Email)}}
 
-        {{form.buttons('application', true, true)}}
+        {{form.buttons('references', true, true)}} {# SUBMIT #}
     </div>
+
 </form>
  
 <script type="text/javascript" src="/js/register.js"></script>

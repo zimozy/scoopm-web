@@ -6,6 +6,7 @@
     <!--<link href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>-->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/fa/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet"><!--Google Font-->
     <link rel="stylesheet" href="/css/scoopm.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
@@ -23,10 +24,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                    {% block content %}{% endblock %}
+                <h1 class="display-2 text-center logo-font blue-text">ScoopM</h1>
+                {% block content %}{% endblock %}
             </div>
         </div>
         
     </div>
+    <footer class="footer">
+        <div class="container text-center">&copy; ScoopM 2018</div>
+    </footer>
 </body>
 </html>

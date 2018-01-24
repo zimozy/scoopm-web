@@ -17,6 +17,30 @@
     </div>
 {% endmacro %}
 
+{% macro textArea(title, name, value, errors=null, hint) %}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+    <div class="form-group row">
+        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        <div class="col-sm">
+
+            {% if hint %}
+                <p>{{hint|raw}}</p>
+            {% endif %}
+
+            <textarea id="{{name}}" name="{{name}}" class="form-control {{validation_class}}" rows="3" required>{{value}}</textarea>
+            <small class="form-text scoopm-error">Required</small>
+        </div>
+    </div>
+{% endmacro %}
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+
 {% macro password(title, name, value, errors) %}
     {% if errors == null %}
         {# Do nothing. #}
@@ -82,25 +106,25 @@
     {# INPUT FILE TYPES (accepts="...") #}
     {% if type == 'img' %}
 
-        {% set type_phrase = '<i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed types: JPEG, PNG, GIF' %}
+        {% set type_phrase = '<i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed: JPEG, PNG, GIF' %}
     
         {% set allowed_types = 'image/png, image/jpeg, image/gif, .png, .jpeg, .jpg, .gif' %}
 
     {% elseif type == 'pdf' %}
     
-        {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed types: PDF' %}
+        {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed: PDF' %}
     
         {% set allowed_types = 'application/pdf, .pdf' %}
 
     {% elseif type == 'doc' %}
 
-        {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Allowed types: PDF, Word Document' %}
+        {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Allowed: PDF, Word Document' %}
 
         {% set allowed_types = 'application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, .pdf, .doc, .docx' %}
         
     {% elseif type == 'img/pdf' %}
 
-        {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed types: PDF, JPEG, PNG, GIF' %}
+        {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed: PDF, JPEG, PNG, GIF' %}
 
         {% set allowed_types = 'image/png, image/jpeg, image/gif, application/pdf, .png, .jpeg, .jpg, .gif, .pdf' %}
 
@@ -188,18 +212,17 @@
 
 {% macro subHeading(text) %}
     <div class="row">
-        <div class="col-sm-9 offset-sm-3">
-                <p>{{text|raw}}</p>
+        <div class="col-sm-3">
+                <p class="h4 fw-400"><u>{{text|raw}}</u></p>
         </div>
     </div>
 {% endmacro %}
 
 {% macro buttons(thisPage, goingBack=false, submitting=false) %}
-    <br>
-    <div class="form-group" style="text-align:center;">
+    <div class="form-group text-center mt-4">
 
         {% if goingBack %}
-            <button id="{{thisPage}}Back" class="back-button btn btn-outline-secondary mr-5 px-5"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;Back&nbsp;</button>
+            <button id="{{thisPage}}Back" class="back-button btn btn-outline-secondary mr-sm-5 px-5"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;Back&nbsp;</button>
         {% endif %}
 
         {% if not submitting %}
