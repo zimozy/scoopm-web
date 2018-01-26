@@ -8,7 +8,7 @@ html {
 
 body {
   margin-bottom: 50px;   /* Margin bottom by footer height */
-  background-color: #fcfcfc;
+  /* background-color: #fcfcfc; */
 }
 
 .footer {
@@ -26,11 +26,21 @@ body {
 
 /* FORMATTING */
 .underlined { text-decoration: underline; }
-/*.form-group { margin-bottom: 2rem; } /* More space */
+
+#progress-links a.page-visited,
+#progress-links span {
+  color: #009AEE;
+}
+
+#progress-links a,
+#progress-links a:not(.page-visited) ~ span  {
+  color: #868e96;
+}
 
 .logo-font { 
   font-family: 'Kaushan Script', cursive; 
-  text-shadow: 4px 5px 7px #00000020;
+  /* text-shadow: 4px 4px 4px #00000015; */
+  /* text-shadow: 3px 5px 0px black; */
 }
 
 .logo-font a { color: inherit; }
@@ -42,15 +52,26 @@ body {
 .blue-text, a, .btn-outline-primary { color: #009AEE; }
 a:hover { color: rgb(0, 139, 214); }
 
-.btn-primary { background-color: #009AEE; border-color: rgb(0, 139, 214)}
+.btn-primary, .btn-primary:disabled { background-color: #009AEE; border-color: rgb(0, 139, 214)}
 .btn-primary:hover { background-color: rgb(0, 139, 214); border-color: rgb(0, 129, 199)}
+.btn-primary:disabled:hover { background-color: rgb(60, 169, 228);}
 
 .btn-outline-primary { border-color: #009AEE; }
-.btn-outline-primary:hover { background-color: #009AEE; }
+.btn-outline-primary:hover { background-color: #009AEE; border-color: rgb(0, 129, 199); }
 
 .form-group p { padding-top: 7px;}
 
-
+/* .scoopm-box {
+  padding: 15px 30px;
+  /* margin-top: 20px; 
+  
+  background: white;
+  
+  border: 1px solid white;
+  border-radius: 5px;
+  
+  box-shadow: 0px 0px 40px #00000005;
+} */
 
 /* VALIDATION */
 #form .scoopm-is-invalid,

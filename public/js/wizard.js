@@ -1,19 +1,18 @@
 $(document).ready(function(){
 
 
+$('input:text:first').focus();
+
 /* VARIABLES */
 var pages       = ["aboutYou", "yourCar", "insurance", "application", "references"];
 var currentPage = pages[0];
 var length      = pages.length;
 var formIsValid = true;
-var form        = $('#form');
+var mForm        = $('#form');
 var password            = $('#password');
 var passwordHint        = password.siblings('#password-size');
 var confirmPassword     = $('#confirmPassword');
 var confirmPasswordHint = confirmPassword.siblings('#password-match'); 
-
-var storageRef = firebase.storage().ref();
-
 
 /* NAVIGATION FUNCTIONS */
 function goTo(newPage) {
@@ -25,9 +24,20 @@ function goTo(newPage) {
     newPageObj.addClass('current-page');
     newPageObj.removeClass('d-none');
 
+    // console.log('currentPage: ' + currentPage);
+    // console.log('newPage: ' + newPage);
+
     currentPage = newPage;
+    
+    // console.log('currentPage: ' + currentPage);
+    console.log('goTo(' + newPage + ')');
+    // console.trace();
 
     updateProgressLinks();
+
+    newPageObj.find('input:text:not(.upload-text):first').focus();
+
+    return newPageObj;
 }
 
 function updateProgressLinks() {
@@ -37,7 +47,8 @@ function updateProgressLinks() {
     for (i = 0; i < length; i++) {
         
         var currentLink = $('#' + pages[i] + 'Link');
-        currentLink.removeClass('text-muted');
+        
+        currentLink.addClass('page-visited');
         
         if (pages[i] == currentPage) {
             currentLink.addClass('underlined');
@@ -85,7 +96,7 @@ function markAsValid(obj) {
 }
 
 function markAsInvalid(obj) {
-    form.addClass('scoopm-was-validated');
+    mForm.addClass('scoopm-was-validated');
     obj.addClass(':invalid');
     obj.addClass('scoopm-is-invalid');
     formIsValid = false;
@@ -147,103 +158,67 @@ function checkPassword() {
 
 /* CONTROL FLOW */
 
-if (form.attr('class') == 'scoopm-was-validated') { //if they've submitted with errors to to the relevant page
+if (mForm.attr('class') == 'scoopm-was-validated') { //if they've submitted with errors to to the relevant page
+    console.log('Going from errors');
+    
     goTo(firstPageWithErrors());
 }
 
 $('.next-button').on('click', function(event) {
     event.preventDefault();
+    console.log('going from .next-button click');
+    
     goTo(getNextPage());
 });
 
 $('.back-button').on('click', function(event) {
     event.preventDefault();
+    console.log('going from back-button click');
+    
     goTo(getPreviousPage());
 });
 
 $('#progress-links a').on('click', function(event) {
+    
     event.preventDefault();
+    console.log('going from progress links click');
+    
     goTo(getPageForLinkID($(this).attr('id')));
 });
 
-form.submit(function( event ) {
-    $('input:file').each(function() {
-        $(this).files
-    });
-    // if (formValidates()) {
-    //     event.preventDefault();
-    //     //carry on...
-    // } else {
-    //     event.preventDefault();
-    //     console.log("There were errors.");
-    //     goTo(firstPageWithErrors());
-    // }
-  });
+// mForm.submit(function(event) {
+//     // don't want to upload these
+//     // event.preventDefault();
+    
+//     // return true;
+//     // console.trace();
+    
+//     // if (formValidates()) {
+//     //     event.preventDefault();
+//     //     //carry on...
+//     // } else {
+//     //     event.preventDefault();
+//     //     console.log("There were errors.");
+//     //     goTo(firstPageWithErrors());
+//     // }
+//   });
 
 //keypress 'enter'
 $('input').keypress(function(event) {
+    console.log( event );
+
     if ( event.which == 13 ) {
-       event.preventDefault();
-       if (currentPage == pages[4]) {
-        form.submit();
-       } else {
-        goTo(getNextPage());
-       }
+        console.log('Enter pressed');
+        if (currentPage == pages[4]) {
+            mForm.submit();
+            $('input:file').remove();
+            console.log('Submitting');
 
+        } else {
+        event.preventDefault();
+            goTo(getNextPage());
+        }
     }
-});
-
-//custom upload field
-$('input:file').each(function() {
-    var input      = $(this);
-    var inputGroup = $(this).parent().parent().first();
-    var button     = $(this).siblings('label').first();
-    var label      = inputGroup.children('.form-control').first();
-
-    label.on('focus', function() {
-        $(this).blur();
-        input.click();
-    });
-
-    input.on('change', function() {
-        label.val(this.files[0].name);
-
-        button.text('Uploading...');
-
-        inputGroup.removeClass('scoopm-is-valid');    
-        inputGroup.removeClass('scoopm-is-invalid');
-        inputGroup.addClass('scoopm-is-uploading');
-
-        var file = this.files[0];
-        var uploadTask = storageRef.child('images/' + file.name).put(file);
-
-        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function(snapshot) {
-            switch (snapshot.state) {
-                case firebase.storage.TaskState.PAUSED: // or 'paused'
-                    console.log(file.name + ' upload is paused');
-                    break;
-                case firebase.storage.TaskState.RUNNING: // or 'running'
-                    console.log(file.name + ' upload is running');
-                    break;
-            }
-
-        }, function(error) {
-            button.text('Try Again...');
-            
-            inputGroup.removeClass('scoopm-is-valid');
-            inputGroup.removeClass('scoopm-is-uploading');
-            inputGroup.addClass('scoopm-is-invalid');
-            
-        }, function() { //success
-            button.text('Change File...');
-            
-            inputGroup.removeClass('scoopm-is-invalid');
-            inputGroup.removeClass('scoopm-is-uploading');
-            inputGroup.addClass('scoopm-is-valid');
-
-            console.log('Upload success.');
-        });
-    });
 });
 
 $('input:password').keyup(function() {

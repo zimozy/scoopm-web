@@ -14,8 +14,7 @@ $app->get('/register', function (Request $request, Response $response) {
 $app->post('/register', function (Request $request, Response $response) {
 
     $response_array          = $request->getParsedBody();
-    $response_array['files'] = $request->getUploadedFiles(); // OBSOLETE NOW WITH FIREBASE STORAGE
-
+    // $response_array['files'] = $request->getUploadedFiles(); -- not using files anymore
 
     $validator = new Validator($response_array);
     
@@ -27,8 +26,8 @@ $app->post('/register', function (Request $request, Response $response) {
     $validator->validatePassword('password','confirmPassword');
 
     // YOUR CAR //
-    $validator->validateImage('licenseImage');
-    $validator->validateImage('registration');
+    // $validator->validateImage('licenseImage');
+    // $validator->validateImage('registration');
     $validator->validateCar('year', 'make', 'model');
     $validator->validateColor('color');
     $validator->validateText('licenseNumber');
@@ -36,14 +35,14 @@ $app->post('/register', function (Request $request, Response $response) {
     // INSURANCE INFO //
     $validator->validateText('policyProvider');
     $validator->validateText('policyNumber');
-    $validator->validateImage('insurance');
+    // $validator->validateImage('insurance');
 
     // APPLICATION //
-    $validator->validateImage('photo');
+    // $validator->validateImage('photo');
     $validator->validateText('ssn');
-    $validator->validateImageOrPDF('w9');
-    $validator->validateDoc('resume');
-    $validator->validateImageOrPDF('fingerprints');
+    // $validator->validateImageOrPDF('w9');
+    // $validator->validateDoc('resume');
+    // $validator->validateImageOrPDF('fingerprints');
     $validator->validateText('felonies');
 
     // REFERENCES //
@@ -56,6 +55,7 @@ $app->post('/register', function (Request $request, Response $response) {
     $validator->validatePhone('ref2Phone');
     $validator->validateEmail('ref2Email');
 
+    var_dump($response_array);
     
     if($validator->hasErrors()) {
         $response_array['errors'] = $validator->getErrors();
@@ -65,19 +65,46 @@ $app->post('/register', function (Request $request, Response $response) {
 
         $firebase = new \Firebase\FirebaseLib(FIREBASE_URL);
 
+        // We don't want to submit all the fields, so we select the appropriate ones here
         $data = array(
-            "year" => $fields['year'],
-            "make" => $fields['make'],
-            "model" => $fields['model'],
-            "vin"   => $fields['vin'],
-            "price" => $fields['price'],
-            "photo" => "N/A",
-            "key"   => $fields['keyNumber']
+            // ABOUT YOU //
+            'firstName' => $fields['firstName'],
+            'lastName'  => $fields['lastName'],
+            'phone'     => $fields['phone'],
+            'email'     => $fields['email'],
+            'password'  => password_hash(
+                $fields['password'],
+                PASSWORD_BCRYPT,
+                array('cost' => 11)),
+
+            // YOUR CAR //
+            'year'          => $fields['year'],
+            'make'          => $fields['make'],
+            'model'         => $fields['model'],
+            'color'         =>  $fields['color'],
+            'licenseNumber' => $fields['model'],
+
+            // INSURANCE INFO //
+            'policyProvider'          => $fields['policyProvider'],
+            'policyNumber'          => $fields['policyNumber'],
+
+            // APPLICATION //
+            'ssn'          => $fields['ssn'],
+            'felonies'          => $fields['felonies'],
+
+            // REFERENCES //
+            'ref1Name'          => $fields['ref1Name'],
+            'ref1Phone'          => $fields['ref1Phone'],
+            'ref1Email'          => $fields['ref1Email'],
+            'ref2Name'          => $fields['ref2Name'],
+            'ref2Phone'          => $fields['ref2Phone'],
+            'ref2Email'          => $fields['ref2Email']
         );
 
-        var_dump($firebase->push('users/temp/', $data));    }
-    
-    
+        var_dump(
+            $firebase->push('applications/' + $fields['applicationID'], $data)
+        );
+    }
 });
 
 

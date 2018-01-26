@@ -38,8 +38,10 @@ class Validator
     }
 
     public function validateText($field_name) {
-        if ($this->isEmpty($this->fields_array[$field_name])) {
-            $this->setError($field_name, 'empty');
+        if (grapheme_strlen(
+                $this->fields_array[$field_name]
+            ) > 5000) {
+            $this->setError($field_name, 'tooLong');
         } else {
             $this->setAsPassed($field_name);
         }

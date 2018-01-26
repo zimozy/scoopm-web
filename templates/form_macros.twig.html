@@ -1,6 +1,6 @@
 {# INPUT TYPES #}
 
-{% macro textInput(title, name, value, errors=null) %}
+{% macro textInput(title, name, value, errors=null, type='text') %}
     {% if errors == null %}
         {# Do nothing. #}
     {% elseif errors.passed %}
@@ -9,10 +9,10 @@
         {% set validation_class = 'scoopm-is-invalid' %}
     {% endif %}
     <div class="form-group row">
-        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
         <div class="col-sm">
-            <input id="{{name}}" name="{{name}}" type="text" class="form-control {{validation_class}}" value="{{value}}" placeholder="{{title}}" required/>
-            <small class="form-text scoopm-error">Required</small>
+            <input id="{{name}}" name="{{name}}" type="{{type}}" class="form-control {{validation_class}}" value="{{value}}" bplaceholder="{{title}}" required/>
+            <small class="form-text scoopm-error">Must include a valid {{title}}</small>
         </div>
     </div>
 {% endmacro %}
@@ -26,7 +26,7 @@
         {% set validation_class = 'scoopm-is-invalid' %}
     {% endif %}
     <div class="form-group row">
-        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
         <div class="col-sm">
 
             {% if hint %}
@@ -34,7 +34,8 @@
             {% endif %}
 
             <textarea id="{{name}}" name="{{name}}" class="form-control {{validation_class}}" rows="3" required>{{value}}</textarea>
-            <small class="form-text scoopm-error">Required</small>
+            
+            <small class="form-text scoopm-hint">Must be under 5000 characters</small>
         </div>
     </div>
 {% endmacro %}
@@ -50,9 +51,9 @@
         {% set validation_class = 'scoopm-is-invalid' %}
     {% endif %}
     <div class="form-group row">
-        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
         <div class="col-sm">
-            <input id="{{name}}" name="{{name}}" type="password" class="form-control {{validation_class}}" value="{{value}}" placeholder="{{title}}" maxlength="20" required/>
+            <input id="{{name}}" name="{{name}}" type="password" class="form-control {{validation_class}}" value="{{value}}" bplaceholder="{{title}}" maxlength="20" required/>
             <small id="password-size" class="form-text scoopm-hint">Password must be between 6 and 20 characters</small>
         </div>
     </div>
@@ -67,9 +68,9 @@
         {% set validation_class = 'scoopm-is-invalid' %}
     {% endif %}
     <div class="form-group row">
-        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
         <div class="col-sm">
-            <input id="{{name}}" name="{{name}}" type="password" class="form-control" value="{{value}}" placeholder="{{title}}" maxlength="20" required/>
+            <input id="{{name}}" name="{{name}}" type="password" class="form-control" value="{{value}}" bplaceholder="{{title}}" maxlength="20" required/>
             <small id="password-match" class="form-text scoopm-error">Passwords don't match</small>
         </div>
     </div>
@@ -84,9 +85,9 @@
         {% set validation_class = 'scoopm-is-invalid' %}
     {% endif %}
     <div class="form-group row">
-        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
         <div class="col-sm">
-            <input id="{{name}}" name="{{name}}" type="email" class="email form-control {{validation_class}}" value="{{value}}" placeholder="{{title}}" required/>
+            <input id="{{name}}" name="{{name}}" type="email" class="email form-control {{validation_class}}" value="{{value}}" bplaceholder="{{title}}" required/>
             <small class="form-text scoopm-error">Must use a valid email address</small>
         </div>
     </div>
@@ -105,34 +106,30 @@
 
     {# INPUT FILE TYPES (accepts="...") #}
     {% if type == 'img' %}
-
         {% set type_phrase = '<i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed: JPEG, PNG, GIF' %}
-    
         {% set allowed_types = 'image/png, image/jpeg, image/gif, .png, .jpeg, .jpg, .gif' %}
-
-    {% elseif type == 'pdf' %}
-    
+    {% elseif type == 'pdf' %}    
         {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed: PDF' %}
-    
         {% set allowed_types = 'application/pdf, .pdf' %}
-
     {% elseif type == 'doc' %}
-
         {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Allowed: PDF, Word Document' %}
-
         {% set allowed_types = 'application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, .pdf, .doc, .docx' %}
-        
     {% elseif type == 'img/pdf' %}
-
         {% set type_phrase = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;Allowed: PDF, JPEG, PNG, GIF' %}
-
         {% set allowed_types = 'image/png, image/jpeg, image/gif, application/pdf, .png, .jpeg, .jpg, .gif, .pdf' %}
-
     {% endif %}
 
+    {# UPLOAD SUCCESS #}
+    {% if value == '' %}
+        {% set buttonText = 'Browse...' %}
+    {% else %}
+        {% set buttonText = 'Change File...' %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% endif %}
+    
     <div class="form-group row">
 
-        <label for="{{name}}" class="col-sm-3 col-form-label ">{{title}}</label>
+        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
         
         <div class="col-sm">
 
@@ -140,12 +137,13 @@
                 <p>{{hint|raw}}</p>
             {% endif %}
 
-            <div class="input-group {{validation_class}} .align-items-baseline">
-                <input type="text" class="form-control upload-text">
-                {# {% if value %}value="{{value}}"{% endif %} #}
+            <div class="input-group {{validation_class}} upload-input-group">
+                {# This field uses the name attribute so it can re-display the file name if the field is returned with errors #}
+                <input type="text" class="form-control upload-text" name="{{name}}" value="{{value}}">
+
                 <div class="input-group-addon p-0">
-                    <input id="{{name}}-input" type="file" name="{{name}}" class="d-none" accept="{{allowed_types}}">
-                    <label class="input-group-text mb-0 px-3 py-1 w-100 h-100" for="{{name}}-input">Browse...</label>
+                    <input id="{{name}}-input" type="file" name="{{name}}-actual" class="d-none" accept="{{allowed_types}}">
+                    <label class="input-group-text mb-0 px-3 w-100 h-100 d-flex align-items-center" for="{{name}}-input">{{buttonText}}</label>
                 </div>
             </div>
             
