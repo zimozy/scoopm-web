@@ -4,8 +4,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use scoopm\Validator;
 
 $app->get("/", function (Request $request, Response $response) {
-    return $response->getBody()->write("Home page.<br> <h1><a href=\"/register\">Register</a></h1>.");
-    // return $this->view->render($response, 'new_user.twig.html', array('email'=>'timff@ibgsoftware.com', 'password'=>'123123', 'userKey'=>'-L41QGAsfg7ik1_YAyxo'));
+    // return $response->getBody()->write("Home page.<br> <h1><a href=\"/register\">Register</a></h1>.");
+    return $this->view->render($response, 'home.twig.html', []);
 })->setName('home');
 
 $app->get("/thanks", function (Request $request, Response $response) {

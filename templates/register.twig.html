@@ -3,118 +3,177 @@
 
 {% block title %}Register{% endblock %}
 
-{% block content %}
-
-<h1 class="fw-400 text-center">Application</h1>
-
-{# <div class="scoopm-box-DISABLED"> #}
-
-    <p id="progress-links" class="h6 text-center my-4 my-lg-5 {% if errors %}re-visit{% endif %}">
-        <a id="aboutYouLink" href="#" class="underlined page-visited">About&nbsp;You</a>
-        <span> &raquo; </span><a id="yourCarLink" href="#">Your&nbsp;Car</a>
-        <span> &raquo; </span><a id="insuranceLink" href="#">Insurance&nbsp;Info</a>
-        <span> &raquo; </span><a id="applicationLink" href="#">Application</a>
-        <span> &raquo; </span><a id="referencesLink" href="#">References</a>
-        <span> &raquo; </span><a id="userAccountLink" href="#">User&nbsp;Account</a>
-    </p>
-
-    <br>
-
-    <form id="application-form" method="post" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-was-validated"{% endif %} autocomplete="off" novalidate>
-            
-
-        <!-- ABOUT YOU -->
-        <div id="aboutYouPage" class="current-page page">
-            {{form.title('About You')}}  
-            {{form.textInput('First Name', 'firstName', firstName, errors.firstName)}}
-            {{form.textInput('Last Name', 'lastName', lastName, errors.lastName)}}
-            {{form.textInput('Phone Number', 'phone', phone, errors.phone, 'tel')}}
-            {{form.upload('Profile Photo', 'photo', photo, 'img', errors.photo)}}
-            {{form.buttons('aboutYou')}}
+{% block body_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="display-2 text-center logo-font blue-text mt-4"><a href="{{path_for('home')}}">ScoopM</a><small>&nbsp;</small></h1>
         </div>
+    </div>
+</div>
 
+<div class="container-fluid">
+    <div id="greeting">
+        <div class="my-sm-5">&nbsp;</div>
 
-        <!-- YOUR CAR -->
-        <div id="yourCarPage" class="page d-none">
-            {{form.title('About your car')}}  
-            {{form.upload('Driver\'s License', 'licenseImage', licenseImage, 'img', errors.licenseImage)}}
-            {{form.upload('Registration', 'registration', registration, 'img', errors.registration)}}
-            {{form.select('Year', 'year', errors.year)}}
-            {{form.select('Make', 'make', errors.make)}}
-            {{form.select('Model', 'model', errors.model)}}
-            {# {{form.select('Trim', 'trim', errors.trim)}} #}
-            {{form.select('Color', 'color', errors.color, ["Beige","Black","Blue","Brown","Burgundy","Charcoal","Gold","Gray","Green","Off White","Orange","Pink","Purple" ,"Red","Silver","Tan","Turquoise","White","Yellow"], color)}}
-            {{form.textInput('License plate number', 'licenseNumber', licenseNumber, errors.licenseNumber)}}
-            {{form.buttons('yourCar', true)}}
-        </div>
+        <div class="my-lg-5">&nbsp;</div>
 
-
-        <!-- INSURANCE -->
-        <div id="insurancePage" class="page d-none">
-            {{form.title('Insurance info')}}
-            {{form.textInput('Policy provider', 'policyProvider', policyProvider, errors.policyProvider)}}
-            {{form.textInput('Policy number', 'policyNumber', policyNumber, errors.policyNumber, 'number')}}
-            {{form.upload('Insurance card', 'insurance', insurance, 'img', errors.insurance)}}
-            {{form.buttons('insurance', true)}}
-        </div>
-
-
-            <!-- APPLICATION -->
-        <div id="applicationPage" class="page d-none">
-            {{form.title('Application')}}
-            {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn)}}
-            {{form.upload('Upload W-9', 'w9', w9, 'img/pdf', errors.w9, '<a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf"  target="_blank">Download</a> and fill out a blank copy of the W-9.')}}
-            {{form.upload('Upload Resume', 'resume', resume, 'doc', errors.resume)}}
-            {{form.upload('Fingerprints', 'fingerprints', fingerprints, 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station. Scan the fingerprint document or upload a PDF.')}}
-            {{form.textArea('Felonies Committed, if applicable', 'felonies', felonies, errors.felonies)}}
-            {{form.buttons('application', true)}}
-        </div>
-
-
-        <!-- REFFERENCES -->
-        <div id="referencesPage" class="page d-none">
-            {{form.title('Please Provide Two References')}}
-            {{form.subHeading('Reference 1')}}
-            {{form.textInput('Name', 'ref1Name', ref1Name, errors.ref1Name)}}
-            {{form.textInput('Phone Number', 'ref1Phone', ref1Phone, errors.ref1Phone)}}
-            {{form.email('Email Address', 'ref1Email', ref1Email, errors.ref1Email)}}
-            
-            {{form.subHeading('Reference 2')}}
-            {{form.textInput('Name', 'ref2Name', ref2Name, errors.ref2Name)}}
-            {{form.textInput('Phone Number', 'ref2Phone', ref2Phone, errors.ref2Phone)}}
-            {{form.email('Email Address', 'ref2Email', ref2Email, errors.ref2Email)}}
-        
-            {{form.buttons('references', true)}}
-        </div>
-
-        <!-- USER ACCOUNT -->
-        <div id="userAccountPage" class="page d-none">
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <div id="accountCard" class="card mt-md-3 mb-md-5">
-                        <div class="card-body">
-                            <h5 class="card-title">Create User Account</h5>
-                            <p class="card-text">
-                                {{form.simpleTextInput('Email', 'email', "tim@example.com", errors.email)}}
-                                {{form.password('Password', 'password', "123abc", errors.password, true)}}
-                                {{form.password('Confirm Password', 'confirmPassword', "123abc", errors.confirmPassword, true, true)}}            
-                            </p>
-                            <div class="text-center">
-                                <button id="createAccount" type="button" class="btn btn-outline-primary my-1" disabled>Create Account</button>
-                            </div>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="row">
+                    <div class="col-md mb-4 mb-md-0">
+                        <div id="card1" class="card hidden-card">
+                            <div class="card-body">Earn more. We pay higher rates because our service is safer.</div>
+                        </div>
+                    </div>
+                    <div class="col-md mb-4 mb-md-0">
+                        <div id="card2" class="card hidden-card">
+                            <div class="card-body">Background checks make the ride safer.</div>
+                        </div>
+                    </div>
+                    <div class="col-md mb-4 mb-md-0">
+                        <div id="card3" class="card hidden-card">
+                            <div class="card-body">There are so many reasons to sign up for this service.</div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            {{form.buttons('userAccount', true, true)}} {# SUBMIT #}
         </div>
 
-        <input id="userKey" name="userKey" type="hidden" value="{{userKey}}">
-        <input id="userID" name="userID" type="hidden" value="{{userID}}">
-        
-    </form>
 
+
+        <div class="row mt-5">
+            <div class="col text-center mt-5">
+                <h1><a id="applyNowLink" href="#">Apply Now</a></h1>
+            </div>
+        </div>
+
+        <div class="my-sm-5">&nbsp;</div>
+
+        <div class="my-lg-5">&nbsp;</div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="fw-400 text-center">Application</h1>
+
+            {# <d iv class="scoopm-box-DISABLED"> #}
+
+            <p id="progress-links" class="h6 text-center my-4 my-lg-5 {% if errors %}re-visit{% endif %}">
+                <a id="aboutYouLink" href="#" class="underlined page-visited">About&nbsp;You</a>
+                <span> &raquo; </span><a id="yourCarLink" href="#">Your&nbsp;Car</a>
+                <span> &raquo; </span><a id="insuranceLink" href="#">Insurance&nbsp;Info</a>
+                <span> &raquo; </span><a id="applicationLink" href="#">Application</a>
+                <span> &raquo; </span><a id="referencesLink" href="#">References</a>
+                <span> &raquo; </span><a id="userAccountLink" href="#">User&nbsp;Account</a>
+            </p>
+
+            <br>
+
+            <form id="application-form" method="post" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-was-validated"{% endif %} autocomplete="off" novalidate>
+                    
+
+                <!-- ABOUT YOU -->
+                <div id="aboutYouPage" class="current-page page">
+                    {{form.title('About You')}}  
+                    {{form.textInput('First Name', 'firstName', firstName, errors.firstName)}}
+                    {{form.textInput('Last Name', 'lastName', lastName, errors.lastName)}}
+                    {{form.textInput('Phone Number', 'phone', phone, errors.phone, 'tel')}}
+                    {{form.upload('Profile Photo', 'photo', photo, 'img', errors.photo)}}
+                    {{form.buttons('aboutYou')}}
+                </div>
+
+
+                <!-- YOUR CAR -->
+                <div id="yourCarPage" class="page d-none">
+                    {{form.title('About your car')}}  
+                    {{form.upload('Driver\'s License', 'licenseImage', licenseImage, 'img', errors.licenseImage)}}
+                    {{form.upload('Registration', 'registration', registration, 'img', errors.registration)}}
+                    {{form.select('Year', 'year', errors.year)}}
+                    {{form.select('Make', 'make', errors.make)}}
+                    {{form.select('Model', 'model', errors.model)}}
+                    {# {{form.select('Trim', 'trim', errors.trim)}} #}
+                    {{form.select('Color', 'color', errors.color, ["Beige","Black","Blue","Brown","Burgundy","Charcoal","Gold","Gray","Green","Off White","Orange","Pink","Purple" ,"Red","Silver","Tan","Turquoise","White","Yellow"], color)}}
+                    {{form.textInput('License plate number', 'licenseNumber', licenseNumber, errors.licenseNumber)}}
+                    {{form.buttons('yourCar', true)}}
+                </div>
+
+
+                <!-- INSURANCE -->
+                <div id="insurancePage" class="page d-none">
+                    {{form.title('Insurance info')}}
+                    {{form.textInput('Policy provider', 'policyProvider', policyProvider, errors.policyProvider)}}
+                    {{form.textInput('Policy number', 'policyNumber', policyNumber, errors.policyNumber, 'number')}}
+                    {{form.upload('Insurance card', 'insurance', insurance, 'img', errors.insurance)}}
+                    {{form.buttons('insurance', true)}}
+                </div>
+
+
+                    <!-- APPLICATION -->
+                <div id="applicationPage" class="page d-none">
+                    {{form.title('Application')}}
+                    {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn)}}
+                    {{form.upload('Upload W-9', 'w9', w9, 'img/pdf', errors.w9, '<a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf"  target="_blank">Download</a> and fill out a blank copy of the W-9.')}}
+                    {{form.upload('Upload Resume', 'resume', resume, 'doc', errors.resume)}}
+                    {{form.upload('Fingerprints', 'fingerprints', fingerprints, 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station. Scan the fingerprint document or upload a PDF.')}}
+                    {{form.textArea('Felonies Committed, if applicable', 'felonies', felonies, errors.felonies)}}
+                    {{form.buttons('application', true)}}
+                </div>
+
+
+                <!-- REFFERENCES -->
+                <div id="referencesPage" class="page d-none">
+                    {{form.title('Please Provide Two References')}}
+                    {{form.subHeading('Reference 1')}}
+                    {{form.textInput('Name', 'ref1Name', ref1Name, errors.ref1Name)}}
+                    {{form.textInput('Phone Number', 'ref1Phone', ref1Phone, errors.ref1Phone)}}
+                    {{form.email('Email Address', 'ref1Email', ref1Email, errors.ref1Email)}}
+                    
+                    {{form.subHeading('Reference 2')}}
+                    {{form.textInput('Name', 'ref2Name', ref2Name, errors.ref2Name)}}
+                    {{form.textInput('Phone Number', 'ref2Phone', ref2Phone, errors.ref2Phone)}}
+                    {{form.email('Email Address', 'ref2Email', ref2Email, errors.ref2Email)}}
+                
+                    {{form.buttons('references', true)}}
+                </div>
+
+                <!-- USER ACCOUNT -->
+                <div id="userAccountPage" class="page d-none">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <div id="accountCard" class="card mt-md-3 mb-md-5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Create User Account</h5>
+                                    <p class="card-text">
+                                        {{form.simpleTextInput('Email', 'email', "tim@example.com", errors.email)}}
+                                        {{form.password('Password', 'password', "123abc", errors.password, true)}}
+                                        {{form.password('Confirm Password', 'confirmPassword', "123abc", errors.confirmPassword, true, true)}}            
+                                    </p>
+                                    <div class="text-center">
+                                        <button id="createAccount" type="button" class="btn btn-outline-primary my-1" disabled>Create Account</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{form.buttons('userAccount', true, true)}} {# SUBMIT #}
+                </div>
+
+                <input id="userKey" name="userKey" type="hidden" value="{{userKey}}">
+                <input id="userID" name="userID" type="hidden" value="{{userID}}">
+                
+            </form>
+        </div>
+    </div>
+</div>
  {# </div>    #}
 {% endblock %}
 

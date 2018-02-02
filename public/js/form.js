@@ -1,7 +1,44 @@
 $(function() {
 
-//first thing
-$('input:text:first').focus();
+//// first thing
+// $('input:text:first').focus();
+
+$('#card1').animate({
+    opacity: '1',
+    marginTop: '0px'
+    },
+    700
+);
+
+setTimeout(function() {
+    $('#card2').animate({
+        opacity: '1',
+        marginTop: '0px'
+        },
+        700
+    );
+}, 300);
+
+setTimeout(function() {
+    $('#card3').animate({
+        opacity: '1',
+        marginTop: '0px'
+        },
+        700
+    );
+}, 600);
+
+$('#applyNowLink').click(function(event) {
+    event.preventDefault();
+    // $('#greeting').animate({height:'0px'},{'complete': function() {
+        // $('#greeting').hide();
+    // }});
+    $('#greeting').slideUp('slow');
+    $('body').removeClass('no-scroll');
+});
+
+
+
 
 function markAsValid(obj) {
     obj.removeClass('scoopm-is-invalid');

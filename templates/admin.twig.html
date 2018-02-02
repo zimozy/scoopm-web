@@ -1,8 +1,10 @@
 {% extends 'base.twig.html' %}
-
 {% block title %}Admin{% endblock %}
+{% block head_styles %}
+    <link rel="stylesheet" href="/css/admin.css">
+{% endblock %}
 
-{% block content %}
+{% block body_content %}
 <h1 id="adminH1">Admin</h1>
 
 <table id="usersTable" class="table">
@@ -12,6 +14,103 @@
         <th scope="col">Year</th>
     </thead>
 </table>
+
+<div class="table">
+    <div class="row">
+        <div class="cell">Test</div>
+        <div class="cell">Test</div>
+        <div class="cell">Test</div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade scoopm-application-modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <h1><span>First</span> <span>Last</span></h1>
+                        <h4><a id="email" href="tel:">000-000-0000</a> / <a id="email" href="mailto:">email@example.com</a></h4>
+                        <!-- <h4></h4> -->
+                        <p>SSN: <span id="ssn">111-11-1111</span></p>
+                        <h4>References</h4>
+                        <table class="table">
+                            <thead>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Email</th>
+                            </thead>
+                            <tr>
+                                <th id="ref1Name" scope="row">Joe Bloggs</th>
+                                <th><a id="ref1Phone" href="tel:">777-777-7777</a></th>
+                                <th><a id="ref1Email" href="mailto:">joe@example.com</a></th>
+                            </tr>
+                            <tr>
+                                    <th id="ref2Name" scope="row">Sarah Johnson</th>
+                                    <th><a id="ref2Phone" href="tel:">999-999-9999</a></th>
+                                    <th><a id="ref2Email" href="mailto:">sarah@example.com</a></th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="" alt="Test" class="w-100 h-100">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <hr>
+                        <h1>Car</h1>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <h2><span id="year">'99</span> <span id="make">Make</span> <span id="model">model</span></h2>
+                        <h4 id="licenseNumber">123-ITFL</h4>
+                    </div>
+                    <div class="col">
+                        <img src="" alt="License Image"><br>
+                        <img src="" alt="Registration Image">
+                        
+                    </div>
+                </div>
+
+                <div class="row">
+                        <div class="col">
+                            <hr>
+                            <h1>Insurance</h1>
+                        </div>
+                    </div>                
+                <div class="row">
+                    <div class="col">
+                        <h2 id="provider">Nationwide</h2>
+                        <h4 id="policyNumber">123456789</h4>
+                    </div>
+                    <div class="col">
+                        <img src="" alt="Insurance Car">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Approve</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 {% endblock %}
 
 {% block body_scripts %}

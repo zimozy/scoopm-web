@@ -78,8 +78,6 @@ a:hover { color: rgb(0, 139, 214); }
 
 .btn-outline-primary { border-color: #009AEE; }
 .btn-outline-primary:hover { background-color: #009AEE; border-color: #009AEE; }
-
-
 /* .scoopm-box {
   padding: 15px 30px;
   /* margin-top: 20px; 
@@ -92,6 +90,14 @@ a:hover { color: rgb(0, 139, 214); }
   box-shadow: 0px 0px 40px #00000005;
 } */
 
+.hidden-card {
+  opacity: 0;
+  margin-top: 3rem;
+}
+
+body.no-scroll {
+  overflow-y:hidden;
+}
 
 /* UPLOAD */
 

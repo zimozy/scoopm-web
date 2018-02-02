@@ -12,6 +12,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
         $this->blocks = array(
             'title' => array($this, 'block_title'),
             'car_query' => array($this, 'block_car_query'),
+            'head_styles' => array($this, 'block_head_styles'),
             'head_scripts' => array($this, 'block_head_scripts'),
             'body_content' => array($this, 'block_body_content'),
             'content' => array($this, 'block_content'),
@@ -55,29 +56,34 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     <!-- <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\"> -->
     <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>
 
+    ";
+        // line 37
+        $this->displayBlock('head_styles', $context, $blocks);
+        // line 38
+        echo "
     <!-- OURS -->
     <link rel=\"stylesheet\" href=\"/css/scoopm.css\">
 
     ";
-        // line 40
+        // line 42
         $this->displayBlock('head_scripts', $context, $blocks);
-        // line 41
-        echo "</head>
-<body>
-    ";
         // line 43
+        echo "</head>
+<body class=\"no-scroll\">
+    ";
+        // line 45
         $this->displayBlock('body_content', $context, $blocks);
-        // line 53
+        // line 55
         echo "
     ";
-        // line 54
+        // line 56
         $this->displayBlock('footer', $context, $blocks);
-        // line 59
+        // line 61
         echo "    
     ";
-        // line 60
+        // line 62
         $this->displayBlock('body_scripts', $context, $blocks);
-        // line 75
+        // line 77
         echo "</body>
 </html>";
     }
@@ -103,51 +109,56 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     ";
     }
 
-    // line 40
+    // line 37
+    public function block_head_styles($context, array $blocks = array())
+    {
+    }
+
+    // line 42
     public function block_head_scripts($context, array $blocks = array())
     {
     }
 
-    // line 43
+    // line 45
     public function block_body_content($context, array $blocks = array())
     {
-        // line 44
+        // line 46
         echo "        <div class=\"container\">
             <div class=\"row\">
                 <div class=\"col-lg-8 offset-lg-2\">
                     <h1 class=\"display-2 text-center logo-font blue-text mt-4\"><a href=\"";
-        // line 47
+        // line 49
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("home"), "html", null, true);
         echo "\">ScoopM</a><small>&nbsp;</small></h1>
                     ";
-        // line 48
+        // line 50
         $this->displayBlock('content', $context, $blocks);
-        // line 49
+        // line 51
         echo "                </div>
             </div>
         </div>
     ";
     }
 
-    // line 48
+    // line 50
     public function block_content($context, array $blocks = array())
     {
     }
 
-    // line 54
+    // line 56
     public function block_footer($context, array $blocks = array())
     {
-        // line 55
+        // line 57
         echo "        <footer class=\"footer\">
             <div class=\"container text-center\">&copy; ScoopM 2018</div>
         </footer>
     ";
     }
 
-    // line 60
+    // line 62
     public function block_body_scripts($context, array $blocks = array())
     {
-        // line 61
+        // line 63
         echo "        <script src=\"https://www.gstatic.com/firebasejs/4.9.0/firebase.js\"></script>
         <script>
         // Initialize Firebase
@@ -171,7 +182,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
 
     public function getDebugInfo()
     {
-        return array (  151 => 61,  148 => 60,  141 => 55,  138 => 54,  133 => 48,  126 => 49,  124 => 48,  120 => 47,  115 => 44,  112 => 43,  107 => 40,  94 => 18,  91 => 17,  86 => 5,  81 => 75,  79 => 60,  76 => 59,  74 => 54,  71 => 53,  69 => 43,  65 => 41,  63 => 40,  49 => 28,  47 => 17,  32 => 5,  26 => 1,);
+        return array (  162 => 63,  159 => 62,  152 => 57,  149 => 56,  144 => 50,  137 => 51,  135 => 50,  131 => 49,  126 => 46,  123 => 45,  118 => 42,  113 => 37,  100 => 18,  97 => 17,  92 => 5,  87 => 77,  85 => 62,  82 => 61,  80 => 56,  77 => 55,  75 => 45,  71 => 43,  69 => 42,  63 => 38,  61 => 37,  50 => 28,  48 => 17,  33 => 5,  27 => 1,);
     }
 
     public function getSourceContext()
@@ -212,12 +223,14 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     <!-- <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\"> -->
     <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>
 
+    {% block head_styles %}{% endblock %}
+
     <!-- OURS -->
     <link rel=\"stylesheet\" href=\"/css/scoopm.css\">
 
     {% block head_scripts %}{% endblock %}
 </head>
-<body>
+<body class=\"no-scroll\">
     {% block body_content %}
         <div class=\"container\">
             <div class=\"row\">
