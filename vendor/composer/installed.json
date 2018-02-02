@@ -19,7 +19,7 @@
         },
         "time": "2017-02-14T19:40:03+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Interop\\Container\\": "src/Interop/Container/"
@@ -217,7 +217,7 @@
         },
         "time": "2017-01-19T11:35:12+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "FastRoute\\": "src/"
@@ -271,7 +271,7 @@
                 "dev-master": "3.2.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "Pimple": "src/"
@@ -319,7 +319,7 @@
                 "dev-master": "1.0.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Psr\\Container\\": "src/"
@@ -370,7 +370,7 @@
                 "dev-master": "1.0.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Psr\\Http\\Message\\": "src/"
@@ -429,7 +429,7 @@
         },
         "time": "2017-11-26T19:13:09+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Slim\\": "Slim"
@@ -495,7 +495,7 @@
         },
         "time": "2017-09-20T19:47:37+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Slim\\Views\\": "src"
@@ -550,7 +550,7 @@
                 "dev-master": "1.6-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Symfony\\Polyfill\\Mbstring\\": ""
@@ -614,7 +614,7 @@
                 "dev-master": "2.4-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "Twig_": "lib/"
