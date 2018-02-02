@@ -1,0 +1,20 @@
+{% extends 'base.twig.html' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block content %}
+<h1 id="adminH1">Admin</h1>
+
+<table id="usersTable" class="table">
+    <thead>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Year</th>
+    </thead>
+</table>
+{% endblock %}
+
+{% block body_scripts %}
+{{parent()}}
+<script src="/js/admin.js"></script>
+{% endblock %}

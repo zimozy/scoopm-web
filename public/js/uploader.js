@@ -2,33 +2,33 @@
 $(function() {
 
 
-var submitButton = $('input:submit'); // MUST NOT BE CALLED "SUBMIT" OR IT WILL MESS UP THE submit EVENT
-
 
 
 
 // To-do: re-enable
-
-
-
 // submitButton.prop('disabled', true); // DISABLE SUBMIT BUTTON
+
+
+
+
+
 
 //Names of the FB Storage directories
 var folders = {
-    'licenseImage': 'licenses',
-    'registration': 'registration-images',
-       'insurance': 'insurace-cards',
-           'photo': 'profile-photos',
-              'w9': 'w9s',
-          'resume': 'resumes',
-    'fingerprints': 'fingerprints',
+    'licenseImage-actual': 'licenses',
+    'registration-actual': 'registration-images',
+       'insurance-actual': 'insurance-cards',
+           'photo-actual': 'profile-photos',
+              'w9-actual': 'w9s',
+          'resume-actual': 'resumes',
+    'fingerprints-actual': 'fingerprints',
 }
 
 $('input:file').each(function() {
-    var input      = $(this);
-    var inputGroup = $(this).parent().parent().first();
-    var button     = $(this).siblings('label').first();
-    var uploadLabel      = inputGroup.children('.form-control').first();
+    var input       = $(this);
+    var inputGroup  = $(this).parent().parent().first();
+    var button      = $(this).siblings('label').first();
+    var uploadLabel = inputGroup.children('.form-control').first();
 
     uploadLabel.on('focus', function() {
         $(this).blur();
@@ -48,10 +48,8 @@ $('input:file').each(function() {
         var file = this.files[0];
 
         //UPLOAD THE FILE
-        // applicationKey == a global variable from firebaseApplication.js
-        var uploadTask = firebase.storage().ref().child(
-                                                    folders[input.prop('name')] + '/' + applicationKey
-                                                    ).put(file);
+        // userKey == a global variable from firebaseApplication.js
+        var uploadTask = firebase.storage().ref().child( folders[$(this).prop('name')] + '/' + userKey ).put(file);
 
         //UPLOAD CALLBACKS
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function(snapshot) {
@@ -85,17 +83,18 @@ $('input:file').each(function() {
             inputGroup.addClass('scoopm-is-valid');
 
             // ENABLE SUBMIT BUTTON ONLY IF ALL UPLOADS WERE COMPLETED SUCCESSFULLY
-            var allUploadsComplete = true;
+            uploadsAreValid = true;
             $('.upload-input-group').each(function() {
-                if (! ($(this).hasClass('scoopm-is-valid'))) {
-                    allUploadsComplete = false;
+                if (($(this).hasClass('scoopm-is-valid'))) {
+                    // console.log(this + ' has class');
+                } else {
+                    // console.log(this + ' doesnt have class');
+                    uploadsAreValid = false;
                     return false; //break the .each() loop
                 }
             });
-            if (allUploadsComplete) {
-                submitButton.prop('disabled', false);
-            }
             
+            submitButton.updateDisabled();
         });
     });
 });

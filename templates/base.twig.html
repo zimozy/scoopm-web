@@ -2,51 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} | ScoopM{% endblock %}</title>
-    <!--<link href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>-->
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <title>{% block title %}{% endblock %} | ScoopM</title>
+
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="/css/fa/css/font-awesome.min.css">
+
+    <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet"><!--Google Font-->
-    <link rel="stylesheet" href="/css/scoopm.css">
+
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
-    <!--CAR QUERY-->
-    <script type="text/javascript">
-        $(document).ready(function() {
-             var carquery = new CarQuery();
-             carquery.init();
-             carquery.setFilters( {sold_in_us:true} );
-             carquery.initYearMakeModelTrim('year', 'make', 'model', 'na');
-        });
-    </script>
+
+    <!-- CAR QUERY -->
+    {% block car_query %}
+        <script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var carquery = new CarQuery();
+                carquery.init();
+                carquery.setFilters( {sold_in_us:true} );
+                carquery.initYearMakeModelTrim('year', 'make', 'model', 'na');
+            });
+        </script>
+    {% endblock %}
+
+    <!-- POPPER -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- OURS -->
+    <link rel="stylesheet" href="/css/scoopm.css">
+
+    {% block head_scripts %}{% endblock %}
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-                <h1 class="display-2 text-center logo-font blue-text mt-2"><a href="{{path_for('home')}}">ScoopM</a><small>&nbsp;</small></h1>
-                {% block content %}{% endblock %}
+    {% block body_content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h1 class="display-2 text-center logo-font blue-text mt-4"><a href="{{path_for('home')}}">ScoopM</a><small>&nbsp;</small></h1>
+                    {% block content %}{% endblock %}
+                </div>
             </div>
         </div>
-    </div>
-    <footer class="footer">
-        <div class="container text-center">&copy; ScoopM 2018</div>
-    </footer>
+    {% endblock body_content %}
 
-    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-    <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAjBxmEhdP51alX7u26mSiMwSXtCMxYMpc",
-        authDomain: "scoopm-8975f.firebaseapp.com",
-        databaseURL: "https://scoopm-8975f.firebaseio.com",
-        projectId: "scoopm-8975f",
-        storageBucket: "scoopm-8975f.appspot.com",
-        messagingSenderId: "342193276323"
-    };
-    firebase.initializeApp(config);
-    </script>
-
-    {% block body_scripts %}{% endblock %}
+    {% block footer %}
+        <footer class="footer">
+            <div class="container text-center">&copy; ScoopM 2018</div>
+        </footer>
+    {% endblock %}
+    
+    {% block body_scripts %}
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAjBxmEhdP51alX7u26mSiMwSXtCMxYMpc",
+            authDomain: "scoopm-8975f.firebaseapp.com",
+            databaseURL: "https://scoopm-8975f.firebaseio.com",
+            projectId: "scoopm-8975f",
+            storageBucket: "scoopm-8975f.appspot.com",
+            messagingSenderId: "342193276323"
+        };
+        firebase.initializeApp(config);
+        </script>
+    {% endblock %}
 </body>
 </html>

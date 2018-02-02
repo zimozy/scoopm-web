@@ -17,6 +17,64 @@
     </div>
 {% endmacro %}
 
+{% macro simpleTextInput(title, name, value, errors=null, type='text') %}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+    <div class="form-group">
+        <input id="{{name}}" name="{{name}}" type="{{type}}" class="form-control {{validation_class}}" value="{{value}}" placeholder="{{title}}" required/>
+        <small class="form-text scoopm-error">Must include a valid {{title}}</small>
+    </div>
+{% endmacro %}
+
+{% macro password(title, name, value, errors, simple=false, confirm=false) %}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+    <div class="form-group">
+        {% if not simple %}
+        <div class="row">
+            <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
+            <div class="col-sm">
+                {% endif %}
+                <input id="{{name}}" name="{{name}}" type="password" class="form-control {{validation_class}}" value="{{value}}" placeholder="{{title}}" maxlength="20" required/>
+                {% if not confirm %}
+                    <small id="password-size" class="form-text scoopm-hint">Must be between 6 and 20 characters, and contain both letters and numbers.</small>
+                {% else %}
+                    <small id="password-match" class="form-text scoopm-error">Passwords don't match</small>
+                {% endif %}
+        {% if not simple %}
+            </div>
+       </div>
+       {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro email(title, name, value, errors) %}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+    <div class="form-group row">
+        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
+        <div class="col-sm">
+            <input id="{{name}}" name="{{name}}" type="email" class="email form-control {{validation_class}}" value="{{value}}" bplaceholder="{{title}}" required/>
+            <small class="form-text scoopm-error">Must use a valid email address</small>
+        </div>
+    </div>
+{% endmacro %}
+
 {% macro textArea(title, name, value, errors=null, hint) %}
     {% if errors == null %}
         {# Do nothing. #}
@@ -36,59 +94,6 @@
             <textarea id="{{name}}" name="{{name}}" class="form-control {{validation_class}}" rows="3" required>{{value}}</textarea>
             
             <small class="form-text scoopm-hint">Must be under 5000 characters</small>
-        </div>
-    </div>
-{% endmacro %}
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-
-
-{% macro password(title, name, value, errors) %}
-    {% if errors == null %}
-        {# Do nothing. #}
-    {% elseif errors.passed %}
-        {% set validation_class = 'scoopm-is-valid' %}
-    {% else %}
-        {% set validation_class = 'scoopm-is-invalid' %}
-    {% endif %}
-    <div class="form-group row">
-        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
-        <div class="col-sm">
-            <input id="{{name}}" name="{{name}}" type="password" class="form-control {{validation_class}}" value="{{value}}" bplaceholder="{{title}}" maxlength="20" required/>
-            <small id="password-size" class="form-text scoopm-hint">Password must be between 6 and 20 characters</small>
-        </div>
-    </div>
-{% endmacro %}
-
-{% macro confirm(title, name, value, errors) %}
-    {% if errors == null %}
-        {# Do nothing. #}
-    {% elseif errors.passed %}
-        {% set validation_class = 'scoopm-is-valid' %}
-    {% else %}
-        {% set validation_class = 'scoopm-is-invalid' %}
-    {% endif %}
-    <div class="form-group row">
-        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
-        <div class="col-sm">
-            <input id="{{name}}" name="{{name}}" type="password" class="form-control" value="{{value}}" bplaceholder="{{title}}" maxlength="20" required/>
-            <small id="password-match" class="form-text scoopm-error">Passwords don't match</small>
-        </div>
-    </div>
-{% endmacro %}
-
-{% macro email(title, name, value, errors) %}
-    {% if errors == null %}
-        {# Do nothing. #}
-    {% elseif errors.passed %}
-        {% set validation_class = 'scoopm-is-valid' %}
-    {% else %}
-        {% set validation_class = 'scoopm-is-invalid' %}
-    {% endif %}
-    <div class="form-group row">
-        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
-        <div class="col-sm">
-            <input id="{{name}}" name="{{name}}" type="email" class="email form-control {{validation_class}}" value="{{value}}" bplaceholder="{{title}}" required/>
-            <small class="form-text scoopm-error">Must use a valid email address</small>
         </div>
     </div>
 {% endmacro %}
@@ -228,7 +233,7 @@
         {% if not submitting %}
             <button id="{{thisPage}}Next" class="next-button btn btn-outline-primary px-5">&nbsp;Next&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></button>
         {% else %}
-            <input id="submit" type="submit" class="btn btn-primary px-5" value="Submit"/>
+            <input id="submit-button" type="submit" class="btn btn-primary px-5" value="Submit" disabled/>
         {% endif %}
 
     </div>

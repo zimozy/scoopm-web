@@ -1,0 +1,38 @@
+{% extends 'base.twig.html' %}
+
+{% block title %}Thanks!{% endblock %}
+
+{% block car_query %}{% endblock %}
+
+{% block body_content %}
+
+<div class="container">
+    
+    <div class="row mt-sm-4">
+        <div class="col">
+            <h1 class="display-4 text-center logo-font text-muted mt-2"><a href="{{path_for('home')}}">ScoopM</a></h1>
+        </div>
+    </div>
+    {# 
+    <div class="row d-none d-sm-block">
+        <div class="col my-3">&nbsp;</div>
+    </div>
+
+    <div class="row">
+        <div class="col my-2">&nbsp;</div>
+    </div> #}
+
+    <div class="row h-100 align-items-center" style="margin-top: 10%;">
+        <div class="col-lg-8 offset-lg-2 text-center">
+            <h1 class="display-3 blue-text">Thanks!</h1>
+            <p class="lead">You should get an email shortly.</p>
+            <p class="lead blue-text underlined"><a href="{{path_for('profile')}}">View profile</a></p>
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block body_scripts %}{% endblock %}

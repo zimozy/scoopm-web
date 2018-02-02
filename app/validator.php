@@ -37,10 +37,17 @@ class Validator
         return $string == NULL && $string == '' && trim($string) == '';
     }
 
-    public function validateText($field_name) {
-        if (grapheme_strlen(
-                $this->fields_array[$field_name]
-            ) > 5000) {
+    public function validateText($field_name, $optional = false) {
+
+        //essentially skip this check if the field is optional
+        if ($optional) $first_condition = false;
+        else $first_condition = $this->isEmpty($this->fields_array[$field_name]);
+
+        if (
+            $first_condition
+            or
+            grapheme_strlen($this->fields_array[$field_name]) > 5000
+        ) {
             $this->setError($field_name, 'tooLong');
         } else {
             $this->setAsPassed($field_name);

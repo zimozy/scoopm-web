@@ -5,23 +5,22 @@
 
 {% block content %}
 
-<h1 class="fw-400 text-center">Register</h1>
+<h1 class="fw-400 text-center">Application</h1>
 
 {# <div class="scoopm-box-DISABLED"> #}
 
-    <p id="progress-links" class="h4 fw-400 text-center mt-4">
+    <p id="progress-links" class="h6 text-center my-4 my-lg-5 {% if errors %}re-visit{% endif %}">
         <a id="aboutYouLink" href="#" class="underlined page-visited">About&nbsp;You</a>
-        <span> &raquo; </span>
-        <a id="yourCarLink" href="#">Your&nbsp;Car</a>
-        <span> &raquo; </span>
-        <a id="insuranceLink" href="#">Insurance&nbsp;Info</a>
-        <span> &raquo; </span>
-        <a id="applicationLink" href="#">Application</a><span> &raquo; </span><a id="referencesLink" href="#">References</a>
+        <span> &raquo; </span><a id="yourCarLink" href="#">Your&nbsp;Car</a>
+        <span> &raquo; </span><a id="insuranceLink" href="#">Insurance&nbsp;Info</a>
+        <span> &raquo; </span><a id="applicationLink" href="#">Application</a>
+        <span> &raquo; </span><a id="referencesLink" href="#">References</a>
+        <span> &raquo; </span><a id="userAccountLink" href="#">User&nbsp;Account</a>
     </p>
 
     <br>
 
-    <form id="form" method="post" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-was-validated"{% endif %} novalidate>
+    <form id="application-form" method="post" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-was-validated"{% endif %} autocomplete="off" novalidate>
             
 
         <!-- ABOUT YOU -->
@@ -30,9 +29,7 @@
             {{form.textInput('First Name', 'firstName', firstName, errors.firstName)}}
             {{form.textInput('Last Name', 'lastName', lastName, errors.lastName)}}
             {{form.textInput('Phone Number', 'phone', phone, errors.phone, 'tel')}}
-            {{form.email('Email', 'email', email, errors.email)}}
-            {{form.password('Password', 'password', password, errors.password)}}
-            {{form.confirm('Confirm Password', 'confirmPassword', confirmPassword, errors.confirmPassword)}}
+            {{form.upload('Profile Photo', 'photo', photo, 'img', errors.photo)}}
             {{form.buttons('aboutYou')}}
         </div>
 
@@ -65,7 +62,6 @@
             <!-- APPLICATION -->
         <div id="applicationPage" class="page d-none">
             {{form.title('Application')}}
-            {{form.upload('Upload a Photo of Yourself', 'photo', photo, 'img', errors.photo)}}
             {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn)}}
             {{form.upload('Upload W-9', 'w9', w9, 'img/pdf', errors.w9, '<a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf"  target="_blank">Download</a> and fill out a blank copy of the W-9.')}}
             {{form.upload('Upload Resume', 'resume', resume, 'doc', errors.resume)}}
@@ -87,20 +83,46 @@
             {{form.textInput('Name', 'ref2Name', ref2Name, errors.ref2Name)}}
             {{form.textInput('Phone Number', 'ref2Phone', ref2Phone, errors.ref2Phone)}}
             {{form.email('Email Address', 'ref2Email', ref2Email, errors.ref2Email)}}
-
-            <input id="applicationKey" name="applicationKey" type="hidden" value="{{applicationKey}}">
-            
-            {{form.buttons('references', true, true)}} {# SUBMIT #}
+        
+            {{form.buttons('references', true)}}
         </div>
 
+        <!-- USER ACCOUNT -->
+        <div id="userAccountPage" class="page d-none">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div id="accountCard" class="card mt-md-3 mb-md-5">
+                        <div class="card-body">
+                            <h5 class="card-title">Create User Account</h5>
+                            <p class="card-text">
+                                {{form.simpleTextInput('Email', 'email', "tim@example.com", errors.email)}}
+                                {{form.password('Password', 'password', "123abc", errors.password, true)}}
+                                {{form.password('Confirm Password', 'confirmPassword', "123abc", errors.confirmPassword, true, true)}}            
+                            </p>
+                            <div class="text-center">
+                                <button id="createAccount" type="button" class="btn btn-outline-primary my-1" disabled>Create Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{form.buttons('userAccount', true, true)}} {# SUBMIT #}
+        </div>
+
+        <input id="userKey" name="userKey" type="hidden" value="{{userKey}}">
+        <input id="userID" name="userID" type="hidden" value="{{userID}}">
+        
     </form>
 
  {# </div>    #}
 {% endblock %}
 
 {% block body_scripts %}
+    {{parent()}}
+    <script type="text/javascript" src="/js/variables.js"></script>
     <script type="text/javascript" src="/js/wizard.js"></script>
-    {# <script type="text/javascript" src="/js/firebaseApplication.js"></script> #}
-    {# <script type="text/javascript" src="/js/uploader.js"></script> #}
-    
+    <script type="text/javascript" src="/js/form.js"></script>
+    <script type="text/javascript" src="/js/uploader.js"></script>
+    <script type="text/javascript" src="/js/firebaseUser.js"></script>
 {% endblock %}
