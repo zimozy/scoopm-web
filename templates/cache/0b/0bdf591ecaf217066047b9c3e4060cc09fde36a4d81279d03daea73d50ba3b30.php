@@ -36,33 +36,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
     {
         // line 6
         echo "
-<div class=\"my-sm-5\">&nbsp;</div>
 
-<div class=\"my-lg-5\">&nbsp;</div>
-
-<div class=\"row\">
-    <div class=\"col-md mb-4 mb-md-0\">
-        <div class=\"card\">
-            <div class=\"card-body\">Earn more. We pay higher rates because our service is safer.</div>
-        </div>
-    </div>
-    <div class=\"col-md mb-4 mb-md-0\">
-        <div class=\"card\">
-            <div class=\"card-body\">Background checks make the ride safer.</div>
-        </div>
-    </div>
-    <div class=\"col-md mb-4 mb-md-0\">
-        <div class=\"card\">
-            <div class=\"card-body\">There are so many reasons to sign up for this service.</div>
-        </div>
-    </div>
-</div>
-
-<div class=\"row mt-5\">
-    <div class=\"col text-center mt-5\">
-        <h3><a href=\"\">Sign Up</a></h3>
-    </div>
-</div>
 ";
     }
 
@@ -89,33 +63,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 
 {% block content %}
 
-<div class=\"my-sm-5\">&nbsp;</div>
 
-<div class=\"my-lg-5\">&nbsp;</div>
-
-<div class=\"row\">
-    <div class=\"col-md mb-4 mb-md-0\">
-        <div class=\"card\">
-            <div class=\"card-body\">Earn more. We pay higher rates because our service is safer.</div>
-        </div>
-    </div>
-    <div class=\"col-md mb-4 mb-md-0\">
-        <div class=\"card\">
-            <div class=\"card-body\">Background checks make the ride safer.</div>
-        </div>
-    </div>
-    <div class=\"col-md mb-4 mb-md-0\">
-        <div class=\"card\">
-            <div class=\"card-body\">There are so many reasons to sign up for this service.</div>
-        </div>
-    </div>
-</div>
-
-<div class=\"row mt-5\">
-    <div class=\"col text-center mt-5\">
-        <h3><a href=\"\">Sign Up</a></h3>
-    </div>
-</div>
 {% endblock %}", "home.twig.html", "/var/www/templates/home.twig.html");
     }
 }
