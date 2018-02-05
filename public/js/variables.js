@@ -18,5 +18,3 @@ var submitButton = $('#submit-button'); // MUST NOT BE CALLED "SUBMIT" OR IT WIL
 var uploadsAreValid = false;
 var emailIsValid    = false;
 var passwordIsValid = false;
-
-var userKey = null;

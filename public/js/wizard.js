@@ -1,7 +1,7 @@
 $(function() {
 
 
-var pages       = ["aboutYou", "yourCar", "insurance", "application", "references", "userAccount"];
+var pages       = ["aboutYou", "yourCar", "insurance", "application", "references"];
 var currentPage = pages[0];
 
 
@@ -61,7 +61,7 @@ function getPreviousPage() {
     }
 }
 
-function getPageForLinkID(linkID) {;
+function getPageForLinkID(linkID) {
     return linkID.replace('Link', '');
 }
 
@@ -74,6 +74,8 @@ function firstPageWithErrors() {
 
 if (mForm.attr('class') == 'scoopm-was-validated') { //if they've submitted with errors to to the relevant page
     goTo(firstPageWithErrors());
+} else {
+    $('input:text:first').focus();
 }
 
 $('.next-button').on('click', function(event) {
@@ -96,7 +98,7 @@ $('#progress-links a').on('click', function(event) {
 $('input').on('keydown.nextPage', function(event) {
     if ( event.which == 13 ) {
         event.preventDefault();
-        if (currentPage == pages[5]) {
+        if (currentPage == pages[pages.length - 1]) {
             if (!submitButton.prop('disabled')) {
                 mForm.submit();
             }
@@ -106,9 +108,9 @@ $('input').on('keydown.nextPage', function(event) {
     }
 });
 
-//change the KEYPRESS: 'ENTER' for the user account card
-//add listener in firebaseUser.js
-$('#accountCard input').off('keydown.nextPage');
+// //change the KEYPRESS: 'ENTER' for the user account card
+// //add listener in firebaseUser.js
+// $('#accountCard input').off('keydown.nextPage');
 
 
 });

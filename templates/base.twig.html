@@ -41,7 +41,7 @@
 
     {% block head_scripts %}{% endblock %}
 </head>
-<body class="no-scroll">
+<body>
     {% block body_content %}
         <div class="container">
             <div class="row">
@@ -59,20 +59,22 @@
         </footer>
     {% endblock %}
     
-    {% block body_scripts %}
+    {% block firebase %}
         <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
         <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyAjBxmEhdP51alX7u26mSiMwSXtCMxYMpc",
-            authDomain: "scoopm-8975f.firebaseapp.com",
-            databaseURL: "https://scoopm-8975f.firebaseio.com",
-            projectId: "scoopm-8975f",
-            storageBucket: "scoopm-8975f.appspot.com",
-            messagingSenderId: "342193276323"
-        };
-        firebase.initializeApp(config);
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyAjBxmEhdP51alX7u26mSiMwSXtCMxYMpc",
+                authDomain: "scoopm-8975f.firebaseapp.com",
+                databaseURL: "https://scoopm-8975f.firebaseio.com",
+                projectId: "scoopm-8975f",
+                storageBucket: "scoopm-8975f.appspot.com",
+                messagingSenderId: "342193276323"
+            };
+            firebase.initializeApp(config);
         </script>
     {% endblock %}
+    
+    {% block body_scripts %}{% endblock %}
 </body>
 </html>

@@ -29,22 +29,53 @@ body {
 
 #profile label {display:  none;}
 
+
 /* PROGRESS LINKS */
-#progress-links a.page-visited,
-#progress-links span {
-  color: #009AEE;
+
+#progress-links { 
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-#progress-links a,
-#progress-links a:not(.page-visited) ~ span  {
-  color: #868e96;
+#progress-links li {
+  float: left;
+  padding: 0.5rem;
 }
 
+#progress-links li a {
+  display: block;
+}
+
+#progress-links li .circle {
+  margin: 0 auto 0.5rem auto;
+  height: 2rem; 
+  width: 2rem; 
+  border-radius: 1rem; 
+  font-size: 1rem; 
+  line-height: 2rem; 
+  text-align: center; 
+  background: #868e96;
+}
+
+/* progress links colors */
+#progress-links a.page-visited, #progress-links span { color: #009AEE; }
+#progress-links a.page-visited .circle {background: #009AEE;}
+
+#progress-links a, #progress-links a:not(.page-visited) ~ span  { color: #868e96; }
 
 /* when they've been turned back by the validation */
-#progress-links.re-visit a,
-#progress-links.re-visit span {
-  color: #009AEE !important;
+#progress-links.re-visit a, #progress-links.re-visit span { color: #009AEE !important; }
+
+#progress-links li .circle {
+  color: white !important;
+  text-decoration: none;
+}
+
+
+
+.form-check {
+  padding-top: 7px;
 }
 
 /* LOGO */
@@ -92,11 +123,17 @@ a:hover { color: rgb(0, 139, 214); }
 
 .hidden-card {
   opacity: 0;
-  margin-top: 3rem;
+  /* margin-left: 3rem; */
+}
+
+.fade-in {
+  opacity: 0;
+  visibility: hidden;
+  /* display: none; */
 }
 
 body.no-scroll {
-  overflow-y:hidden;
+  /* overflow-y:hidden; */
 }
 
 /* UPLOAD */
@@ -131,6 +168,8 @@ body.no-scroll {
 .scoopm-is-invalid,
 .scoopm-is-invalid .input-group-addon,
 .scoopm-is-invalid .form-control { border-color: #dc3545 !important; }
+
+p.scoopm-is-invalid {color: #dc3545;}
 
 .scoopm-is-valid,
 .scoopm-is-valid .input-group-addon,

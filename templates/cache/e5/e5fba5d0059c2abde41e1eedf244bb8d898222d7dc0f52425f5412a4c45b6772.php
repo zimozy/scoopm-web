@@ -17,6 +17,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
             'body_content' => array($this, 'block_body_content'),
             'content' => array($this, 'block_content'),
             'footer' => array($this, 'block_footer'),
+            'firebase' => array($this, 'block_firebase'),
             'body_scripts' => array($this, 'block_body_scripts'),
         );
     }
@@ -69,7 +70,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
         $this->displayBlock('head_scripts', $context, $blocks);
         // line 43
         echo "</head>
-<body class=\"no-scroll\">
+<body>
     ";
         // line 45
         $this->displayBlock('body_content', $context, $blocks);
@@ -82,8 +83,13 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
         echo "    
     ";
         // line 62
-        $this->displayBlock('body_scripts', $context, $blocks);
+        $this->displayBlock('firebase', $context, $blocks);
         // line 77
+        echo "    
+    ";
+        // line 78
+        $this->displayBlock('body_scripts', $context, $blocks);
+        // line 79
         echo "</body>
 </html>";
     }
@@ -156,23 +162,28 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     }
 
     // line 62
-    public function block_body_scripts($context, array $blocks = array())
+    public function block_firebase($context, array $blocks = array())
     {
         // line 63
         echo "        <script src=\"https://www.gstatic.com/firebasejs/4.9.0/firebase.js\"></script>
         <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: \"AIzaSyAjBxmEhdP51alX7u26mSiMwSXtCMxYMpc\",
-            authDomain: \"scoopm-8975f.firebaseapp.com\",
-            databaseURL: \"https://scoopm-8975f.firebaseio.com\",
-            projectId: \"scoopm-8975f\",
-            storageBucket: \"scoopm-8975f.appspot.com\",
-            messagingSenderId: \"342193276323\"
-        };
-        firebase.initializeApp(config);
+            // Initialize Firebase
+            var config = {
+                apiKey: \"AIzaSyAjBxmEhdP51alX7u26mSiMwSXtCMxYMpc\",
+                authDomain: \"scoopm-8975f.firebaseapp.com\",
+                databaseURL: \"https://scoopm-8975f.firebaseio.com\",
+                projectId: \"scoopm-8975f\",
+                storageBucket: \"scoopm-8975f.appspot.com\",
+                messagingSenderId: \"342193276323\"
+            };
+            firebase.initializeApp(config);
         </script>
     ";
+    }
+
+    // line 78
+    public function block_body_scripts($context, array $blocks = array())
+    {
     }
 
     public function getTemplateName()
@@ -182,7 +193,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
 
     public function getDebugInfo()
     {
-        return array (  162 => 63,  159 => 62,  152 => 57,  149 => 56,  144 => 50,  137 => 51,  135 => 50,  131 => 49,  126 => 46,  123 => 45,  118 => 42,  113 => 37,  100 => 18,  97 => 17,  92 => 5,  87 => 77,  85 => 62,  82 => 61,  80 => 56,  77 => 55,  75 => 45,  71 => 43,  69 => 42,  63 => 38,  61 => 37,  50 => 28,  48 => 17,  33 => 5,  27 => 1,);
+        return array (  185 => 78,  168 => 63,  165 => 62,  158 => 57,  155 => 56,  150 => 50,  143 => 51,  141 => 50,  137 => 49,  132 => 46,  129 => 45,  124 => 42,  119 => 37,  106 => 18,  103 => 17,  98 => 5,  93 => 79,  91 => 78,  88 => 77,  86 => 62,  83 => 61,  81 => 56,  78 => 55,  76 => 45,  72 => 43,  70 => 42,  64 => 38,  62 => 37,  51 => 28,  49 => 17,  34 => 5,  28 => 1,);
     }
 
     public function getSourceContext()
@@ -230,7 +241,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
 
     {% block head_scripts %}{% endblock %}
 </head>
-<body class=\"no-scroll\">
+<body>
     {% block body_content %}
         <div class=\"container\">
             <div class=\"row\">
@@ -248,21 +259,23 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
         </footer>
     {% endblock %}
     
-    {% block body_scripts %}
+    {% block firebase %}
         <script src=\"https://www.gstatic.com/firebasejs/4.9.0/firebase.js\"></script>
         <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: \"AIzaSyAjBxmEhdP51alX7u26mSiMwSXtCMxYMpc\",
-            authDomain: \"scoopm-8975f.firebaseapp.com\",
-            databaseURL: \"https://scoopm-8975f.firebaseio.com\",
-            projectId: \"scoopm-8975f\",
-            storageBucket: \"scoopm-8975f.appspot.com\",
-            messagingSenderId: \"342193276323\"
-        };
-        firebase.initializeApp(config);
+            // Initialize Firebase
+            var config = {
+                apiKey: \"AIzaSyAjBxmEhdP51alX7u26mSiMwSXtCMxYMpc\",
+                authDomain: \"scoopm-8975f.firebaseapp.com\",
+                databaseURL: \"https://scoopm-8975f.firebaseio.com\",
+                projectId: \"scoopm-8975f\",
+                storageBucket: \"scoopm-8975f.appspot.com\",
+                messagingSenderId: \"342193276323\"
+            };
+            firebase.initializeApp(config);
         </script>
     {% endblock %}
+    
+    {% block body_scripts %}{% endblock %}
 </body>
 </html>", "base.twig.html", "/var/www/templates/base.twig.html");
     }

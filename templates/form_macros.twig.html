@@ -1,6 +1,6 @@
 {# INPUT TYPES #}
 
-{% macro textInput(title, name, value, errors=null, type='text') %}
+{% macro textInput(title, name, value, errors=null, hint=null, type='text') %}
     {% if errors == null %}
         {# Do nothing. #}
     {% elseif errors.passed %}
@@ -12,7 +12,10 @@
         <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
         <div class="col-sm">
             <input id="{{name}}" name="{{name}}" type="{{type}}" class="form-control {{validation_class}}" value="{{value}}" bplaceholder="{{title}}" required/>
-            <small class="form-text scoopm-error">Must include a valid {{title}}</small>
+            <small class="form-text scoopm-error">Must include a valid {{title|lower}}</small>
+            {% if hint %}
+                <small class="form-text scoopm-hint">{{hint}}</small>
+            {% endif %}
         </div>
     </div>
 {% endmacro %}
@@ -180,8 +183,8 @@
             <select id="{{name}}" name="{{name}}" class="custom-select form-control {{validation_class}}">
                 {% if options %}
                     <option value="">Choose...</option>
-                    {% for option in options %}
-                        <option value="{{option}}" {% if option == value %}selected{% endif %}>{{option}}</option>    
+                    {% for option_value, text in options %}
+                        <option value="{{option_value}}" {% if option_value == value %}selected{% endif %}>{{text}}</option>    
                     {% endfor %}
                 {% endif %}
             </select>
@@ -191,6 +194,37 @@
         </div>
     </div>
 {% endmacro %}
+
+{% macro agreement(title, name, value, errors=null) %}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+    <div class="form-group row mt-3">
+        <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
+        <div class="col-sm">
+            <p class="{{validation_class}}">I authorize ScoopM to perform a background check, including a criminal background check and motor vehicle report.</p>
+            <input id="{{name}}" name="{{name}}" type="checkbox" value="1" {% if value == '1' %}checked{% endif %}
+            > <label for="{{name}}" class="{{validation_class}}">I Agree</label>
+            <small class="form-text scoopm-error">You must agree to these terms</small>
+        </div>
+    </div>
+{% endmacro %}
+
+
+
+
+
+    
+
+
+
+
+
+
 
 
 

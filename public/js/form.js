@@ -1,43 +1,11 @@
-$(function() {
-
-//// first thing
-// $('input:text:first').focus();
-
-$('#card1').animate({
-    opacity: '1',
-    marginTop: '0px'
-    },
-    700
-);
-
-setTimeout(function() {
-    $('#card2').animate({
-        opacity: '1',
-        marginTop: '0px'
-        },
-        700
-    );
-}, 300);
-
-setTimeout(function() {
-    $('#card3').animate({
-        opacity: '1',
-        marginTop: '0px'
-        },
-        700
-    );
-}, 600);
-
-$('#applyNowLink').click(function(event) {
-    event.preventDefault();
-    // $('#greeting').animate({height:'0px'},{'complete': function() {
-        // $('#greeting').hide();
-    // }});
-    $('#greeting').slideUp('slow');
-    $('body').removeClass('no-scroll');
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {    
+        email.val(user.email);
+        $('#userID').val(user.uid);
+    }
 });
 
-
+$(function() {
 
 
 function markAsValid(obj) {
@@ -57,73 +25,73 @@ function markAsInvalid(obj) {
     formIsValid = false;
 }
 
-function checkPassword() {
-    passVal = password.val();
+// function checkPassword() {
+//     passVal = password.val();
     
-    // >6, with letter and number
-    if (
-        passVal.length < 6
-        || !/\d/.test(passVal)
-        || !/\D/.test(passVal)
-    ) {
-        markAsInvalid(password);
-        passwordIsValid = false;
-    } else {
-        markAsNotInvalid(password);
+//     // >6, with letter and number
+//     if (
+//         passVal.length < 6
+//         || !/\d/.test(passVal)
+//         || !/\D/.test(passVal)
+//     ) {
+//         markAsInvalid(password);
+//         passwordIsValid = false;
+//     } else {
+//         markAsNotInvalid(password);
 
-        //only now do we check the second password
-        if ( 
-            passVal.length != 0
-            && confirmPassword.val().length != 0 
-        ) {
-            if (passVal !== confirmPassword.val()) {
-                markAsInvalid(confirmPassword);
-                passwordIsValid = false;
-            } else {
-                markAsNotInvalid(confirmPassword);
-                passwordIsValid = true;
-            }    
-        }
-    }
+//         //only now do we check the second password
+//         if ( 
+//             passVal.length != 0
+//             && confirmPassword.val().length != 0 
+//         ) {
+//             if (passVal !== confirmPassword.val()) {
+//                 markAsInvalid(confirmPassword);
+//                 passwordIsValid = false;
+//             } else {
+//                 markAsNotInvalid(confirmPassword);
+//                 passwordIsValid = true;
+//             }    
+//         }
+//     }
 
-    createAccountButton.updateDisabled();
-}
+//     createAccountButton.updateDisabled();
+// }
 
-var emailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+// var emailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-function checkEmail() {
-    if (emailRegex.test(email.val())) {
-        markAsNotInvalid(email);
-        emailIsValid = true;
-    } else {
-        markAsInvalid(email);
-        emailIsValid = false;
-    }
+// function checkEmail() {
+//     if (emailRegex.test(email.val())) {
+//         markAsNotInvalid(email);
+//         emailIsValid = true;
+//     } else {
+//         markAsInvalid(email);
+//         emailIsValid = false;
+//     }
 
-    createAccountButton.updateDisabled();
-}
+//     createAccountButton.updateDisabled();
+// }
 
 submitButton.updateDisabled = function() {
-    console.log('uploadsAreValid: ' + uploadsAreValid);
+    // console.log('uploadsAreValid: ' + uploadsAreValid);
     // console.log(firebase.auth().currentUser);
     
-    
-    if (firebase.auth().currentUser && uploadsAreValid) {
+    // firebase.auth().currentUser &&
+    if (uploadsAreValid) {
         submitButton.prop('disabled', false);
     } else {
         submitButton.prop('disabled', true);
     }
 }
 
-createAccountButton.updateDisabled = function() {
-    this.prop('disabled',
-        ((emailIsValid && passwordIsValid) ? false : false)
-    )
-}
+// createAccountButton.updateDisabled = function() {
+//     this.prop('disabled',
+//         ((emailIsValid && passwordIsValid) ? false : false)
+//     )
+// }
 
-password.keyup(function() { checkPassword(); });
-confirmPassword.keyup(function() { checkPassword(); });
-email.keyup(function() { checkEmail(); });
+// password.keyup(function() { checkPassword(); });
+// confirmPassword.keyup(function() { checkPassword(); });
+// email.keyup(function() { checkEmail(); });
 
 
 

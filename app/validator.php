@@ -37,6 +37,14 @@ class Validator
         return $string == NULL && $string == '' && trim($string) == '';
     }
 
+    public function validateUID($field_name) {
+        if ( $this->isEmpty($this->fields_array[$field_name]) ) {
+            $this->setError($field_name, 'empty');
+        } else {
+            $this->setAsPassed($field_name);
+        }
+    }
+
     public function validateText($field_name, $optional = false) {
 
         //essentially skip this check if the field is optional
@@ -46,7 +54,7 @@ class Validator
         if (
             $first_condition
             or
-            grapheme_strlen($this->fields_array[$field_name]) > 5000
+            strlen($this->fields_array[$field_name]) > 5000
         ) {
             $this->setError($field_name, 'tooLong');
         } else {
@@ -67,7 +75,7 @@ class Validator
         if (
             filter_var($this->fields_array[$field_name],FILTER_VALIDATE_EMAIL) === FALSE
             or
-            !checkdnsrr(explode("@", $this->fields_array[$field_name])[1])
+            !checkdnsrr(explode("@", $this->fields_array[$field_name])[1] . ".") //Fully qualified name needs a . at the end: https://secure.php.net/manual/en/function.checkdnsrr.php#119969
         ) {
             $this->setError($field_name, 'invalid');
         } else {
@@ -141,9 +149,8 @@ class Validator
 
     public function validateCar($year_field_name, $make_field_name, $model_field_name) {
 
-        echo ("=== CAR VALIDATION IS CURRENTLY DISABLED ===");
-
         // MUST ENABLE FOR LIVE SITE
+        // echo ("=== CAR VALIDATION IS CURRENTLY DISABLED ===");
 
         $url = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModels&make="
             . $this->fields_array[$make_field_name]
@@ -171,19 +178,32 @@ class Validator
             $this->setAsPassed($make_field_name);
             $this->setAsPassed($model_field_name);
         }
-    
     }
 
-    public function validateColor($field_name) {
-        $colors = ["Beige","Black","Blue","Brown","Burgundy","Charcoal","Gold","Gray","Green","Off White","Orange","Pink","Purple" ,"Red","Silver","Tan","Turquoise","White","Yellow"];
+    public function validateSelect($field_name, $possibilities) {
         if (
             $this->isEmpty($this->fields_array[$field_name]) 
-            or !in_array($this->fields_array[$field_name] , $colors)
-            ) {
-                $this->setError($field_name, 'invalid');
-            } else {
-                $this->setAsPassed($field_name);
-            }
-        
+            or !in_array($this->fields_array[$field_name] , $possibilities)
+        ) {
+            $this->setError($field_name, 'invalid');
+        } else {
+            $this->setAsPassed($field_name);
+        }   
+    }
+
+    public function validateAgreement($field_name) {
+        if ($this->fields_array[$field_name] != '1') {
+            $this->setError($field_name, 'invalid');
+        } else {
+            $this->setAsPassed($field_name);
+        }
+    }
+
+    public function validateRegex($field_name, $regex) {
+        if ( !preg_match($regex, $this->fields_array[$field_name]) ) {
+            $this->setError($field_name, 'invalid');
+        } else {
+            $this->setAsPassed($field_name);
+        }
     }
 }

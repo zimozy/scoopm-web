@@ -16,9 +16,9 @@ $(function() {
 //Names of the FB Storage directories
 var folders = {
     'licenseImage-actual': 'licenses',
-    'registration-actual': 'registration-images',
-       'insurance-actual': 'insurance-cards',
-           'photo-actual': 'profile-photos',
+    'registration-actual': 'registrations',
+  'insuranceImage-actual': 'insurance-cards',
+           'photo-actual': 'profiles',
               'w9-actual': 'w9s',
           'resume-actual': 'resumes',
     'fingerprints-actual': 'fingerprints',
@@ -48,8 +48,7 @@ $('input:file').each(function() {
         var file = this.files[0];
 
         //UPLOAD THE FILE
-        // userKey == a global variable from firebaseApplication.js
-        var uploadTask = firebase.storage().ref().child( folders[$(this).prop('name')] + '/' + userKey ).put(file);
+        var uploadTask = firebase.storage().ref().child( folders[$(this).prop('name')] + '/' + $('#userID').val() ).put(file);
 
         //UPLOAD CALLBACKS
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function(snapshot) {

@@ -18,26 +18,34 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         // line 2
         echo "
 ";
-        // line 19
+        // line 22
         echo "
 ";
-        // line 33
+        // line 36
         echo "
 ";
-        // line 60
+        // line 63
         echo "
 ";
-        // line 77
+        // line 80
         echo "
 ";
-        // line 100
+        // line 103
         echo "
 ";
-        // line 168
+        // line 171
         echo "
 ";
-        // line 194
+        // line 197
         echo "
+";
+        // line 216
+        echo "
+
+
+
+
+    
 
 
 
@@ -46,29 +54,37 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
 
 
+
+
+
+
+
+
+
 ";
-        // line 204
+        // line 238
         echo "
 ";
-        // line 209
+        // line 243
         echo "
 ";
-        // line 217
+        // line 251
         echo "
 ";
-        // line 225
+        // line 259
         echo "
 ";
     }
 
     // line 3
-    public function macro_textInput($__title__ = null, $__name__ = null, $__value__ = null, $__errors__ = null, $__type__ = "text", ...$__varargs__)
+    public function macro_textInput($__title__ = null, $__name__ = null, $__value__ = null, $__errors__ = null, $__hint__ = null, $__type__ = "text", ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
             "title" => $__title__,
             "name" => $__name__,
             "value" => $__value__,
             "errors" => $__errors__,
+            "hint" => $__hint__,
             "type" => $__type__,
             "varargs" => $__varargs__,
         ));
@@ -122,9 +138,19 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
             echo "\" required/>
             <small class=\"form-text scoopm-error\">Must include a valid ";
             // line 15
-            echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
+            echo twig_escape_filter($this->env, twig_lower_filter($this->env, ($context["title"] ?? null)), "html", null, true);
             echo "</small>
-        </div>
+            ";
+            // line 16
+            if (($context["hint"] ?? null)) {
+                // line 17
+                echo "                <small class=\"form-text scoopm-hint\">";
+                echo twig_escape_filter($this->env, ($context["hint"] ?? null), "html", null, true);
+                echo "</small>
+            ";
+            }
+            // line 19
+            echo "        </div>
     </div>
 ";
 
@@ -134,7 +160,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 20
+    // line 23
     public function macro_simpleTextInput($__title__ = null, $__name__ = null, $__value__ = null, $__errors__ = null, $__type__ = "text", ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -150,30 +176,30 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 21
+            // line 24
             echo "    ";
             if ((($context["errors"] ?? null) == null)) {
-                // line 22
+                // line 25
                 echo "        ";
-                // line 23
+                // line 26
                 echo "    ";
             } elseif (twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "passed", array())) {
-                // line 24
+                // line 27
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-valid";
-                // line 25
+                // line 28
                 echo "    ";
             } else {
-                // line 26
+                // line 29
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-invalid";
-                // line 27
+                // line 30
                 echo "    ";
             }
-            // line 28
+            // line 31
             echo "    <div class=\"form-group\">
         <input id=\"";
-            // line 29
+            // line 32
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" name=\"";
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
@@ -187,7 +213,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
             echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
             echo "\" required/>
         <small class=\"form-text scoopm-error\">Must include a valid ";
-            // line 30
+            // line 33
             echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
             echo "</small>
     </div>
@@ -199,7 +225,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 34
+    // line 37
     public function macro_password($__title__ = null, $__name__ = null, $__value__ = null, $__errors__ = null, $__simple__ = false, $__confirm__ = false, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -216,35 +242,35 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 35
+            // line 38
             echo "    ";
             if ((($context["errors"] ?? null) == null)) {
-                // line 36
+                // line 39
                 echo "        ";
-                // line 37
+                // line 40
                 echo "    ";
             } elseif (twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "passed", array())) {
-                // line 38
+                // line 41
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-valid";
-                // line 39
+                // line 42
                 echo "    ";
             } else {
-                // line 40
+                // line 43
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-invalid";
-                // line 41
+                // line 44
                 echo "    ";
             }
-            // line 42
+            // line 45
             echo "    <div class=\"form-group\">
         ";
-            // line 43
+            // line 46
             if ( !($context["simple"] ?? null)) {
-                // line 44
+                // line 47
                 echo "        <div class=\"row\">
             <label for=\"";
-                // line 45
+                // line 48
                 echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
                 echo "\" class=\"col-sm-3 col-form-label\">";
                 echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
@@ -252,7 +278,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
             <div class=\"col-sm\">
                 ";
             }
-            // line 48
+            // line 51
             echo "                <input id=\"";
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" name=\"";
@@ -265,25 +291,25 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
             echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
             echo "\" maxlength=\"20\" required/>
                 ";
-            // line 49
+            // line 52
             if ( !($context["confirm"] ?? null)) {
-                // line 50
+                // line 53
                 echo "                    <small id=\"password-size\" class=\"form-text scoopm-hint\">Must be between 6 and 20 characters, and contain both letters and numbers.</small>
                 ";
             } else {
-                // line 52
+                // line 55
                 echo "                    <small id=\"password-match\" class=\"form-text scoopm-error\">Passwords don't match</small>
                 ";
             }
-            // line 54
+            // line 57
             echo "        ";
             if ( !($context["simple"] ?? null)) {
-                // line 55
+                // line 58
                 echo "            </div>
        </div>
        ";
             }
-            // line 58
+            // line 61
             echo "    </div>
 ";
 
@@ -293,7 +319,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 61
+    // line 64
     public function macro_email($__title__ = null, $__name__ = null, $__value__ = null, $__errors__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -308,37 +334,37 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 62
+            // line 65
             echo "    ";
             if ((($context["errors"] ?? null) == null)) {
-                // line 63
+                // line 66
                 echo "        ";
-                // line 64
+                // line 67
                 echo "    ";
             } elseif (twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "passed", array())) {
-                // line 65
+                // line 68
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-valid";
-                // line 66
+                // line 69
                 echo "    ";
             } else {
-                // line 67
+                // line 70
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-invalid";
-                // line 68
+                // line 71
                 echo "    ";
             }
-            // line 69
+            // line 72
             echo "    <div class=\"form-group row\">
         <label for=\"";
-            // line 70
+            // line 73
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" class=\"col-sm-3 col-form-label\">";
             echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
             echo "</label>
         <div class=\"col-sm\">
             <input id=\"";
-            // line 72
+            // line 75
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" name=\"";
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
@@ -360,7 +386,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 78
+    // line 81
     public function macro_textArea($__title__ = null, $__name__ = null, $__value__ = null, $__errors__ = null, $__hint__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -376,30 +402,30 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 79
+            // line 82
             echo "    ";
             if ((($context["errors"] ?? null) == null)) {
-                // line 80
+                // line 83
                 echo "        ";
-                // line 81
+                // line 84
                 echo "    ";
             } elseif (twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "passed", array())) {
-                // line 82
+                // line 85
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-valid";
-                // line 83
+                // line 86
                 echo "    ";
             } else {
-                // line 84
+                // line 87
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-invalid";
-                // line 85
+                // line 88
                 echo "    ";
             }
-            // line 86
+            // line 89
             echo "    <div class=\"form-group row\">
         <label for=\"";
-            // line 87
+            // line 90
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" class=\"col-sm-3 col-form-label\">";
             echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
@@ -407,18 +433,18 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         <div class=\"col-sm\">
 
             ";
-            // line 90
+            // line 93
             if (($context["hint"] ?? null)) {
-                // line 91
+                // line 94
                 echo "                <p>";
                 echo ($context["hint"] ?? null);
                 echo "</p>
             ";
             }
-            // line 93
+            // line 96
             echo "
             <textarea id=\"";
-            // line 94
+            // line 97
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" name=\"";
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
@@ -439,7 +465,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 101
+    // line 104
     public function macro_upload($__title__ = null, $__name__ = null, $__value__ = null, $__type__ = null, $__errors__ = null, $__hint__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -456,99 +482,99 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 102
+            // line 105
             echo "
     ";
-            // line 104
+            // line 107
             echo "    ";
             if ((($context["errors"] ?? null) == null)) {
-                // line 105
+                // line 108
                 echo "        ";
-                // line 106
+                // line 109
                 echo "    ";
             } elseif (twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "passed", array())) {
-                // line 107
+                // line 110
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-valid";
-                // line 108
+                // line 111
                 echo "    ";
             } else {
-                // line 109
+                // line 112
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-invalid";
-                // line 110
+                // line 113
                 echo "    ";
             }
-            // line 111
+            // line 114
             echo "
     ";
-            // line 113
+            // line 116
             echo "    ";
             if ((($context["type"] ?? null) == "img")) {
-                // line 114
+                // line 117
                 echo "        ";
                 $context["type_phrase"] = "<i class=\"fa fa-file-image-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Allowed: JPEG, PNG, GIF";
-                // line 115
+                // line 118
                 echo "        ";
                 $context["allowed_types"] = "image/png, image/jpeg, image/gif, .png, .jpeg, .jpg, .gif";
-                // line 116
+                // line 119
                 echo "    ";
             } elseif ((($context["type"] ?? null) == "pdf")) {
                 echo "    
         ";
-                // line 117
-                $context["type_phrase"] = "<i class=\"fa fa-file-pdf-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Allowed: PDF";
-                // line 118
-                echo "        ";
-                $context["allowed_types"] = "application/pdf, .pdf";
-                // line 119
-                echo "    ";
-            } elseif ((($context["type"] ?? null) == "doc")) {
                 // line 120
-                echo "        ";
-                $context["type_phrase"] = "<i class=\"fa fa-file-pdf-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;<i class=\"fa fa-file-text\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Allowed: PDF, Word Document";
+                $context["type_phrase"] = "<i class=\"fa fa-file-pdf-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Allowed: PDF";
                 // line 121
                 echo "        ";
-                $context["allowed_types"] = "application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, .pdf, .doc, .docx";
+                $context["allowed_types"] = "application/pdf, .pdf";
                 // line 122
                 echo "    ";
-            } elseif ((($context["type"] ?? null) == "img/pdf")) {
+            } elseif ((($context["type"] ?? null) == "doc")) {
                 // line 123
                 echo "        ";
-                $context["type_phrase"] = "<i class=\"fa fa-file-pdf-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;<i class=\"fa fa-file-image-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Allowed: PDF, JPEG, PNG, GIF";
+                $context["type_phrase"] = "<i class=\"fa fa-file-pdf-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;<i class=\"fa fa-file-text\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Allowed: PDF, Word Document";
                 // line 124
                 echo "        ";
-                $context["allowed_types"] = "image/png, image/jpeg, image/gif, application/pdf, .png, .jpeg, .jpg, .gif, .pdf";
+                $context["allowed_types"] = "application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, .pdf, .doc, .docx";
                 // line 125
                 echo "    ";
+            } elseif ((($context["type"] ?? null) == "img/pdf")) {
+                // line 126
+                echo "        ";
+                $context["type_phrase"] = "<i class=\"fa fa-file-pdf-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;<i class=\"fa fa-file-image-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Allowed: PDF, JPEG, PNG, GIF";
+                // line 127
+                echo "        ";
+                $context["allowed_types"] = "image/png, image/jpeg, image/gif, application/pdf, .png, .jpeg, .jpg, .gif, .pdf";
+                // line 128
+                echo "    ";
             }
-            // line 126
+            // line 129
             echo "
     ";
-            // line 128
+            // line 131
             echo "    ";
             if ((($context["value"] ?? null) == "")) {
-                // line 129
-                echo "        ";
-                $context["buttonText"] = "Browse...";
-                // line 130
-                echo "    ";
-            } else {
-                // line 131
-                echo "        ";
-                $context["buttonText"] = "Change File...";
                 // line 132
                 echo "        ";
-                $context["validation_class"] = "scoopm-is-valid";
+                $context["buttonText"] = "Browse...";
                 // line 133
                 echo "    ";
+            } else {
+                // line 134
+                echo "        ";
+                $context["buttonText"] = "Change File...";
+                // line 135
+                echo "        ";
+                $context["validation_class"] = "scoopm-is-valid";
+                // line 136
+                echo "    ";
             }
-            // line 134
+            // line 137
             echo "    
     <div class=\"form-group row\">
 
         <label for=\"";
-            // line 137
+            // line 140
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" class=\"col-sm-3 col-form-label\">";
             echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
@@ -557,22 +583,22 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         <div class=\"col-sm\">
 
             ";
-            // line 141
+            // line 144
             if (($context["hint"] ?? null)) {
-                // line 142
+                // line 145
                 echo "                <p>";
                 echo ($context["hint"] ?? null);
                 echo "</p>
             ";
             }
-            // line 144
+            // line 147
             echo "
             <div class=\"input-group ";
-            // line 145
+            // line 148
             echo twig_escape_filter($this->env, ($context["validation_class"] ?? null), "html", null, true);
             echo " upload-input-group\">
                 ";
-            // line 147
+            // line 150
             echo "                <input type=\"text\" class=\"form-control upload-text\" name=\"";
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" value=\"";
@@ -581,7 +607,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
                 <div class=\"input-group-addon p-0\">
                     <input id=\"";
-            // line 150
+            // line 153
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "-input\" type=\"file\" name=\"";
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
@@ -589,7 +615,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
             echo twig_escape_filter($this->env, ($context["allowed_types"] ?? null), "html", null, true);
             echo "\">
                     <label class=\"input-group-text mb-0 px-3 w-100 h-100 d-flex align-items-center\" for=\"";
-            // line 151
+            // line 154
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "-input\">";
             echo twig_escape_filter($this->env, ($context["buttonText"] ?? null), "html", null, true);
@@ -598,23 +624,23 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
             </div>
             
             ";
-            // line 155
+            // line 158
             if (twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "empty", array())) {
-                // line 156
+                // line 159
                 echo "                <small class=\"form-text scoopm-error\">Required. Please try again</small>
             ";
-            } elseif (twig_get_attribute($this->env, $this->getSourceContext(),             // line 157
+            } elseif (twig_get_attribute($this->env, $this->getSourceContext(),             // line 160
 ($context["errors"] ?? null), "invalid", array())) {
-                // line 158
+                // line 161
                 echo "                <small class=\"form-text scoopm-error\">Incorrect file type. Please try again</small>
             ";
             }
-            // line 160
+            // line 163
             echo "            
             <small class=\"form-text scoopm-error\">Oops, there was an error. Please try again</small>
 
             <small class=\"form-text scoopm-hint\">";
-            // line 163
+            // line 166
             echo ($context["type_phrase"] ?? null);
             echo " (under 5MB)</small>
 
@@ -628,7 +654,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 169
+    // line 172
     public function macro_select($__title__ = null, $__name__ = null, $__errors__ = null, $__options__ = null, $__value__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -644,37 +670,37 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 170
+            // line 173
             echo "    ";
             if ((($context["errors"] ?? null) == null)) {
-                // line 171
+                // line 174
                 echo "        ";
-                // line 172
+                // line 175
                 echo "    ";
             } elseif (twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "passed", array())) {
-                // line 173
+                // line 176
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-valid";
-                // line 174
+                // line 177
                 echo "    ";
             } else {
-                // line 175
+                // line 178
                 echo "        ";
                 $context["validation_class"] = "scoopm-is-invalid";
-                // line 176
+                // line 179
                 echo "    ";
             }
-            // line 177
+            // line 180
             echo "    <div class=\"form-group row\">
         <label for=\"";
-            // line 178
+            // line 181
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" class=\"col-sm-3 col-form-label\">";
             echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
             echo "</label>
         <div class=\"col-sm\">
             <select id=\"";
-            // line 180
+            // line 183
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" name=\"";
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
@@ -682,43 +708,43 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
             echo twig_escape_filter($this->env, ($context["validation_class"] ?? null), "html", null, true);
             echo "\">
                 ";
-            // line 181
+            // line 184
             if (($context["options"] ?? null)) {
-                // line 182
+                // line 185
                 echo "                    <option value=\"\">Choose...</option>
                     ";
-                // line 183
+                // line 186
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["options"] ?? null));
-                foreach ($context['_seq'] as $context["_key"] => $context["option"]) {
-                    // line 184
+                foreach ($context['_seq'] as $context["option_value"] => $context["text"]) {
+                    // line 187
                     echo "                        <option value=\"";
-                    echo twig_escape_filter($this->env, $context["option"], "html", null, true);
+                    echo twig_escape_filter($this->env, $context["option_value"], "html", null, true);
                     echo "\" ";
-                    if (($context["option"] == ($context["value"] ?? null))) {
+                    if (($context["option_value"] == ($context["value"] ?? null))) {
                         echo "selected";
                     }
                     echo ">";
-                    echo twig_escape_filter($this->env, $context["option"], "html", null, true);
+                    echo twig_escape_filter($this->env, $context["text"], "html", null, true);
                     echo "</option>    
                     ";
                 }
                 $_parent = $context['_parent'];
-                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['option'], $context['_parent'], $context['loop']);
+                unset($context['_seq'], $context['_iterated'], $context['option_value'], $context['text'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 186
+                // line 189
                 echo "                ";
             }
-            // line 187
+            // line 190
             echo "            </select>
             ";
-            // line 188
+            // line 191
             if (twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "invalid", array())) {
-                // line 189
+                // line 192
                 echo "                <small class=\"form-text scoopm-error\">Required</small>
             ";
             }
-            // line 191
+            // line 194
             echo "        </div>
     </div>
 ";
@@ -729,7 +755,81 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 205
+    // line 198
+    public function macro_agreement($__title__ = null, $__name__ = null, $__value__ = null, $__errors__ = null, ...$__varargs__)
+    {
+        $context = $this->env->mergeGlobals(array(
+            "title" => $__title__,
+            "name" => $__name__,
+            "value" => $__value__,
+            "errors" => $__errors__,
+            "varargs" => $__varargs__,
+        ));
+
+        $blocks = array();
+
+        ob_start();
+        try {
+            // line 199
+            echo "    ";
+            if ((($context["errors"] ?? null) == null)) {
+                // line 200
+                echo "        ";
+                // line 201
+                echo "    ";
+            } elseif (twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "passed", array())) {
+                // line 202
+                echo "        ";
+                $context["validation_class"] = "scoopm-is-valid";
+                // line 203
+                echo "    ";
+            } else {
+                // line 204
+                echo "        ";
+                $context["validation_class"] = "scoopm-is-invalid";
+                // line 205
+                echo "    ";
+            }
+            // line 206
+            echo "    <div class=\"form-group row mt-3\">
+        <label for=\"";
+            // line 207
+            echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+            echo "\" class=\"col-sm-3 col-form-label\">";
+            echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
+            echo "</label>
+        <div class=\"col-sm\">
+            <p class=\"";
+            // line 209
+            echo twig_escape_filter($this->env, ($context["validation_class"] ?? null), "html", null, true);
+            echo "\">I authorize ScoopM to perform a background check, including a criminal background check and motor vehicle report.</p>
+            <input id=\"";
+            // line 210
+            echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+            echo "\" name=\"";
+            echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+            echo "\" type=\"checkbox\" value=\"1\" ";
+            if ((($context["value"] ?? null) == "1")) {
+                echo "checked";
+            }
+            // line 211
+            echo "            > <label for=\"";
+            echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+            echo "\" class=\"";
+            echo twig_escape_filter($this->env, ($context["validation_class"] ?? null), "html", null, true);
+            echo "\">I Agree</label>
+            <small class=\"form-text scoopm-error\">You must agree to these terms</small>
+        </div>
+    </div>
+";
+
+            return ('' === $tmp = ob_get_contents()) ? '' : new Twig_Markup($tmp, $this->env->getCharset());
+        } finally {
+            ob_end_clean();
+        }
+    }
+
+    // line 239
     public function macro_title($__text__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -741,7 +841,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 206
+            // line 240
             echo "    <!-- <h1 class=\"text-center\">";
             echo twig_escape_filter($this->env, ($context["text"] ?? null), "html", null, true);
             echo "</h1> -->
@@ -754,7 +854,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 210
+    // line 244
     public function macro_heading($__text__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -766,11 +866,11 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 211
+            // line 245
             echo "    <div class=\"row pt-4\">
         <div class=\"col-sm-9 offset-sm-3\">
                 <h4>";
-            // line 213
+            // line 247
             echo twig_escape_filter($this->env, ($context["text"] ?? null), "html", null, true);
             echo "</h4>
         </div>
@@ -783,7 +883,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 218
+    // line 252
     public function macro_subHeading($__text__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -795,11 +895,11 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 219
+            // line 253
             echo "    <div class=\"row\">
         <div class=\"col-sm-9 offset-sm-3\">
                 <p class=\"h5 fw-400\">";
-            // line 221
+            // line 255
             echo ($context["text"] ?? null);
             echo "</p>
         </div>
@@ -812,7 +912,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 226
+    // line 260
     public function macro_buttons($__thisPage__ = null, $__goingBack__ = false, $__submitting__ = false, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -826,34 +926,34 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 227
+            // line 261
             echo "    <div class=\"form-group text-center mt-4\">
 
         ";
-            // line 229
+            // line 263
             if (($context["goingBack"] ?? null)) {
-                // line 230
+                // line 264
                 echo "            <button id=\"";
                 echo twig_escape_filter($this->env, ($context["thisPage"] ?? null), "html", null, true);
                 echo "Back\" class=\"back-button btn btn-outline-secondary mr-sm-5 px-5\"><i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back&nbsp;</button>
         ";
             }
-            // line 232
+            // line 266
             echo "
         ";
-            // line 233
+            // line 267
             if ( !($context["submitting"] ?? null)) {
-                // line 234
+                // line 268
                 echo "            <button id=\"";
                 echo twig_escape_filter($this->env, ($context["thisPage"] ?? null), "html", null, true);
                 echo "Next\" class=\"next-button btn btn-outline-primary px-5\">&nbsp;Next&nbsp;&nbsp;<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></button>
         ";
             } else {
-                // line 236
+                // line 270
                 echo "            <input id=\"submit-button\" type=\"submit\" class=\"btn btn-primary px-5\" value=\"Submit\" disabled/>
         ";
             }
-            // line 238
+            // line 272
             echo "
     </div>
 ";
@@ -876,14 +976,14 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
     public function getDebugInfo()
     {
-        return array (  857 => 238,  853 => 236,  847 => 234,  845 => 233,  842 => 232,  836 => 230,  834 => 229,  830 => 227,  816 => 226,  803 => 221,  799 => 219,  787 => 218,  774 => 213,  770 => 211,  758 => 210,  745 => 206,  733 => 205,  722 => 191,  718 => 189,  716 => 188,  713 => 187,  710 => 186,  695 => 184,  691 => 183,  688 => 182,  686 => 181,  678 => 180,  671 => 178,  668 => 177,  665 => 176,  662 => 175,  659 => 174,  656 => 173,  653 => 172,  651 => 171,  648 => 170,  632 => 169,  618 => 163,  613 => 160,  609 => 158,  607 => 157,  604 => 156,  602 => 155,  593 => 151,  585 => 150,  576 => 147,  572 => 145,  569 => 144,  563 => 142,  561 => 141,  552 => 137,  547 => 134,  544 => 133,  541 => 132,  538 => 131,  535 => 130,  532 => 129,  529 => 128,  526 => 126,  523 => 125,  520 => 124,  517 => 123,  514 => 122,  511 => 121,  508 => 120,  505 => 119,  502 => 118,  500 => 117,  495 => 116,  492 => 115,  489 => 114,  486 => 113,  483 => 111,  480 => 110,  477 => 109,  474 => 108,  471 => 107,  468 => 106,  466 => 105,  463 => 104,  460 => 102,  443 => 101,  422 => 94,  419 => 93,  413 => 91,  411 => 90,  403 => 87,  400 => 86,  397 => 85,  394 => 84,  391 => 83,  388 => 82,  385 => 81,  383 => 80,  380 => 79,  364 => 78,  342 => 72,  335 => 70,  332 => 69,  329 => 68,  326 => 67,  323 => 66,  320 => 65,  317 => 64,  315 => 63,  312 => 62,  297 => 61,  287 => 58,  282 => 55,  279 => 54,  275 => 52,  271 => 50,  269 => 49,  256 => 48,  248 => 45,  245 => 44,  243 => 43,  240 => 42,  237 => 41,  234 => 40,  231 => 39,  228 => 38,  225 => 37,  223 => 36,  220 => 35,  203 => 34,  191 => 30,  177 => 29,  174 => 28,  171 => 27,  168 => 26,  165 => 25,  162 => 24,  159 => 23,  157 => 22,  154 => 21,  138 => 20,  125 => 15,  111 => 14,  104 => 12,  101 => 11,  98 => 10,  95 => 9,  92 => 8,  89 => 7,  86 => 6,  84 => 5,  81 => 4,  65 => 3,  60 => 225,  57 => 217,  54 => 209,  51 => 204,  40 => 194,  37 => 168,  34 => 100,  31 => 77,  28 => 60,  25 => 33,  22 => 19,  19 => 2,);
+        return array (  957 => 272,  953 => 270,  947 => 268,  945 => 267,  942 => 266,  936 => 264,  934 => 263,  930 => 261,  916 => 260,  903 => 255,  899 => 253,  887 => 252,  874 => 247,  870 => 245,  858 => 244,  845 => 240,  833 => 239,  816 => 211,  808 => 210,  804 => 209,  797 => 207,  794 => 206,  791 => 205,  788 => 204,  785 => 203,  782 => 202,  779 => 201,  777 => 200,  774 => 199,  759 => 198,  748 => 194,  744 => 192,  742 => 191,  739 => 190,  736 => 189,  721 => 187,  717 => 186,  714 => 185,  712 => 184,  704 => 183,  697 => 181,  694 => 180,  691 => 179,  688 => 178,  685 => 177,  682 => 176,  679 => 175,  677 => 174,  674 => 173,  658 => 172,  644 => 166,  639 => 163,  635 => 161,  633 => 160,  630 => 159,  628 => 158,  619 => 154,  611 => 153,  602 => 150,  598 => 148,  595 => 147,  589 => 145,  587 => 144,  578 => 140,  573 => 137,  570 => 136,  567 => 135,  564 => 134,  561 => 133,  558 => 132,  555 => 131,  552 => 129,  549 => 128,  546 => 127,  543 => 126,  540 => 125,  537 => 124,  534 => 123,  531 => 122,  528 => 121,  526 => 120,  521 => 119,  518 => 118,  515 => 117,  512 => 116,  509 => 114,  506 => 113,  503 => 112,  500 => 111,  497 => 110,  494 => 109,  492 => 108,  489 => 107,  486 => 105,  469 => 104,  448 => 97,  445 => 96,  439 => 94,  437 => 93,  429 => 90,  426 => 89,  423 => 88,  420 => 87,  417 => 86,  414 => 85,  411 => 84,  409 => 83,  406 => 82,  390 => 81,  368 => 75,  361 => 73,  358 => 72,  355 => 71,  352 => 70,  349 => 69,  346 => 68,  343 => 67,  341 => 66,  338 => 65,  323 => 64,  313 => 61,  308 => 58,  305 => 57,  301 => 55,  297 => 53,  295 => 52,  282 => 51,  274 => 48,  271 => 47,  269 => 46,  266 => 45,  263 => 44,  260 => 43,  257 => 42,  254 => 41,  251 => 40,  249 => 39,  246 => 38,  229 => 37,  217 => 33,  203 => 32,  200 => 31,  197 => 30,  194 => 29,  191 => 28,  188 => 27,  185 => 26,  183 => 25,  180 => 24,  164 => 23,  153 => 19,  147 => 17,  145 => 16,  141 => 15,  127 => 14,  120 => 12,  117 => 11,  114 => 10,  111 => 9,  108 => 8,  105 => 7,  102 => 6,  100 => 5,  97 => 4,  80 => 3,  75 => 259,  72 => 251,  69 => 243,  66 => 238,  43 => 216,  40 => 197,  37 => 171,  34 => 103,  31 => 80,  28 => 63,  25 => 36,  22 => 22,  19 => 2,);
     }
 
     public function getSourceContext()
     {
         return new Twig_Source("{# INPUT TYPES #}
 
-{% macro textInput(title, name, value, errors=null, type='text') %}
+{% macro textInput(title, name, value, errors=null, hint=null, type='text') %}
     {% if errors == null %}
         {# Do nothing. #}
     {% elseif errors.passed %}
@@ -895,7 +995,10 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         <label for=\"{{name}}\" class=\"col-sm-3 col-form-label\">{{title}}</label>
         <div class=\"col-sm\">
             <input id=\"{{name}}\" name=\"{{name}}\" type=\"{{type}}\" class=\"form-control {{validation_class}}\" value=\"{{value}}\" bplaceholder=\"{{title}}\" required/>
-            <small class=\"form-text scoopm-error\">Must include a valid {{title}}</small>
+            <small class=\"form-text scoopm-error\">Must include a valid {{title|lower}}</small>
+            {% if hint %}
+                <small class=\"form-text scoopm-hint\">{{hint}}</small>
+            {% endif %}
         </div>
     </div>
 {% endmacro %}
@@ -1063,8 +1166,8 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
             <select id=\"{{name}}\" name=\"{{name}}\" class=\"custom-select form-control {{validation_class}}\">
                 {% if options %}
                     <option value=\"\">Choose...</option>
-                    {% for option in options %}
-                        <option value=\"{{option}}\" {% if option == value %}selected{% endif %}>{{option}}</option>    
+                    {% for option_value, text in options %}
+                        <option value=\"{{option_value}}\" {% if option_value == value %}selected{% endif %}>{{text}}</option>    
                     {% endfor %}
                 {% endif %}
             </select>
@@ -1074,6 +1177,37 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         </div>
     </div>
 {% endmacro %}
+
+{% macro agreement(title, name, value, errors=null) %}
+    {% if errors == null %}
+        {# Do nothing. #}
+    {% elseif errors.passed %}
+        {% set validation_class = 'scoopm-is-valid' %}
+    {% else %}
+        {% set validation_class = 'scoopm-is-invalid' %}
+    {% endif %}
+    <div class=\"form-group row mt-3\">
+        <label for=\"{{name}}\" class=\"col-sm-3 col-form-label\">{{title}}</label>
+        <div class=\"col-sm\">
+            <p class=\"{{validation_class}}\">I authorize ScoopM to perform a background check, including a criminal background check and motor vehicle report.</p>
+            <input id=\"{{name}}\" name=\"{{name}}\" type=\"checkbox\" value=\"1\" {% if value == '1' %}checked{% endif %}
+            > <label for=\"{{name}}\" class=\"{{validation_class}}\">I Agree</label>
+            <small class=\"form-text scoopm-error\">You must agree to these terms</small>
+        </div>
+    </div>
+{% endmacro %}
+
+
+
+
+
+    
+
+
+
+
+
+
 
 
 
