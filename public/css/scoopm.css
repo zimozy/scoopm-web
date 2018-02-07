@@ -8,7 +8,7 @@ html {
 
 body {
   margin-bottom: 50px;   /* Margin bottom by footer height */
-  /* background-color: #fcfcfc; */
+  background-color: #333;
 }
 
 .footer {
@@ -25,10 +25,33 @@ body {
 
 
 /*        FORMATTING         */
+.page {
+  display: none;
+  /* position: relative; */
+}
+
+.current-page {
+  display: block;
+}
+
+
+#mainContainer {
+  border: 1px solid #eee;
+  border-top: none;
+  background: white;
+  box-shadow: 0 0 50px #ffffff40;
+  padding: 1rem;
+}
+
 .border-primary { border-color: #009AEE !important;}
 
 #profile label {display:  none;}
 
+#progress-links {
+  background: #444;
+  box-shadow: 5px 5px 15px #00000088 inset;
+  padding: 1rem;
+}
 
 /* PROGRESS LINKS */
 #progress-links a { 
@@ -51,18 +74,18 @@ body {
   text-align: center; 
   
   font-size: 1rem;
-  color: white;
-  background: #868e96;
+  color: #868e96;
+  /* background: #868e96; */
   border: 2px solid #868e96;
 }
 
-#progress-links a.page-visited { color: #009AEE; }
-#progress-links a.page-visited .circle { background: #009AEE; border-color: #009AEE;}
+#progress-links a.page-visited { color: white; }
+#progress-links a.page-visited .circle { color: white; background: #009AEE; border-color: #009AEE;}
 
 #progress-links a.current-page .circle {
-  background-color: white;
+  background-color: transparent;
   border-color: #009AEE;
-  color: #009AEE;
+  color: white;
 }
 
 @media (min-width: 576px) { /* Size "sm" */
@@ -106,11 +129,13 @@ body {
 /* LOGO */
 .logo-font { 
   font-family: 'Kaushan Script', cursive; 
-  text-shadow: 4px 4px 6px #00000015;
+  line-height: 1em;
+  /* text-shadow: 2px 2px 1px #00000015; */
   /* text-shadow: 3px 5px 0px black; */
 }
 .logo-font a { color: inherit; }
-.logo-font a:hover { color: inherit; text-decoration: none; }
+.logo-font a:hover,
+a.logo-font:hover { color: inherit; text-decoration: none; }
 
 
 /* TEXT FORMATTING */
@@ -157,13 +182,7 @@ a:hover { color: rgb(0, 139, 214); }
   /* display: none; */
 }
 
-body.no-scroll {
-  /* overflow-y:hidden; */
-}
-
-
 /* Submit button message */
-/* #submit-button + p { display: block; } */
 #submit-button:enabled + p { display: none; }
 
 

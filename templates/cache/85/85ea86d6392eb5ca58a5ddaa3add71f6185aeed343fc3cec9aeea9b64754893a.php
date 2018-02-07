@@ -43,25 +43,20 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
         // line 9
         echo "<div class=\"container\">
     <div class=\"row\">
-        <div class=\"col-lg-8 offset-lg-2\">
-            <h1 class=\"display-2 text-center logo-font blue-text\"><a href=\"";
-        // line 12
+        <div id=\"mainContainer\" class=\"col-lg-8 offset-lg-2\">
+
+            <div class=\"text-center mb-4\">
+                <a href=\"";
+        // line 14
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("home"), "html", null, true);
-        echo "\">ScoopM</a><small>&nbsp;</small></h1>
-        </div>
-    </div>
-</div>
-
-<div class=\"container\">
-    <div class=\"row\">
-        <div class=\"col-lg-8 offset-lg-2\">
-
-            <h1 class=\"fw-400 text-center\">Driver Application</h1>
+        echo "\" class=\"h1 d-inline logo-font blue-text\">ScoopM</a>
+                <span class=\"h3 d-inline ml-4\">Driver&nbsp;Application</span>
+            </div>
 
             <div id=\"progress-links\" class=\"row\"> ";
-        // line 24
+        // line 19
         echo "                ";
-        // line 25
+        // line 20
         echo "                    <div class=\"col-sm\">
                         <a id=\"aboutYouLink\" href=\"#\" class=\"current-page page-visited\"><span class=\"circle\">1</span><span class=\"link\">About&nbsp;You</span></a>
                     </div>
@@ -78,13 +73,13 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
                         <a id=\"referencesLink\" href=\"#\"><span class=\"circle\">5</span><span class=\"link\">References</span></a>
                     </div>
                 ";
-        // line 41
+        // line 36
         echo "            </div>
 
             <div class=\"clearfix\"></div>
 
             <form id=\"application-form\" method=\"post\" action=\"";
-        // line 45
+        // line 40
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("register"), "html", null, true);
         echo "\"  enctype=\"multipart/form-data\" ";
         if (($context["errors"] ?? null)) {
@@ -92,237 +87,251 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
         }
         echo " autocomplete=\"off\" novalidate>
                     
-                <input type=\"submit\">
-
+                ";
+        // line 43
+        echo "
                 <!-- ABOUT YOU -->
                 <div id=\"aboutYouPage\" class=\"current-page page\">
 
                     ";
-        // line 52
+        // line 47
         if (twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "userID", array()), "empty", array())) {
-            // line 53
+            // line 48
             echo "                        <h6 class=\"error scoopm-is-invalid my-4\">Woops, something went wrong. If you have disabled JavaScript in your web browser, please enable it and try again. If the problem continues, please contact us.</h6>
                     ";
         }
-        // line 55
+        // line 50
         echo "
                     ";
-        // line 56
+        // line 51
         echo $context["form"]->macro_title("About You");
         echo "  
                     ";
-        // line 57
+        // line 52
         echo $context["form"]->macro_textInput("First Name", "firstName", ($context["firstName"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "firstName", array()));
         echo "
                     ";
-        // line 58
+        // line 53
         echo $context["form"]->macro_textInput("Middle Name", "middleName", ($context["middleName"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "middleName", array()));
         echo "
                     ";
-        // line 59
+        // line 54
         echo $context["form"]->macro_textInput("Last Name", "lastName", ($context["lastName"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "lastName", array()));
         echo "
                     ";
-        // line 60
+        // line 55
         echo $context["form"]->macro_textInput("Phone Number", "phone", ($context["phone"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "phone", array()), null, "tel");
         echo "
 
                     ";
-        // line 62
+        // line 57
         echo $context["form"]->macro_textInput("Street Address", "address", ($context["address"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "address", array()));
         echo "
                     ";
-        // line 63
+        // line 58
         echo $context["form"]->macro_textInput("City", "city", ($context["city"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "city", array()));
         echo "
                     ";
-        // line 64
+        // line 59
         echo $context["form"]->macro_select("State", "state", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "state", array()), ($context["theStates"] ?? null), ($context["state"] ?? null));
         echo "
                     ";
-        // line 65
+        // line 60
         echo $context["form"]->macro_textInput("ZIP Code", "zip", ($context["zip"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "zip", array()));
         echo "
 
                     ";
-        // line 67
+        // line 62
         echo $context["form"]->macro_textInput("Date of Birth", "dob", ($context["dob"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "dob", array()), "YYYY-MM-DD (like 1990-04-25)");
         echo "
 
                     ";
-        // line 69
+        // line 64
         echo $context["form"]->macro_upload("Profile Photo", "photo", ($context["photo"] ?? null), "img", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "photo", array()));
         echo "
 
                     ";
-        // line 71
+        // line 66
         echo $context["form"]->macro_buttons("aboutYou");
         echo "
                 </div>
 
 
                 <!-- YOUR CAR -->
-                <div id=\"yourCarPage\" class=\"page d-none\">
+                <div id=\"yourCarPage\" class=\"page\">
                     ";
-        // line 77
+        // line 72
         echo $context["form"]->macro_title("About your car");
         echo "  
                     
                     ";
-        // line 79
+        // line 74
         echo $context["form"]->macro_upload("Driver's License", "licenseImage", ($context["licenseImage"] ?? null), "img", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "licenseImage", array()));
         echo "
                     ";
-        // line 80
+        // line 75
         echo $context["form"]->macro_textInput("Driver's License Number", "licenseNumber", ($context["licenseNumber"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "licenseNumber", array()));
         echo "
                     ";
-        // line 81
+        // line 76
         echo $context["form"]->macro_select("Driver's License State", "licenseState", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "licenseState", array()), ($context["theStates"] ?? null), ($context["licenseState"] ?? null));
         echo "
 
                     ";
-        // line 83
+        // line 78
         echo $context["form"]->macro_upload("Registration", "registration", ($context["registration"] ?? null), "img", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "registration", array()));
         echo "
                     
                     ";
-        // line 85
+        // line 80
         echo $context["form"]->macro_select("Year", "year", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "year", array()));
         echo "
                     ";
-        // line 86
+        // line 81
         echo $context["form"]->macro_select("Make", "make", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "make", array()));
         echo "
                     ";
-        // line 87
+        // line 82
         echo $context["form"]->macro_select("Model", "model", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "model", array()));
         echo "
                     ";
-        // line 89
+        // line 84
         echo "                    ";
-        echo $context["form"]->macro_select("Color", "color", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "color", array()), array("Beige" => "Beige", "Black" => "Black", "Blue" => "Blue", "Brown" => "Brown", "Burgundy" => "Burgundy", "Charcoal" => "Charcoal", "Gold" => "Gold", "Gray" => "Gray", "Green" => "Green", "Off White" => "Off White", "Orange" => "Orange", "Pink" => "Pink", "Purple" => "Purple", "Red" => "Red", "Silver" => "Silver", "Tan" => "Tan", "Turquoise" => "Turquoise", "White" => "White", "Yellow" => "White"),         // line 109
+        echo $context["form"]->macro_select("Color", "color", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "color", array()), array("Beige" => "Beige", "Black" => "Black", "Blue" => "Blue", "Brown" => "Brown", "Burgundy" => "Burgundy", "Charcoal" => "Charcoal", "Gold" => "Gold", "Gray" => "Gray", "Green" => "Green", "Off White" => "Off White", "Orange" => "Orange", "Pink" => "Pink", "Purple" => "Purple", "Red" => "Red", "Silver" => "Silver", "Tan" => "Tan", "Turquoise" => "Turquoise", "White" => "White", "Yellow" => "White"),         // line 104
 ($context["color"] ?? null));
         echo "
                     
                     ";
-        // line 111
+        // line 106
         echo $context["form"]->macro_textInput("License Plate Number", "licensePlateNumber", ($context["licensePlateNumber"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "licensePlateNumber", array()));
         echo "
 
                     ";
-        // line 113
+        // line 108
         echo $context["form"]->macro_buttons("yourCar", true);
         echo "
                 </div>
 
 
                 <!-- INSURANCE -->
-                <div id=\"insurancePage\" class=\"page d-none\">
+                <div id=\"insurancePage\" class=\"page\">
                     ";
-        // line 119
+        // line 114
         echo $context["form"]->macro_title("Insurance info");
         echo "
                     ";
-        // line 120
+        // line 115
         echo $context["form"]->macro_textInput("Policy provider", "policyProvider", ($context["policyProvider"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "policyProvider", array()));
         echo "
                     ";
-        // line 121
+        // line 116
         echo $context["form"]->macro_textInput("Policy number", "policyNumber", ($context["policyNumber"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "policyNumber", array()));
         echo "
                     ";
-        // line 122
+        // line 117
         echo $context["form"]->macro_upload("Insurance card", "insuranceImage", ($context["insuranceImage"] ?? null), "img", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "insurance", array()));
         echo "
                     ";
-        // line 123
+        // line 118
         echo $context["form"]->macro_buttons("insurance", true);
         echo "
                 </div>
 
 
                     <!-- APPLICATION -->
-                <div id=\"applicationPage\" class=\"page d-none\">
+                <div id=\"applicationPage\" class=\"page\">
                     ";
-        // line 129
+        // line 124
         echo $context["form"]->macro_title("Application");
         echo "
                     ";
-        // line 130
+        // line 125
         echo $context["form"]->macro_textInput("Social Security Number", "ssn", ($context["ssn"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "ssn", array()), "Format: ###-##-####");
         echo "
                     ";
-        // line 131
+        // line 126
         echo $context["form"]->macro_upload("Upload W-9", "w9", ($context["w9"] ?? null), "img/pdf", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "w9", array()), "<a href=\"https://www.irs.gov/pub/irs-pdf/fw9.pdf\"  target=\"_blank\">Download</a> and fill out a blank copy of the W-9.");
         echo "
                     ";
-        // line 132
+        // line 127
         echo $context["form"]->macro_upload("Upload Resume", "resume", ($context["resume"] ?? null), "doc", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "resume", array()));
         echo "
                     ";
-        // line 133
+        // line 128
         echo $context["form"]->macro_upload("Fingerprints", "fingerprints", ($context["fingerprints"] ?? null), "img/pdf", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "fingerprints", array()), "You can get your fingerprints taken at the local police station. Scan the fingerprint document or upload a PDF.");
         echo "
                     ";
-        // line 134
+        // line 129
         echo $context["form"]->macro_textArea("Felonies Committed, if applicable", "felonies", ($context["felonies"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "felonies", array()));
         echo "
                     ";
-        // line 135
+        // line 130
         echo $context["form"]->macro_agreement("Background Check", "backgroundCheck", ($context["backgroundCheck"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "backgroundCheck", array()));
         echo "
                     ";
-        // line 136
+        // line 131
         echo $context["form"]->macro_buttons("application", true);
         echo "
                 </div>
 
 
                 <!-- REFFERENCES -->
-                <div id=\"referencesPage\" class=\"page d-none\">
+                <div id=\"referencesPage\" class=\"page\">
                     ";
-        // line 142
+        // line 137
         echo $context["form"]->macro_heading("Please provide two references.");
         echo "
                     ";
-        // line 143
+        // line 138
         echo $context["form"]->macro_subHeading("Reference 1");
         echo "
                     ";
-        // line 144
+        // line 139
         echo $context["form"]->macro_textInput("Name", "ref1Name", ($context["ref1Name"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "ref1Name", array()));
         echo "
                     ";
-        // line 145
+        // line 140
         echo $context["form"]->macro_textInput("Phone Number", "ref1Phone", ($context["ref1Phone"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "ref1Phone", array()));
         echo "
                     ";
-        // line 146
+        // line 141
         echo $context["form"]->macro_email("Email Address", "ref1Email", ($context["ref1Email"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "ref1Email", array()));
         echo "
                     
                     ";
-        // line 148
+        // line 143
         echo $context["form"]->macro_subHeading("Reference 2");
         echo "
                     ";
-        // line 149
+        // line 144
         echo $context["form"]->macro_textInput("Name", "ref2Name", ($context["ref2Name"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "ref2Name", array()));
         echo "
                     ";
-        // line 150
+        // line 145
         echo $context["form"]->macro_textInput("Phone Number", "ref2Phone", ($context["ref2Phone"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "ref2Phone", array()));
         echo "
                     ";
-        // line 151
+        // line 146
         echo $context["form"]->macro_email("Email Address", "ref2Email", ($context["ref2Email"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "ref2Email", array()));
         echo "
                 
                     ";
+        // line 149
+        echo "
+                    ";
+        // line 150
+        if ((((((( !($context["photo"] ?? null) ||  !($context["licenseImage"] ?? null)) ||  !($context["registration"] ?? null)) ||  !($context["insuranceImage"] ?? null)) ||  !($context["w9"] ?? null)) ||  !($context["resume"] ?? null)) ||  !($context["fingerprints"] ?? null))) {
+            // line 151
+            echo "                        ";
+            $context["disabled"] = "disabled";
+            // line 152
+            echo "                    ";
+        }
+        // line 153
+        echo "
+                    ";
         // line 154
-        echo "                    ";
-        echo $context["form"]->macro_buttons("userAccount", true, true);
+        echo $context["form"]->macro_buttons("userAccount", true, true, ($context["disabled"] ?? null));
         echo " ";
         // line 155
         echo "
@@ -372,7 +381,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 
     public function getDebugInfo()
     {
-        return array (  353 => 194,  350 => 193,  338 => 184,  333 => 180,  328 => 155,  324 => 154,  319 => 151,  315 => 150,  311 => 149,  307 => 148,  302 => 146,  298 => 145,  294 => 144,  290 => 143,  286 => 142,  277 => 136,  273 => 135,  269 => 134,  265 => 133,  261 => 132,  257 => 131,  253 => 130,  249 => 129,  240 => 123,  236 => 122,  232 => 121,  228 => 120,  224 => 119,  215 => 113,  210 => 111,  205 => 109,  203 => 89,  199 => 87,  195 => 86,  191 => 85,  186 => 83,  181 => 81,  177 => 80,  173 => 79,  168 => 77,  159 => 71,  154 => 69,  149 => 67,  144 => 65,  140 => 64,  136 => 63,  132 => 62,  127 => 60,  123 => 59,  119 => 58,  115 => 57,  111 => 56,  108 => 55,  104 => 53,  102 => 52,  88 => 45,  82 => 41,  65 => 25,  63 => 24,  49 => 12,  44 => 9,  41 => 8,  35 => 4,  31 => 1,  29 => 6,  27 => 2,  11 => 1,);
+        return array (  362 => 194,  359 => 193,  347 => 184,  342 => 180,  337 => 155,  334 => 154,  331 => 153,  328 => 152,  325 => 151,  323 => 150,  320 => 149,  315 => 146,  311 => 145,  307 => 144,  303 => 143,  298 => 141,  294 => 140,  290 => 139,  286 => 138,  282 => 137,  273 => 131,  269 => 130,  265 => 129,  261 => 128,  257 => 127,  253 => 126,  249 => 125,  245 => 124,  236 => 118,  232 => 117,  228 => 116,  224 => 115,  220 => 114,  211 => 108,  206 => 106,  201 => 104,  199 => 84,  195 => 82,  191 => 81,  187 => 80,  182 => 78,  177 => 76,  173 => 75,  169 => 74,  164 => 72,  155 => 66,  150 => 64,  145 => 62,  140 => 60,  136 => 59,  132 => 58,  128 => 57,  123 => 55,  119 => 54,  115 => 53,  111 => 52,  107 => 51,  104 => 50,  100 => 48,  98 => 47,  92 => 43,  83 => 40,  77 => 36,  60 => 20,  58 => 19,  51 => 14,  44 => 9,  41 => 8,  35 => 4,  31 => 1,  29 => 6,  27 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -387,17 +396,12 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 {% block body_content %}
 <div class=\"container\">
     <div class=\"row\">
-        <div class=\"col-lg-8 offset-lg-2\">
-            <h1 class=\"display-2 text-center logo-font blue-text\"><a href=\"{{path_for('home')}}\">ScoopM</a><small>&nbsp;</small></h1>
-        </div>
-    </div>
-</div>
+        <div id=\"mainContainer\" class=\"col-lg-8 offset-lg-2\">
 
-<div class=\"container\">
-    <div class=\"row\">
-        <div class=\"col-lg-8 offset-lg-2\">
-
-            <h1 class=\"fw-400 text-center\">Driver Application</h1>
+            <div class=\"text-center mb-4\">
+                <a href=\"{{path_for('home')}}\" class=\"h1 d-inline logo-font blue-text\">ScoopM</a>
+                <span class=\"h3 d-inline ml-4\">Driver&nbsp;Application</span>
+            </div>
 
             <div id=\"progress-links\" class=\"row\"> {# {% if errors %}DISABLE-re-visit{% endif %} #}
                 {# <div> #}
@@ -423,7 +427,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 
             <form id=\"application-form\" method=\"post\" action=\"{{ path_for('register') }}\"  enctype=\"multipart/form-data\" {% if errors %}class=\"scoopm-was-validated\"{% endif %} autocomplete=\"off\" novalidate>
                     
-                <input type=\"submit\">
+                {# <input type=\"submit\"> #}
 
                 <!-- ABOUT YOU -->
                 <div id=\"aboutYouPage\" class=\"current-page page\">
@@ -452,7 +456,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 
 
                 <!-- YOUR CAR -->
-                <div id=\"yourCarPage\" class=\"page d-none\">
+                <div id=\"yourCarPage\" class=\"page\">
                     {{form.title('About your car')}}  
                     
                     {{form.upload('Driver\\'s License', 'licenseImage', licenseImage, 'img', errors.licenseImage)}}
@@ -494,7 +498,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 
 
                 <!-- INSURANCE -->
-                <div id=\"insurancePage\" class=\"page d-none\">
+                <div id=\"insurancePage\" class=\"page\">
                     {{form.title('Insurance info')}}
                     {{form.textInput('Policy provider', 'policyProvider', policyProvider, errors.policyProvider)}}
                     {{form.textInput('Policy number', 'policyNumber', policyNumber, errors.policyNumber)}}
@@ -504,7 +508,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 
 
                     <!-- APPLICATION -->
-                <div id=\"applicationPage\" class=\"page d-none\">
+                <div id=\"applicationPage\" class=\"page\">
                     {{form.title('Application')}}
                     {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn, 'Format: ###-##-####')}}
                     {{form.upload('Upload W-9', 'w9', w9, 'img/pdf', errors.w9, '<a href=\"https://www.irs.gov/pub/irs-pdf/fw9.pdf\"  target=\"_blank\">Download</a> and fill out a blank copy of the W-9.')}}
@@ -517,7 +521,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 
 
                 <!-- REFFERENCES -->
-                <div id=\"referencesPage\" class=\"page d-none\">
+                <div id=\"referencesPage\" class=\"page\">
                     {{form.heading('Please provide two references.')}}
                     {{form.subHeading('Reference 1')}}
                     {{form.textInput('Name', 'ref1Name', ref1Name, errors.ref1Name)}}
@@ -530,12 +534,17 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
                     {{form.email('Email Address', 'ref2Email', ref2Email, errors.ref2Email)}}
                 
                     {# {{form.buttons('references', true)}} #}
-                    {{form.buttons('userAccount', true, true)}} {# SUBMIT #}
+
+                    {% if not photo or not licenseImage or not registration or not insuranceImage or not w9 or not resume or not fingerprints  %}
+                        {% set disabled = 'disabled' %}
+                    {% endif %}
+
+                    {{form.buttons('userAccount', true, true, disabled)}} {# SUBMIT #}
 
                 </div>
 
                 {# <!-- USER ACCOUNT -->
-                <div id=\"userAccountPage\" class=\"page d-none\">
+                <div id=\"userAccountPage\" class=\"page\">
                     <div class=\"row\">
                         <div class=\"col-md-8 offset-md-2\">
                             <div id=\"accountCard\" class=\"card mt-md-3 mb-md-5\">

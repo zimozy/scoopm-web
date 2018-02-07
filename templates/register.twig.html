@@ -8,17 +8,12 @@
 {% block body_content %}
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-            <h1 class="display-2 text-center logo-font blue-text"><a href="{{path_for('home')}}">ScoopM</a><small>&nbsp;</small></h1>
-        </div>
-    </div>
-</div>
+        <div id="mainContainer" class="col-lg-8 offset-lg-2">
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-
-            <h1 class="fw-400 text-center">Driver Application</h1>
+            <div class="text-center mb-4">
+                <a href="{{path_for('home')}}" class="h1 d-inline logo-font blue-text">ScoopM</a>
+                <span class="h3 d-inline ml-4">Driver&nbsp;Application</span>
+            </div>
 
             <div id="progress-links" class="row"> {# {% if errors %}DISABLE-re-visit{% endif %} #}
                 {# <div> #}
@@ -44,7 +39,7 @@
 
             <form id="application-form" method="post" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-was-validated"{% endif %} autocomplete="off" novalidate>
                     
-                <input type="submit">
+                {# <input type="submit"> #}
 
                 <!-- ABOUT YOU -->
                 <div id="aboutYouPage" class="current-page page">
@@ -73,7 +68,7 @@
 
 
                 <!-- YOUR CAR -->
-                <div id="yourCarPage" class="page d-none">
+                <div id="yourCarPage" class="page">
                     {{form.title('About your car')}}  
                     
                     {{form.upload('Driver\'s License', 'licenseImage', licenseImage, 'img', errors.licenseImage)}}
@@ -115,7 +110,7 @@
 
 
                 <!-- INSURANCE -->
-                <div id="insurancePage" class="page d-none">
+                <div id="insurancePage" class="page">
                     {{form.title('Insurance info')}}
                     {{form.textInput('Policy provider', 'policyProvider', policyProvider, errors.policyProvider)}}
                     {{form.textInput('Policy number', 'policyNumber', policyNumber, errors.policyNumber)}}
@@ -125,7 +120,7 @@
 
 
                     <!-- APPLICATION -->
-                <div id="applicationPage" class="page d-none">
+                <div id="applicationPage" class="page">
                     {{form.title('Application')}}
                     {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn, 'Format: ###-##-####')}}
                     {{form.upload('Upload W-9', 'w9', w9, 'img/pdf', errors.w9, '<a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf"  target="_blank">Download</a> and fill out a blank copy of the W-9.')}}
@@ -138,7 +133,7 @@
 
 
                 <!-- REFFERENCES -->
-                <div id="referencesPage" class="page d-none">
+                <div id="referencesPage" class="page">
                     {{form.heading('Please provide two references.')}}
                     {{form.subHeading('Reference 1')}}
                     {{form.textInput('Name', 'ref1Name', ref1Name, errors.ref1Name)}}
@@ -151,12 +146,17 @@
                     {{form.email('Email Address', 'ref2Email', ref2Email, errors.ref2Email)}}
                 
                     {# {{form.buttons('references', true)}} #}
-                    {{form.buttons('userAccount', true, true)}} {# SUBMIT #}
+
+                    {% if not photo or not licenseImage or not registration or not insuranceImage or not w9 or not resume or not fingerprints  %}
+                        {% set disabled = 'disabled' %}
+                    {% endif %}
+
+                    {{form.buttons('userAccount', true, true, disabled)}} {# SUBMIT #}
 
                 </div>
 
                 {# <!-- USER ACCOUNT -->
-                <div id="userAccountPage" class="page d-none">
+                <div id="userAccountPage" class="page">
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
                             <div id="accountCard" class="card mt-md-3 mb-md-5">

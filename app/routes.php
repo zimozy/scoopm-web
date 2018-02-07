@@ -12,7 +12,11 @@ $app->get("/thanks", function (Request $request, Response $response) {
     return $this->view->render($response, 'thanks.twig.html');
 })->setName('thanks');
 
-$app->get("/signup", function (Request $request, Response $response) {
+$app->get("/application-login", function (Request $request, Response $response) {
+    return $this->view->render($response, 'application-login.twig.html');
+});
+
+/*$app->get("/signup", function (Request $request, Response $response) {
     return $this->view->render($response, 'signup.twig.html');
 })->setName('signup');
 
@@ -22,14 +26,7 @@ $app->get("/profile", function (Request $request, Response $response) {
 
 $app->get("/admin", function (Request $request, Response $response) {
     return $this->view->render($response, 'admin.twig.html');
-})->setName('admin');
-
-$app->get("/application-login", function (Request $request, Response $response) {
-    return $this->view->render($response, 'application-login.twig.html');
-});
-
-
-
+})->setName('admin');*/
 
 
 $app->get('/register', function (Request $request, Response $response) {

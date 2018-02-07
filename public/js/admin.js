@@ -4,11 +4,12 @@ $(function() {
 
     database = firebase.database();
     usersRef = database.ref().child('users');   //.limitToFirst(10).orderByKey();
-
-    usersTable = $('#usersTable');
     
+    usersTable = $('#usersTable');
+
     usersRef.on('value', function(snapshot) {
         snapshot.forEach(function(data) {
+            console.log(user);
             var user = data.val();
             usersTable.append(
                   '<tr style="">'

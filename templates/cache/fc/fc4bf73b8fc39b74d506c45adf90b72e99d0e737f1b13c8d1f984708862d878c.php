@@ -27,24 +27,24 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 2
+    // line 3
     public function block_title($context, array $blocks = array())
     {
         echo "Admin";
     }
 
-    // line 3
+    // line 5
     public function block_head_styles($context, array $blocks = array())
     {
-        // line 4
+        // line 6
         echo "    <link rel=\"stylesheet\" href=\"/css/admin.css\">
 ";
     }
 
-    // line 7
+    // line 9
     public function block_body_content($context, array $blocks = array())
     {
-        // line 8
+        // line 10
         echo "<h1 id=\"adminH1\">Admin</h1>
 
 <table id=\"usersTable\" class=\"table\">
@@ -55,14 +55,9 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
     </thead>
 </table>
 
-<div class=\"table\">
-    <div class=\"row\">
-        <div class=\"cell\">Test</div>
-        <div class=\"cell\">Test</div>
-        <div class=\"cell\">Test</div>
-    </div>
-</div>
-<!-- Modal -->
+";
+        // line 27
+        echo "<!-- Modal -->
 <div class=\"modal fade scoopm-application-modal\" id=\"exampleModalCenter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
     <div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\">
       <div class=\"modal-content\">
@@ -154,10 +149,10 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
 ";
     }
 
-    // line 116
+    // line 118
     public function block_body_scripts($context, array $blocks = array())
     {
-        // line 117
+        // line 119
         $this->displayParentBlock("body_scripts", $context, $blocks);
         echo "
 <script src=\"/js/admin.js\"></script>
@@ -176,13 +171,15 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
 
     public function getDebugInfo()
     {
-        return array (  161 => 117,  158 => 116,  48 => 8,  45 => 7,  40 => 4,  37 => 3,  31 => 2,  11 => 1,);
+        return array (  156 => 119,  153 => 118,  60 => 27,  48 => 10,  45 => 9,  40 => 6,  37 => 5,  31 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Twig_Source("{% extends 'base.twig.html' %}
+
 {% block title %}Admin{% endblock %}
+
 {% block head_styles %}
     <link rel=\"stylesheet\" href=\"/css/admin.css\">
 {% endblock %}
@@ -198,13 +195,13 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
     </thead>
 </table>
 
-<div class=\"table\">
+{# <div class=\"table\">
     <div class=\"row\">
         <div class=\"cell\">Test</div>
         <div class=\"cell\">Test</div>
         <div class=\"cell\">Test</div>
     </div>
-</div>
+</div> #}
 <!-- Modal -->
 <div class=\"modal fade scoopm-application-modal\" id=\"exampleModalCenter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
     <div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\">

@@ -7,35 +7,42 @@ var currentPage = pages[0];
 
 /* NAVIGATION FUNCTIONS */
 
+var linksOffset = $('body').offset().top;
 function goTo(newPage) {
-    currentPageObj = $('#' + currentPage + 'Page');
-    currentPageObj.addClass('d-none');
-    currentPageObj.removeClass('current-page');
+    
+    var currentPageObj = $('#' + currentPage + 'Page');
+    var newPageObj = $('#' + newPage + 'Page');
 
-    newPageObj = $('#' + newPage + 'Page');
-    newPageObj.addClass('current-page');
-    newPageObj.removeClass('d-none');
+    currentPageObj.fadeOut(150, function() {
+        newPageObj.fadeIn(150);
+    });
 
     currentPage = newPage;
-    
     updateProgressLinks();
 
-    newPageObj.find('input:text:not(.upload-text):first').focus();
-    return newPageObj;
+    if ( (document.documentElement.scrollTop || document.body.scrollTop) > linksOffset) {        
+        $('html,body').animate({
+                scrollTop: linksOffset
+            },
+            200,
+            function() {
+                newPageObj.find('input:text:not(.upload-text):first').focus();
+            });
+    }
 }
 
 function updateProgressLinks() {
 
     $('#progress-links .current-page').removeClass('current-page');
-
+    
     for (i = 0; i < pages.length; i++) {
         
-        var currentLink = $('#' + pages[i] + 'Link');
+        var currentLinkObj = $('#' + pages[i] + 'Link');
         
-        currentLink.addClass('page-visited');
+        currentLinkObj.addClass('page-visited');
         
         if (pages[i] == currentPage) {
-            currentLink.addClass('current-page');
+            currentLinkObj.addClass('current-page');
             break;
         }
     }
