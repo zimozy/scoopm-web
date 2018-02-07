@@ -173,6 +173,13 @@ $app->post('/register', function (Request $request, Response $response) {
         $curl_response = curl_exec($curl);
         curl_close($curl);
 
+
+        //1. get candidate id
+        //2. save to Firebase
+
+        //3. request report using candidate id
+        //4. save report id, other id's?, to Firebase
+
         var_dump($curl_response);
         return $response->getBody()->write('----');
 
