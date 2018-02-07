@@ -2,8 +2,6 @@ var redirect = false;
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-        console.log(user);
-        
         if (redirect) {
             window.location.replace('/register');
         } else {

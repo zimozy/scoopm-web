@@ -43,15 +43,16 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     <!-- jQuery -->
     <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
 
-    <!-- CAR QUERY -->
     ";
-        // line 17
+        // line 16
         $this->displayBlock('car_query', $context, $blocks);
         // line 28
         echo "
-    <!-- POPPER -->
-    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>
-
+    ";
+        // line 30
+        echo "    ";
+        // line 31
+        echo "
     <!-- BOOTSTRAP -->
     <link rel=\"stylesheet\" href=\"/bootstrap/css/bootstrap.min.css\">
     <!-- <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\"> -->
@@ -99,11 +100,12 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     {
     }
 
-    // line 17
+    // line 16
     public function block_car_query($context, array $blocks = array())
     {
-        // line 18
-        echo "        <script type=\"text/javascript\" src=\"http://www.carqueryapi.com/js/carquery.0.3.4.js\"></script>
+        // line 17
+        echo "        <!-- CAR QUERY -->
+        <script type=\"text/javascript\" src=\"http://www.carqueryapi.com/js/carquery.0.3.4.js\"></script>
         <script type=\"text/javascript\">
             \$(document).ready(function() {
                 var carquery = new CarQuery();
@@ -193,7 +195,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
 
     public function getDebugInfo()
     {
-        return array (  185 => 78,  168 => 63,  165 => 62,  158 => 57,  155 => 56,  150 => 50,  143 => 51,  141 => 50,  137 => 49,  132 => 46,  129 => 45,  124 => 42,  119 => 37,  106 => 18,  103 => 17,  98 => 5,  93 => 79,  91 => 78,  88 => 77,  86 => 62,  83 => 61,  81 => 56,  78 => 55,  76 => 45,  72 => 43,  70 => 42,  64 => 38,  62 => 37,  51 => 28,  49 => 17,  34 => 5,  28 => 1,);
+        return array (  187 => 78,  170 => 63,  167 => 62,  160 => 57,  157 => 56,  152 => 50,  145 => 51,  143 => 50,  139 => 49,  134 => 46,  131 => 45,  126 => 42,  121 => 37,  107 => 17,  104 => 16,  99 => 5,  94 => 79,  92 => 78,  89 => 77,  87 => 62,  84 => 61,  82 => 56,  79 => 55,  77 => 45,  73 => 43,  71 => 42,  65 => 38,  63 => 37,  55 => 31,  53 => 30,  50 => 28,  48 => 16,  34 => 5,  28 => 1,);
     }
 
     public function getSourceContext()
@@ -213,8 +215,8 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     <!-- jQuery -->
     <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
 
-    <!-- CAR QUERY -->
     {% block car_query %}
+        <!-- CAR QUERY -->
         <script type=\"text/javascript\" src=\"http://www.carqueryapi.com/js/carquery.0.3.4.js\"></script>
         <script type=\"text/javascript\">
             \$(document).ready(function() {
@@ -226,8 +228,8 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
         </script>
     {% endblock %}
 
-    <!-- POPPER -->
-    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>
+    {# <!-- POPPER --> #}
+    {# <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script> #}
 
     <!-- BOOTSTRAP -->
     <link rel=\"stylesheet\" href=\"/bootstrap/css/bootstrap.min.css\">

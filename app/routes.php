@@ -24,6 +24,9 @@ $app->get("/admin", function (Request $request, Response $response) {
     return $this->view->render($response, 'admin.twig.html');
 })->setName('admin');
 
+$app->get("/application-login", function (Request $request, Response $response) {
+    return $this->view->render($response, 'application-login.twig.html');
+});
 
 
 

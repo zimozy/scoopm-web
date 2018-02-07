@@ -161,6 +161,12 @@ body.no-scroll {
   /* overflow-y:hidden; */
 }
 
+
+/* Submit button message */
+/* #submit-button + p { display: block; } */
+#submit-button:enabled + p { display: none; }
+
+
 /* UPLOAD */
 
 .upload-input-group input,

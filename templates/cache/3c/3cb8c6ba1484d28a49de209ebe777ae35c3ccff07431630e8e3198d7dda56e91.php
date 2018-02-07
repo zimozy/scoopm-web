@@ -45,36 +45,22 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
 
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ";
-        // line 238
+        // line 224
         echo "
 ";
-        // line 243
+        // line 229
         echo "
 ";
-        // line 251
+        // line 237
         echo "
 ";
-        // line 259
+        // line 245
         echo "
 ";
-        // line 267
+        // line 253
         echo "
 ";
     }
@@ -645,7 +631,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
             <small class=\"form-text scoopm-hint\">";
             // line 166
             echo ($context["type_phrase"] ?? null);
-            echo " (under 5MB)</small>
+            echo " (under 2MB)</small>
 
         </div>
     </div>
@@ -832,7 +818,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 239
+    // line 225
     public function macro_title($__text__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -844,9 +830,9 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 240
+            // line 226
             echo "    ";
-            // line 241
+            // line 227
             echo "    ";
 
             return ('' === $tmp = ob_get_contents()) ? '' : new Twig_Markup($tmp, $this->env->getCharset());
@@ -855,7 +841,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 244
+    // line 230
     public function macro_heading($__text__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -867,11 +853,11 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 245
+            // line 231
             echo "    <div class=\"row\">
         <div class=\"col-sm-9 offset-sm-3\">
                 <p class=\"h4 fw-400\">";
-            // line 247
+            // line 233
             echo twig_escape_filter($this->env, ($context["text"] ?? null), "html", null, true);
             echo "</p>
         </div>
@@ -884,7 +870,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 252
+    // line 238
     public function macro_subHeading($__text__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -896,11 +882,11 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 253
+            // line 239
             echo "    <div class=\"row\">
         <div class=\"col-sm-9 offset-sm-3\">
                 <p class=\"h5 fw-400\">";
-            // line 255
+            // line 241
             echo ($context["text"] ?? null);
             echo "</p>
         </div>
@@ -913,7 +899,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 260
+    // line 246
     public function macro_note($__text__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -925,11 +911,11 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 261
+            // line 247
             echo "    <div class=\"row\">
         <div class=\"col-sm-9 offset-sm-3\">
                 <p class=\"alert alert-secondary\">";
-            // line 263
+            // line 249
             echo ($context["text"] ?? null);
             echo "</p>
         </div>
@@ -942,7 +928,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         }
     }
 
-    // line 268
+    // line 254
     public function macro_buttons($__thisPage__ = null, $__goingBack__ = false, $__submitting__ = false, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -956,34 +942,55 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         ob_start();
         try {
-            // line 269
+            // line 255
             echo "    <div class=\"form-group text-center mt-4\">
 
         ";
-            // line 271
+            // line 257
             if (($context["goingBack"] ?? null)) {
-                // line 272
+                // line 258
                 echo "            <button id=\"";
                 echo twig_escape_filter($this->env, ($context["thisPage"] ?? null), "html", null, true);
                 echo "Back\" class=\"back-button btn btn-outline-secondary mr-sm-5 px-5\"><i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back&nbsp;</button>
         ";
             }
-            // line 274
+            // line 260
             echo "
         ";
-            // line 275
+            // line 261
             if ( !($context["submitting"] ?? null)) {
-                // line 276
-                echo "            <button id=\"";
+                // line 262
+                echo "
+            <button id=\"";
+                // line 263
                 echo twig_escape_filter($this->env, ($context["thisPage"] ?? null), "html", null, true);
                 echo "Next\" class=\"next-button btn btn-outline-primary px-5\">&nbsp;Next&nbsp;&nbsp;<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></button>
+            
         ";
             } else {
-                // line 278
-                echo "            <input id=\"submit-button\" type=\"submit\" class=\"btn btn-primary px-5\" value=\"Submit\" disabled/>
+                // line 266
+                echo "        
+            ";
+                // line 267
+                if (((((((($context["photo"] ?? null) && ($context["licenseImage"] ?? null)) && ($context["registration"] ?? null)) && ($context["insuranceImage"] ?? null)) && ($context["w9"] ?? null)) && ($context["resume"] ?? null)) && ($context["fingerprints"] ?? null))) {
+                    // line 268
+                    echo "                ";
+                    $context["disabledValue"] = "disabled";
+                    // line 269
+                    echo "            ";
+                }
+                // line 270
+                echo "            
+            <input id=\"submit-button\" type=\"submit\" class=\"btn btn-primary px-5\" value=\"Submit\" ";
+                // line 271
+                echo twig_escape_filter($this->env, ($context["disabledValue"] ?? null), "html", null, true);
+                echo "/>
+            <p>
+                <mark>Note:</mark> <span class=\"\">You must upload all files to submit the application.</span>
+            </p>
         ";
             }
-            // line 280
+            // line 276
             echo "
     </div>
 ";
@@ -1006,7 +1013,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
     public function getDebugInfo()
     {
-        return array (  987 => 280,  983 => 278,  977 => 276,  975 => 275,  972 => 274,  966 => 272,  964 => 271,  960 => 269,  946 => 268,  933 => 263,  929 => 261,  917 => 260,  904 => 255,  900 => 253,  888 => 252,  875 => 247,  871 => 245,  859 => 244,  850 => 241,  848 => 240,  836 => 239,  819 => 211,  811 => 210,  807 => 209,  800 => 207,  797 => 206,  794 => 205,  791 => 204,  788 => 203,  785 => 202,  782 => 201,  780 => 200,  777 => 199,  762 => 198,  751 => 194,  747 => 192,  745 => 191,  742 => 190,  739 => 189,  724 => 187,  720 => 186,  717 => 185,  715 => 184,  707 => 183,  700 => 181,  697 => 180,  694 => 179,  691 => 178,  688 => 177,  685 => 176,  682 => 175,  680 => 174,  677 => 173,  661 => 172,  647 => 166,  642 => 163,  638 => 161,  636 => 160,  633 => 159,  631 => 158,  622 => 154,  614 => 153,  605 => 150,  601 => 148,  598 => 147,  592 => 145,  590 => 144,  581 => 140,  576 => 137,  573 => 136,  570 => 135,  567 => 134,  564 => 133,  561 => 132,  558 => 131,  555 => 129,  552 => 128,  549 => 127,  546 => 126,  543 => 125,  540 => 124,  537 => 123,  534 => 122,  531 => 121,  529 => 120,  524 => 119,  521 => 118,  518 => 117,  515 => 116,  512 => 114,  509 => 113,  506 => 112,  503 => 111,  500 => 110,  497 => 109,  495 => 108,  492 => 107,  489 => 105,  472 => 104,  451 => 97,  448 => 96,  442 => 94,  440 => 93,  432 => 90,  429 => 89,  426 => 88,  423 => 87,  420 => 86,  417 => 85,  414 => 84,  412 => 83,  409 => 82,  393 => 81,  371 => 75,  364 => 73,  361 => 72,  358 => 71,  355 => 70,  352 => 69,  349 => 68,  346 => 67,  344 => 66,  341 => 65,  326 => 64,  316 => 61,  311 => 58,  308 => 57,  304 => 55,  300 => 53,  298 => 52,  285 => 51,  277 => 48,  274 => 47,  272 => 46,  269 => 45,  266 => 44,  263 => 43,  260 => 42,  257 => 41,  254 => 40,  252 => 39,  249 => 38,  232 => 37,  220 => 33,  206 => 32,  203 => 31,  200 => 30,  197 => 29,  194 => 28,  191 => 27,  188 => 26,  186 => 25,  183 => 24,  167 => 23,  156 => 19,  150 => 17,  148 => 16,  144 => 15,  130 => 14,  123 => 12,  120 => 11,  117 => 10,  114 => 9,  111 => 8,  108 => 7,  105 => 6,  103 => 5,  100 => 4,  83 => 3,  78 => 267,  75 => 259,  72 => 251,  69 => 243,  66 => 238,  43 => 216,  40 => 197,  37 => 171,  34 => 103,  31 => 80,  28 => 63,  25 => 36,  22 => 22,  19 => 2,);
+        return array (  994 => 276,  986 => 271,  983 => 270,  980 => 269,  977 => 268,  975 => 267,  972 => 266,  966 => 263,  963 => 262,  961 => 261,  958 => 260,  952 => 258,  950 => 257,  946 => 255,  932 => 254,  919 => 249,  915 => 247,  903 => 246,  890 => 241,  886 => 239,  874 => 238,  861 => 233,  857 => 231,  845 => 230,  836 => 227,  834 => 226,  822 => 225,  805 => 211,  797 => 210,  793 => 209,  786 => 207,  783 => 206,  780 => 205,  777 => 204,  774 => 203,  771 => 202,  768 => 201,  766 => 200,  763 => 199,  748 => 198,  737 => 194,  733 => 192,  731 => 191,  728 => 190,  725 => 189,  710 => 187,  706 => 186,  703 => 185,  701 => 184,  693 => 183,  686 => 181,  683 => 180,  680 => 179,  677 => 178,  674 => 177,  671 => 176,  668 => 175,  666 => 174,  663 => 173,  647 => 172,  633 => 166,  628 => 163,  624 => 161,  622 => 160,  619 => 159,  617 => 158,  608 => 154,  600 => 153,  591 => 150,  587 => 148,  584 => 147,  578 => 145,  576 => 144,  567 => 140,  562 => 137,  559 => 136,  556 => 135,  553 => 134,  550 => 133,  547 => 132,  544 => 131,  541 => 129,  538 => 128,  535 => 127,  532 => 126,  529 => 125,  526 => 124,  523 => 123,  520 => 122,  517 => 121,  515 => 120,  510 => 119,  507 => 118,  504 => 117,  501 => 116,  498 => 114,  495 => 113,  492 => 112,  489 => 111,  486 => 110,  483 => 109,  481 => 108,  478 => 107,  475 => 105,  458 => 104,  437 => 97,  434 => 96,  428 => 94,  426 => 93,  418 => 90,  415 => 89,  412 => 88,  409 => 87,  406 => 86,  403 => 85,  400 => 84,  398 => 83,  395 => 82,  379 => 81,  357 => 75,  350 => 73,  347 => 72,  344 => 71,  341 => 70,  338 => 69,  335 => 68,  332 => 67,  330 => 66,  327 => 65,  312 => 64,  302 => 61,  297 => 58,  294 => 57,  290 => 55,  286 => 53,  284 => 52,  271 => 51,  263 => 48,  260 => 47,  258 => 46,  255 => 45,  252 => 44,  249 => 43,  246 => 42,  243 => 41,  240 => 40,  238 => 39,  235 => 38,  218 => 37,  206 => 33,  192 => 32,  189 => 31,  186 => 30,  183 => 29,  180 => 28,  177 => 27,  174 => 26,  172 => 25,  169 => 24,  153 => 23,  142 => 19,  136 => 17,  134 => 16,  130 => 15,  116 => 14,  109 => 12,  106 => 11,  103 => 10,  100 => 9,  97 => 8,  94 => 7,  91 => 6,  89 => 5,  86 => 4,  69 => 3,  64 => 253,  61 => 245,  58 => 237,  55 => 229,  52 => 224,  43 => 216,  40 => 197,  37 => 171,  34 => 103,  31 => 80,  28 => 63,  25 => 36,  22 => 22,  19 => 2,);
     }
 
     public function getSourceContext()
@@ -1176,7 +1183,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
             
             <small class=\"form-text scoopm-error\">Oops, there was an error. Please try again</small>
 
-            <small class=\"form-text scoopm-hint\">{{type_phrase|raw}} (under 5MB)</small>
+            <small class=\"form-text scoopm-hint\">{{type_phrase|raw}} (under 2MB)</small>
 
         </div>
     </div>
@@ -1231,20 +1238,6 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
 
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {# FORMATTING #}
@@ -1286,9 +1279,19 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         {% endif %}
 
         {% if not submitting %}
+
             <button id=\"{{thisPage}}Next\" class=\"next-button btn btn-outline-primary px-5\">&nbsp;Next&nbsp;&nbsp;<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></button>
+            
         {% else %}
-            <input id=\"submit-button\" type=\"submit\" class=\"btn btn-primary px-5\" value=\"Submit\" disabled/>
+        
+            {% if photo and licenseImage and registration and insuranceImage and w9 and resume and fingerprints %}
+                {% set disabledValue = 'disabled' %}
+            {% endif %}
+            
+            <input id=\"submit-button\" type=\"submit\" class=\"btn btn-primary px-5\" value=\"Submit\" {{disabledValue}}/>
+            <p>
+                <mark>Note:</mark> <span class=\"\">You must upload all files to submit the application.</span>
+            </p>
         {% endif %}
 
     </div>

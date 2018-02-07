@@ -163,7 +163,7 @@
             
             <small class="form-text scoopm-error">Oops, there was an error. Please try again</small>
 
-            <small class="form-text scoopm-hint">{{type_phrase|raw}} (under 5MB)</small>
+            <small class="form-text scoopm-hint">{{type_phrase|raw}} (under 2MB)</small>
 
         </div>
     </div>
@@ -218,20 +218,6 @@
 
 
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {# FORMATTING #}
@@ -273,9 +259,19 @@
         {% endif %}
 
         {% if not submitting %}
+
             <button id="{{thisPage}}Next" class="next-button btn btn-outline-primary px-5">&nbsp;Next&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></button>
+            
         {% else %}
-            <input id="submit-button" type="submit" class="btn btn-primary px-5" value="Submit" disabled/>
+        
+            {% if photo and licenseImage and registration and insuranceImage and w9 and resume and fingerprints %}
+                {% set disabledValue = 'disabled' %}
+            {% endif %}
+            
+            <input id="submit-button" type="submit" class="btn btn-primary px-5" value="Submit" {{disabledValue}}/>
+            <p>
+                <mark>Note:</mark> <span class="">You must upload all files to submit the application.</span>
+            </p>
         {% endif %}
 
     </div>

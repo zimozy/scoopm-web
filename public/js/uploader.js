@@ -2,26 +2,14 @@
 $(function() {
 
 
-
-
-
-// To-do: re-enable
-// submitButton.prop('disabled', true); // DISABLE SUBMIT BUTTON
-
-
-
-
-
-
-//Names of the FB Storage directories
-var folders = {
+var folders = { //Names of the FireBase Storage directories
+           'photo-actual': 'profiles',
     'licenseImage-actual': 'licenses',
     'registration-actual': 'registrations',
   'insuranceImage-actual': 'insurance-cards',
-           'photo-actual': 'profiles',
               'w9-actual': 'w9s',
           'resume-actual': 'resumes',
-    'fingerprints-actual': 'fingerprints',
+    'fingerprints-actual': 'fingerprints'
 }
 
 $('input:file').each(function() {
@@ -54,10 +42,10 @@ $('input:file').each(function() {
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function(snapshot) {
             switch (snapshot.state) {
                 case firebase.storage.TaskState.PAUSED: // or 'paused'
-                    console.log('Paused upload: ' + file.name);
+                    // console.log('Paused upload: ' + file.name);
                     break;
                 case firebase.storage.TaskState.RUNNING: // or 'running'
-                    console.log('Running upload: ' + file.name);
+                    // console.log('Running upload: ' + file.name);
                     break;
             }
 
@@ -68,10 +56,10 @@ $('input:file').each(function() {
             inputGroup.removeClass('scoopm-is-uploading');
             inputGroup.addClass('scoopm-is-invalid');
             
-            console.log(error.message);
+            // console.log(error.message);
 
         }, function() { //success
-            console.log('Upload success.');
+            // console.log('Upload success.');
 
             //CHANGE BUTTON
             button.text('Change File...');
@@ -85,9 +73,8 @@ $('input:file').each(function() {
             uploadsAreValid = true;
             $('.upload-input-group').each(function() {
                 if (($(this).hasClass('scoopm-is-valid'))) {
-                    // console.log(this + ' has class');
+
                 } else {
-                    // console.log(this + ' doesnt have class');
                     uploadsAreValid = false;
                     return false; //break the .each() loop
                 }

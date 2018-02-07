@@ -1,0 +1,50 @@
+{% extends 'base.twig.html' %}
+
+{% block title %}Thanks!{% endblock %}
+
+{% block car_query %}{% endblock %}
+
+{% block body_content %}
+
+<div class="container">
+    
+    <div class="row mt-sm-4">
+        <div class="col">
+            <h1 class="display-4 text-center logo-font text-muted mt-2"><a href="{{path_for('home')}}">ScoopM</a></h1>
+        </div>
+    </div>
+    {# 
+    <div class="row d-none d-sm-block">
+        <div class="col my-3">&nbsp;</div>
+    </div>
+
+    <div class="row">
+        <div class="col my-2">&nbsp;</div>
+    </div> #}
+
+    <div class="row h-100 align-items-center" style="margin-top: 10%;">
+        <div class="col-md-8 offset-md-2 col-lg-4 offset-lg-4 text-center">
+            <h1 class="h1 fw-400 blue-text">Please sign in.</h1>
+            <p class="lead">If you don't have an account, <a href="/">create one</a>.</p>
+            <form>
+                <div class="form-group">
+                    <input id="email" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input id="password" type="password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button id="signInButton" class="btn btn-outline-primary">Sign in</button>
+                </div>
+            </form>
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block body_scripts %}
+<script src="/js/signIn.js"></script>
+{% endblock %}

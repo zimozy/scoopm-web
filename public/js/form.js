@@ -2,8 +2,12 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user) {    
         email.val(user.email);
         $('#userID').val(user.uid);
+    } else {
+        window.location.replace('/application-login');
     }
 });
+
+
 
 $(function() {
 
@@ -96,23 +100,8 @@ submitButton.updateDisabled = function() {
 
 
 mForm.submit(function(event) {
-
-//      firebase.auth().onAuthStateChanged(function(user) {
-//         if (user) {
-//             var database = firebase.database();
-//             var oldRef = database.ref('users/{{userKey}}');
-            
-//             oldRef.once('value').then(function(snapshot) {
-//                 database.ref('users/' + user.uid).set(snapshot.toJSON());
-//             });
-            
-//             oldRef.remove();
-
-// //                window.location.replace('{{path_for("thanks")}}');
-//         }
-//       });
     $('input:file').remove(); // don't want to upload these
-  });
+});
 
 
 });
