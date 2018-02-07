@@ -44,7 +44,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
         echo "<div class=\"container\">
     <div class=\"row\">
         <div class=\"col-lg-8 offset-lg-2\">
-            <h1 class=\"display-2 text-center logo-font blue-text mt-4\"><a href=\"";
+            <h1 class=\"display-2 text-center logo-font blue-text\"><a href=\"";
         // line 12
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("home"), "html", null, true);
         echo "\">ScoopM</a><small>&nbsp;</small></h1>
@@ -284,7 +284,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
                 <div id=\"referencesPage\" class=\"page d-none\">
                     ";
         // line 142
-        echo $context["form"]->macro_title("Please Provide Two References");
+        echo $context["form"]->macro_heading("Please provide two references.");
         echo "
                     ";
         // line 143
@@ -389,7 +389,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 <div class=\"container\">
     <div class=\"row\">
         <div class=\"col-lg-8 offset-lg-2\">
-            <h1 class=\"display-2 text-center logo-font blue-text mt-4\"><a href=\"{{path_for('home')}}\">ScoopM</a><small>&nbsp;</small></h1>
+            <h1 class=\"display-2 text-center logo-font blue-text\"><a href=\"{{path_for('home')}}\">ScoopM</a><small>&nbsp;</small></h1>
         </div>
     </div>
 </div>
@@ -519,7 +519,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 
                 <!-- REFFERENCES -->
                 <div id=\"referencesPage\" class=\"page d-none\">
-                    {{form.title('Please Provide Two References')}}
+                    {{form.heading('Please provide two references.')}}
                     {{form.subHeading('Reference 1')}}
                     {{form.textInput('Name', 'ref1Name', ref1Name, errors.ref1Name)}}
                     {{form.textInput('Phone Number', 'ref1Phone', ref1Phone, errors.ref1Phone)}}
