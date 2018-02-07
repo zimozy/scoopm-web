@@ -26,7 +26,7 @@ function goTo(newPage) {
 
 function updateProgressLinks() {
 
-    $('#progress-links .underlined').removeClass('underlined');
+    $('#progress-links .current-page').removeClass('current-page');
 
     for (i = 0; i < pages.length; i++) {
         
@@ -35,7 +35,7 @@ function updateProgressLinks() {
         currentLink.addClass('page-visited');
         
         if (pages[i] == currentPage) {
-            currentLink.addClass('underlined');
+            currentLink.addClass('current-page');
             break;
         }
     }

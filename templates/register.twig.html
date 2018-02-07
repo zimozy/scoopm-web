@@ -20,20 +20,31 @@
 
             <h1 class="fw-400 text-center">Driver Application</h1>
 
-            <ul id="progress-links" class="h4 text-center my-4 my-lg-5 {% if errors %}re-visit{% endif %}">
-                <li><a id="aboutYouLink" href="#" class="underlined page-visited"><div class="circle">1</div>About&nbsp;You</a></li>
-                <li><!--<span> &raquo; </span>--><a id="yourCarLink" href="#"><div class="circle">2</div>Your&nbsp;Car</a></li>
-                <li><!--<span> &raquo; </span>--><a id="insuranceLink" href="#"><div class="circle">3</div>Insurance&nbsp;Info</a></li>
-                <li><!--<span> &raquo; </span>--><a id="applicationLink" href="#"><div class="circle">4</div>Application</a></li>
-                <li><!--<span> &raquo; </span>--><a id="referencesLink" href="#"><div class="circle">5</div>References</a></li>
-                {# <!--<span> &raquo; </span>--><a id="userAccountLink" href="#">User&nbsp;Account</a> #}
-            </ul>
+            <div id="progress-links" class="row"> {# {% if errors %}DISABLE-re-visit{% endif %} #}
+                {# <div> #}
+                    <div class="col-sm">
+                        <a id="aboutYouLink" href="#" class="current-page page-visited"><span class="circle">1</span><span class="link">About&nbsp;You</span></a>
+                    </div>
+                    <div class="col-sm">
+                        <a id="yourCarLink" href="#"><span class="circle">2</span><span class="link">Your&nbsp;Car</span></a>
+                    </div>
+                    <div class="col-sm">
+                        <a id="insuranceLink" href="#"><span class="circle">3</span><span class="link">Insurance&nbsp;Info</span></a>
+                    </div>
+                    <div class="col-sm">
+                        <a id="applicationLink" href="#"><span class="circle">4</span><span class="link">Application</span></a>
+                    </div>
+                    <div class="col-sm">
+                        <a id="referencesLink" href="#"><span class="circle">5</span><span class="link">References</span></a>
+                    </div>
+                {# </div> #}
+            </div>
 
-            <br>
+            <div class="clearfix"></div>
 
             <form id="application-form" method="post" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-was-validated"{% endif %} autocomplete="off" novalidate>
                     
-                <input type="submit">
+                {# <input type="submit"> #}
 
                 <!-- ABOUT YOU -->
                 <div id="aboutYouPage" class="current-page page">

@@ -32,45 +32,70 @@ body {
 
 /* PROGRESS LINKS */
 
-#progress-links { 
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-#progress-links li {
-  float: left;
-  padding: 0.5rem;
-}
-
-#progress-links li a {
-  display: block;
-}
-
-#progress-links li .circle {
-  margin: 0 auto 0.5rem auto;
-  height: 2rem; 
-  width: 2rem; 
-  border-radius: 1rem; 
-  font-size: 1rem; 
-  line-height: 2rem; 
-  text-align: center; 
-  background: #868e96;
-}
-
-/* progress links colors */
-#progress-links a.page-visited, #progress-links span { color: #009AEE; }
-#progress-links a.page-visited .circle {background: #009AEE;}
-
-#progress-links a, #progress-links a:not(.page-visited) ~ span  { color: #868e96; }
-
-/* when they've been turned back by the validation */
-#progress-links.re-visit a, #progress-links.re-visit span { color: #009AEE !important; }
-
-#progress-links li .circle {
-  color: white !important;
+#progress-links a { 
+  color: #868e96;
   text-decoration: none;
 }
+
+#progress-links a.current-page .link,
+#progress-links a:hover .link {
+  text-decoration: underline;
+}
+
+#progress-links .circle {
+  display: inline-block;
+  margin: 0 0.5rem 0.5rem 0;
+  height: 2rem;
+  line-height: 28px;
+  width: 2rem;
+  border-radius: 1rem;
+  text-align: center; 
+  
+  font-size: 1rem;
+  color: white;
+  background: #868e96;
+  border: 2px solid #868e96;
+}
+
+#progress-links a.page-visited { color: #009AEE; }
+#progress-links a.page-visited .circle { background: #009AEE; border-color: #009AEE;}
+
+#progress-links a.current-page .circle {
+  background-color: white;
+  border-color: #009AEE;
+  color: #009AEE;
+}
+@media (min-width: 576px) { /* Size "sm" */
+  #progress-links {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  #progress-links a { 
+    display: block;
+    text-align: center; 
+  }
+  
+  #progress-links .circle {
+    display: block;
+    margin: 0.25rem auto 0.5rem auto;
+  }
+
+  #progress-links a.current-page .circle {
+    height: 2.5rem;
+    width: 2.5rem;
+    line-height: 36px;
+    border-radius: 1.25rem;
+    margin-top:0;
+    margin-bottom:0.25rem;
+  }
+}
+/* #progress-links a:not(.page-visited) ~ span   */
+
+/* when they've been turned back by the validation */
+/* #progress-links.re-visit a { color: #009AEE !important; } */
+/* #progress-links.re-visit span  */
+
 
 
 
