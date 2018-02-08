@@ -6,13 +6,14 @@
 {% set theStates = { 'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas', 'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware', 'DC': 'District Of Columbia', 'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois', 'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana', 'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan', 'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana', 'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire', 'NJ': 'New Jersey', 'NM': 'New Mexico', 'NY': 'New York', 'NC': 'North Carolina', 'ND': 'North Dakota', 'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania', 'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington', 'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming' } %}
 
 {% block body_content %}
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div id="mainContainer" class="col-lg-8 offset-lg-2">
+        <div id="mainContainer" class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
 
             <div class="text-center mb-4">
                 <a href="{{path_for('home')}}" class="h1 d-inline logo-font blue-text">ScoopM</a>
-                <span class="h3 d-inline ml-4">Driver&nbsp;Application</span>
+                <span>&nbsp;&nbsp;</span>
+                <span class="h3 d-inline">Driver&nbsp;Application</span>
             </div>
 
             <div id="progress-links" class="row"> {# {% if errors %}DISABLE-re-visit{% endif %} #}
@@ -116,6 +117,7 @@
                     {{form.textInput('Policy number', 'policyNumber', policyNumber, errors.policyNumber)}}
                     {{form.upload('Insurance card', 'insuranceImage', insuranceImage, 'img', errors.insurance)}}
                     {{form.buttons('insurance', true)}}
+                    <!-- <div style="position: absolute; top:100%; height:600px;">&nbsp;</div> -->
                 </div>
 
 
@@ -184,6 +186,7 @@
                 <input id="userID" name="userID" type="hidden" value="{{userID}}">
                 
             </form>
+
         </div>
     </div>
 </div>

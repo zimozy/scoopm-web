@@ -7,8 +7,8 @@ html {
 }
 
 body {
-  margin-bottom: 50px;   /* Margin bottom by footer height */
-  background-color: #333;
+  margin-bottom: 200px;   /* Margin bottom by footer height */
+  /* background-color: #333; */
 }
 
 .footer {
@@ -36,11 +36,12 @@ body {
 
 
 #mainContainer {
+  /* max-width: 1000px; */
+  padding: 1rem 2rem;
   border: 1px solid #eee;
   border-top: none;
   background: white;
-  box-shadow: 0 0 50px #ffffff40;
-  padding: 1rem;
+  box-shadow: 0 0 50px #00000040;
 }
 
 .border-primary { border-color: #009AEE !important;}
@@ -49,14 +50,19 @@ body {
 
 #progress-links {
   background: #444;
-  box-shadow: 5px 5px 15px #00000088 inset;
-  padding: 1rem;
+  box-shadow: 2px 2px 20px #00000030 inset;
+  padding: 1rem 0;
+  margin-left: -2rem;
+  margin-right: -2rem;
 }
 
 /* PROGRESS LINKS */
 #progress-links a { 
-  color: #868e96;
+  display: block;
+  padding:  0.25rem;
   text-decoration: none;
+  border-radius: 3px;
+  color: #868e96;
 }
 
 #progress-links a.current-page .link,
@@ -64,9 +70,14 @@ body {
   text-decoration: underline;
 }
 
+#progress-links a.current-page,
+#progress-links a:hover { 
+  background: #555;
+}
+
 #progress-links .circle { /*mobile first*/
   display: inline-block;
-  margin: 0 0.5rem 0.5rem 0;
+  margin-right: 0.5rem;
   height: 2rem;
   line-height: 28px; /* 2rem minus the border */
   width: 2rem;
@@ -80,10 +91,10 @@ body {
 }
 
 #progress-links a.page-visited { color: white; }
-#progress-links a.page-visited .circle { color: white; background: #009AEE; border-color: #009AEE;}
+#progress-links a.page-visited .circle { color: white; border-color: #009AEE;}
 
 #progress-links a.current-page .circle {
-  background-color: transparent;
+  background: #009AEE;
   border-color: #009AEE;
   color: white;
 }
@@ -95,7 +106,7 @@ body {
   }
   
   #progress-links a { 
-    display: block;
+    padding:  1rem 0;
     text-align: center; 
   }
   
@@ -111,6 +122,7 @@ body {
     border-radius: 1.25rem;
     margin-top:0;
     margin-bottom:0.25rem;
+    /* background-color: transparent; */
   }
 }
 /* #progress-links a:not(.page-visited) ~ span   */
@@ -119,8 +131,14 @@ body {
 /* #progress-links.re-visit a { color: #009AEE !important; } */
 /* #progress-links.re-visit span  */
 
+/* 
+input.form-control {
+  box-shadow: 0 0 20px #009AEE !important;
+ }
 
-
+ p {
+   color: white;
+ } */
 
 .form-check {
   padding-top: 7px;
@@ -237,3 +255,9 @@ p.scoopm-is-invalid {color: #dc3545;}
     display: block !important;
     color: #dc3545;
 }
+
+/* .tooltip .tooltip-inner,
+.tooltip .arrow {
+  background: #868e96;
+  color: black;
+} */

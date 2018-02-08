@@ -7,28 +7,29 @@ var currentPage = pages[0];
 
 /* NAVIGATION FUNCTIONS */
 
-var linksOffset = $('body').offset().top;
+var linksOffset = $('#progress-links').offset().top;
 function goTo(newPage) {
     
     var currentPageObj = $('#' + currentPage + 'Page');
     var newPageObj = $('#' + newPage + 'Page');
 
+    if ( (document.documentElement.scrollTop || document.body.scrollTop) > linksOffset) {        
+        $('html,body').animate({
+                scrollTop: linksOffset
+            },
+            150);
+    }
+    
     currentPageObj.fadeOut(150, function() {
-        newPageObj.fadeIn(150);
+        newPageObj.fadeIn(200, function() {
+            newPageObj.find('input:text:not(.upload-text):first').focus();
+        });
     });
 
     currentPage = newPage;
     updateProgressLinks();
 
-    if ( (document.documentElement.scrollTop || document.body.scrollTop) > linksOffset) {        
-        $('html,body').animate({
-                scrollTop: linksOffset
-            },
-            200,
-            function() {
-                newPageObj.find('input:text:not(.upload-text):first').focus();
-            });
-    }
+
 }
 
 function updateProgressLinks() {

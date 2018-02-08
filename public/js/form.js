@@ -11,6 +11,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 $(function() {
 
+//enable tooltip
+submitButton.tooltip();
 
 function markAsValid(obj) {
     obj.removeClass('scoopm-is-invalid');
@@ -82,8 +84,10 @@ submitButton.updateDisabled = function() {
     // firebase.auth().currentUser &&
     if (uploadsAreValid) {
         submitButton.prop('disabled', false);
+        submitButton.tooltip('disable');
     } else {
         submitButton.prop('disabled', true);
+        submitButton.tooltip('enable');
     }
 }
 

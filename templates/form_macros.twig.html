@@ -252,24 +252,33 @@
 {% endmacro %}
 
 {% macro buttons(thisPage, goingBack=false, submitting=false, disabled=null) %}
-    <div class="form-group text-center mt-4">
+    <div class="form-row text-center mt-4">
+
+        <div class="col-sm"></div>
 
         {% if goingBack %}
-            <button id="{{thisPage}}Back" class="back-button btn btn-outline-secondary mr-sm-5 px-5"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;Back&nbsp;</button>
+            <div class="col">
+                <button id="{{thisPage}}Back" class="back-button btn btn-outline-secondary mb-4 mb-sm-0 px-5"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;Back&nbsp;</button>
+            </div>
         {% endif %}
 
-        {% if not submitting %}
+        <div class="col">
+            {% if not submitting %}
+                <button id="{{thisPage}}Next" class="next-button btn btn-outline-primary px-5">&nbsp;Next&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                
+            {% else %}
+                <input id="submit-button" 
+                    type="submit" 
+                    class="btn btn-primary px-5"
+                    value="Submit" 
+                    data-toggle="tooltip" data-placement="top" title="You must upload all files to submit the application." 
+                    {{disabled}}/>
+            {% endif %}
+        </div>
 
-            <button id="{{thisPage}}Next" class="next-button btn btn-outline-primary px-5">&nbsp;Next&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></button>
-            
-        {% else %}
- 
-            <input id="submit-button" type="submit" class="btn btn-primary px-5" value="Submit" {{disabled}}/>
-            <p>
-                <mark>Note:</mark> <span class="">You must upload all files to submit the application.</span>
-            </p>
-
-        {% endif %}
+        <div class="col-sm"></div>
 
     </div>
+
+    
 {% endmacro %}

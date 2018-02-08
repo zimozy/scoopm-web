@@ -50,9 +50,8 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
         echo "
     ";
         // line 30
-        echo "    ";
-        // line 31
-        echo "
+        echo "    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>
+
     <!-- BOOTSTRAP -->
     <link rel=\"stylesheet\" href=\"/bootstrap/css/bootstrap.min.css\">
     <!-- <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\"> -->
@@ -195,7 +194,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
 
     public function getDebugInfo()
     {
-        return array (  187 => 78,  170 => 63,  167 => 62,  160 => 57,  157 => 56,  152 => 50,  145 => 51,  143 => 50,  139 => 49,  134 => 46,  131 => 45,  126 => 42,  121 => 37,  107 => 17,  104 => 16,  99 => 5,  94 => 79,  92 => 78,  89 => 77,  87 => 62,  84 => 61,  82 => 56,  79 => 55,  77 => 45,  73 => 43,  71 => 42,  65 => 38,  63 => 37,  55 => 31,  53 => 30,  50 => 28,  48 => 16,  34 => 5,  28 => 1,);
+        return array (  186 => 78,  169 => 63,  166 => 62,  159 => 57,  156 => 56,  151 => 50,  144 => 51,  142 => 50,  138 => 49,  133 => 46,  130 => 45,  125 => 42,  120 => 37,  106 => 17,  103 => 16,  98 => 5,  93 => 79,  91 => 78,  88 => 77,  86 => 62,  83 => 61,  81 => 56,  78 => 55,  76 => 45,  72 => 43,  70 => 42,  64 => 38,  62 => 37,  53 => 30,  50 => 28,  48 => 16,  34 => 5,  28 => 1,);
     }
 
     public function getSourceContext()
@@ -229,7 +228,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     {% endblock %}
 
     {# <!-- POPPER --> #}
-    {# <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script> #}
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>
 
     <!-- BOOTSTRAP -->
     <link rel=\"stylesheet\" href=\"/bootstrap/css/bootstrap.min.css\">
