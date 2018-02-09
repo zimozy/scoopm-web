@@ -56,15 +56,13 @@ $(function() {
             });
     }
 
-    createAccountButton.click(function() {
-        createAccountButton.createAccount();
-    });
+    // createAccountButton.click(function() {
+    //     createAccountButton.createAccount();
+    // });
 
-    $('#sign-up input').on('keydown', function(event) {
-        if ( event.which == 13 ) {
-            event.preventDefault();
-            createAccountButton.createAccount();
-        }
+    $('#sign-up').submit(function(event) {
+        event.preventDefault();
+        createAccountButton.createAccount();
     });
 
 });

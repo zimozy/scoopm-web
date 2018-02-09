@@ -53,7 +53,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
     public function block_head_styles($context, array $blocks = array())
     {
         // line 11
-        echo "    <link rel=\"stylesheet\" href=\"/css/ad.css\">
+        echo "    <link rel=\"stylesheet\" href=\"/css/home.css\">
 ";
     }
 
@@ -61,85 +61,83 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
     public function block_content($context, array $blocks = array())
     {
         // line 15
-        echo "
-<div class=\"row\">
-        <div class=\"col\">
-";
+        echo "</div>
+<div class=\"col-sm-10 offset-sm-1\">
+    <div class=\"row\">
+            <div class=\"col\">
+
+                ";
         // line 21
-        echo "                
+        echo "                <div class=\"my-sm-1\">&nbsp; </div>
+                
+                <div class=\"row\">
+                    <div class=\"col-lg\">
+                        <div id=\"card1\" class=\"card hidden-card\">
+                            <div class=\"card-body\"><span>Earn more</span> Our safety-first standards mean we can charge&mdash;and pay you&mdash;more.</div>
+                        </div>
+                    </div>
+                    
+                    <div class=\"col-lg\">
+                        <div id=\"card2\" class=\"card hidden-card\">
+                            <div class=\"card-body\"><span>You're covered</span> Our corporate insurance policy means you can drive with greater peace of mind.</div>
+                        </div>
+                    </div>
+                    
+                    <div class=\"col-lg\">
+                        <div id=\"card3\" class=\"card hidden-card\">
+                            <div class=\"card-body\"><span>Lorem Ipsum</span> Dolor sit amet blha wjij foie je jie wo ioij ji ijieee.</div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class=\"row\">
+                    <div class=\"col-sm-10 offset-sm-1 col-lg-6 offset-lg-3 sign-up-box\">
 
-            <div class=\"row\">
-                <div class=\"col-sm-8 offset-sm-2 sign-up-box\">
-
-                    <div id=\"signUp\">
-                        <h1 class=\"text-center\">Sign up now!</h1>
-                        
-                        <div id=\"errorMessage\" class=\"alert alert-primary d-none\"></div>
-                        
-                        <form id=\"sign-up\">
-                            <div class=\"form-group\">
-                                <input id=\"email\" type=\"email\" class=\"form-control\" placeholder=\"Email\"/>
-                                <small class=\"form-text scoopm-error\">Please enter your email</small>
-                            </div>
-                            <div class=\"form-group\">
-                                    <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Password\"/>
+                        <div id=\"signUp\">
+                            <h1 class=\"text-center\">Sign up now!</h1>
+                            
+                            <div id=\"errorMessage\" class=\"alert d-none\"></div>
+                            
+                            <form id=\"sign-up\">
+                                <div class=\"form-group\">
+                                    <input id=\"email\" type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
                                     <small class=\"form-text scoopm-error\">Please enter your email</small>
                                 </div>
-                            <div class=\"text-center\">
-                                <button id=\"createAccount\" type=\"button\" class=\"btn btn-outline-primary btn-block\">Let's go! </button>
-                            </div>
-                            <p class=\"text-center my-3\">
-                                Already have an account? <a href=\"";
-        // line 45
+                                <div class=\"form-group\">
+                                        <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Password\"/>
+                                        <small class=\"form-text scoopm-error\">Please enter your email</small>
+                                    </div>
+                                <div class=\"text-center\">
+                                    <input id=\"createAccount\" type=\"submit\" class=\"btn btn-block\" value=\"Let's go!\"/>
+                                </div>
+                                <p class=\"text-center my-3\">
+                                    Already have an account? <a href=\"";
+        // line 64
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("application-login"), "html", null, true);
         echo "\">Sign in.</a>
-                            </p>
-                        </form>
-                    </div>
-                    <div id=\"startNewApplication\" class=\"d-none\">
-                        <h1 class=\"text-center my-5\"><a href=\"";
-        // line 50
+                                </p>
+                            </form>
+                        </div>
+                        <div id=\"startNewApplication\" class=\"d-none\">
+                            <h1 class=\"text-center my-5\"><a href=\"";
+        // line 69
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("register"), "html", null, true);
         echo "\" class=\"underlined\">Apply now!</a></h1>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class=\"row\">
-                
-                <div class=\"col-md mb-4 mb-md-0\">
-                    <div id=\"card1\" class=\"card hidden-card\">
-                        <div class=\"card-body\">Earn more. We pay higher rates because our service is safer.</div>
-                    </div>
-                </div>
-                
-                <div class=\"col-md mb-4 mb-md-0\">
-                    <div id=\"card2\" class=\"card hidden-card\">
-                        <div class=\"card-body\">Background checks make the ride safer.</div>
-                    </div>
-                </div>
-                
-                <div class=\"col-md mb-4 mb-md-0\">
-                    <div id=\"card3\" class=\"card hidden-card\">
-                        <div class=\"card-body\">There are so many reasons to sign up for this service.</div>
-                    </div>
-                </div>
-
-            </div>
-
+        </div>
     </div>
 </div>
-
 
 ";
     }
 
-    // line 84
+    // line 80
     public function block_body_scripts($context, array $blocks = array())
     {
-        // line 85
-        echo "<script type=\"text/javascript\" src=\"/js/greeting.js\"></script>
+        // line 81
+        echo "<script type=\"text/javascript\" src=\"/js/home.js\"></script>
 <script type=\"text/javascript\" src=\"/js/createUser.js\"></script>
 ";
     }
@@ -156,7 +154,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 
     public function getDebugInfo()
     {
-        return array (  142 => 85,  139 => 84,  103 => 50,  95 => 45,  69 => 21,  64 => 15,  61 => 14,  56 => 11,  53 => 10,  47 => 9,  42 => 7,  36 => 5,  32 => 1,  30 => 3,  11 => 1,);
+        return array (  140 => 81,  137 => 80,  124 => 69,  116 => 64,  71 => 21,  64 => 15,  61 => 14,  56 => 11,  53 => 10,  47 => 9,  42 => 7,  36 => 5,  32 => 1,  30 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -171,81 +169,77 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 
 {% block body_class %}class=\"ad-background\"{% endblock %}
 {% block head_styles %}
-    <link rel=\"stylesheet\" href=\"/css/ad.css\">
+    <link rel=\"stylesheet\" href=\"/css/home.css\">
 {% endblock %}
 
 {% block content %}
+</div>
+<div class=\"col-sm-10 offset-sm-1\">
+    <div class=\"row\">
+            <div class=\"col\">
 
-<div class=\"row\">
-        <div class=\"col\">
-{# 
-            <div class=\"mt-1\">&nbsp; </div>
-            <div class=\"my-1 d-none d-sm-block\">&nbsp; </div> #}
+                {# <div class=\"mt-sm-1\">&nbsp; </div> #}
+                <div class=\"my-sm-1\">&nbsp; </div>
                 
+                <div class=\"row\">
+                    <div class=\"col-lg\">
+                        <div id=\"card1\" class=\"card hidden-card\">
+                            <div class=\"card-body\"><span>Earn more</span> Our safety-first standards mean we can charge&mdash;and pay you&mdash;more.</div>
+                        </div>
+                    </div>
+                    
+                    <div class=\"col-lg\">
+                        <div id=\"card2\" class=\"card hidden-card\">
+                            <div class=\"card-body\"><span>You're covered</span> Our corporate insurance policy means you can drive with greater peace of mind.</div>
+                        </div>
+                    </div>
+                    
+                    <div class=\"col-lg\">
+                        <div id=\"card3\" class=\"card hidden-card\">
+                            <div class=\"card-body\"><span>Lorem Ipsum</span> Dolor sit amet blha wjij foie je jie wo ioij ji ijieee.</div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class=\"row\">
+                    <div class=\"col-sm-10 offset-sm-1 col-lg-6 offset-lg-3 sign-up-box\">
 
-            <div class=\"row\">
-                <div class=\"col-sm-8 offset-sm-2 sign-up-box\">
-
-                    <div id=\"signUp\">
-                        <h1 class=\"text-center\">Sign up now!</h1>
-                        
-                        <div id=\"errorMessage\" class=\"alert alert-primary d-none\"></div>
-                        
-                        <form id=\"sign-up\">
-                            <div class=\"form-group\">
-                                <input id=\"email\" type=\"email\" class=\"form-control\" placeholder=\"Email\"/>
-                                <small class=\"form-text scoopm-error\">Please enter your email</small>
-                            </div>
-                            <div class=\"form-group\">
-                                    <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Password\"/>
+                        <div id=\"signUp\">
+                            <h1 class=\"text-center\">Sign up now!</h1>
+                            
+                            <div id=\"errorMessage\" class=\"alert d-none\"></div>
+                            
+                            <form id=\"sign-up\">
+                                <div class=\"form-group\">
+                                    <input id=\"email\" type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
                                     <small class=\"form-text scoopm-error\">Please enter your email</small>
                                 </div>
-                            <div class=\"text-center\">
-                                <button id=\"createAccount\" type=\"button\" class=\"btn btn-outline-primary btn-block\">Let's go! </button>
-                            </div>
-                            <p class=\"text-center my-3\">
-                                Already have an account? <a href=\"{{ path_for('application-login') }}\">Sign in.</a>
-                            </p>
-                        </form>
-                    </div>
-                    <div id=\"startNewApplication\" class=\"d-none\">
-                        <h1 class=\"text-center my-5\"><a href=\"{{ path_for('register') }}\" class=\"underlined\">Apply now!</a></h1>
-                    </div>
-                </div>
-            </div>
-
-            <div class=\"row\">
-                
-                <div class=\"col-md mb-4 mb-md-0\">
-                    <div id=\"card1\" class=\"card hidden-card\">
-                        <div class=\"card-body\">Earn more. We pay higher rates because our service is safer.</div>
+                                <div class=\"form-group\">
+                                        <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Password\"/>
+                                        <small class=\"form-text scoopm-error\">Please enter your email</small>
+                                    </div>
+                                <div class=\"text-center\">
+                                    <input id=\"createAccount\" type=\"submit\" class=\"btn btn-block\" value=\"Let's go!\"/>
+                                </div>
+                                <p class=\"text-center my-3\">
+                                    Already have an account? <a href=\"{{ path_for('application-login') }}\">Sign in.</a>
+                                </p>
+                            </form>
+                        </div>
+                        <div id=\"startNewApplication\" class=\"d-none\">
+                            <h1 class=\"text-center my-5\"><a href=\"{{ path_for('register') }}\" class=\"underlined\">Apply now!</a></h1>
+                        </div>
                     </div>
                 </div>
-                
-                <div class=\"col-md mb-4 mb-md-0\">
-                    <div id=\"card2\" class=\"card hidden-card\">
-                        <div class=\"card-body\">Background checks make the ride safer.</div>
-                    </div>
-                </div>
-                
-                <div class=\"col-md mb-4 mb-md-0\">
-                    <div id=\"card3\" class=\"card hidden-card\">
-                        <div class=\"card-body\">There are so many reasons to sign up for this service.</div>
-                    </div>
-                </div>
-
-            </div>
-
+        </div>
     </div>
 </div>
-
 
 {% endblock %}
 
 
 {% block body_scripts %}
-<script type=\"text/javascript\" src=\"/js/greeting.js\"></script>
+<script type=\"text/javascript\" src=\"/js/home.js\"></script>
 <script type=\"text/javascript\" src=\"/js/createUser.js\"></script>
 {% endblock %}", "home.twig.html", "/var/www/templates/home.twig.html");
     }

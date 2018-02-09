@@ -1,0 +1,80 @@
+body.ad-background {
+  background-image: url("/images/driver-at-the-wheel.jpg");
+  background-repeat: no-repeat;
+  background-position-x: 20%;
+  background-size: cover;
+  color: black;  
+}
+
+.logo-font {
+    text-shadow: 3px 3px 0px  rgba(200,200,200,0.4);
+}
+
+.sign-up-box {
+    background-color:rgba(255,255,255,0.97); 
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.7);
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.sign-up-box h1 {
+    font-weight: normal;
+}
+
+.sign-up-box .alert {
+    border: 2px solid #999;
+}
+
+.card {
+    margin: 2rem 1rem -2rem -1rem;
+    opacity: 0;
+    background-color: rgba(255,255,255,0.9); 
+    border:none;
+    border-radius: 0px;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.05);
+}
+
+.card span {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-align: center;
+    /* font-style: italic; */
+    color: #009AEE;
+}
+
+@media (max-width: 991.98px) {
+    .col-lg { padding: 0.3rem ; }
+    .card-body { padding: 0.5rem; }
+    .card span {display: inline; text-align: left; font-size: unset; font-weight: bold;}
+}
+
+.sign-up-box input {
+    border-color: 2px solid black;
+    background-color: black;
+    color: white !important;
+}
+
+.sign-up-box input:focus {
+    background-color: black;
+}
+
+::-webkit-input-placeholder { color:#fff !important; }
+::-moz-placeholder { color:#fff !important; } /* firefox 19+ */
+:-ms-input-placeholder { color:#fff !important; } /* ie */
+input:-moz-placeholder { color:#fff !important; }
+
+.btn {
+    border: 2px solid #009AEE;
+}
+
+.btn:hover {
+    background: #009AEE;
+    border: 2px solid #009AEE;
+    color:white;
+}
+
+.footer {
+    color:#444;
+}

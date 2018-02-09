@@ -10,9 +10,8 @@ body {
   margin-bottom: 50px;
 }
 
-body.register {
-  margin-bottom: 200px;   /* Margin bottom by footer height */
-  /* background-color: #333; */
+@media (max-width: 991.98px) {
+  body { margin-bottom: 250px; } /* Friendlier for phones*/
 }
 
 .footer {
