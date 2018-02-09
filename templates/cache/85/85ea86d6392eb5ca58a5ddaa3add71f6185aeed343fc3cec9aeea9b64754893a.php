@@ -145,12 +145,12 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
         echo "
                     ";
         // line 63
-        echo $context["form"]->macro_textInput("ZIP Code", "zip", ($context["zip"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "zip", array()));
+        echo $context["form"]->macro_textInput("ZIP Code", "zip", ($context["zip"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "zip", array()), null, "number");
         echo "
 
                     ";
         // line 65
-        echo $context["form"]->macro_textInput("Date of Birth", "dob", ($context["dob"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "dob", array()), "YYYY-MM-DD (like 1990-04-25)");
+        echo $context["form"]->macro_textInput("Date of Birth", "dob", ($context["dob"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "dob", array()), "If typing: YYYY-MM-DD", "date");
         echo "
 
                     ";
@@ -300,7 +300,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
         echo "
                     ";
         // line 144
-        echo $context["form"]->macro_textInput("Phone Number", "ref1Phone", ($context["ref1Phone"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "ref1Phone", array()));
+        echo $context["form"]->macro_textInput("Phone Number", "ref1Phone", ($context["ref1Phone"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "ref1Phone", array()), null, "tel");
         echo "
                     ";
         // line 145
@@ -317,7 +317,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
         echo "
                     ";
         // line 149
-        echo $context["form"]->macro_textInput("Phone Number", "ref2Phone", ($context["ref2Phone"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "ref2Phone", array()));
+        echo $context["form"]->macro_textInput("Phone Number", "ref2Phone", ($context["ref2Phone"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "ref2Phone", array()), null, "tel");
         echo "
                     ";
         // line 150
@@ -458,9 +458,9 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
                     {{form.textInput('Street Address', 'address', address, errors.address)}}
                     {{form.textInput('City', 'city', city, errors.city)}}
                     {{form.select('State', 'state', errors.state, theStates, state)}}
-                    {{form.textInput('ZIP Code', 'zip', zip, errors.zip)}}
+                    {{form.textInput('ZIP Code', 'zip', zip, errors.zip, null, 'number')}}
 
-                    {{form.textInput('Date of Birth', 'dob', dob, errors.dob, 'YYYY-MM-DD (like 1990-04-25)')}}
+                    {{form.textInput('Date of Birth', 'dob', dob, errors.dob, 'If typing: YYYY-MM-DD', 'date')}}
 
                     {{form.upload('Profile Photo', 'photo', photo, 'img', errors.photo)}}
 
@@ -539,12 +539,12 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
                     {{form.heading('Please provide two references.')}}
                     {{form.subHeading('Reference 1')}}
                     {{form.textInput('Name', 'ref1Name', ref1Name, errors.ref1Name)}}
-                    {{form.textInput('Phone Number', 'ref1Phone', ref1Phone, errors.ref1Phone)}}
+                    {{form.textInput('Phone Number', 'ref1Phone', ref1Phone, errors.ref1Phone, null, 'tel')}}
                     {{form.email('Email Address', 'ref1Email', ref1Email, errors.ref1Email)}}
                     
                     {{form.subHeading('Reference 2')}}
                     {{form.textInput('Name', 'ref2Name', ref2Name, errors.ref2Name)}}
-                    {{form.textInput('Phone Number', 'ref2Phone', ref2Phone, errors.ref2Phone)}}
+                    {{form.textInput('Phone Number', 'ref2Phone', ref2Phone, errors.ref2Phone, null, 'tel')}}
                     {{form.email('Email Address', 'ref2Email', ref2Email, errors.ref2Email)}}
                 
                     {# {{form.buttons('references', true)}} #}
