@@ -94,7 +94,7 @@ $app->post('/register', function (Request $request, Response $response) {
     $validator->validateEmail('ref2Email');
     
     // if($validator->hasErrors()) {
-        if (false) {
+        if (true) {
 
         $response_array['errors'] = $validator->getErrors();
         $response_array['resubmitting'] = true;

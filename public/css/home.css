@@ -30,10 +30,11 @@ body.ad-background {
 .card {
     margin: 2rem 0 -2rem 0;
     opacity: 0;
-    background-color: rgba(255,255,255,0.9); 
-    border:none;
+    background-color: rgba(255,255,255,0.8); 
+    border:1px solid #dedeff;
     border-radius: 0px;
-    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+
 }
 
 .card span {
@@ -48,7 +49,7 @@ body.ad-background {
 @media (max-width: 991.98px) {
     .col-lg { padding: 0.3rem ; }
     .card-body { padding: 0.5rem; }
-    .card span {display: inline; text-align: left; font-size: unset; font-weight: bold;}
+    .card span {display: inline; text-align: left; font-size: 1.2rem; font-weight: normal;}
 }
 
 .sign-up-box input {
