@@ -13,6 +13,9 @@ $(function() {
 
 //enable tooltip
 submitButton.tooltip();
+submitButton.click(function() {
+    submitButton.tooltip('show');
+});
 
 function markAsValid(obj) {
     obj.removeClass('scoopm-is-invalid');

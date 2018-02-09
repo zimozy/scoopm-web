@@ -7,22 +7,31 @@ var currentPage = pages[0];
 
 /* NAVIGATION FUNCTIONS */
 
-var linksOffset = $('#progress-links').offset().top;
+
+
 function goTo(newPage) {
-    
+    var scrollPoint = 0;
+
+    if ( $(document).width() <= 576) {
+        progressLinks = $('#progress-links');
+        scrollPoint = progressLinks.offset().top + progressLinks.height();
+    } else {
+        scrollPoint = $('body').offset().top;
+    }
+        
     var currentPageObj = $('#' + currentPage + 'Page');
     var newPageObj = $('#' + newPage + 'Page');
 
-    if ( (document.documentElement.scrollTop || document.body.scrollTop) > linksOffset) {        
+    if ( (document.documentElement.scrollTop || document.body.scrollTop) > scrollPoint) {        
         $('html,body').animate({
-                scrollTop: linksOffset
+                scrollTop: scrollPoint
             },
             150);
     }
     
     currentPageObj.fadeOut(150, function() {
         newPageObj.fadeIn(200, function() {
-            newPageObj.find('input:text:not(.upload-text):first').focus();
+            // newPageObj.find('input:text:not(.upload-text):first').focus();
         });
     });
 

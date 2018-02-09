@@ -29,8 +29,11 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
 <html lang=\"en\">
 <head>
     <meta charset=\"UTF-8\">
+
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+
     <title>";
-        // line 5
+        // line 8
         $this->displayBlock('title', $context, $blocks);
         echo " | ScoopM</title>
 
@@ -44,12 +47,12 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
 
     ";
-        // line 16
+        // line 19
         $this->displayBlock('car_query', $context, $blocks);
-        // line 28
+        // line 31
         echo "
     ";
-        // line 30
+        // line 33
         echo "    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>
 
     <!-- BOOTSTRAP -->
@@ -58,51 +61,51 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>
 
     ";
-        // line 37
+        // line 40
         $this->displayBlock('head_styles', $context, $blocks);
-        // line 38
+        // line 41
         echo "
     <!-- OURS -->
     <link rel=\"stylesheet\" href=\"/css/scoopm.css\">
 
     ";
-        // line 42
+        // line 45
         $this->displayBlock('head_scripts', $context, $blocks);
-        // line 43
+        // line 46
         echo "</head>
 <body>
     ";
-        // line 45
+        // line 48
         $this->displayBlock('body_content', $context, $blocks);
-        // line 55
+        // line 58
         echo "
     ";
-        // line 56
+        // line 59
         $this->displayBlock('footer', $context, $blocks);
-        // line 61
+        // line 64
         echo "    
     ";
-        // line 62
+        // line 65
         $this->displayBlock('firebase', $context, $blocks);
-        // line 77
+        // line 80
         echo "    
     ";
-        // line 78
+        // line 81
         $this->displayBlock('body_scripts', $context, $blocks);
-        // line 79
+        // line 82
         echo "</body>
 </html>";
     }
 
-    // line 5
+    // line 8
     public function block_title($context, array $blocks = array())
     {
     }
 
-    // line 16
+    // line 19
     public function block_car_query($context, array $blocks = array())
     {
-        // line 17
+        // line 20
         echo "        <!-- CAR QUERY -->
         <script type=\"text/javascript\" src=\"http://www.carqueryapi.com/js/carquery.0.3.4.js\"></script>
         <script type=\"text/javascript\">
@@ -116,56 +119,56 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     ";
     }
 
-    // line 37
+    // line 40
     public function block_head_styles($context, array $blocks = array())
     {
     }
 
-    // line 42
+    // line 45
     public function block_head_scripts($context, array $blocks = array())
     {
     }
 
-    // line 45
+    // line 48
     public function block_body_content($context, array $blocks = array())
     {
-        // line 46
+        // line 49
         echo "        <div class=\"container\">
             <div class=\"row\">
                 <div class=\"col-lg-8 offset-lg-2\">
                     <h1 class=\"display-2 text-center logo-font blue-text mt-4\"><a href=\"";
-        // line 49
+        // line 52
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("home"), "html", null, true);
         echo "\">ScoopM</a><small>&nbsp;</small></h1>
                     ";
-        // line 50
+        // line 53
         $this->displayBlock('content', $context, $blocks);
-        // line 51
+        // line 54
         echo "                </div>
             </div>
         </div>
     ";
     }
 
-    // line 50
+    // line 53
     public function block_content($context, array $blocks = array())
     {
     }
 
-    // line 56
+    // line 59
     public function block_footer($context, array $blocks = array())
     {
-        // line 57
+        // line 60
         echo "        <footer class=\"footer\">
             <div class=\"container text-center\">&copy; ScoopM 2018</div>
         </footer>
     ";
     }
 
-    // line 62
+    // line 65
     public function block_firebase($context, array $blocks = array())
     {
-        // line 63
+        // line 66
         echo "        <script src=\"https://www.gstatic.com/firebasejs/4.9.0/firebase.js\"></script>
         <script>
             // Initialize Firebase
@@ -182,7 +185,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     ";
     }
 
-    // line 78
+    // line 81
     public function block_body_scripts($context, array $blocks = array())
     {
     }
@@ -194,7 +197,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
 
     public function getDebugInfo()
     {
-        return array (  186 => 78,  169 => 63,  166 => 62,  159 => 57,  156 => 56,  151 => 50,  144 => 51,  142 => 50,  138 => 49,  133 => 46,  130 => 45,  125 => 42,  120 => 37,  106 => 17,  103 => 16,  98 => 5,  93 => 79,  91 => 78,  88 => 77,  86 => 62,  83 => 61,  81 => 56,  78 => 55,  76 => 45,  72 => 43,  70 => 42,  64 => 38,  62 => 37,  53 => 30,  50 => 28,  48 => 16,  34 => 5,  28 => 1,);
+        return array (  189 => 81,  172 => 66,  169 => 65,  162 => 60,  159 => 59,  154 => 53,  147 => 54,  145 => 53,  141 => 52,  136 => 49,  133 => 48,  128 => 45,  123 => 40,  109 => 20,  106 => 19,  101 => 8,  96 => 82,  94 => 81,  91 => 80,  89 => 65,  86 => 64,  84 => 59,  81 => 58,  79 => 48,  75 => 46,  73 => 45,  67 => 41,  65 => 40,  56 => 33,  53 => 31,  51 => 19,  37 => 8,  28 => 1,);
     }
 
     public function getSourceContext()
@@ -203,6 +206,9 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
 <html lang=\"en\">
 <head>
     <meta charset=\"UTF-8\">
+
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+
     <title>{% block title %}{% endblock %} | ScoopM</title>
 
     <!-- FONT AWESOME -->
