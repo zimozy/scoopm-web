@@ -7,6 +7,10 @@ html {
 }
 
 body {
+  margin-bottom: 50px;
+}
+
+body.register {
   margin-bottom: 200px;   /* Margin bottom by footer height */
   /* background-color: #333; */
 }

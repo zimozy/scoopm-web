@@ -14,7 +14,7 @@ $app->get("/thanks", function (Request $request, Response $response) {
 
 $app->get("/application-login", function (Request $request, Response $response) {
     return $this->view->render($response, 'application-login.twig.html');
-});
+})->setName('application-login');
 
 /*$app->get("/signup", function (Request $request, Response $response) {
     return $this->view->render($response, 'signup.twig.html');

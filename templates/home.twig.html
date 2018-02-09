@@ -6,14 +6,52 @@
 
 {% block car_query %}{% endblock %}
 
+{% block body_class %}class="ad-background"{% endblock %}
+{% block head_styles %}
+    <link rel="stylesheet" href="/css/ad.css">
+{% endblock %}
+
 {% block content %}
 
 <div class="row">
         <div class="col">
-
+{# 
             <div class="mt-1">&nbsp; </div>
-            <div class="my-1 d-none d-sm-block">&nbsp; </div>
+            <div class="my-1 d-none d-sm-block">&nbsp; </div> #}
                 
+
+
+            <div class="row">
+                <div class="col-sm-8 offset-sm-2 sign-up-box">
+
+                    <div id="signUp">
+                        <h1 class="text-center">Sign up now!</h1>
+                        
+                        <div id="errorMessage" class="alert alert-primary d-none"></div>
+                        
+                        <form id="sign-up">
+                            <div class="form-group">
+                                <input id="email" type="email" class="form-control" placeholder="Email"/>
+                                <small class="form-text scoopm-error">Please enter your email</small>
+                            </div>
+                            <div class="form-group">
+                                    <input id="password" type="password" class="form-control" placeholder="Password"/>
+                                    <small class="form-text scoopm-error">Please enter your email</small>
+                                </div>
+                            <div class="text-center">
+                                <button id="createAccount" type="button" class="btn btn-outline-primary btn-block">Let's go! </button>
+                            </div>
+                            <p class="text-center my-3">
+                                Already have an account? <a href="{{ path_for('application-login') }}">Sign in.</a>
+                            </p>
+                        </form>
+                    </div>
+                    <div id="startNewApplication" class="d-none">
+                        <h1 class="text-center my-5"><a href="{{ path_for('register') }}" class="underlined">Apply now!</a></h1>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 
                 <div class="col-md mb-4 mb-md-0">
@@ -36,35 +74,8 @@
 
             </div>
 
-            <div class="row">
-                <div class="col-sm-8 offset-sm-2">
-
-                    <div id="signUp">
-                        <h1 class="text-center mt-5 mb-4">Sign up now!</h1>
-                        
-                        <div id="errorMessage" class="alert alert-primary d-none"></div>
-                        
-                        <form id="sign-up">
-                            <div class="form-group">
-                                <input id="email" type="email" class="form-control" placeholder="Email"/>
-                                <small class="form-text scoopm-error">Please enter your email</small>
-                            </div>
-                            <div class="form-group">
-                                    <input id="password" type="password" class="form-control" placeholder="Password"/>
-                                    <small class="form-text scoopm-error">Please enter your email</small>
-                                </div>
-                            <div class="text-center">
-                                <button id="createAccount" type="button" class="btn btn-outline-primary btn-block">Let's go! </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="startNewApplication" class="d-none">
-                        <h1 class="text-center my-5"><a href="{{ path_for('register') }}" class="underlined">Apply now!</a></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+</div>
 
 
 {% endblock %}

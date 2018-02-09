@@ -14,6 +14,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
             'car_query' => array($this, 'block_car_query'),
             'head_styles' => array($this, 'block_head_styles'),
             'head_scripts' => array($this, 'block_head_scripts'),
+            'body_class' => array($this, 'block_body_class'),
             'body_content' => array($this, 'block_body_content'),
             'content' => array($this, 'block_content'),
             'footer' => array($this, 'block_footer'),
@@ -60,20 +61,23 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     <!-- <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\"> -->
     <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>
 
-    ";
-        // line 40
-        $this->displayBlock('head_styles', $context, $blocks);
-        // line 41
-        echo "
     <!-- OURS -->
     <link rel=\"stylesheet\" href=\"/css/scoopm.css\">
-
+    
+    ";
+        // line 43
+        $this->displayBlock('head_styles', $context, $blocks);
+        // line 44
+        echo "
     ";
         // line 45
         $this->displayBlock('head_scripts', $context, $blocks);
         // line 46
         echo "</head>
-<body>
+<body ";
+        // line 47
+        $this->displayBlock('body_class', $context, $blocks);
+        echo ">
     ";
         // line 48
         $this->displayBlock('body_content', $context, $blocks);
@@ -119,13 +123,18 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     ";
     }
 
-    // line 40
+    // line 43
     public function block_head_styles($context, array $blocks = array())
     {
     }
 
     // line 45
     public function block_head_scripts($context, array $blocks = array())
+    {
+    }
+
+    // line 47
+    public function block_body_class($context, array $blocks = array())
     {
     }
 
@@ -197,7 +206,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
 
     public function getDebugInfo()
     {
-        return array (  189 => 81,  172 => 66,  169 => 65,  162 => 60,  159 => 59,  154 => 53,  147 => 54,  145 => 53,  141 => 52,  136 => 49,  133 => 48,  128 => 45,  123 => 40,  109 => 20,  106 => 19,  101 => 8,  96 => 82,  94 => 81,  91 => 80,  89 => 65,  86 => 64,  84 => 59,  81 => 58,  79 => 48,  75 => 46,  73 => 45,  67 => 41,  65 => 40,  56 => 33,  53 => 31,  51 => 19,  37 => 8,  28 => 1,);
+        return array (  198 => 81,  181 => 66,  178 => 65,  171 => 60,  168 => 59,  163 => 53,  156 => 54,  154 => 53,  150 => 52,  145 => 49,  142 => 48,  137 => 47,  132 => 45,  127 => 43,  113 => 20,  110 => 19,  105 => 8,  100 => 82,  98 => 81,  95 => 80,  93 => 65,  90 => 64,  88 => 59,  85 => 58,  83 => 48,  79 => 47,  76 => 46,  74 => 45,  71 => 44,  69 => 43,  57 => 33,  54 => 31,  52 => 19,  38 => 8,  29 => 1,);
     }
 
     public function getSourceContext()
@@ -241,14 +250,14 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     <!-- <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\"> -->
     <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>
 
-    {% block head_styles %}{% endblock %}
-
     <!-- OURS -->
     <link rel=\"stylesheet\" href=\"/css/scoopm.css\">
+    
+    {% block head_styles %}{% endblock %}
 
     {% block head_scripts %}{% endblock %}
 </head>
-<body>
+<body {% block body_class %}{% endblock %}>
     {% block body_content %}
         <div class=\"container\">
             <div class=\"row\">
