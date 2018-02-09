@@ -6,7 +6,7 @@ $(function() {
     }
 
     animationSpeed = 700;
-    
+
     $('#card1').animate(animationProps, animationSpeed);
     
     setTimeout(function() {
@@ -17,5 +17,8 @@ $(function() {
         $('#card3').animate(animationProps, animationSpeed);
     }, 600);
 
+    setTimeout(function() {
+        $('.sign-up-box').animate({ opacity: '1'}, animationSpeed);
+    }, 900);
 });
 

@@ -99,20 +99,22 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                             <div id=\"errorMessage\" class=\"alert d-none\"></div>
                             
                             <form id=\"sign-up\">
-                                <div class=\"form-group\">
-                                    <input id=\"email\" type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
-                                    <small class=\"form-text scoopm-error\">Please enter your email</small>
-                                </div>
-                                <div class=\"form-group\">
-                                        <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Password\"/>
+                                <div class=\"my-4\">
+                                    <div class=\"form-group\">
+                                        <input id=\"email\" type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
                                         <small class=\"form-text scoopm-error\">Please enter your email</small>
                                     </div>
-                                <div class=\"text-center\">
-                                    <input id=\"createAccount\" type=\"submit\" class=\"btn btn-block\" value=\"Let's go!\"/>
+                                    <div class=\"form-group\">
+                                            <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Password\"/>
+                                            <small class=\"form-text scoopm-error\">Please enter your email</small>
+                                        </div>
+                                    <div class=\"text-center\">
+                                        <input id=\"createAccount\" type=\"submit\" class=\"btn\" value=\"Let's go!\"/>
+                                    </div>
                                 </div>
-                                <p class=\"text-center my-3\">
+                                <p class=\"text-center text-muted my-3\">
                                     Already have an account? <a href=\"";
-        // line 64
+        // line 66
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("application-login"), "html", null, true);
         echo "\">Sign in.</a>
                                 </p>
@@ -120,7 +122,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                         </div>
                         <div id=\"startNewApplication\" class=\"text-center my-4 d-none\">
                             <a href=\"";
-        // line 69
+        // line 71
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("register"), "html", null, true);
         echo "\" class=\"btn btn-lg\">Create New Application</a>
                         </div>
@@ -133,10 +135,10 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 ";
     }
 
-    // line 80
+    // line 82
     public function block_body_scripts($context, array $blocks = array())
     {
-        // line 81
+        // line 83
         echo "<script type=\"text/javascript\" src=\"/js/home.js\"></script>
 <script type=\"text/javascript\" src=\"/js/createUser.js\"></script>
 ";
@@ -154,7 +156,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 
     public function getDebugInfo()
     {
-        return array (  140 => 81,  137 => 80,  124 => 69,  116 => 64,  71 => 21,  64 => 15,  61 => 14,  56 => 11,  53 => 10,  47 => 9,  42 => 7,  36 => 5,  32 => 1,  30 => 3,  11 => 1,);
+        return array (  142 => 83,  139 => 82,  126 => 71,  118 => 66,  71 => 21,  64 => 15,  61 => 14,  56 => 11,  53 => 10,  47 => 9,  42 => 7,  36 => 5,  32 => 1,  30 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -210,18 +212,20 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                             <div id=\"errorMessage\" class=\"alert d-none\"></div>
                             
                             <form id=\"sign-up\">
-                                <div class=\"form-group\">
-                                    <input id=\"email\" type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
-                                    <small class=\"form-text scoopm-error\">Please enter your email</small>
-                                </div>
-                                <div class=\"form-group\">
-                                        <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Password\"/>
+                                <div class=\"my-4\">
+                                    <div class=\"form-group\">
+                                        <input id=\"email\" type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
                                         <small class=\"form-text scoopm-error\">Please enter your email</small>
                                     </div>
-                                <div class=\"text-center\">
-                                    <input id=\"createAccount\" type=\"submit\" class=\"btn btn-block\" value=\"Let's go!\"/>
+                                    <div class=\"form-group\">
+                                            <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Password\"/>
+                                            <small class=\"form-text scoopm-error\">Please enter your email</small>
+                                        </div>
+                                    <div class=\"text-center\">
+                                        <input id=\"createAccount\" type=\"submit\" class=\"btn\" value=\"Let's go!\"/>
+                                    </div>
                                 </div>
-                                <p class=\"text-center my-3\">
+                                <p class=\"text-center text-muted my-3\">
                                     Already have an account? <a href=\"{{ path_for('application-login') }}\">Sign in.</a>
                                 </p>
                             </form>

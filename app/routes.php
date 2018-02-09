@@ -93,7 +93,8 @@ $app->post('/register', function (Request $request, Response $response) {
     $validator->validatePhone('ref2Phone');
     $validator->validateEmail('ref2Email');
     
-    if($validator->hasErrors()) {
+    // if($validator->hasErrors()) {
+        if (false) {
 
         $response_array['errors'] = $validator->getErrors();
         $response_array['resubmitting'] = true;
@@ -142,10 +143,12 @@ $app->post('/register', function (Request $request, Response $response) {
             //ref2
             'ref2Name'  => $response_array['ref2Name'],
             'ref2Phone' => $response_array['ref2Phone'],
-            'ref2Email' => $response_array['ref2Email'],
+            'ref2Email' => $response_array['ref2Email']
         );
+        var_dump(
+        $firebase->set('users/' . $response_array['userID'], ["test"=>"value"])
 
-        $firebase->set('users/' . $response_array['userID'], $data);
+        );
 
         // return $this->view->render($response, 'new_user.twig.html', array('email'=>$response_array['email'], 'password'=>$response_array['password']));
 
@@ -173,15 +176,49 @@ $app->post('/register', function (Request $request, Response $response) {
         $curl_response = curl_exec($curl);
         curl_close($curl);
 
-
         //1. get candidate id
-        //2. save to Firebase
+        $candidateArray = array();
+        $candidateArray = json_decode($curl_response);
+        $candidateId = $candidateArray->id;
 
-        //3. request report using candidate id
-        //4. save report id, other id's?, to Firebase
+        //2. request report using candidate id
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.checkr.com/v1/reports',
+            CURLOPT_POST => 1,
+            CURLOPT_USERNAME => '83ebeabdec09f6670863766f792ead24d61fe3f9',
+            CURLOPT_POSTFIELDS => array(
+                "packages" => "driver_pro",
+                "candidate" => $candidateId
+            ),
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_FAILONERROR => true, //if we get a 404, for example
+            CURLOPT_USERAGENT => 'ScoopM REST'
+        ));
+        $curl_response = curl_exec($curl);
+        curl_close($curl);
 
-        var_dump($curl_response);
-        return $response->getBody()->write('----');
+        $reportArray = array();
+        $reportArray = json_decode($curl_response);
+        $reportId = $reportArray->id;
+        // $ssn_trace_id                = $reportArray->ssn_trace_id;
+        // $sex_offender_search_id      = $reportArray->sex_offender_search_id;
+        // $national_criminal_search_id = $reportArray->national_criminal_search_id;
+        // $federal_criminal_search_id  = $reportArray->federal_criminal_search_id;
+        // $county_criminal_search_ids  = $reportArray->county_criminal_search_ids;
+        // $motor_vehicle_report_id     = $reportArray->motor_vehicle_report_id;
+        // $state_criminal_search_ids   = $reportArray->state_criminal_search_ids;
+
+
+        //3. save to Firebase
+        $firebase->update('users/' . $response_array['userID'], array(
+            "checkrCandidateId" => $candidateId,
+            "checkrReportId"    => $reportId
+            // ... more id's?
+        ));
+
+        // var_dump($curl_response);
+        // return $response->getBody()->write('----');
 
 
         // return $response->withRedirect($this->router->pathFor('thanks'));

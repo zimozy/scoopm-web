@@ -7,7 +7,7 @@ body.ad-background {
 }
 
 .logo-font {
-    text-shadow: 3px 3px 0px  rgba(200,200,200,0.4);
+    text-shadow: 3px 3px 0px  rgba(0,0,0,0.07);
 }
 
 .sign-up-box {
@@ -16,6 +16,7 @@ body.ad-background {
     padding: 1rem 2rem;
     margin-top: 2rem;
     margin-bottom: 3rem;
+    opacity: 0;
 }
 
 .sign-up-box h1 {
@@ -27,7 +28,7 @@ body.ad-background {
 }
 
 .card {
-    margin: 2rem 1rem -2rem -1rem;
+    margin: 2rem 0 -2rem 0;
     opacity: 0;
     background-color: rgba(255,255,255,0.9); 
     border:none;
