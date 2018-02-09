@@ -73,7 +73,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                 <div class=\"row\">
                     <div class=\"col-lg\">
                         <div id=\"card1\" class=\"card hidden-card\">
-                            <div class=\"card-body\"><span>Earn more</span> Our safety-first standards mean we can charge&mdash;and pay you&mdash;more.</div>
+                            <div class=\"card-body\"><span>Earn more</span> Our safety-first standards mean we can charge riders&mdash;and pay you&mdash;more.</div>
                         </div>
                     </div>
                     
@@ -85,7 +85,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                     
                     <div class=\"col-lg\">
                         <div id=\"card3\" class=\"card hidden-card\">
-                            <div class=\"card-body\"><span>Lorem Ipsum</span> Dolor sit amet blha wjij foie je jie wo ioij ji ijieee.</div>
+                            <div class=\"card-body\"><span>Lorem Ipsum</span> Dolor sit amet and other profound sayings of an intellectual mind.</div>
                         </div>
                     </div>
                 </div>
@@ -118,11 +118,11 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                                 </p>
                             </form>
                         </div>
-                        <div id=\"startNewApplication\" class=\"d-none\">
-                            <h1 class=\"text-center my-5\"><a href=\"";
+                        <div id=\"startNewApplication\" class=\"text-center my-4 d-none\">
+                            <a href=\"";
         // line 69
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("register"), "html", null, true);
-        echo "\" class=\"underlined\">Apply now!</a></h1>
+        echo "\" class=\"btn btn-lg\">Create New Application</a>
                         </div>
                     </div>
                 </div>
@@ -184,7 +184,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                 <div class=\"row\">
                     <div class=\"col-lg\">
                         <div id=\"card1\" class=\"card hidden-card\">
-                            <div class=\"card-body\"><span>Earn more</span> Our safety-first standards mean we can charge&mdash;and pay you&mdash;more.</div>
+                            <div class=\"card-body\"><span>Earn more</span> Our safety-first standards mean we can charge riders&mdash;and pay you&mdash;more.</div>
                         </div>
                     </div>
                     
@@ -196,7 +196,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                     
                     <div class=\"col-lg\">
                         <div id=\"card3\" class=\"card hidden-card\">
-                            <div class=\"card-body\"><span>Lorem Ipsum</span> Dolor sit amet blha wjij foie je jie wo ioij ji ijieee.</div>
+                            <div class=\"card-body\"><span>Lorem Ipsum</span> Dolor sit amet and other profound sayings of an intellectual mind.</div>
                         </div>
                     </div>
                 </div>
@@ -226,8 +226,8 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                                 </p>
                             </form>
                         </div>
-                        <div id=\"startNewApplication\" class=\"d-none\">
-                            <h1 class=\"text-center my-5\"><a href=\"{{ path_for('register') }}\" class=\"underlined\">Apply now!</a></h1>
+                        <div id=\"startNewApplication\" class=\"text-center my-4 d-none\">
+                            <a href=\"{{ path_for('register') }}\" class=\"btn btn-lg\">Create New Application</a>
                         </div>
                     </div>
                 </div>
