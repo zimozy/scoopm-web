@@ -267,12 +267,14 @@
                 <button id="{{thisPage}}Next" class="next-button btn btn-outline-primary px-5">&nbsp;Next&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></button>
                 
             {% else %}
-                <input id="submit-button" 
+                <span id="submit-tooltip" class="d-inline-block" tabindex="0" data-toggle="tooltip" title="You must upload all files to submit the application." data-placement="top">
+                    <input id="submit-button" 
                     type="submit" 
+                    style="pointer-events: none;"
                     class="btn btn-primary px-5"
                     value="Submit" 
-                    data-toggle="tooltip" data-placement="top" title="You must upload all files to submit the application." 
                     {{disabled}}/>
+                </span>
             {% endif %}
         </div>
 

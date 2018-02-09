@@ -91,9 +91,9 @@ function firstPageWithErrors() {
 
 if (mForm.attr('class') == 'scoopm-was-validated') { //if they've submitted with errors to to the relevant page
     goTo(firstPageWithErrors());
-} else {
+}/* else {
     $('input:text:first').focus();
-}
+}*/
 
 $('.next-button').on('click', function(event) {
     event.preventDefault();

@@ -12,10 +12,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 $(function() {
 
 //enable tooltip
-submitButton.tooltip();
-submitButton.click(function() {
-    submitButton.tooltip('show');
-});
+$('#submit-tooltip').tooltip();
+// submitButton.click(function() {
+//     submitButton.tooltip('show');
+// });
 
 function markAsValid(obj) {
     obj.removeClass('scoopm-is-invalid');
@@ -87,10 +87,10 @@ submitButton.updateDisabled = function() {
     // firebase.auth().currentUser &&
     if (uploadsAreValid) {
         submitButton.prop('disabled', false);
-        submitButton.tooltip('disable');
+        $('#submit-tooltip').tooltip('disable');
     } else {
         submitButton.prop('disabled', true);
-        submitButton.tooltip('enable');
+        $('#submit-tooltip').tooltip('enable');
     }
 }
 
