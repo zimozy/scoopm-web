@@ -62,33 +62,35 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
     {
         // line 15
         echo "</div>
-<div class=\"col-sm-10 offset-sm-1\">
+<div class=\"col\">
     <div class=\"row\">
             <div class=\"col\">
 
                 ";
         // line 21
-        echo "                <div class=\"my-sm-1\">&nbsp; </div>
+        echo "                <div class=\"my-md-3 my-lg-5\">&nbsp; </div>
                 
                 <div class=\"row\">
                     <div class=\"col-lg\">
                         <div id=\"card1\" class=\"card hidden-card\">
-                            <div class=\"card-body\"><span>Earn more</span> Our safety-first standards mean we can charge riders&mdash;and pay you&mdash;more.</div>
+                            <div class=\"card-body p-2 p-md-3 p-lg-5\"><span>Earn more</span> Our safety-first standards mean we can charge riders&mdash;and pay you&mdash;more.</div>
                         </div>
                     </div>
                     
                     <div class=\"col-lg\">
                         <div id=\"card2\" class=\"card hidden-card\">
-                            <div class=\"card-body\"><span>You're covered</span> Our corporate insurance policy means you can drive with greater peace of mind.</div>
+                            <div class=\"card-body p-2 p-md-3 p-lg-5\"><span>You're covered</span> Our corporate insurance policy means you can drive with greater peace of mind.</div>
                         </div>
                     </div>
                     
                     <div class=\"col-lg\">
                         <div id=\"card3\" class=\"card hidden-card\">
-                            <div class=\"card-body\"><span>Lorem Ipsum</span> Dolor sit amet and other profound sayings of an intellectual mind.</div>
+                            <div class=\"card-body p-2 p-md-3 p-lg-5\"><span>Lorem Ipsum</span> Dolor sit amet and other profound sayings of an intellectual mind.</div>
                         </div>
                     </div>
                 </div>
+
+                <div class=\"my-lg-4\">&nbsp; </div>
 
                 <div class=\"row\">
                     <div class=\"col-sm-10 offset-sm-1 col-lg-6 offset-lg-3 sign-up-box\">
@@ -114,7 +116,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                                 </div>
                                 <p class=\"text-center text-muted my-3\">
                                     Already have an account? <a href=\"";
-        // line 66
+        // line 68
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("application-login"), "html", null, true);
         echo "\">Sign in.</a>
                                 </p>
@@ -122,7 +124,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                         </div>
                         <div id=\"startNewApplication\" class=\"text-center my-4 d-none\">
                             <a href=\"";
-        // line 71
+        // line 73
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("register"), "html", null, true);
         echo "\" class=\"btn btn-lg\">Create New Application</a>
                         </div>
@@ -135,10 +137,10 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 ";
     }
 
-    // line 82
+    // line 84
     public function block_body_scripts($context, array $blocks = array())
     {
-        // line 83
+        // line 85
         echo "<script type=\"text/javascript\" src=\"/js/home.js\"></script>
 <script type=\"text/javascript\" src=\"/js/createUser.js\"></script>
 ";
@@ -156,7 +158,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 
     public function getDebugInfo()
     {
-        return array (  142 => 83,  139 => 82,  126 => 71,  118 => 66,  71 => 21,  64 => 15,  61 => 14,  56 => 11,  53 => 10,  47 => 9,  42 => 7,  36 => 5,  32 => 1,  30 => 3,  11 => 1,);
+        return array (  144 => 85,  141 => 84,  128 => 73,  120 => 68,  71 => 21,  64 => 15,  61 => 14,  56 => 11,  53 => 10,  47 => 9,  42 => 7,  36 => 5,  32 => 1,  30 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -176,32 +178,34 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 
 {% block content %}
 </div>
-<div class=\"col-sm-10 offset-sm-1\">
+<div class=\"col\">
     <div class=\"row\">
             <div class=\"col\">
 
                 {# <div class=\"mt-sm-1\">&nbsp; </div> #}
-                <div class=\"my-sm-1\">&nbsp; </div>
+                <div class=\"my-md-3 my-lg-5\">&nbsp; </div>
                 
                 <div class=\"row\">
                     <div class=\"col-lg\">
                         <div id=\"card1\" class=\"card hidden-card\">
-                            <div class=\"card-body\"><span>Earn more</span> Our safety-first standards mean we can charge riders&mdash;and pay you&mdash;more.</div>
+                            <div class=\"card-body p-2 p-md-3 p-lg-5\"><span>Earn more</span> Our safety-first standards mean we can charge riders&mdash;and pay you&mdash;more.</div>
                         </div>
                     </div>
                     
                     <div class=\"col-lg\">
                         <div id=\"card2\" class=\"card hidden-card\">
-                            <div class=\"card-body\"><span>You're covered</span> Our corporate insurance policy means you can drive with greater peace of mind.</div>
+                            <div class=\"card-body p-2 p-md-3 p-lg-5\"><span>You're covered</span> Our corporate insurance policy means you can drive with greater peace of mind.</div>
                         </div>
                     </div>
                     
                     <div class=\"col-lg\">
                         <div id=\"card3\" class=\"card hidden-card\">
-                            <div class=\"card-body\"><span>Lorem Ipsum</span> Dolor sit amet and other profound sayings of an intellectual mind.</div>
+                            <div class=\"card-body p-2 p-md-3 p-lg-5\"><span>Lorem Ipsum</span> Dolor sit amet and other profound sayings of an intellectual mind.</div>
                         </div>
                     </div>
                 </div>
+
+                <div class=\"my-lg-4\">&nbsp; </div>
 
                 <div class=\"row\">
                     <div class=\"col-sm-10 offset-sm-1 col-lg-6 offset-lg-3 sign-up-box\">

@@ -31,10 +31,10 @@ body.ad-background {
     margin: 2rem 0 -2rem 0;
     opacity: 0;
     background-color: rgba(255,255,255,0.8); 
-    border:1px solid #dedeff;
+    border: none;
+    /* border:1px solid #dedeff; */
     border-radius: 0px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .card span {
@@ -43,13 +43,13 @@ body.ad-background {
     font-weight: 500;
     text-align: center;
     /* font-style: italic; */
-    color: #009AEE;
+    color: rgb(0, 55, 85);
 }
 
 @media (max-width: 991.98px) {
     .col-lg { padding: 0.3rem ; }
-    .card-body { padding: 0.5rem; }
-    .card span {display: inline; text-align: left; font-size: 1.2rem; font-weight: normal;}
+    
+    .card span {display: inline; text-align: left; font-size: 1.2rem; font-weight: 500;}
 }
 
 .sign-up-box input {
