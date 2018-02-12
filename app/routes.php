@@ -28,10 +28,10 @@ $app->get("/profile", function (Request $request, Response $response) {
     return $response->withRedirect($this->router->pathFor('home'));
     // return $this->view->render($response, 'profile.twig.html');
 })->setName('profile');
-/*
+
 $app->get("/admin", function (Request $request, Response $response) {
     return $this->view->render($response, 'admin.twig.html');
-})->setName('admin');*/
+})->setName('admin');
 
 
 $app->get('/register', function (Request $request, Response $response) {
@@ -150,9 +150,9 @@ $app->post('/register', function (Request $request, Response $response) {
             'ref2Phone' => $response_array['ref2Phone'],
             'ref2Email' => $response_array['ref2Email']
         );
-        // var_dump(
-        $firebase->set('users/' . $response_array['userID'], $data);
-        // );
+        var_dump(
+        $firebase->set('users/' . $response_array['userID'], $data)
+        );
 
         // return $this->view->render($response, 'new_user.twig.html', array('email'=>$response_array['email'], 'password'=>$response_array['password']));
 
@@ -226,6 +226,6 @@ $app->post('/register', function (Request $request, Response $response) {
         // return $response->getBody()->write('----');
         */
 
-        return $response->withRedirect($this->router->pathFor('thanks'));
+        // return $response->withRedirect($this->router->pathFor('thanks'));
     }
 });

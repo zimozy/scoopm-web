@@ -12,6 +12,7 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
         $this->blocks = array(
             'title' => array($this, 'block_title'),
             'head_styles' => array($this, 'block_head_styles'),
+            'car_query' => array($this, 'block_car_query'),
             'body_content' => array($this, 'block_body_content'),
             'body_scripts' => array($this, 'block_body_scripts'),
         );
@@ -42,10 +43,16 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
     }
 
     // line 9
+    public function block_car_query($context, array $blocks = array())
+    {
+    }
+
+    // line 11
     public function block_body_content($context, array $blocks = array())
     {
-        // line 10
-        echo "<h1 id=\"adminH1\">Admin</h1>
+        // line 12
+        echo "
+<h1 id=\"adminH1\">Admin</h1>
 
 <table id=\"usersTable\" class=\"table\">
     <thead>
@@ -56,9 +63,10 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
 </table>
 
 ";
-        // line 27
-        echo "<!-- Modal -->
-<div class=\"modal fade scoopm-application-modal\" id=\"exampleModalCenter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
+        // line 30
+        echo "
+<!-- Modal -->
+<div id=\"applicationModal\" class=\"modal fade scoopm-application-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
     <div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\">
       <div class=\"modal-content\">
         <div class=\"modal-header\">
@@ -72,7 +80,7 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                 <div class=\"row\">
                     <div class=\"col\">
                         <h1><span>First</span> <span>Last</span></h1>
-                        <h4><a id=\"email\" href=\"tel:\">000-000-0000</a> / <a id=\"email\" href=\"mailto:\">email@example.com</a></h4>
+                        <h4><a id=\"phone\" href=\"tel:\">000-000-0000</a> / <a id=\"email\" href=\"mailto:\">email@example.com</a></h4>
                         <!-- <h4></h4> -->
                         <p>SSN: <span id=\"ssn\">111-11-1111</span></p>
                         <h4>References</h4>
@@ -112,7 +120,8 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                         <h4 id=\"licenseNumber\">123-ITFL</h4>
                     </div>
                     <div class=\"col\">
-                        <img src=\"\" alt=\"License Image\"><br>
+                        <img src=\"\" alt=\"License Image\">
+                        <br>
                         <img src=\"\" alt=\"Registration Image\">
                         
                     </div>
@@ -149,10 +158,10 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
 ";
     }
 
-    // line 118
+    // line 123
     public function block_body_scripts($context, array $blocks = array())
     {
-        // line 119
+        // line 124
         $this->displayParentBlock("body_scripts", $context, $blocks);
         echo "
 <script src=\"/js/admin.js\"></script>
@@ -171,7 +180,7 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
 
     public function getDebugInfo()
     {
-        return array (  156 => 119,  153 => 118,  60 => 27,  48 => 10,  45 => 9,  40 => 6,  37 => 5,  31 => 3,  11 => 1,);
+        return array (  165 => 124,  162 => 123,  67 => 30,  54 => 12,  51 => 11,  46 => 9,  41 => 6,  38 => 5,  32 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -184,7 +193,10 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
     <link rel=\"stylesheet\" href=\"/css/admin.css\">
 {% endblock %}
 
+{% block car_query %}{% endblock %}
+
 {% block body_content %}
+
 <h1 id=\"adminH1\">Admin</h1>
 
 <table id=\"usersTable\" class=\"table\">
@@ -202,8 +214,9 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
         <div class=\"cell\">Test</div>
     </div>
 </div> #}
+
 <!-- Modal -->
-<div class=\"modal fade scoopm-application-modal\" id=\"exampleModalCenter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
+<div id=\"applicationModal\" class=\"modal fade scoopm-application-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
     <div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\">
       <div class=\"modal-content\">
         <div class=\"modal-header\">
@@ -217,7 +230,7 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                 <div class=\"row\">
                     <div class=\"col\">
                         <h1><span>First</span> <span>Last</span></h1>
-                        <h4><a id=\"email\" href=\"tel:\">000-000-0000</a> / <a id=\"email\" href=\"mailto:\">email@example.com</a></h4>
+                        <h4><a id=\"phone\" href=\"tel:\">000-000-0000</a> / <a id=\"email\" href=\"mailto:\">email@example.com</a></h4>
                         <!-- <h4></h4> -->
                         <p>SSN: <span id=\"ssn\">111-11-1111</span></p>
                         <h4>References</h4>
@@ -257,7 +270,8 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                         <h4 id=\"licenseNumber\">123-ITFL</h4>
                     </div>
                     <div class=\"col\">
-                        <img src=\"\" alt=\"License Image\"><br>
+                        <img src=\"\" alt=\"License Image\">
+                        <br>
                         <img src=\"\" alt=\"Registration Image\">
                         
                     </div>

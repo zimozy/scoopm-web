@@ -6,7 +6,10 @@
     <link rel="stylesheet" href="/css/admin.css">
 {% endblock %}
 
+{% block car_query %}{% endblock %}
+
 {% block body_content %}
+
 <h1 id="adminH1">Admin</h1>
 
 <table id="usersTable" class="table">
@@ -24,8 +27,9 @@
         <div class="cell">Test</div>
     </div>
 </div> #}
+
 <!-- Modal -->
-<div class="modal fade scoopm-application-modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div id="applicationModal" class="modal fade scoopm-application-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -39,7 +43,7 @@
                 <div class="row">
                     <div class="col">
                         <h1><span>First</span> <span>Last</span></h1>
-                        <h4><a id="email" href="tel:">000-000-0000</a> / <a id="email" href="mailto:">email@example.com</a></h4>
+                        <h4><a id="phone" href="tel:">000-000-0000</a> / <a id="email" href="mailto:">email@example.com</a></h4>
                         <!-- <h4></h4> -->
                         <p>SSN: <span id="ssn">111-11-1111</span></p>
                         <h4>References</h4>
@@ -79,7 +83,8 @@
                         <h4 id="licenseNumber">123-ITFL</h4>
                     </div>
                     <div class="col">
-                        <img src="" alt="License Image"><br>
+                        <img src="" alt="License Image">
+                        <br>
                         <img src="" alt="Registration Image">
                         
                     </div>
