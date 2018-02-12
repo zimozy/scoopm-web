@@ -59,7 +59,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
         // line 15
         echo "<div class=\"container-fluid\">
     <div class=\"row\">
-        <div id=\"mainContainer\" class=\"col-md-10 offset-md-1 col-lg-8 offset-lg-2\">
+        <div id=\"formContainer\" class=\"col-md-10 offset-md-1 col-lg-8 offset-lg-2\">
 
             <div class=\"text-center mb-4\">
                 <a href=\"";
@@ -104,8 +104,11 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
         }
         echo " autocomplete=\"off\" novalidate>
                     
-                <input type=\"submit\">
-
+                ";
+        // line 49
+        echo " ";
+        // line 50
+        echo "
                 <!-- ABOUT YOU -->
                 <div id=\"aboutYouPage\" class=\"current-page page\">
 
@@ -213,7 +216,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
                     ";
         // line 91
         echo "                    ";
-        echo $context["form"]->macro_select("Color", "color", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "color", array()), array("Beige" => "Beige", "Black" => "Black", "Blue" => "Blue", "Brown" => "Brown", "Burgundy" => "Burgundy", "Charcoal" => "Charcoal", "Gold" => "Gold", "Gray" => "Gray", "Green" => "Green", "Off White" => "Off White", "Orange" => "Orange", "Pink" => "Pink", "Purple" => "Purple", "Red" => "Red", "Silver" => "Silver", "Tan" => "Tan", "Turquoise" => "Turquoise", "White" => "White", "Yellow" => "White"),         // line 111
+        echo $context["form"]->macro_select("Color", "color", twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "color", array()), array("Beige" => "Beige", "Black" => "Black", "Blue" => "Blue", "Brown" => "Brown", "Burgundy" => "Burgundy", "Charcoal" => "Charcoal", "Gold" => "Gold", "Gray" => "Gray", "Green" => "Green", "Off White" => "Off White", "Orange" => "Orange", "Pink" => "Pink", "Purple" => "Purple", "Red" => "Red", "Silver" => "Silver", "Tan" => "Tan", "Turquoise" => "Turquoise", "White" => "White", "Yellow" => "Yellow"),         // line 111
 ($context["color"] ?? null));
         echo "
                     
@@ -399,7 +402,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 
     public function getDebugInfo()
     {
-        return array (  380 => 203,  377 => 202,  364 => 192,  359 => 188,  354 => 163,  351 => 162,  348 => 161,  345 => 160,  342 => 159,  340 => 158,  337 => 157,  332 => 154,  328 => 153,  324 => 152,  320 => 151,  315 => 149,  311 => 148,  307 => 147,  303 => 146,  299 => 145,  290 => 139,  286 => 138,  282 => 137,  278 => 136,  274 => 135,  270 => 134,  266 => 133,  262 => 132,  252 => 125,  248 => 124,  244 => 123,  240 => 122,  236 => 121,  227 => 115,  222 => 113,  217 => 111,  215 => 91,  211 => 89,  207 => 88,  203 => 87,  198 => 85,  193 => 83,  189 => 82,  185 => 81,  180 => 79,  171 => 73,  166 => 71,  161 => 69,  156 => 67,  152 => 66,  148 => 65,  144 => 64,  139 => 62,  135 => 61,  131 => 60,  127 => 59,  123 => 58,  120 => 57,  116 => 55,  114 => 54,  100 => 47,  94 => 43,  77 => 27,  75 => 26,  67 => 20,  60 => 15,  57 => 14,  51 => 12,  46 => 7,  43 => 6,  37 => 4,  33 => 1,  31 => 10,  29 => 2,  11 => 1,);
+        return array (  383 => 203,  380 => 202,  367 => 192,  362 => 188,  357 => 163,  354 => 162,  351 => 161,  348 => 160,  345 => 159,  343 => 158,  340 => 157,  335 => 154,  331 => 153,  327 => 152,  323 => 151,  318 => 149,  314 => 148,  310 => 147,  306 => 146,  302 => 145,  293 => 139,  289 => 138,  285 => 137,  281 => 136,  277 => 135,  273 => 134,  269 => 133,  265 => 132,  255 => 125,  251 => 124,  247 => 123,  243 => 122,  239 => 121,  230 => 115,  225 => 113,  220 => 111,  218 => 91,  214 => 89,  210 => 88,  206 => 87,  201 => 85,  196 => 83,  192 => 82,  188 => 81,  183 => 79,  174 => 73,  169 => 71,  164 => 69,  159 => 67,  155 => 66,  151 => 65,  147 => 64,  142 => 62,  138 => 61,  134 => 60,  130 => 59,  126 => 58,  123 => 57,  119 => 55,  117 => 54,  111 => 50,  109 => 49,  100 => 47,  94 => 43,  77 => 27,  75 => 26,  67 => 20,  60 => 15,  57 => 14,  51 => 12,  46 => 7,  43 => 6,  37 => 4,  33 => 1,  31 => 10,  29 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -420,7 +423,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 {% block body_content %}
 <div class=\"container-fluid\">
     <div class=\"row\">
-        <div id=\"mainContainer\" class=\"col-md-10 offset-md-1 col-lg-8 offset-lg-2\">
+        <div id=\"formContainer\" class=\"col-md-10 offset-md-1 col-lg-8 offset-lg-2\">
 
             <div class=\"text-center mb-4\">
                 <a href=\"{{path_for('home')}}\" class=\"h1 d-inline logo-font blue-text\">ScoopM</a>
@@ -452,7 +455,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
 
             <form id=\"application-form\" method=\"post\" action=\"{{ path_for('register') }}\"  enctype=\"multipart/form-data\" {% if errors %}class=\"scoopm-was-validated\"{% endif %} autocomplete=\"off\" novalidate>
                     
-                <input type=\"submit\">
+                {# <input type=\"submit\"> #} {# Used for testing purposes #}
 
                 <!-- ABOUT YOU -->
                 <div id=\"aboutYouPage\" class=\"current-page page\">
@@ -513,7 +516,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
                         'Tan': 'Tan',
                         'Turquoise': 'Turquoise',
                         'White': 'White',
-                        'Yellow': 'White'
+                        'Yellow': 'Yellow'
                     }, color)}}
                     
                     {{form.textInput('License Plate Number', 'licensePlateNumber', licensePlateNumber, errors.licensePlateNumber)}}

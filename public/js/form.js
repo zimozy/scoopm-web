@@ -8,107 +8,41 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 
-
 $(function() {
 
-//enable tooltip
-$('#submit-tooltip').tooltip();
-// submitButton.click(function() {
-//     submitButton.tooltip('show');
-// });
+    //initialize tooltip
+    $('#disabled-submit-button-tooltip').tooltip();
 
-function markAsValid(obj) {
-    obj.removeClass('scoopm-is-invalid');
-    obj.addClass('scoopm-is-valid');
-}
-
-function markAsNotInvalid(obj) {
-    obj.removeClass('scoopm-is-invalid');
-}
-
-function markAsInvalid(obj) {
-    mForm.addClass('scoopm-was-validated');
-
-    obj.removeClass('scoopm-is-valid');
-    obj.addClass('scoopm-is-invalid');
-    formIsValid = false;
-}
-
-// function checkPassword() {
-//     passVal = password.val();
-    
-//     // >6, with letter and number
-//     if (
-//         passVal.length < 6
-//         || !/\d/.test(passVal)
-//         || !/\D/.test(passVal)
-//     ) {
-//         markAsInvalid(password);
-//         passwordIsValid = false;
-//     } else {
-//         markAsNotInvalid(password);
-
-//         //only now do we check the second password
-//         if ( 
-//             passVal.length != 0
-//             && confirmPassword.val().length != 0 
-//         ) {
-//             if (passVal !== confirmPassword.val()) {
-//                 markAsInvalid(confirmPassword);
-//                 passwordIsValid = false;
-//             } else {
-//                 markAsNotInvalid(confirmPassword);
-//                 passwordIsValid = true;
-//             }    
-//         }
-//     }
-
-//     createAccountButton.updateDisabled();
-// }
-
-// var emailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-// function checkEmail() {
-//     if (emailRegex.test(email.val())) {
-//         markAsNotInvalid(email);
-//         emailIsValid = true;
-//     } else {
-//         markAsInvalid(email);
-//         emailIsValid = false;
-//     }
-
-//     createAccountButton.updateDisabled();
-// }
-
-submitButton.updateDisabled = function() {
-    // console.log('uploadsAreValid: ' + uploadsAreValid);
-    // console.log(firebase.auth().currentUser);
-    
-    // firebase.auth().currentUser &&
-    if (uploadsAreValid) {
-        submitButton.prop('disabled', false);
-        $('#submit-tooltip').tooltip('disable');
-    } else {
-        submitButton.prop('disabled', true);
-        $('#submit-tooltip').tooltip('enable');
+    function markAsValid(obj) {
+        obj.removeClass('scoopm-is-invalid');
+        obj.addClass('scoopm-is-valid');
     }
-}
 
-// createAccountButton.updateDisabled = function() {
-//     this.prop('disabled',
-//         ((emailIsValid && passwordIsValid) ? false : false)
-//     )
-// }
+    function markAsNotInvalid(obj) {
+        obj.removeClass('scoopm-is-invalid');
+    }
 
-// password.keyup(function() { checkPassword(); });
-// confirmPassword.keyup(function() { checkPassword(); });
-// email.keyup(function() { checkEmail(); });
+    function markAsInvalid(obj) {
+        mForm.addClass('scoopm-was-validated');
 
+        obj.removeClass('scoopm-is-valid');
+        obj.addClass('scoopm-is-invalid');
+        formIsValid = false;
+    }
 
+    submitButton.updateDisabled = function() {
+        // firebase.auth().currentUser &&
+        if (uploadsAreValid) {        
+            $('#disabled-submit-button-tooltip').removeClass('d-inline-block').addClass('d-none');
+            submitButton.removeClass('d-none');
+        } else {
+            submitButton.addClass('d-none');
+            $('#disabled-submit-button-tooltip').addClass('d-inline-block').removeClass('d-none');
+        }
+    }
 
-mForm.submit(function(event) {
-    $('input:file').remove(); // don't want to upload these
-});
-
+    mForm.submit(function(event) {
+        $('input:file').remove(); // don't want to upload these
+    })
 
 });

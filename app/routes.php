@@ -1,7 +1,11 @@
 <?php
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+
 use scoopm\Validator;
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 $app->get("/", function (Request $request, Response $response) {
     // return $response->getBody()->write("Home page.<br> <h1><a href=\"/register\">Register</a></h1>.");

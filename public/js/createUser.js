@@ -19,8 +19,8 @@ $(function() {
     var password = $('#password');
 
     createAccountButton.createAccount = function() {
-        createAccountButton.text('Creating user account...').addClass('pulse');
-
+        createAccountButton.html('Creating user account  <i class="fas fa-circle-notch fa-spin"></i>').addClass('pulse');
+        
         redirect = true;
 
         firebase.auth().createUserWithEmailAndPassword(email.val(), password.val())

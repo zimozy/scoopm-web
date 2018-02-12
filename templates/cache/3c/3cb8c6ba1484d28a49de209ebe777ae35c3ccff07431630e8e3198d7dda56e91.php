@@ -956,7 +956,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
                 <button id=\"";
                 // line 261
                 echo twig_escape_filter($this->env, ($context["thisPage"] ?? null), "html", null, true);
-                echo "Back\" class=\"back-button btn btn-outline-secondary mb-4 mb-sm-0 px-5\"><i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back&nbsp;</button>
+                echo "Back\" class=\"back-button btn btn-outline-secondary mb-4 mb-sm-0 px-5\"><i class=\"fas fa-chevron-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back&nbsp;</button>
             </div>
         ";
             }
@@ -969,25 +969,29 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
                 // line 267
                 echo "                <button id=\"";
                 echo twig_escape_filter($this->env, ($context["thisPage"] ?? null), "html", null, true);
-                echo "Next\" class=\"next-button btn btn-outline-primary px-5\">&nbsp;Next&nbsp;&nbsp;<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></button>
+                echo "Next\" class=\"next-button btn btn-outline-primary px-5\">&nbsp;Next&nbsp;&nbsp;<i class=\"fas fa-chevron-right\"></i></button>
                 
             ";
             } else {
                 // line 270
-                echo "                <span id=\"submit-tooltip\" class=\"d-inline-block\" tabindex=\"0\" data-toggle=\"tooltip\" title=\"You must upload all files to submit the application.\" data-placement=\"top\">
-                    <input id=\"submit-button\" 
-                    type=\"submit\" 
-                    style=\"pointer-events: none;\"
-                    class=\"btn btn-primary px-5\"
-                    value=\"Submit\" 
-                    ";
-                // line 276
-                echo twig_escape_filter($this->env, ($context["disabled"] ?? null), "html", null, true);
-                echo "/>
+                echo "                <input id=\"submit-button\" type=\"submit\" class=\"btn btn-primary px-5 ";
+                if (($context["disabled"] ?? null)) {
+                    echo "d-none";
+                }
+                echo "\" value=\"Submit\" />
+                <span id=\"disabled-submit-button-tooltip\" class=\"";
+                // line 271
+                if (($context["disabled"] ?? null)) {
+                    echo "d-inline-block";
+                } else {
+                    echo "d-none";
+                }
+                echo "\" tabindex=\"0\" data-toggle=\"tooltip\" title=\"You must upload all files to submit the application.\" data-placement=\"top\">
+                    <button type=\"button\" class=\"btn btn-primary px-5\" style=\"pointer-events: none;\" disabled>Submit</a>
                 </span>
             ";
             }
-            // line 279
+            // line 275
             echo "        </div>
 
         <div class=\"col-sm\"></div>
@@ -1015,7 +1019,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
     public function getDebugInfo()
     {
-        return array (  991 => 279,  985 => 276,  977 => 270,  970 => 267,  968 => 266,  964 => 264,  958 => 261,  955 => 260,  953 => 259,  947 => 255,  932 => 254,  919 => 249,  915 => 247,  903 => 246,  890 => 241,  886 => 239,  874 => 238,  861 => 233,  857 => 231,  845 => 230,  836 => 227,  834 => 226,  822 => 225,  805 => 211,  797 => 210,  793 => 209,  786 => 207,  783 => 206,  780 => 205,  777 => 204,  774 => 203,  771 => 202,  768 => 201,  766 => 200,  763 => 199,  748 => 198,  737 => 194,  733 => 192,  731 => 191,  728 => 190,  725 => 189,  710 => 187,  706 => 186,  703 => 185,  701 => 184,  693 => 183,  686 => 181,  683 => 180,  680 => 179,  677 => 178,  674 => 177,  671 => 176,  668 => 175,  666 => 174,  663 => 173,  647 => 172,  633 => 166,  628 => 163,  624 => 161,  622 => 160,  619 => 159,  617 => 158,  608 => 154,  600 => 153,  591 => 150,  587 => 148,  584 => 147,  578 => 145,  576 => 144,  567 => 140,  562 => 137,  559 => 136,  556 => 135,  553 => 134,  550 => 133,  547 => 132,  544 => 131,  541 => 129,  538 => 128,  535 => 127,  532 => 126,  529 => 125,  526 => 124,  523 => 123,  520 => 122,  517 => 121,  515 => 120,  510 => 119,  507 => 118,  504 => 117,  501 => 116,  498 => 114,  495 => 113,  492 => 112,  489 => 111,  486 => 110,  483 => 109,  481 => 108,  478 => 107,  475 => 105,  458 => 104,  437 => 97,  434 => 96,  428 => 94,  426 => 93,  418 => 90,  415 => 89,  412 => 88,  409 => 87,  406 => 86,  403 => 85,  400 => 84,  398 => 83,  395 => 82,  379 => 81,  357 => 75,  350 => 73,  347 => 72,  344 => 71,  341 => 70,  338 => 69,  335 => 68,  332 => 67,  330 => 66,  327 => 65,  312 => 64,  302 => 61,  297 => 58,  294 => 57,  290 => 55,  286 => 53,  284 => 52,  271 => 51,  263 => 48,  260 => 47,  258 => 46,  255 => 45,  252 => 44,  249 => 43,  246 => 42,  243 => 41,  240 => 40,  238 => 39,  235 => 38,  218 => 37,  206 => 33,  192 => 32,  189 => 31,  186 => 30,  183 => 29,  180 => 28,  177 => 27,  174 => 26,  172 => 25,  169 => 24,  153 => 23,  142 => 19,  136 => 17,  134 => 16,  130 => 15,  116 => 14,  109 => 12,  106 => 11,  103 => 10,  100 => 9,  97 => 8,  94 => 7,  91 => 6,  89 => 5,  86 => 4,  69 => 3,  64 => 253,  61 => 245,  58 => 237,  55 => 229,  52 => 224,  43 => 216,  40 => 197,  37 => 171,  34 => 103,  31 => 80,  28 => 63,  25 => 36,  22 => 22,  19 => 2,);
+        return array (  995 => 275,  984 => 271,  977 => 270,  970 => 267,  968 => 266,  964 => 264,  958 => 261,  955 => 260,  953 => 259,  947 => 255,  932 => 254,  919 => 249,  915 => 247,  903 => 246,  890 => 241,  886 => 239,  874 => 238,  861 => 233,  857 => 231,  845 => 230,  836 => 227,  834 => 226,  822 => 225,  805 => 211,  797 => 210,  793 => 209,  786 => 207,  783 => 206,  780 => 205,  777 => 204,  774 => 203,  771 => 202,  768 => 201,  766 => 200,  763 => 199,  748 => 198,  737 => 194,  733 => 192,  731 => 191,  728 => 190,  725 => 189,  710 => 187,  706 => 186,  703 => 185,  701 => 184,  693 => 183,  686 => 181,  683 => 180,  680 => 179,  677 => 178,  674 => 177,  671 => 176,  668 => 175,  666 => 174,  663 => 173,  647 => 172,  633 => 166,  628 => 163,  624 => 161,  622 => 160,  619 => 159,  617 => 158,  608 => 154,  600 => 153,  591 => 150,  587 => 148,  584 => 147,  578 => 145,  576 => 144,  567 => 140,  562 => 137,  559 => 136,  556 => 135,  553 => 134,  550 => 133,  547 => 132,  544 => 131,  541 => 129,  538 => 128,  535 => 127,  532 => 126,  529 => 125,  526 => 124,  523 => 123,  520 => 122,  517 => 121,  515 => 120,  510 => 119,  507 => 118,  504 => 117,  501 => 116,  498 => 114,  495 => 113,  492 => 112,  489 => 111,  486 => 110,  483 => 109,  481 => 108,  478 => 107,  475 => 105,  458 => 104,  437 => 97,  434 => 96,  428 => 94,  426 => 93,  418 => 90,  415 => 89,  412 => 88,  409 => 87,  406 => 86,  403 => 85,  400 => 84,  398 => 83,  395 => 82,  379 => 81,  357 => 75,  350 => 73,  347 => 72,  344 => 71,  341 => 70,  338 => 69,  335 => 68,  332 => 67,  330 => 66,  327 => 65,  312 => 64,  302 => 61,  297 => 58,  294 => 57,  290 => 55,  286 => 53,  284 => 52,  271 => 51,  263 => 48,  260 => 47,  258 => 46,  255 => 45,  252 => 44,  249 => 43,  246 => 42,  243 => 41,  240 => 40,  238 => 39,  235 => 38,  218 => 37,  206 => 33,  192 => 32,  189 => 31,  186 => 30,  183 => 29,  180 => 28,  177 => 27,  174 => 26,  172 => 25,  169 => 24,  153 => 23,  142 => 19,  136 => 17,  134 => 16,  130 => 15,  116 => 14,  109 => 12,  106 => 11,  103 => 10,  100 => 9,  97 => 8,  94 => 7,  91 => 6,  89 => 5,  86 => 4,  69 => 3,  64 => 253,  61 => 245,  58 => 237,  55 => 229,  52 => 224,  43 => 216,  40 => 197,  37 => 171,  34 => 103,  31 => 80,  28 => 63,  25 => 36,  22 => 22,  19 => 2,);
     }
 
     public function getSourceContext()
@@ -1280,22 +1284,18 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
         {% if goingBack %}
             <div class=\"col\">
-                <button id=\"{{thisPage}}Back\" class=\"back-button btn btn-outline-secondary mb-4 mb-sm-0 px-5\"><i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back&nbsp;</button>
+                <button id=\"{{thisPage}}Back\" class=\"back-button btn btn-outline-secondary mb-4 mb-sm-0 px-5\"><i class=\"fas fa-chevron-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back&nbsp;</button>
             </div>
         {% endif %}
 
         <div class=\"col\">
             {% if not submitting %}
-                <button id=\"{{thisPage}}Next\" class=\"next-button btn btn-outline-primary px-5\">&nbsp;Next&nbsp;&nbsp;<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></button>
+                <button id=\"{{thisPage}}Next\" class=\"next-button btn btn-outline-primary px-5\">&nbsp;Next&nbsp;&nbsp;<i class=\"fas fa-chevron-right\"></i></button>
                 
             {% else %}
-                <span id=\"submit-tooltip\" class=\"d-inline-block\" tabindex=\"0\" data-toggle=\"tooltip\" title=\"You must upload all files to submit the application.\" data-placement=\"top\">
-                    <input id=\"submit-button\" 
-                    type=\"submit\" 
-                    style=\"pointer-events: none;\"
-                    class=\"btn btn-primary px-5\"
-                    value=\"Submit\" 
-                    {{disabled}}/>
+                <input id=\"submit-button\" type=\"submit\" class=\"btn btn-primary px-5 {% if disabled %}d-none{% endif %}\" value=\"Submit\" />
+                <span id=\"disabled-submit-button-tooltip\" class=\"{% if disabled %}d-inline-block{% else %}d-none{% endif %}\" tabindex=\"0\" data-toggle=\"tooltip\" title=\"You must upload all files to submit the application.\" data-placement=\"top\">
+                    <button type=\"button\" class=\"btn btn-primary px-5\" style=\"pointer-events: none;\" disabled>Submit</a>
                 </span>
             {% endif %}
         </div>

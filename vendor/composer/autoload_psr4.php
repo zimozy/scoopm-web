@@ -13,6 +13,7 @@ return array(
     'Slim\\' => array($vendorDir . '/slim/slim/Slim'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
     'Giggsey\\Locale\\' => array($vendorDir . '/giggsey/locale/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),

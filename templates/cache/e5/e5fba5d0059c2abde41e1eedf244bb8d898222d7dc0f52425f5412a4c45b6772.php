@@ -39,7 +39,8 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
         echo " | ScoopM</title>
 
     <!-- FONT AWESOME -->
-    <link rel=\"stylesheet\" href=\"/css/fa/css/font-awesome.min.css\">
+    <script defer src=\"https://use.fontawesome.com/releases/v5.0.6/js/all.js\"></script>
+    <script defer src=\"https://use.fontawesome.com/releases/v5.0.6/js/v4-shims.js\"></script><!--upgrade from v.4-->
 
     <!-- GOOGLE FONT -->
     <link href=\"https://fonts.googleapis.com/css?family=Kaushan+Script\" rel=\"stylesheet\"><!--Google Font-->
@@ -48,12 +49,12 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\" integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\" crossorigin=\"anonymous\"></script>
 
     ";
-        // line 19
+        // line 20
         $this->displayBlock('car_query', $context, $blocks);
-        // line 31
+        // line 32
         echo "
     ";
-        // line 33
+        // line 34
         echo "    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>
 
     <!-- BOOTSTRAP -->
@@ -65,38 +66,38 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     <link rel=\"stylesheet\" href=\"/css/scoopm.css\">
     
     ";
-        // line 43
-        $this->displayBlock('head_styles', $context, $blocks);
         // line 44
+        $this->displayBlock('head_styles', $context, $blocks);
+        // line 45
         echo "
     ";
-        // line 45
-        $this->displayBlock('head_scripts', $context, $blocks);
         // line 46
+        $this->displayBlock('head_scripts', $context, $blocks);
+        // line 47
         echo "</head>
 <body ";
-        // line 47
+        // line 48
         $this->displayBlock('body_class', $context, $blocks);
         echo ">
     ";
-        // line 48
+        // line 49
         $this->displayBlock('body_content', $context, $blocks);
-        // line 58
+        // line 59
         echo "
     ";
-        // line 59
+        // line 60
         $this->displayBlock('footer', $context, $blocks);
-        // line 64
-        echo "    
-    ";
         // line 65
-        $this->displayBlock('firebase', $context, $blocks);
-        // line 80
         echo "    
     ";
+        // line 66
+        $this->displayBlock('firebase', $context, $blocks);
         // line 81
-        $this->displayBlock('body_scripts', $context, $blocks);
+        echo "    
+    ";
         // line 82
+        $this->displayBlock('body_scripts', $context, $blocks);
+        // line 83
         echo "</body>
 </html>";
     }
@@ -106,10 +107,10 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     {
     }
 
-    // line 19
+    // line 20
     public function block_car_query($context, array $blocks = array())
     {
-        // line 20
+        // line 21
         echo "        <!-- CAR QUERY -->
         <script type=\"text/javascript\" src=\"http://www.carqueryapi.com/js/carquery.0.3.4.js\"></script>
         <script type=\"text/javascript\">
@@ -123,61 +124,61 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     ";
     }
 
-    // line 43
+    // line 44
     public function block_head_styles($context, array $blocks = array())
     {
     }
 
-    // line 45
+    // line 46
     public function block_head_scripts($context, array $blocks = array())
     {
     }
 
-    // line 47
+    // line 48
     public function block_body_class($context, array $blocks = array())
     {
     }
 
-    // line 48
+    // line 49
     public function block_body_content($context, array $blocks = array())
     {
-        // line 49
-        echo "        <div class=\"container\">
+        // line 50
+        echo "        <div class=\"container-fluid\">
             <div class=\"row\">
                 <div class=\"col-lg-8 offset-lg-2\">
                     <h1 class=\"display-2 text-center logo-font blue-text mt-4\"><a href=\"";
-        // line 52
+        // line 53
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("home"), "html", null, true);
         echo "\">ScoopM</a><small>&nbsp;</small></h1>
                     ";
-        // line 53
-        $this->displayBlock('content', $context, $blocks);
         // line 54
+        $this->displayBlock('content', $context, $blocks);
+        // line 55
         echo "                </div>
             </div>
         </div>
     ";
     }
 
-    // line 53
+    // line 54
     public function block_content($context, array $blocks = array())
     {
     }
 
-    // line 59
+    // line 60
     public function block_footer($context, array $blocks = array())
     {
-        // line 60
+        // line 61
         echo "        <footer class=\"footer\">
             <div class=\"container text-center\">&copy; ScoopM 2018</div>
         </footer>
     ";
     }
 
-    // line 65
+    // line 66
     public function block_firebase($context, array $blocks = array())
     {
-        // line 66
+        // line 67
         echo "        <script src=\"https://www.gstatic.com/firebasejs/4.9.0/firebase.js\"></script>
         <script>
             // Initialize Firebase
@@ -194,7 +195,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     ";
     }
 
-    // line 81
+    // line 82
     public function block_body_scripts($context, array $blocks = array())
     {
     }
@@ -206,7 +207,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
 
     public function getDebugInfo()
     {
-        return array (  198 => 81,  181 => 66,  178 => 65,  171 => 60,  168 => 59,  163 => 53,  156 => 54,  154 => 53,  150 => 52,  145 => 49,  142 => 48,  137 => 47,  132 => 45,  127 => 43,  113 => 20,  110 => 19,  105 => 8,  100 => 82,  98 => 81,  95 => 80,  93 => 65,  90 => 64,  88 => 59,  85 => 58,  83 => 48,  79 => 47,  76 => 46,  74 => 45,  71 => 44,  69 => 43,  57 => 33,  54 => 31,  52 => 19,  38 => 8,  29 => 1,);
+        return array (  199 => 82,  182 => 67,  179 => 66,  172 => 61,  169 => 60,  164 => 54,  157 => 55,  155 => 54,  151 => 53,  146 => 50,  143 => 49,  138 => 48,  133 => 46,  128 => 44,  114 => 21,  111 => 20,  106 => 8,  101 => 83,  99 => 82,  96 => 81,  94 => 66,  91 => 65,  89 => 60,  86 => 59,  84 => 49,  80 => 48,  77 => 47,  75 => 46,  72 => 45,  70 => 44,  58 => 34,  55 => 32,  53 => 20,  38 => 8,  29 => 1,);
     }
 
     public function getSourceContext()
@@ -221,7 +222,8 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
     <title>{% block title %}{% endblock %} | ScoopM</title>
 
     <!-- FONT AWESOME -->
-    <link rel=\"stylesheet\" href=\"/css/fa/css/font-awesome.min.css\">
+    <script defer src=\"https://use.fontawesome.com/releases/v5.0.6/js/all.js\"></script>
+    <script defer src=\"https://use.fontawesome.com/releases/v5.0.6/js/v4-shims.js\"></script><!--upgrade from v.4-->
 
     <!-- GOOGLE FONT -->
     <link href=\"https://fonts.googleapis.com/css?family=Kaushan+Script\" rel=\"stylesheet\"><!--Google Font-->
@@ -259,7 +261,7 @@ class __TwigTemplate_19592e90ed0d5de2136572bad9928a6df3e60250ff98d4f7e7df3c54c9c
 </head>
 <body {% block body_class %}{% endblock %}>
     {% block body_content %}
-        <div class=\"container\">
+        <div class=\"container-fluid\">
             <div class=\"row\">
                 <div class=\"col-lg-8 offset-lg-2\">
                     <h1 class=\"display-2 text-center logo-font blue-text mt-4\"><a href=\"{{path_for('home')}}\">ScoopM</a><small>&nbsp;</small></h1>
