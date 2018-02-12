@@ -23,11 +23,12 @@ $app->get("/application-login", function (Request $request, Response $response) 
 /*$app->get("/signup", function (Request $request, Response $response) {
     return $this->view->render($response, 'signup.twig.html');
 })->setName('signup');
-
+*/
 $app->get("/profile", function (Request $request, Response $response) {
-    return $this->view->render($response, 'profile.twig.html');
+    return $response->withRedirect($this->router->pathFor('home'));
+    // return $this->view->render($response, 'profile.twig.html');
 })->setName('profile');
-
+/*
 $app->get("/admin", function (Request $request, Response $response) {
     return $this->view->render($response, 'admin.twig.html');
 })->setName('admin');*/
@@ -97,8 +98,8 @@ $app->post('/register', function (Request $request, Response $response) {
     $validator->validatePhone('ref2Phone');
     $validator->validateEmail('ref2Email');
     
-    // if($validator->hasErrors()) {
-        if (true) {
+    if($validator->hasErrors()) {
+        // if (true) {
 
         $response_array['errors'] = $validator->getErrors();
         $response_array['resubmitting'] = true;
@@ -149,13 +150,13 @@ $app->post('/register', function (Request $request, Response $response) {
             'ref2Phone' => $response_array['ref2Phone'],
             'ref2Email' => $response_array['ref2Email']
         );
-        var_dump(
-        $firebase->set('users/' . $response_array['userID'], ["test"=>"value"])
-
-        );
+        // var_dump(
+        $firebase->set('users/' . $response_array['userID'], $data);
+        // );
 
         // return $this->view->render($response, 'new_user.twig.html', array('email'=>$response_array['email'], 'password'=>$response_array['password']));
 
+        /*
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://api.checkr.com/v1/candidates',
@@ -223,8 +224,8 @@ $app->post('/register', function (Request $request, Response $response) {
 
         // var_dump($curl_response);
         // return $response->getBody()->write('----');
+        */
 
-
-        // return $response->withRedirect($this->router->pathFor('thanks'));
+        return $response->withRedirect($this->router->pathFor('thanks'));
     }
 });

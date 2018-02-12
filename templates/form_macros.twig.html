@@ -195,7 +195,7 @@
     </div>
 {% endmacro %}
 
-{% macro agreement(title, name, value, errors=null) %}
+{% macro agreement(title, name, value, errors=null, hint=null) %}
     {% if errors == null %}
         {# Do nothing. #}
     {% elseif errors.passed %}
@@ -206,7 +206,9 @@
     <div class="form-group row mt-3">
         <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
         <div class="col-sm">
-            <p class="{{validation_class}}">I authorize ScoopM to perform a background check, including a criminal background check and motor vehicle report.</p>
+            {% if hint %}
+                <p class="{{validation_class}}">{{hint}}</p>
+            {% endif %}
             <input id="{{name}}" name="{{name}}" type="checkbox" value="1" {% if value == '1' %}checked{% endif %}
             > <label for="{{name}}" class="{{validation_class}}">I Agree</label>
             <small class="form-text scoopm-error">You must agree to these terms</small>

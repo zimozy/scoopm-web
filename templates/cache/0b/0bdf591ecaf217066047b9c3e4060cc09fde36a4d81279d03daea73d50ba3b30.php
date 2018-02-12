@@ -83,22 +83,24 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                 <div class=\"col-lg\">
                     <div id=\"card1\" class=\"card fade-in\">
                         <div class=\"card-body m-1 m-md-2 my-md-3\">
-                            <span><i class=\"fas fa-dollar-sign\"></i></span>
-                            <span>Earn more</span> Our safety-first standards mean we can charge riders&mdash;and pay you&mdash;more.</div>
+                            <span><i class=\"far fa-credit-card\"></i></span>
+                            <span>Earn more</span> Since safety is our priority, we can charge passengers&mdash;and pay you&mdash;more.</div>
                     </div>
                 </div>
                 
                 <div class=\"col-lg\">
                     <div id=\"card2\" class=\"card fade-in\">
                         <div class=\"card-body m-1 m-md-2 my-md-3\">
-                            <span><i class=\"far fa-life-ring\"></i></span>
-                            <span>You're&nbsp;covered</span> Our corporate insurance policy means you can drive with greater peace of mind.</div>
+                            <span><i class=\"far fa-user\"></i><i class=\"fas fa-heart\"></i></span>
+                            <span>Be trusted</span> Join the rideshare community where safety is #1.<br></div>
                     </div>
                 </div>
                 
                 <div class=\"col-lg\">
                     <div id=\"card3\" class=\"card fade-in\">
-                        <div class=\"card-body m-1 m-md-2 my-md-3\"><span>Lorem Ipsum</span> Dolor sit amet and other profound sayings of an intellectual mind.</div>
+                        <div class=\"card-body m-1 m-md-2 my-md-3\">
+                            <span><i class=\"far fa-life-ring\"></i></span>
+                            <span>You're&nbsp;covered</span> Relax&mdash;our corporate insurance policy covers both you and your riders if things go awry.</div>
                     </div>
                 </div>
             </div>
@@ -125,7 +127,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                             </div>
                             <p class=\"text-center text-muted my-3\">
                                 Already have an account? <a href=\"";
-        // line 73
+        // line 75
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("application-login"), "html", null, true);
         echo "\">Sign in.</a>
                             </p>
@@ -133,7 +135,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                     </div>
                     <div id=\"startNewApplication\" class=\"text-center my-4 d-none\">
                         <a href=\"";
-        // line 78
+        // line 80
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("register"), "html", null, true);
         echo "\" class=\"btn btn-lg\">Create New Application</a>
                     </div>
@@ -147,10 +149,10 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 ";
     }
 
-    // line 90
+    // line 92
     public function block_body_scripts($context, array $blocks = array())
     {
-        // line 91
+        // line 93
         echo "<script type=\"text/javascript\" src=\"/js/home.js\"></script>
 <script type=\"text/javascript\" src=\"/js/createUser.js\"></script>
 ";
@@ -168,7 +170,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 
     public function getDebugInfo()
     {
-        return array (  154 => 91,  151 => 90,  137 => 78,  129 => 73,  81 => 27,  79 => 26,  70 => 19,  64 => 15,  61 => 14,  56 => 11,  53 => 10,  47 => 9,  42 => 7,  36 => 5,  32 => 1,  30 => 3,  11 => 1,);
+        return array (  156 => 93,  153 => 92,  139 => 80,  131 => 75,  81 => 27,  79 => 26,  70 => 19,  64 => 15,  61 => 14,  56 => 11,  53 => 10,  47 => 9,  42 => 7,  36 => 5,  32 => 1,  30 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -204,22 +206,24 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                 <div class=\"col-lg\">
                     <div id=\"card1\" class=\"card fade-in\">
                         <div class=\"card-body m-1 m-md-2 my-md-3\">
-                            <span><i class=\"fas fa-dollar-sign\"></i></span>
-                            <span>Earn more</span> Our safety-first standards mean we can charge riders&mdash;and pay you&mdash;more.</div>
+                            <span><i class=\"far fa-credit-card\"></i></span>
+                            <span>Earn more</span> Since safety is our priority, we can charge passengers&mdash;and pay you&mdash;more.</div>
                     </div>
                 </div>
                 
                 <div class=\"col-lg\">
                     <div id=\"card2\" class=\"card fade-in\">
                         <div class=\"card-body m-1 m-md-2 my-md-3\">
-                            <span><i class=\"far fa-life-ring\"></i></span>
-                            <span>You're&nbsp;covered</span> Our corporate insurance policy means you can drive with greater peace of mind.</div>
+                            <span><i class=\"far fa-user\"></i><i class=\"fas fa-heart\"></i></span>
+                            <span>Be trusted</span> Join the rideshare community where safety is #1.<br></div>
                     </div>
                 </div>
                 
                 <div class=\"col-lg\">
                     <div id=\"card3\" class=\"card fade-in\">
-                        <div class=\"card-body m-1 m-md-2 my-md-3\"><span>Lorem Ipsum</span> Dolor sit amet and other profound sayings of an intellectual mind.</div>
+                        <div class=\"card-body m-1 m-md-2 my-md-3\">
+                            <span><i class=\"far fa-life-ring\"></i></span>
+                            <span>You're&nbsp;covered</span> Relax&mdash;our corporate insurance policy covers both you and your riders if things go awry.</div>
                     </div>
                 </div>
             </div>

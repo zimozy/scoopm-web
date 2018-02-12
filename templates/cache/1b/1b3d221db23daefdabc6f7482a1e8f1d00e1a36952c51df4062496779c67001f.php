@@ -57,10 +57,10 @@ class __TwigTemplate_9c9bddc73c584a15e054032d3a11f23458282b750f6679d228181431f90
     ";
         // line 24
         echo "
-    <div class=\"row h-100 align-items-center\" style=\"margin-top: 10%;\">
+    <div class=\"row h-100 align-items-center\" style=\"margin-top: 15%;\">
         <div class=\"col-lg-8 offset-lg-2 text-center\">
             <h1 class=\"display-3 blue-text\">Thanks!</h1>
-            <p class=\"lead\">Your application has been submitted.</p>
+            <p class=\"lead\">Your application has been submitted. <i class=\"fas fa-car\"></i></p>
             ";
         // line 30
         echo "            ";
@@ -127,10 +127,10 @@ class __TwigTemplate_9c9bddc73c584a15e054032d3a11f23458282b750f6679d228181431f90
         <div class=\"col my-2\">&nbsp;</div>
     </div> #}
 
-    <div class=\"row h-100 align-items-center\" style=\"margin-top: 10%;\">
+    <div class=\"row h-100 align-items-center\" style=\"margin-top: 15%;\">
         <div class=\"col-lg-8 offset-lg-2 text-center\">
             <h1 class=\"display-3 blue-text\">Thanks!</h1>
-            <p class=\"lead\">Your application has been submitted.</p>
+            <p class=\"lead\">Your application has been submitted. <i class=\"fas fa-car\"></i></p>
             {# <p class=\"lead\">You should get an email shortly.</p> #}
             {# <p class=\"lead blue-text underlined\"><a href=\"{{path_for('profile')}}\">View profile</a></p> #}
             {% block content %}{% endblock %}

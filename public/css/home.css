@@ -6,9 +6,9 @@ body.ad-background {
   color: black;  
 }
 
-.logo-font {
-    /* text-shadow: 3px 3px 1px  rgba(0,0,0,0.07); */
-}
+/* .logo-font {
+    text-shadow: 3px 3px 1px  rgba(0,0,0,0.07);
+} */
 
 .sign-up-box {
     background-color: white; 
@@ -77,5 +77,5 @@ input:-moz-placeholder { color:#fff !important; }
 }
 
 .footer {
-    color:#444;
+    color:#888888;
 }

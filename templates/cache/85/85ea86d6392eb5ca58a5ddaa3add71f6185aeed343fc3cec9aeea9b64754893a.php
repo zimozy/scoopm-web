@@ -286,7 +286,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
         echo "
                     ";
         // line 138
-        echo $context["form"]->macro_agreement("Background Check", "backgroundCheck", ($context["backgroundCheck"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "backgroundCheck", array()));
+        echo $context["form"]->macro_agreement("Background Check", "backgroundCheck", ($context["backgroundCheck"] ?? null), twig_get_attribute($this->env, $this->getSourceContext(), ($context["errors"] ?? null), "backgroundCheck", array()), "I authorize ScoopM to perform a background check, including a criminal background check and motor vehicle report.");
         echo "
                     ";
         // line 139
@@ -544,7 +544,7 @@ class __TwigTemplate_faeffdf24f59994b80868aafbb178680254091432d9fa792a9e8dc67374
                     {{form.upload('Upload Resume', 'resume', resume, 'doc', errors.resume)}}
                     {{form.upload('Fingerprints', 'fingerprints', fingerprints, 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station. Scan the fingerprint document or upload a PDF.')}}
                     {{form.textArea('Felonies Committed, if applicable', 'felonies', felonies, errors.felonies)}}
-                    {{form.agreement('Background Check', 'backgroundCheck', backgroundCheck, errors.backgroundCheck)}}
+                    {{form.agreement('Background Check', 'backgroundCheck', backgroundCheck, errors.backgroundCheck, 'I authorize ScoopM to perform a background check, including a criminal background check and motor vehicle report.')}}
                     {{form.buttons('application', true)}}
                 </div>
 
