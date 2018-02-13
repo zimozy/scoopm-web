@@ -46,7 +46,15 @@
 
             <form id="application-form" method="post" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-was-validated"{% endif %} autocomplete="off" novalidate>
                     
-                <input type="submit"> {# Used for testing purposes #}
+                {# <input type="submit">  #}
+                {# Used for testing purposes #}
+                {# <button onclick="firebase.auth().signOut().then(function() {
+                    alert('signed out');
+                    // Sign-out successful.
+                  }).catch(function(error) {
+                      alert('error');
+                    // An error happened.
+                  });">Sign Out</button> #}
 
                 <!-- ABOUT YOU -->
                 <div id="aboutYouPage" class="current-page page">
@@ -186,10 +194,11 @@
                     {{form.buttons('userAccount', true, true)}} {# SUBMIT
                 </div> #}
 
-                <input id="email" name="email" type="hidden">
-                
+                {# HIDDEN INPUTS #}
                 {# <input id="userKey" name="userKey" type="hidden" value="{{userKey}}"> #}
+                <input id="email" name="email" type="hidden" value="{{email}}">
                 <input id="userID" name="userID" type="hidden" value="{{userID}}">
+                <input id="userIdToken" name="userIdToken" type="hidden" value="{{userIdToken}}">
                 
             </form>
 
@@ -202,7 +211,7 @@
 {% block body_scripts %}
     {{parent()}}
     <script type="text/javascript" src="/js/variables.js"></script>
-    <script type="text/javascript" src="/js/wizard.js"></script>
-    <script type="text/javascript" src="/js/form.js"></script>
+    <script type="text/javascript" src="/js/register-wizard.js"></script>
+    <script type="text/javascript" src="/js/register.js"></script>
     <script type="text/javascript" src="/js/uploader.js"></script>
 {% endblock %}

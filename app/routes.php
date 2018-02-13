@@ -151,7 +151,10 @@ $app->post('/register', function (Request $request, Response $response) {
             'ref2Email' => $response_array['ref2Email']
         );
         var_dump(
-        $firebase->set('users/' . $response_array['userID'], $data)
+            $firebase->setToken($response_array['userIdToken'])
+        );
+        var_dump(
+            $firebase->set('users/' . $response_array['userID'], $data)
         );
 
         // return $this->view->render($response, 'new_user.twig.html', array('email'=>$response_array['email'], 'password'=>$response_array['password']));

@@ -153,8 +153,8 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
     public function block_body_scripts($context, array $blocks = array())
     {
         // line 93
-        echo "<script type=\"text/javascript\" src=\"/js/home.js\"></script>
-<script type=\"text/javascript\" src=\"/js/createUser.js\"></script>
+        echo "<script type=\"text/javascript\" src=\"/js/home-animations.js\"></script>
+<script type=\"text/javascript\" src=\"/js/home-create-user.js\"></script>
 ";
     }
 
@@ -267,8 +267,8 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 
 
 {% block body_scripts %}
-<script type=\"text/javascript\" src=\"/js/home.js\"></script>
-<script type=\"text/javascript\" src=\"/js/createUser.js\"></script>
+<script type=\"text/javascript\" src=\"/js/home-animations.js\"></script>
+<script type=\"text/javascript\" src=\"/js/home-create-user.js\"></script>
 {% endblock %}", "home.twig.html", "/var/www/templates/home.twig.html");
     }
 }

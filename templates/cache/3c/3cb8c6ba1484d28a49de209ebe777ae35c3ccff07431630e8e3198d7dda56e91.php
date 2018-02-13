@@ -952,7 +952,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         ob_start();
         try {
             // line 257
-            echo "    <div class=\"form-row text-center mt-4\">
+            echo "    <div class=\"form-row text-center mt-5 mb-3\">
 
         <div class=\"col-sm\"></div>
 
@@ -1288,7 +1288,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 {% endmacro %}
 
 {% macro buttons(thisPage, goingBack=false, submitting=false, disabled=null) %}
-    <div class=\"form-row text-center mt-4\">
+    <div class=\"form-row text-center mt-5 mb-3\">
 
         <div class=\"col-sm\"></div>
 
