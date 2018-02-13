@@ -91,48 +91,53 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                     ";
         // line 80
         echo "                    <div class=\"col-sm\">
-                        ";
-        // line 82
-        echo "                        <ul class=\"list-unstyled\">
-                            <li><i class=\"fas fa-phone\"></i> <a id=\"phone\" href=\"tel:\">000-000-0000</a></li>
-                            <li><i class=\"fas fa-envelope\"></i> <a id=\"email\" href=\"mailto:\">email@example.com</a></h6></li>
-                            <li><p>SSN: <span id=\"ssn\">111-11-1111</span></p></li>
+                        <h3>Contact</h3>
+                        <ul class=\"list-unstyled\">
+                            <li class=\"h4\"><i class=\"fas fa-phone\"></i> <a id=\"phone\" href=\"tel:\">000-000-0000</a></li>
+                            <li class=\"h4\"><i class=\"fas fa-envelope\"></i> <a id=\"email\" href=\"mailto:\">email@example.com</a></h6></li>
                         </ul>
+                    </div>
+                    <div class=\"col-sm-auto\">
+                        <div id=\"profilePhoto\" class=\"file-link\">No profile photo</div>
+                    </div>
+                </div>
 
+                <hr>
+                <div class=\"row\">
+                    <div class=\"col-sm\">
                         <h4><i class=\"fas fa-users\"></i> References</h4>
                         <ul class=\"list-unstyled\">
                             <li><b id=\"ref1Name\" scope=\"row\">First Name</b> (<a id=\"ref1Phone\" href=\"tel:\">###-####</a> / <a id=\"ref1Email\" href=\"mailto:\">email@example.com</a>)</li>
                             <li><b id=\"ref2Name\" scope=\"row\">First Name</b> (<a id=\"ref2Phone\" href=\"tel:\">###-####</a> / <a id=\"ref2Email\" href=\"mailto:\">email@example.com</a>)</li>
                         </ul>
+    
+                    </div>
+                </div>
 
-                        <div class=\"row\">
-                            <div class=\"col-lg-auto\">
-                                Resume
-                                <div id=\"resume\" class=\"file-link\">Open resume file</div>
-                            </div>
-                            <div class=\"col-lg-auto\">
-                                W-9
-                                <div id=\"w9\" class=\"file-link\">Open W-9 file</div>
-                            </div>
-                            <div class=\"col-lg-auto\">
-                                Fingerprints
-                                <div id=\"fingerprints\" class=\"file-link\">Open fingerprints file</div>
-                            </div>
-                        </div>
+                <hr>
+                <div class=\"row\">
+                    <div class=\"col-sm-auto\">
+                        Resume
+                        <div id=\"resume\" class=\"file-link\">Open resume file</div>
                     </div>
                     <div class=\"col-sm-auto\">
-                        &nbsp;
-                        <div id=\"profilePhoto\" class=\"file-link\">No profile photo</div>
+                        W-9
+                        <div id=\"w9\" class=\"file-link\">Open W-9 file</div>
+                    </div>
+                    <div class=\"col-sm-auto\">
+                        Fingerprints
+                        <div id=\"fingerprints\" class=\"file-link\">Open fingerprints file</div>
                     </div>
                 </div>
 
                 ";
-        // line 116
+        // line 121
         echo "                <hr>
                 <div class=\"row\">
-                    <div class=\"col-sm\">
-                        <h4><i class=\"fas fa-car\"></i> <span id=\"year\">'99</span> <span id=\"make\">Make</span> <span id=\"model\">model</span></h4>
-                        <p id=\"licenseNumber\">123-ITFL</p>
+                    <div class=\"col-lg\">
+                        <h4><i class=\"fas fa-car\"></i> Car</h4>
+                        <h5><span id=\"year\">'99</span> <span id=\"make\">Make</span> <span id=\"model\">model</span></h5>
+                        <p>License plate: <span id=\"licenseNumber\">123-ITFL</span></p>
                         <div class=\"row\">
                             <div class=\"col-sm-auto\">
                                 Driver's License
@@ -144,24 +149,33 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                             </div>
                         </div>
                     </div>
-                </div>
-
                 ";
-        // line 135
-        echo "                <hr>
-                <div class=\"row\">
-                    <div class=\"col-sm\">
-                        <h4><i class=\"fas fa-gavel\"></i> <span id=\"policyProvider\">Insurance Company Name</span></h4>
+        // line 139
+        echo "
+                ";
+        // line 141
+        echo "                ";
+        // line 142
+        echo "                ";
+        // line 143
+        echo "                    <div class=\"col-lg\">
+                        <h4><i class=\"fas fa-gavel\"></i> Insurance</h4>
+                        <h5><span id=\"policyProvider\">Insurance Company Name</span></h5>
                         <ul class=\"list-unstyled\">
                             <li>Policy number: <span id=\"policyNumber\">##########</span></li>
                         </ul>
-                    </div>
-                    <div class=\"col-sm-3\">
-                        Insurance Card
-                        <div id=\"insuranceImage\" class=\"file-link\">Open insurance card file</div>
+                    ";
+        // line 150
+        echo "                ";
+        // line 151
+        echo "                        <div class=\"row\">
+                            <div class=\"col-lg-auto\">
+                                Insurance Card
+                                <div id=\"insuranceImage\" class=\"file-link\">Open insurance card file</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -177,10 +191,10 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
 ";
     }
 
-    // line 163
+    // line 173
     public function block_body_scripts($context, array $blocks = array())
     {
-        // line 164
+        // line 174
         $this->displayParentBlock("body_scripts", $context, $blocks);
         echo "
 <script src=\"/js/admin.js\"></script>
@@ -199,7 +213,7 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
 
     public function getDebugInfo()
     {
-        return array (  184 => 164,  181 => 163,  151 => 135,  131 => 116,  96 => 82,  93 => 80,  59 => 47,  54 => 12,  51 => 11,  46 => 9,  41 => 6,  38 => 5,  32 => 3,  11 => 1,);
+        return array (  198 => 174,  195 => 173,  171 => 151,  169 => 150,  161 => 143,  159 => 142,  157 => 141,  154 => 139,  135 => 121,  93 => 80,  59 => 47,  54 => 12,  51 => 11,  46 => 9,  41 => 6,  38 => 5,  32 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -284,46 +298,52 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                 <div class=\"row\">
                     {# ABOUT THE USER #}
                     <div class=\"col-sm\">
-                        {# <h2></h2> #}
+                        <h3>Contact</h3>
                         <ul class=\"list-unstyled\">
-                            <li><i class=\"fas fa-phone\"></i> <a id=\"phone\" href=\"tel:\">000-000-0000</a></li>
-                            <li><i class=\"fas fa-envelope\"></i> <a id=\"email\" href=\"mailto:\">email@example.com</a></h6></li>
-                            <li><p>SSN: <span id=\"ssn\">111-11-1111</span></p></li>
+                            <li class=\"h4\"><i class=\"fas fa-phone\"></i> <a id=\"phone\" href=\"tel:\">000-000-0000</a></li>
+                            <li class=\"h4\"><i class=\"fas fa-envelope\"></i> <a id=\"email\" href=\"mailto:\">email@example.com</a></h6></li>
                         </ul>
+                    </div>
+                    <div class=\"col-sm-auto\">
+                        <div id=\"profilePhoto\" class=\"file-link\">No profile photo</div>
+                    </div>
+                </div>
 
+                <hr>
+                <div class=\"row\">
+                    <div class=\"col-sm\">
                         <h4><i class=\"fas fa-users\"></i> References</h4>
                         <ul class=\"list-unstyled\">
                             <li><b id=\"ref1Name\" scope=\"row\">First Name</b> (<a id=\"ref1Phone\" href=\"tel:\">###-####</a> / <a id=\"ref1Email\" href=\"mailto:\">email@example.com</a>)</li>
                             <li><b id=\"ref2Name\" scope=\"row\">First Name</b> (<a id=\"ref2Phone\" href=\"tel:\">###-####</a> / <a id=\"ref2Email\" href=\"mailto:\">email@example.com</a>)</li>
                         </ul>
+    
+                    </div>
+                </div>
 
-                        <div class=\"row\">
-                            <div class=\"col-lg-auto\">
-                                Resume
-                                <div id=\"resume\" class=\"file-link\">Open resume file</div>
-                            </div>
-                            <div class=\"col-lg-auto\">
-                                W-9
-                                <div id=\"w9\" class=\"file-link\">Open W-9 file</div>
-                            </div>
-                            <div class=\"col-lg-auto\">
-                                Fingerprints
-                                <div id=\"fingerprints\" class=\"file-link\">Open fingerprints file</div>
-                            </div>
-                        </div>
+                <hr>
+                <div class=\"row\">
+                    <div class=\"col-sm-auto\">
+                        Resume
+                        <div id=\"resume\" class=\"file-link\">Open resume file</div>
                     </div>
                     <div class=\"col-sm-auto\">
-                        &nbsp;
-                        <div id=\"profilePhoto\" class=\"file-link\">No profile photo</div>
+                        W-9
+                        <div id=\"w9\" class=\"file-link\">Open W-9 file</div>
+                    </div>
+                    <div class=\"col-sm-auto\">
+                        Fingerprints
+                        <div id=\"fingerprints\" class=\"file-link\">Open fingerprints file</div>
                     </div>
                 </div>
 
                 {# ABOUT THE CAR #}
                 <hr>
                 <div class=\"row\">
-                    <div class=\"col-sm\">
-                        <h4><i class=\"fas fa-car\"></i> <span id=\"year\">'99</span> <span id=\"make\">Make</span> <span id=\"model\">model</span></h4>
-                        <p id=\"licenseNumber\">123-ITFL</p>
+                    <div class=\"col-lg\">
+                        <h4><i class=\"fas fa-car\"></i> Car</h4>
+                        <h5><span id=\"year\">'99</span> <span id=\"make\">Make</span> <span id=\"model\">model</span></h5>
+                        <p>License plate: <span id=\"licenseNumber\">123-ITFL</span></p>
                         <div class=\"row\">
                             <div class=\"col-sm-auto\">
                                 Driver's License
@@ -335,23 +355,27 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                             </div>
                         </div>
                     </div>
-                </div>
+                {# </div> #}
 
                 {# ABOUT THEIR INSURANCE #}
-                <hr>
-                <div class=\"row\">
-                    <div class=\"col-sm\">
-                        <h4><i class=\"fas fa-gavel\"></i> <span id=\"policyProvider\">Insurance Company Name</span></h4>
+                {# <hr> #}
+                {# <div class=\"row\"> #}
+                    <div class=\"col-lg\">
+                        <h4><i class=\"fas fa-gavel\"></i> Insurance</h4>
+                        <h5><span id=\"policyProvider\">Insurance Company Name</span></h5>
                         <ul class=\"list-unstyled\">
                             <li>Policy number: <span id=\"policyNumber\">##########</span></li>
                         </ul>
-                    </div>
-                    <div class=\"col-sm-3\">
-                        Insurance Card
-                        <div id=\"insuranceImage\" class=\"file-link\">Open insurance card file</div>
+                    {# </div> #}
+                {# </div> #}
+                        <div class=\"row\">
+                            <div class=\"col-lg-auto\">
+                                Insurance Card
+                                <div id=\"insuranceImage\" class=\"file-link\">Open insurance card file</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
