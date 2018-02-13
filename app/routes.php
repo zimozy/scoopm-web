@@ -148,14 +148,14 @@ $app->post('/register', function (Request $request, Response $response) {
             //ref2
             'ref2Name'  => $response_array['ref2Name'],
             'ref2Phone' => $response_array['ref2Phone'],
-            'ref2Email' => $response_array['ref2Email']
+            'ref2Email' => $response_array['ref2Email'],
+
+            //NOW WE CAN FIND THIS WITHOUT HAVING TO BE LOGGED IN (Cant use auth().currentUser for other users)
+            'email' => $response_array['email']
         );
-        var_dump(
-            $firebase->setToken($response_array['userIdToken'])
-        );
-        var_dump(
-            $firebase->set('users/' . $response_array['userID'], $data)
-        );
+
+        $firebase->setToken($response_array['userIdToken']);
+        $firebase->set('users/' . $response_array['userID'], $data);
 
         // return $this->view->render($response, 'new_user.twig.html', array('email'=>$response_array['email'], 'password'=>$response_array['password']));
 
@@ -229,6 +229,6 @@ $app->post('/register', function (Request $request, Response $response) {
         // return $response->getBody()->write('----');
         */
 
-        // return $response->withRedirect($this->router->pathFor('thanks'));
+        return $response->withRedirect($this->router->pathFor('thanks'));
     }
 });

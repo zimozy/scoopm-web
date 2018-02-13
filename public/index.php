@@ -26,6 +26,7 @@ $container['view'] = function ($container) {
     return $view;
 };
 
+require '../app/middleware.php';
 require '../app/routes.php';
 
 $app->run();
