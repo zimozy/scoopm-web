@@ -12,5 +12,4 @@ RUN a2enmod rewrite
 RUN service apache2 restart
 
 # WORKDIR /var/www/
-
 # ENV COMPOSER_HOME /var/www

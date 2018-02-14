@@ -35,6 +35,18 @@ $('input:file').each(function() {
 
         var file = this.files[0];
 
+        function updateValidity() {
+            // ENABLE SUBMIT BUTTON ONLY IF ALL UPLOADS WERE COMPLETED SUCCESSFULLY
+            uploadsAreValid = true;
+            $('.upload-input-group').each(function() {
+                if (! ($(this).hasClass('scoopm-is-valid'))) {
+                    uploadsAreValid = false;
+                    return false; //break the .each() loop
+                }
+            });
+            submitButton.updateDisabled();
+        }
+
         //UPLOAD THE FILE
         var uploadTask = firebase.storage().ref().child( folders[$(this).prop('name')] + '/' + $('#userID').val() ).put(file);
 
@@ -48,39 +60,26 @@ $('input:file').each(function() {
                     // console.log('Running upload: ' + file.name);
                     break;
             }
-
-        }, function(error) {
+        }, function(error) {//error
             button.text('Try Again...');
             
             inputGroup.removeClass('scoopm-is-valid');
             inputGroup.removeClass('scoopm-is-uploading');
             inputGroup.addClass('scoopm-is-invalid');
             
-            // console.log(error.message);
+            updateValidity();
 
         }, function() { //success
             // console.log('Upload success.');
-
             //CHANGE BUTTON
             button.text('Change File...');
             
             //CHANGE INPUT-GROUP CLASS
             inputGroup.removeClass('scoopm-is-invalid');
             inputGroup.removeClass('scoopm-is-uploading');
-            inputGroup.addClass('scoopm-is-valid');
+            inputGroup.addClass('scoopm-is-valid another-class');
 
-            // ENABLE SUBMIT BUTTON ONLY IF ALL UPLOADS WERE COMPLETED SUCCESSFULLY
-            uploadsAreValid = true;
-            $('.upload-input-group').each(function() {
-                if (($(this).hasClass('scoopm-is-valid'))) {
-
-                } else {
-                    uploadsAreValid = false;
-                    return false; //break the .each() loop
-                }
-            });
-            
-            submitButton.updateDisabled();
+            updateValidity();
         });
     });
 });

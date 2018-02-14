@@ -12,6 +12,7 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
         $this->blocks = array(
             'title' => array($this, 'block_title'),
             'head_styles' => array($this, 'block_head_styles'),
+            'car_query' => array($this, 'block_car_query'),
             'body_content' => array($this, 'block_body_content'),
             'body_scripts' => array($this, 'block_body_scripts'),
         );
@@ -42,27 +43,44 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
     }
 
     // line 9
+    public function block_car_query($context, array $blocks = array())
+    {
+    }
+
+    // line 11
     public function block_body_content($context, array $blocks = array())
     {
-        // line 10
-        echo "<h1 id=\"adminH1\">Admin</h1>
+        // line 12
+        echo "
+<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
+    <span class=\"navbar-brand mb-0 h1\"><span class=\"logo-font blue-text\">ScoopM</span> Admin</span>
+    ";
+        // line 47
+        echo "</nav>
+<div class=\"container-fluid px-0 px-sm-3\">
 
-<table id=\"usersTable\" class=\"table\">
-    <thead>
-        <th scope=\"col\">Name</th>
-        <th scope=\"col\">Email</th>
-        <th scope=\"col\">Year</th>
-    </thead>
-</table>
+    <h3 class=\"m-2 mx-sm-0 mt-sm-3\">Current Applicants</h3>
+    
+    <div class=\"table-responsive\">
+        <table id=\"usersTable\" class=\"table table-sm table-hover table-striped\">
+            <thead>
+                <th scope=\"col-sm\">Name</th>
+                <th scope=\"col-sm\">Email</th>
+                <th scope=\"col-sm\">Car</th>
+                <th scope=\"col-sm\">Accepted</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    
+</div>
 
-";
-        // line 27
-        echo "<!-- Modal -->
-<div class=\"modal fade scoopm-application-modal\" id=\"exampleModalCenter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
+<!-- Modal -->
+<div id=\"applicationModal\" class=\"modal fade scoopm-application-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
     <div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\">
       <div class=\"modal-content\">
         <div class=\"modal-header\">
-          <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Details</h5>
+          <h5 class=\"modal-title\" id=\"exampleModalLongTitle\"><span id=\"firstName\">First</span> <span id=\"middleName\"></span><span id=\"lastName\">Last</span></h5>
           <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
             <span aria-hidden=\"true\">&times;</span>
           </button>
@@ -70,75 +88,99 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
         <div class=\"modal-body\">
             <div class=\"container-fluid\">
                 <div class=\"row\">
-                    <div class=\"col\">
-                        <h1><span>First</span> <span>Last</span></h1>
-                        <h4><a id=\"email\" href=\"tel:\">000-000-0000</a> / <a id=\"email\" href=\"mailto:\">email@example.com</a></h4>
-                        <!-- <h4></h4> -->
-                        <p>SSN: <span id=\"ssn\">111-11-1111</span></p>
-                        <h4>References</h4>
-                        <table class=\"table\">
-                            <thead>
-                                <th scope=\"col\">Name</th>
-                                <th scope=\"col\">Phone</th>
-                                <th scope=\"col\">Email</th>
-                            </thead>
-                            <tr>
-                                <th id=\"ref1Name\" scope=\"row\">Joe Bloggs</th>
-                                <th><a id=\"ref1Phone\" href=\"tel:\">777-777-7777</a></th>
-                                <th><a id=\"ref1Email\" href=\"mailto:\">joe@example.com</a></th>
-                            </tr>
-                            <tr>
-                                    <th id=\"ref2Name\" scope=\"row\">Sarah Johnson</th>
-                                    <th><a id=\"ref2Phone\" href=\"tel:\">999-999-9999</a></th>
-                                    <th><a id=\"ref2Email\" href=\"mailto:\">sarah@example.com</a></th>
-                            </tr>
-                        </table>
+                    ";
+        // line 80
+        echo "                    <div class=\"col-sm\">
+                        <h3>Contact</h3>
+                        <ul class=\"list-unstyled\">
+                            <li class=\"h4\"><i class=\"fas fa-phone\"></i> <a id=\"phone\" href=\"tel:\">000-000-0000</a></li>
+                            <li class=\"h4\"><i class=\"fas fa-envelope\"></i> <a id=\"email\" href=\"mailto:\">email@example.com</a></h6></li>
+                        </ul>
                     </div>
-                    <div class=\"col-sm-4\">
-                        <img src=\"\" alt=\"Test\" class=\"w-100 h-100\">
+                    <div class=\"col-sm-auto\">
+                        <div id=\"profilePhoto\" class=\"file-link\">No profile photo</div>
                     </div>
                 </div>
 
+                <hr>
                 <div class=\"row\">
-                    <div class=\"col\">
-                        <hr>
-                        <h1>Car</h1>
-                    </div>
-                </div>
-                
-                <div class=\"row\">
-                    <div class=\"col\">
-                        <h2><span id=\"year\">'99</span> <span id=\"make\">Make</span> <span id=\"model\">model</span></h2>
-                        <h4 id=\"licenseNumber\">123-ITFL</h4>
-                    </div>
-                    <div class=\"col\">
-                        <img src=\"\" alt=\"License Image\"><br>
-                        <img src=\"\" alt=\"Registration Image\">
-                        
+                    <div class=\"col-sm\">
+                        <h4><i class=\"fas fa-users\"></i> References</h4>
+                        <ul class=\"list-unstyled\">
+                            <li><b id=\"ref1Name\" scope=\"row\">First Name</b> (<a id=\"ref1Phone\" href=\"tel:\">###-####</a> / <a id=\"ref1Email\" href=\"mailto:\">email@example.com</a>)</li>
+                            <li><b id=\"ref2Name\" scope=\"row\">First Name</b> (<a id=\"ref2Phone\" href=\"tel:\">###-####</a> / <a id=\"ref2Email\" href=\"mailto:\">email@example.com</a>)</li>
+                        </ul>
+    
                     </div>
                 </div>
 
+                <hr>
                 <div class=\"row\">
-                        <div class=\"col\">
-                            <hr>
-                            <h1>Insurance</h1>
+                    <div class=\"col-sm-auto\">
+                        Resume
+                        <div id=\"resume\" class=\"file-link\">Open resume file</div>
+                    </div>
+                    <div class=\"col-sm-auto\">
+                        W-9
+                        <div id=\"w9\" class=\"file-link\">Open W-9 file</div>
+                    </div>
+                    <div class=\"col-sm-auto\">
+                        Fingerprints
+                        <div id=\"fingerprints\" class=\"file-link\">Open fingerprints file</div>
+                    </div>
+                </div>
+
+                ";
+        // line 121
+        echo "                <hr>
+                <div class=\"row\">
+                    <div class=\"col-lg\">
+                        <h4><i class=\"fas fa-car\"></i> Car</h4>
+                        <h5><span id=\"year\">'99</span> <span id=\"make\">Make</span> <span id=\"model\">model</span></h5>
+                        <p>License plate: <span id=\"licenseNumber\">123-ITFL</span></p>
+                        <div class=\"row\">
+                            <div class=\"col-sm-auto\">
+                                Driver's License
+                                <div id=\"licenseImage\" class=\"file-link\">Open driver's license file</div>
+                            </div>
+                            <div class=\"col-sm-auto\">
+                                Registration
+                                <div id=\"registration\" class=\"file-link\">Open registration file</div>
+                            </div>
                         </div>
-                    </div>                
-                <div class=\"row\">
-                    <div class=\"col\">
-                        <h2 id=\"provider\">Nationwide</h2>
-                        <h4 id=\"policyNumber\">123456789</h4>
                     </div>
-                    <div class=\"col\">
-                        <img src=\"\" alt=\"Insurance Car\">
+                ";
+        // line 139
+        echo "
+                ";
+        // line 141
+        echo "                ";
+        // line 142
+        echo "                ";
+        // line 143
+        echo "                    <div class=\"col-lg\">
+                        <h4><i class=\"fas fa-gavel\"></i> Insurance</h4>
+                        <h5><span id=\"policyProvider\">Insurance Company Name</span></h5>
+                        <ul class=\"list-unstyled\">
+                            <li>Policy number: <span id=\"policyNumber\">##########</span></li>
+                        </ul>
+                    ";
+        // line 150
+        echo "                ";
+        // line 151
+        echo "                        <div class=\"row\">
+                            <div class=\"col-lg-auto\">
+                                Insurance Card
+                                <div id=\"insuranceImage\" class=\"file-link\">Open insurance card file</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <div class=\"modal-footer\">
-            <button type=\"button\" class=\"btn btn-primary\">Approve</button>
+            <button id=\"approveButton\" type=\"button\" class=\"btn btn-primary\">Approve</button>
             <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>
         </div>
 
@@ -149,10 +191,10 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
 ";
     }
 
-    // line 118
+    // line 173
     public function block_body_scripts($context, array $blocks = array())
     {
-        // line 119
+        // line 174
         $this->displayParentBlock("body_scripts", $context, $blocks);
         echo "
 <script src=\"/js/admin.js\"></script>
@@ -171,7 +213,7 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
 
     public function getDebugInfo()
     {
-        return array (  156 => 119,  153 => 118,  60 => 27,  48 => 10,  45 => 9,  40 => 6,  37 => 5,  31 => 3,  11 => 1,);
+        return array (  198 => 174,  195 => 173,  171 => 151,  169 => 150,  161 => 143,  159 => 142,  157 => 141,  154 => 139,  135 => 121,  93 => 80,  59 => 47,  54 => 12,  51 => 11,  46 => 9,  41 => 6,  38 => 5,  32 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -184,30 +226,69 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
     <link rel=\"stylesheet\" href=\"/css/admin.css\">
 {% endblock %}
 
+{% block car_query %}{% endblock %}
+
 {% block body_content %}
-<h1 id=\"adminH1\">Admin</h1>
 
-<table id=\"usersTable\" class=\"table\">
-    <thead>
-        <th scope=\"col\">Name</th>
-        <th scope=\"col\">Email</th>
-        <th scope=\"col\">Year</th>
-    </thead>
-</table>
+<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
+    <span class=\"navbar-brand mb-0 h1\"><span class=\"logo-font blue-text\">ScoopM</span> Admin</span>
+    {# <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
+        <span class=\"navbar-toggler-icon\"></span>
+    </button>
+      
+    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
+        <ul class=\"navbar-nav mr-auto\">
+        <li class=\"nav-item active\">
+            <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>
+        </li>
+        <li class=\"nav-item\">
+            <a class=\"nav-link\" href=\"#\">Link</a>
+        </li>
+        <li class=\"nav-item dropdown\">
+            <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+            Dropdown
+            </a>
+            <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
+            <a class=\"dropdown-item\" href=\"#\">Action</a>
+            <a class=\"dropdown-item\" href=\"#\">Another action</a>
+            <div class=\"dropdown-divider\"></div>
+            <a class=\"dropdown-item\" href=\"#\">Something else here</a>
+            </div>
+        </li>
+        <li class=\"nav-item\">
+            <a class=\"nav-link disabled\" href=\"#\">Disabled</a>
+        </li>
+        </ul>
+        <form class=\"form-inline my-2 my-lg-0\">
+            <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">
+            <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>
+        </form>
+    </div> #}
+</nav>
+<div class=\"container-fluid px-0 px-sm-3\">
 
-{# <div class=\"table\">
-    <div class=\"row\">
-        <div class=\"cell\">Test</div>
-        <div class=\"cell\">Test</div>
-        <div class=\"cell\">Test</div>
+    <h3 class=\"m-2 mx-sm-0 mt-sm-3\">Current Applicants</h3>
+    
+    <div class=\"table-responsive\">
+        <table id=\"usersTable\" class=\"table table-sm table-hover table-striped\">
+            <thead>
+                <th scope=\"col-sm\">Name</th>
+                <th scope=\"col-sm\">Email</th>
+                <th scope=\"col-sm\">Car</th>
+                <th scope=\"col-sm\">Accepted</th>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
-</div> #}
+    
+</div>
+
 <!-- Modal -->
-<div class=\"modal fade scoopm-application-modal\" id=\"exampleModalCenter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
+<div id=\"applicationModal\" class=\"modal fade scoopm-application-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
     <div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\">
       <div class=\"modal-content\">
         <div class=\"modal-header\">
-          <h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Details</h5>
+          <h5 class=\"modal-title\" id=\"exampleModalLongTitle\"><span id=\"firstName\">First</span> <span id=\"middleName\"></span><span id=\"lastName\">Last</span></h5>
           <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
             <span aria-hidden=\"true\">&times;</span>
           </button>
@@ -215,75 +296,91 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
         <div class=\"modal-body\">
             <div class=\"container-fluid\">
                 <div class=\"row\">
-                    <div class=\"col\">
-                        <h1><span>First</span> <span>Last</span></h1>
-                        <h4><a id=\"email\" href=\"tel:\">000-000-0000</a> / <a id=\"email\" href=\"mailto:\">email@example.com</a></h4>
-                        <!-- <h4></h4> -->
-                        <p>SSN: <span id=\"ssn\">111-11-1111</span></p>
-                        <h4>References</h4>
-                        <table class=\"table\">
-                            <thead>
-                                <th scope=\"col\">Name</th>
-                                <th scope=\"col\">Phone</th>
-                                <th scope=\"col\">Email</th>
-                            </thead>
-                            <tr>
-                                <th id=\"ref1Name\" scope=\"row\">Joe Bloggs</th>
-                                <th><a id=\"ref1Phone\" href=\"tel:\">777-777-7777</a></th>
-                                <th><a id=\"ref1Email\" href=\"mailto:\">joe@example.com</a></th>
-                            </tr>
-                            <tr>
-                                    <th id=\"ref2Name\" scope=\"row\">Sarah Johnson</th>
-                                    <th><a id=\"ref2Phone\" href=\"tel:\">999-999-9999</a></th>
-                                    <th><a id=\"ref2Email\" href=\"mailto:\">sarah@example.com</a></th>
-                            </tr>
-                        </table>
+                    {# ABOUT THE USER #}
+                    <div class=\"col-sm\">
+                        <h3>Contact</h3>
+                        <ul class=\"list-unstyled\">
+                            <li class=\"h4\"><i class=\"fas fa-phone\"></i> <a id=\"phone\" href=\"tel:\">000-000-0000</a></li>
+                            <li class=\"h4\"><i class=\"fas fa-envelope\"></i> <a id=\"email\" href=\"mailto:\">email@example.com</a></h6></li>
+                        </ul>
                     </div>
-                    <div class=\"col-sm-4\">
-                        <img src=\"\" alt=\"Test\" class=\"w-100 h-100\">
+                    <div class=\"col-sm-auto\">
+                        <div id=\"profilePhoto\" class=\"file-link\">No profile photo</div>
                     </div>
                 </div>
 
+                <hr>
                 <div class=\"row\">
-                    <div class=\"col\">
-                        <hr>
-                        <h1>Car</h1>
-                    </div>
-                </div>
-                
-                <div class=\"row\">
-                    <div class=\"col\">
-                        <h2><span id=\"year\">'99</span> <span id=\"make\">Make</span> <span id=\"model\">model</span></h2>
-                        <h4 id=\"licenseNumber\">123-ITFL</h4>
-                    </div>
-                    <div class=\"col\">
-                        <img src=\"\" alt=\"License Image\"><br>
-                        <img src=\"\" alt=\"Registration Image\">
-                        
+                    <div class=\"col-sm\">
+                        <h4><i class=\"fas fa-users\"></i> References</h4>
+                        <ul class=\"list-unstyled\">
+                            <li><b id=\"ref1Name\" scope=\"row\">First Name</b> (<a id=\"ref1Phone\" href=\"tel:\">###-####</a> / <a id=\"ref1Email\" href=\"mailto:\">email@example.com</a>)</li>
+                            <li><b id=\"ref2Name\" scope=\"row\">First Name</b> (<a id=\"ref2Phone\" href=\"tel:\">###-####</a> / <a id=\"ref2Email\" href=\"mailto:\">email@example.com</a>)</li>
+                        </ul>
+    
                     </div>
                 </div>
 
+                <hr>
                 <div class=\"row\">
-                        <div class=\"col\">
-                            <hr>
-                            <h1>Insurance</h1>
+                    <div class=\"col-sm-auto\">
+                        Resume
+                        <div id=\"resume\" class=\"file-link\">Open resume file</div>
+                    </div>
+                    <div class=\"col-sm-auto\">
+                        W-9
+                        <div id=\"w9\" class=\"file-link\">Open W-9 file</div>
+                    </div>
+                    <div class=\"col-sm-auto\">
+                        Fingerprints
+                        <div id=\"fingerprints\" class=\"file-link\">Open fingerprints file</div>
+                    </div>
+                </div>
+
+                {# ABOUT THE CAR #}
+                <hr>
+                <div class=\"row\">
+                    <div class=\"col-lg\">
+                        <h4><i class=\"fas fa-car\"></i> Car</h4>
+                        <h5><span id=\"year\">'99</span> <span id=\"make\">Make</span> <span id=\"model\">model</span></h5>
+                        <p>License plate: <span id=\"licenseNumber\">123-ITFL</span></p>
+                        <div class=\"row\">
+                            <div class=\"col-sm-auto\">
+                                Driver's License
+                                <div id=\"licenseImage\" class=\"file-link\">Open driver's license file</div>
+                            </div>
+                            <div class=\"col-sm-auto\">
+                                Registration
+                                <div id=\"registration\" class=\"file-link\">Open registration file</div>
+                            </div>
                         </div>
-                    </div>                
-                <div class=\"row\">
-                    <div class=\"col\">
-                        <h2 id=\"provider\">Nationwide</h2>
-                        <h4 id=\"policyNumber\">123456789</h4>
                     </div>
-                    <div class=\"col\">
-                        <img src=\"\" alt=\"Insurance Car\">
+                {# </div> #}
+
+                {# ABOUT THEIR INSURANCE #}
+                {# <hr> #}
+                {# <div class=\"row\"> #}
+                    <div class=\"col-lg\">
+                        <h4><i class=\"fas fa-gavel\"></i> Insurance</h4>
+                        <h5><span id=\"policyProvider\">Insurance Company Name</span></h5>
+                        <ul class=\"list-unstyled\">
+                            <li>Policy number: <span id=\"policyNumber\">##########</span></li>
+                        </ul>
+                    {# </div> #}
+                {# </div> #}
+                        <div class=\"row\">
+                            <div class=\"col-lg-auto\">
+                                Insurance Card
+                                <div id=\"insuranceImage\" class=\"file-link\">Open insurance card file</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <div class=\"modal-footer\">
-            <button type=\"button\" class=\"btn btn-primary\">Approve</button>
+            <button id=\"approveButton\" type=\"button\" class=\"btn btn-primary\">Approve</button>
             <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>
         </div>
 

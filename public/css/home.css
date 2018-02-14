@@ -6,16 +6,15 @@ body.ad-background {
   color: black;  
 }
 
-.logo-font {
-    text-shadow: 3px 3px 0px  rgba(0,0,0,0.07);
-}
+/* .logo-font {
+    text-shadow: 3px 3px 1px  rgba(0,0,0,0.07);
+} */
 
 .sign-up-box {
-    background-color:rgba(255,255,255,0.97); 
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.7);
+    background-color: white; 
+    border-radius: 3px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.9);
     padding: 1rem 2rem;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
     opacity: 0;
 }
 
@@ -30,10 +29,9 @@ body.ad-background {
 .card {
     margin: 2rem 0 -2rem 0;
     opacity: 0;
-    background-color: rgba(255,255,255,0.8); 
+    /* background-color: rgba(255,255,255,0.8);  */
+    border-radius: 3px;
     border: none;
-    /* border:1px solid #dedeff; */
-    border-radius: 0px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -48,11 +46,12 @@ body.ad-background {
 
 @media (max-width: 991.98px) {
     .col-lg { padding: 0.3rem ; }
-    
-    .card span {display: inline; text-align: left; font-size: 1.2rem; font-weight: 500;}
+    .card-body { padding: 1rem; }
+    .card span {display: inline; text-align: left; font-size: 1.2rem; font-weight: normal;}
 }
 
-.sign-up-box input {
+.sign-up-box input,
+.sign-up-box button {
     border-color: 2px solid black;
     background-color: black;
     color: white !important;
@@ -78,5 +77,5 @@ input:-moz-placeholder { color:#fff !important; }
 }
 
 .footer {
-    color:#444;
+    color:#888888;
 }

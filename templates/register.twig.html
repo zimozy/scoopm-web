@@ -14,7 +14,7 @@
 {% block body_content %}
 <div class="container-fluid">
     <div class="row">
-        <div id="mainContainer" class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+        <div id="formContainer" class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
 
             <div class="text-center mb-4">
                 <a href="{{path_for('home')}}" class="h1 d-inline logo-font blue-text">ScoopM</a>
@@ -46,7 +46,15 @@
 
             <form id="application-form" method="post" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-was-validated"{% endif %} autocomplete="off" novalidate>
                     
-                <input type="submit">
+                {# <input type="submit">  #}
+                {# Used for testing purposes #}
+                {# <button onclick="firebase.auth().signOut().then(function() {
+                    alert('signed out');
+                    // Sign-out successful.
+                  }).catch(function(error) {
+                      alert('error');
+                    // An error happened.
+                  });">Sign Out</button> #}
 
                 <!-- ABOUT YOU -->
                 <div id="aboutYouPage" class="current-page page">
@@ -107,7 +115,7 @@
                         'Tan': 'Tan',
                         'Turquoise': 'Turquoise',
                         'White': 'White',
-                        'Yellow': 'White'
+                        'Yellow': 'Yellow'
                     }, color)}}
                     
                     {{form.textInput('License Plate Number', 'licensePlateNumber', licensePlateNumber, errors.licensePlateNumber)}}
@@ -135,7 +143,7 @@
                     {{form.upload('Upload Resume', 'resume', resume, 'doc', errors.resume)}}
                     {{form.upload('Fingerprints', 'fingerprints', fingerprints, 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station. Scan the fingerprint document or upload a PDF.')}}
                     {{form.textArea('Felonies Committed, if applicable', 'felonies', felonies, errors.felonies)}}
-                    {{form.agreement('Background Check', 'backgroundCheck', backgroundCheck, errors.backgroundCheck)}}
+                    {{form.agreement('Background Check', 'backgroundCheck', backgroundCheck, errors.backgroundCheck, 'I authorize ScoopM to perform a background check, including a criminal background check and motor vehicle report.')}}
                     {{form.buttons('application', true)}}
                 </div>
 
@@ -186,10 +194,11 @@
                     {{form.buttons('userAccount', true, true)}} {# SUBMIT
                 </div> #}
 
-                <input id="email" name="email" type="hidden">
-                
+                {# HIDDEN INPUTS #}
                 {# <input id="userKey" name="userKey" type="hidden" value="{{userKey}}"> #}
+                <input id="email" name="email" type="hidden" value="{{email}}">
                 <input id="userID" name="userID" type="hidden" value="{{userID}}">
+                <input id="userIdToken" name="userIdToken" type="hidden" value="{{userIdToken}}">
                 
             </form>
 
@@ -202,7 +211,7 @@
 {% block body_scripts %}
     {{parent()}}
     <script type="text/javascript" src="/js/variables.js"></script>
-    <script type="text/javascript" src="/js/wizard.js"></script>
-    <script type="text/javascript" src="/js/form.js"></script>
+    <script type="text/javascript" src="/js/register-wizard.js"></script>
+    <script type="text/javascript" src="/js/register.js"></script>
     <script type="text/javascript" src="/js/uploader.js"></script>
 {% endblock %}

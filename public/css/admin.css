@@ -1,1 +1,39 @@
-/* Nothing */
+/* TABLE */
+tr { cursor: pointer; }
+
+.accepted {
+    color: #888888 !important;
+    font-style: italic;
+ }
+
+
+/* MODAL FILE LINKS */
+.file-link {
+    /* width: 7rem; */
+    background: #f5f5f6;
+    border-radius: 3px;
+    padding: 1rem;
+}
+
+.file-link img {
+    /* margin: 0.5rem; */
+    height: 7rem;
+}
+
+.file-link a {
+    display: block;
+}
+
+.file-link p {
+    margin-bottom: 0;
+}
+
+@media (min-width: 992px) {
+    .file-link p,
+    .file-link a {
+        width: 7rem;
+        height: 7rem;
+        line-height: 7rem;
+        text-align: center;
+    }
+}

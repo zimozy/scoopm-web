@@ -57,18 +57,17 @@ class __TwigTemplate_9c9bddc73c584a15e054032d3a11f23458282b750f6679d228181431f90
     ";
         // line 24
         echo "
-    <div class=\"row h-100 align-items-center\" style=\"margin-top: 10%;\">
+    <div class=\"row h-100 align-items-center\" style=\"margin-top: 15%;\">
         <div class=\"col-lg-8 offset-lg-2 text-center\">
             <h1 class=\"display-3 blue-text\">Thanks!</h1>
-            <p class=\"lead\">You should get an email shortly.</p>
-            <p class=\"lead blue-text underlined\"><a href=\"";
-        // line 29
-        echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("profile"), "html", null, true);
-        echo "\">View profile</a></p>
+            <p class=\"lead\">Your application has been submitted. <i class=\"fas fa-car\"></i></p>
             ";
         // line 30
-        $this->displayBlock('content', $context, $blocks);
+        echo "            ";
         // line 31
+        echo "            ";
+        $this->displayBlock('content', $context, $blocks);
+        // line 32
         echo "        </div>
     </div>
 
@@ -77,12 +76,12 @@ class __TwigTemplate_9c9bddc73c584a15e054032d3a11f23458282b750f6679d228181431f90
 ";
     }
 
-    // line 30
+    // line 31
     public function block_content($context, array $blocks = array())
     {
     }
 
-    // line 38
+    // line 39
     public function block_body_scripts($context, array $blocks = array())
     {
     }
@@ -99,7 +98,7 @@ class __TwigTemplate_9c9bddc73c584a15e054032d3a11f23458282b750f6679d228181431f90
 
     public function getDebugInfo()
     {
-        return array (  86 => 38,  81 => 30,  72 => 31,  70 => 30,  66 => 29,  59 => 24,  53 => 13,  46 => 8,  43 => 7,  38 => 5,  32 => 3,  11 => 1,);
+        return array (  85 => 39,  80 => 31,  71 => 32,  68 => 31,  66 => 30,  59 => 24,  53 => 13,  46 => 8,  43 => 7,  38 => 5,  32 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -128,11 +127,12 @@ class __TwigTemplate_9c9bddc73c584a15e054032d3a11f23458282b750f6679d228181431f90
         <div class=\"col my-2\">&nbsp;</div>
     </div> #}
 
-    <div class=\"row h-100 align-items-center\" style=\"margin-top: 10%;\">
+    <div class=\"row h-100 align-items-center\" style=\"margin-top: 15%;\">
         <div class=\"col-lg-8 offset-lg-2 text-center\">
             <h1 class=\"display-3 blue-text\">Thanks!</h1>
-            <p class=\"lead\">You should get an email shortly.</p>
-            <p class=\"lead blue-text underlined\"><a href=\"{{path_for('profile')}}\">View profile</a></p>
+            <p class=\"lead\">Your application has been submitted. <i class=\"fas fa-car\"></i></p>
+            {# <p class=\"lead\">You should get an email shortly.</p> #}
+            {# <p class=\"lead blue-text underlined\"><a href=\"{{path_for('profile')}}\">View profile</a></p> #}
             {% block content %}{% endblock %}
         </div>
     </div>

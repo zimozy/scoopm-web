@@ -8,7 +8,8 @@
     <title>{% block title %}{% endblock %} | ScoopM</title>
 
     <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="/css/fa/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/v4-shims.js"></script><!--upgrade from v.4-->
 
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet"><!--Google Font-->
@@ -46,7 +47,7 @@
 </head>
 <body {% block body_class %}{% endblock %}>
     {% block body_content %}
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <h1 class="display-2 text-center logo-font blue-text mt-4"><a href="{{path_for('home')}}">ScoopM</a><small>&nbsp;</small></h1>
