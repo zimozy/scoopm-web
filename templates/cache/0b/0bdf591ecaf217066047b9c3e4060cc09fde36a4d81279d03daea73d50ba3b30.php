@@ -134,10 +134,15 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                         </form>
                     </div>
                     <div id=\"startNewApplication\" class=\"text-center my-4 d-none\">
-                        <a href=\"";
-        // line 80
+                        <p>
+                            <a href=\"";
+        // line 81
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("register"), "html", null, true);
         echo "\" class=\"btn btn-lg\">Create New Application</a>
+                        </p>
+                        <p class=\"text-muted\">
+                            You're signed in. <a id=\"sign-out\" href=\"#\">Sign Out</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -149,10 +154,10 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 ";
     }
 
-    // line 92
+    // line 97
     public function block_body_scripts($context, array $blocks = array())
     {
-        // line 93
+        // line 98
         echo "<script type=\"text/javascript\" src=\"/js/home-animations.js\"></script>
 <script type=\"text/javascript\" src=\"/js/home-create-user.js\"></script>
 ";
@@ -170,7 +175,7 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
 
     public function getDebugInfo()
     {
-        return array (  156 => 93,  153 => 92,  139 => 80,  131 => 75,  81 => 27,  79 => 26,  70 => 19,  64 => 15,  61 => 14,  56 => 11,  53 => 10,  47 => 9,  42 => 7,  36 => 5,  32 => 1,  30 => 3,  11 => 1,);
+        return array (  161 => 98,  158 => 97,  140 => 81,  131 => 75,  81 => 27,  79 => 26,  70 => 19,  64 => 15,  61 => 14,  56 => 11,  53 => 10,  47 => 9,  42 => 7,  36 => 5,  32 => 1,  30 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -254,7 +259,12 @@ class __TwigTemplate_1df0e2cb52aa95877c153198d52a165e424309e08b1c10f2f90567c1958
                         </form>
                     </div>
                     <div id=\"startNewApplication\" class=\"text-center my-4 d-none\">
-                        <a href=\"{{ path_for('register') }}\" class=\"btn btn-lg\">Create New Application</a>
+                        <p>
+                            <a href=\"{{ path_for('register') }}\" class=\"btn btn-lg\">Create New Application</a>
+                        </p>
+                        <p class=\"text-muted\">
+                            You're signed in. <a id=\"sign-out\" href=\"#\">Sign Out</a>
+                        </p>
                     </div>
                 </div>
             </div>

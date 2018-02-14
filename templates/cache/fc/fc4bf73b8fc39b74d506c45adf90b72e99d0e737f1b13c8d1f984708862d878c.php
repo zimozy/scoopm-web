@@ -98,7 +98,7 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                         </ul>
                     </div>
                     <div class=\"col-sm-auto\">
-                        <div id=\"profilePhoto\" class=\"file-link\">No profile photo</div>
+                        <div id=\"profilePhoto\" class=\"file-link\"><p> </p></div>
                     </div>
                 </div>
 
@@ -117,16 +117,16 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                 <hr>
                 <div class=\"row\">
                     <div class=\"col-sm-auto\">
-                        Resume
-                        <div id=\"resume\" class=\"file-link\">Open resume file</div>
+                        <p class=\"mb-1\">Resume</p>
+                        <div id=\"resume\" class=\"file-link\"><p> </p></div>
                     </div>
                     <div class=\"col-sm-auto\">
-                        W-9
-                        <div id=\"w9\" class=\"file-link\">Open W-9 file</div>
+                        <p class=\"mb-1\">W-9</p>
+                        <div id=\"w9\" class=\"file-link\"><p> </p></div>
                     </div>
                     <div class=\"col-sm-auto\">
-                        Fingerprints
-                        <div id=\"fingerprints\" class=\"file-link\">Open fingerprints file</div>
+                        <p class=\"mb-1\">Fingerprints</p>
+                        <div id=\"fingerprints\" class=\"file-link\"><p> </p></div>
                     </div>
                 </div>
 
@@ -140,12 +140,12 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                         <p>License plate: <span id=\"licenseNumber\">123-ITFL</span></p>
                         <div class=\"row\">
                             <div class=\"col-sm-auto\">
-                                Driver's License
-                                <div id=\"licenseImage\" class=\"file-link\">Open driver's license file</div>
+                                <p class=\"mb-1\">Driver's License</p>
+                                <div id=\"licenseImage\" class=\"file-link\"><p> </p></div>
                             </div>
                             <div class=\"col-sm-auto\">
-                                Registration
-                                <div id=\"registration\" class=\"file-link\">Open registration file</div>
+                                <p class=\"mb-1\">Registration</p>
+                                <div id=\"registration\" class=\"file-link\"><p> </p></div>
                             </div>
                         </div>
                     </div>
@@ -170,8 +170,8 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
         // line 151
         echo "                        <div class=\"row\">
                             <div class=\"col-lg-auto\">
-                                Insurance Card
-                                <div id=\"insuranceImage\" class=\"file-link\">Open insurance card file</div>
+                                <p class=\"mb-1\">Insurance Card</p>
+                                <div id=\"insuranceImage\" class=\"file-link\"><p> </p></div>
                             </div>
                         </div>
                     </div>
@@ -305,7 +305,7 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                         </ul>
                     </div>
                     <div class=\"col-sm-auto\">
-                        <div id=\"profilePhoto\" class=\"file-link\">No profile photo</div>
+                        <div id=\"profilePhoto\" class=\"file-link\"><p> </p></div>
                     </div>
                 </div>
 
@@ -324,16 +324,16 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                 <hr>
                 <div class=\"row\">
                     <div class=\"col-sm-auto\">
-                        Resume
-                        <div id=\"resume\" class=\"file-link\">Open resume file</div>
+                        <p class=\"mb-1\">Resume</p>
+                        <div id=\"resume\" class=\"file-link\"><p> </p></div>
                     </div>
                     <div class=\"col-sm-auto\">
-                        W-9
-                        <div id=\"w9\" class=\"file-link\">Open W-9 file</div>
+                        <p class=\"mb-1\">W-9</p>
+                        <div id=\"w9\" class=\"file-link\"><p> </p></div>
                     </div>
                     <div class=\"col-sm-auto\">
-                        Fingerprints
-                        <div id=\"fingerprints\" class=\"file-link\">Open fingerprints file</div>
+                        <p class=\"mb-1\">Fingerprints</p>
+                        <div id=\"fingerprints\" class=\"file-link\"><p> </p></div>
                     </div>
                 </div>
 
@@ -346,12 +346,12 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                         <p>License plate: <span id=\"licenseNumber\">123-ITFL</span></p>
                         <div class=\"row\">
                             <div class=\"col-sm-auto\">
-                                Driver's License
-                                <div id=\"licenseImage\" class=\"file-link\">Open driver's license file</div>
+                                <p class=\"mb-1\">Driver's License</p>
+                                <div id=\"licenseImage\" class=\"file-link\"><p> </p></div>
                             </div>
                             <div class=\"col-sm-auto\">
-                                Registration
-                                <div id=\"registration\" class=\"file-link\">Open registration file</div>
+                                <p class=\"mb-1\">Registration</p>
+                                <div id=\"registration\" class=\"file-link\"><p> </p></div>
                             </div>
                         </div>
                     </div>
@@ -370,8 +370,8 @@ class __TwigTemplate_211cd56a86f14ee314377e77915862840be4d681b00210ab55623d896ab
                 {# </div> #}
                         <div class=\"row\">
                             <div class=\"col-lg-auto\">
-                                Insurance Card
-                                <div id=\"insuranceImage\" class=\"file-link\">Open insurance card file</div>
+                                <p class=\"mb-1\">Insurance Card</p>
+                                <div id=\"insuranceImage\" class=\"file-link\"><p> </p></div>
                             </div>
                         </div>
                     </div>

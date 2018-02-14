@@ -20,7 +20,7 @@ $(function() {
                     linkObject.html('<a href="' + url + '" target="_blank"><img src="' + url + '"></a>'); 
                 } else {
                     //it's a PDF/DOC
-                    linkObject.html('<a href="' + url + '" target="_blank">Open</a>'); 
+                    linkObject.html('<a href="' + url + '" target="_blank"><i class="fas fa-folder-open"></i> Open File</a>'); 
                 }
             }).catch(function(error) {});
         }).catch(function(error) {

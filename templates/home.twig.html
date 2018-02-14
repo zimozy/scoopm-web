@@ -77,7 +77,12 @@
                         </form>
                     </div>
                     <div id="startNewApplication" class="text-center my-4 d-none">
-                        <a href="{{ path_for('register') }}" class="btn btn-lg">Create New Application</a>
+                        <p>
+                            <a href="{{ path_for('register') }}" class="btn btn-lg">Create New Application</a>
+                        </p>
+                        <p class="text-muted">
+                            You're signed in. <a id="sign-out" href="#">Sign Out</a>
+                        </p>
                     </div>
                 </div>
             </div>

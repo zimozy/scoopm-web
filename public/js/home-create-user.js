@@ -8,7 +8,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             $('#signUp').addClass('d-none');
             $('#startNewApplication').removeClass('d-none');
         }
-        
+    } else {
+        $('#startNewApplication').addClass('d-none');
+        $('#signUp').removeClass('d-none');
     }
   });
 
@@ -63,6 +65,18 @@ $(function() {
     $('#sign-up').submit(function(event) {
         event.preventDefault();
         createAccountButton.createAccount();
+    });
+
+    //SIGN OUT BUTTON
+    $('#sign-out').click(function(event) {
+        event.preventDefault();
+        firebase.auth().signOut()
+            .then(function() {
+                /*success*/
+            })
+            .catch(function(error) {
+                alert('Woops, an error occured signing you out. Please try again.');
+            });
     });
 
 });
