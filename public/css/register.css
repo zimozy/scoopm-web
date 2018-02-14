@@ -1,11 +1,13 @@
+body {background-color: #555}
+
 /* WIZARD */
 .page { display: none; }
 .current-page { display: block; }
 
 #formContainer {
   padding: 1rem 2rem;
-  border: 1px solid #eee;
-  border-top: none;
+  border: none;
+  border-radius: 0px 0px 3px 3px;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }

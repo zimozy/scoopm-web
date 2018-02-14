@@ -70,13 +70,19 @@ $(function() {
     //SIGN OUT BUTTON
     $('#sign-out').click(function(event) {
         event.preventDefault();
+
+        $(this).html('Signing out <i class="fas fa-circle-notch fa-spin"></i>');
+
+        setTimeout(() => {
         firebase.auth().signOut()
             .then(function() {
                 /*success*/
             })
             .catch(function(error) {
                 alert('Woops, an error occured signing you out. Please try again.');
-            });
+            });            
+        }, 1200);
+
     });
 
 });
