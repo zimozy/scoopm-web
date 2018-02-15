@@ -28,13 +28,13 @@
             <p class="lead">If you don't have an account, <a href="/">create one</a>.</p>
             <form>
                 <div class="form-group">
-                    <input id="email" name="email" type="text" class="form-control">
+                    <input id="email" name="email" type="text" class="form-control" placeholder="Email">
                 </div>
                 <div class="form-group">
-                    <input id="password" name="password" type="password" class="form-control">
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <button id="signInButton" class="btn btn-outline-primary">Sign in</button>
+                    <input id="signInButton" type="submit" class="btn btn-outline-primary" value="Sign in"></input>
                 </div>
             </form>
             {% block content %}{% endblock %}
@@ -46,5 +46,5 @@
 {% endblock %}
 
 {% block body_scripts %}
-<script src="/js/signIn.js"></script>
+<script src="/js/application-login.js"></script>
 {% endblock %}
