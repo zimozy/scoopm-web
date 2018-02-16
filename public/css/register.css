@@ -125,3 +125,15 @@ body {background-color: #555}
 .scoopm-is-uploading .input-group-addon {
 background-color: rgb(192, 212, 223);
 }
+
+
+/* WIZARD BUTTONS */
+.back-button { padding-left: 2.1rem; padding-right: 2.2rem; }
+.next-button { padding-left: 2.2rem; padding-right: 2.1rem; }
+.submit-button { padding-left: 2.2rem; padding-right: 2.2rem; }
+
+.next-button svg,
+.back-button svg,
+.submit-button svg {
+  padding-bottom: 1px; /* I think the font baseline is too low */
+}
