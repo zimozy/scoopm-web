@@ -1,6 +1,6 @@
 $(function() {
 
-    var usersTable = $('#usersTable');
+    var usersTBody = $('#usersTable tbody');
     var applicationModal = $('#applicationModal');
 
     var database = firebase.database();
@@ -33,7 +33,7 @@ $(function() {
         if (user) {
             database.ref('admin/' + user.uid).once('value', function() {
                 //success
-                usersTable.populate();
+                usersTBody.populate();
             }, function() {
                 alert('is not admin');
                 //not an admin
@@ -45,17 +45,19 @@ $(function() {
         }
     });
 
-    // INITIAL DATA LOAD
-    usersTable.populate = function() {
+    // DATA LOAD
+    usersTBody.populate = function() {
         //.limitToFirst(10).orderByKey();
-        database.ref('users').once('value').then(function(snapshot) {
+        database.ref('users').on('value', function(snapshot) {
             
+            usersTBody.children('tr').remove(); //empty the table body and reload the rows
+
             snapshot.forEach(function(data) {
                 var user = data.val();
                 // console.log(user);
                 var acceptedText  = user.accepted ? "Yes": "No";
                 var acceptedClass = user.accepted ? "accepted" : "not-accepted";
-                $('#usersTable tbody').append(
+                usersTBody.append(
                     '<tr id="' + data.key + '" class="' + acceptedClass + '">'
                         + '<th scope="row">' + user.firstName + ' ' + user.lastName + '</th>'
                         + '<td>' + user.email + '</td>'
