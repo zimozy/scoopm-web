@@ -7,7 +7,7 @@ $(function() {
 
         if ( $(document).width() <= 576) {
             progressLinks = $('#progress-links');
-            scrollPoint = progressLinks.offset().top + progressLinks.height();
+            scrollPoint = progressLinks.offset().top; // + progressLinks.height()
         } else {
             scrollPoint = $('body').offset().top;
         }
