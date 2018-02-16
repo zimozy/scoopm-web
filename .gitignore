@@ -1,5 +1,6 @@
 /vendor/
 /templates/cache/
+/.idea/
 
 # OS generated files #
 ######################
