@@ -14,7 +14,7 @@
 {% block body_content %}
 <div class="container-fluid">
     <div class="row">
-        <div id="formContainer" class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+        <div id="formContainer" class="col-md-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
 
             <div class="text-center mb-4">
                 <a href="{{path_for('home')}}" class="h1 d-inline logo-font blue-text">ScoopM</a>
@@ -24,20 +24,26 @@
 
             <div id="progress-links" class="row"> {# {% if errors %}DISABLE-re-visit{% endif %} #}
                 {# <div> #}
-                    <div class="col-sm">
+                    <div class="col-md">
                         <a id="aboutYouLink" href="#" class="current-page page-visited"><span class="circle">1</span><span class="link">About&nbsp;You</span></a>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-md">
                         <a id="yourCarLink" href="#"><span class="circle">2</span><span class="link">Your&nbsp;Car</span></a>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-md">
                         <a id="insuranceLink" href="#"><span class="circle">3</span><span class="link">Insurance&nbsp;Info</span></a>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-md">
                         <a id="applicationLink" href="#"><span class="circle">4</span><span class="link">Application</span></a>
                     </div>
-                    <div class="col-sm">
-                        <a id="referencesLink" href="#"><span class="circle">5</span><span class="link">References</span></a>
+                    <div class="col-md">
+                        <a id="disclosureLink" href="#"><span class="circle">5</span><span class="link">Disclosure</span></a>
+                    </div>
+                    <div class="col-md">
+                        <a id="authorizationLink" href="#"><span class="circle">6</span><span class="link">Authorization</span></a>
+                    </div>
+                    <div class="col-md">
+                        <a id="referencesLink" href="#"><span class="circle">7</span><span class="link">References</span></a>
                     </div>
                 {# </div> #}
             </div>
@@ -143,8 +149,24 @@
                     {{form.upload('Upload Resume', 'resume', resume, 'doc', errors.resume)}}
                     {{form.upload('Fingerprints', 'fingerprints', fingerprints, 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station. Scan the fingerprint document or upload a PDF.')}}
                     {{form.textArea('Felonies Committed, if applicable', 'felonies', felonies, errors.felonies)}}
-                    {{form.agreement('Background Check', 'backgroundCheck', backgroundCheck, errors.backgroundCheck, 'I authorize ScoopM to perform a background check, including a criminal background check and motor vehicle report.')}}
+                    {{form.agreement('Rights under the FCRA', 'fcra', 'LEGAL TEXT GOES HERE', fcra, errors.fcra, '<<<PASTE LEGAL AUTHORIZATION HERE>>>')}}
                     {{form.buttons('application', true)}}
+                </div>
+
+
+                <!-- DISCLOSURE -->
+                <div id="disclosurePage" class="page">
+                    {{form.heading('Disclosure regarding background check investigation')}}
+                    {{form.agreement('', 'disclosure', 'LEGAL TEXT GOES HERE', disclosure, errors.disclosure, '<<<PASTE DISCLOSURE CONTENT HERE>>>')}}
+                    {{form.buttons('disclosure', true)}}
+                </div>
+                        
+                    
+                <!-- AUTHORIZATION -->
+                <div id="authorizationPage" class="page">
+                    {{form.heading('Acknowledgment and Authorization for Background Check')}}
+                    {{form.agreement('', 'authorization', 'LEGAL TEXT GOES HERE', authorization, errors.authorization, '<<<PASTE authorization CONTENT HERE>>>')}}
+                    {{form.buttons('authorization', true)}}
                 </div>
 
 
@@ -171,28 +193,6 @@
 
                 </div>
 
-                {# <!-- USER ACCOUNT -->
-                <div id="userAccountPage" class="page">
-                    <div class="row">
-                        <div class="col-md-8 offset-md-2">
-                            <div id="accountCard" class="card mt-md-3 mb-md-5">
-                                <div class="card-body">
-                                    <h5 class="card-title">Create User Account</h5>
-                                    <p class="card-text">
-                                        {{form.simpleTextInput('Email', 'email', "tim@example.com", errors.email)}}
-                                        {{form.password('Password', 'password', "123abc", errors.password, true)}}
-                                        {{form.password('Confirm Password', 'confirmPassword', "123abc", errors.confirmPassword, true, true)}}            
-                                    </p>
-                                    <div class="text-center">
-                                        <button id="createAccount" type="button" class="btn btn-outline-primary my-1" disabled>Create Account</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{form.buttons('userAccount', true, true)}} {# SUBMIT
-                </div> #}
 
                 {# HIDDEN INPUTS #}
                 {# <input id="userKey" name="userKey" type="hidden" value="{{userKey}}"> #}

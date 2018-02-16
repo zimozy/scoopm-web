@@ -15,22 +15,21 @@ body {background-color: #555}
 /* PROGRESS LINKS */
 #progress-links {
   margin: 1rem -2rem;
-  padding: 0.5rem 0;
-  background: #444;
-  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4) inset;
+}
+
+#progress-links a:not(.current-page) {
+  display: none;
 }
 
 #progress-links a { 
   display: block;
-  padding:  0.25rem;
+  padding:  0.75rem;
+  /* margin: 1rem; */
   color: #868e96;
   text-decoration: none;
-  border-radius: 3px;
-}
-
-#progress-links a.current-page .link,
-#progress-links a.page-visited:hover .link {
-  text-decoration: underline;
+  /* border-radius: 3px; */
+  background: #444;
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.6) inset; 
 }
 
 #progress-links a.current-page,
@@ -62,17 +61,30 @@ body {background-color: #555}
   color: white;
 }
 
-@media (min-width: 576px) { /* Size "sm" */
+@media (min-width: 768px) { /* Size "sm" */
+  #progress-links a:not(.current-page) {
+    display: block;
+  }
+
   #progress-links {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+    padding: 0.5rem 0;
+    background: #444;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4) inset;  
   }
   
   #progress-links a { 
-    padding:  1rem 0;
-    text-align: center; 
+    padding:  0.5rem 0;
+    text-align: center;
+    background: none;
+    box-shadow: none;
   }
-  
+
+  #progress-links a.current-page .link,
+  #progress-links a.page-visited:hover .link {
+    text-decoration: underline;
+  }
   #progress-links .circle {
     display: block;
     margin: 0.25rem auto 0.5rem auto;
@@ -88,6 +100,7 @@ body {background-color: #555}
     /* background-color: transparent; */
   }
 }
+
 
 /* UPLOAD FIELDS */
 .upload-input-group input,

@@ -195,7 +195,7 @@
     </div>
 {% endmacro %}
 
-{% macro agreement(title, name, value, errors=null, hint=null) %}
+{% macro agreement(title, name, legalStatement, value, errors=null, legalPrint=null) %}
     {% if errors == null %}
         {# Do nothing. #}
     {% elseif errors.passed %}
@@ -206,12 +206,12 @@
     <div class="form-group row mt-3">
         <label for="{{name}}" class="col-sm-3 col-form-label">{{title}}</label>
         <div class="col-sm">
-            {% if hint %}
-                <p class="{{validation_class}}">{{hint}}</p>
+            {% if legalPrint %}
+                <p class="{{validation_class}}">{{legalPrint}}</p>
             {% endif %}
             <input id="{{name}}" name="{{name}}" type="checkbox" value="1" {% if value == '1' %}checked{% endif %}
-            > <label for="{{name}}" class="{{validation_class}}">I Agree</label>
-            <small class="form-text scoopm-error">You must agree to these terms</small>
+            > <label for="{{name}}" class="{{validation_class}}">{{legalStatement}}</label>
+            <small class="form-text scoopm-error">Required in order to apply</small>
         </div>
     </div>
 {% endmacro %}

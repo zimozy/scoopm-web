@@ -745,14 +745,15 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
     }
 
     // line 198
-    public function macro_agreement($__title__ = null, $__name__ = null, $__value__ = null, $__errors__ = null, $__hint__ = null, ...$__varargs__)
+    public function macro_agreement($__title__ = null, $__name__ = null, $__legalStatement__ = null, $__value__ = null, $__errors__ = null, $__legalPrint__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
             "title" => $__title__,
             "name" => $__name__,
+            "legalStatement" => $__legalStatement__,
             "value" => $__value__,
             "errors" => $__errors__,
-            "hint" => $__hint__,
+            "legalPrint" => $__legalPrint__,
             "varargs" => $__varargs__,
         ));
 
@@ -791,12 +792,12 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
         <div class=\"col-sm\">
             ";
             // line 209
-            if (($context["hint"] ?? null)) {
+            if (($context["legalPrint"] ?? null)) {
                 // line 210
                 echo "                <p class=\"";
                 echo twig_escape_filter($this->env, ($context["validation_class"] ?? null), "html", null, true);
                 echo "\">";
-                echo twig_escape_filter($this->env, ($context["hint"] ?? null), "html", null, true);
+                echo twig_escape_filter($this->env, ($context["legalPrint"] ?? null), "html", null, true);
                 echo "</p>
             ";
             }
@@ -814,8 +815,10 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
             echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
             echo "\" class=\"";
             echo twig_escape_filter($this->env, ($context["validation_class"] ?? null), "html", null, true);
-            echo "\">I Agree</label>
-            <small class=\"form-text scoopm-error\">You must agree to these terms</small>
+            echo "\">";
+            echo twig_escape_filter($this->env, ($context["legalStatement"] ?? null), "html", null, true);
+            echo "</label>
+            <small class=\"form-text scoopm-error\">Required in order to apply</small>
         </div>
     </div>
 ";
@@ -1027,7 +1030,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
 
     public function getDebugInfo()
     {
-        return array (  1003 => 277,  992 => 273,  985 => 272,  978 => 269,  976 => 268,  972 => 266,  966 => 263,  963 => 262,  961 => 261,  955 => 257,  940 => 256,  927 => 251,  923 => 249,  911 => 248,  898 => 243,  894 => 241,  882 => 240,  869 => 235,  865 => 233,  853 => 232,  844 => 229,  842 => 228,  830 => 227,  813 => 213,  804 => 212,  796 => 210,  794 => 209,  787 => 207,  784 => 206,  781 => 205,  778 => 204,  775 => 203,  772 => 202,  769 => 201,  767 => 200,  764 => 199,  748 => 198,  737 => 194,  733 => 192,  731 => 191,  728 => 190,  725 => 189,  710 => 187,  706 => 186,  703 => 185,  701 => 184,  693 => 183,  686 => 181,  683 => 180,  680 => 179,  677 => 178,  674 => 177,  671 => 176,  668 => 175,  666 => 174,  663 => 173,  647 => 172,  633 => 166,  628 => 163,  624 => 161,  622 => 160,  619 => 159,  617 => 158,  608 => 154,  600 => 153,  591 => 150,  587 => 148,  584 => 147,  578 => 145,  576 => 144,  567 => 140,  562 => 137,  559 => 136,  556 => 135,  553 => 134,  550 => 133,  547 => 132,  544 => 131,  541 => 129,  538 => 128,  535 => 127,  532 => 126,  529 => 125,  526 => 124,  523 => 123,  520 => 122,  517 => 121,  515 => 120,  510 => 119,  507 => 118,  504 => 117,  501 => 116,  498 => 114,  495 => 113,  492 => 112,  489 => 111,  486 => 110,  483 => 109,  481 => 108,  478 => 107,  475 => 105,  458 => 104,  437 => 97,  434 => 96,  428 => 94,  426 => 93,  418 => 90,  415 => 89,  412 => 88,  409 => 87,  406 => 86,  403 => 85,  400 => 84,  398 => 83,  395 => 82,  379 => 81,  357 => 75,  350 => 73,  347 => 72,  344 => 71,  341 => 70,  338 => 69,  335 => 68,  332 => 67,  330 => 66,  327 => 65,  312 => 64,  302 => 61,  297 => 58,  294 => 57,  290 => 55,  286 => 53,  284 => 52,  271 => 51,  263 => 48,  260 => 47,  258 => 46,  255 => 45,  252 => 44,  249 => 43,  246 => 42,  243 => 41,  240 => 40,  238 => 39,  235 => 38,  218 => 37,  206 => 33,  192 => 32,  189 => 31,  186 => 30,  183 => 29,  180 => 28,  177 => 27,  174 => 26,  172 => 25,  169 => 24,  153 => 23,  142 => 19,  136 => 17,  134 => 16,  130 => 15,  116 => 14,  109 => 12,  106 => 11,  103 => 10,  100 => 9,  97 => 8,  94 => 7,  91 => 6,  89 => 5,  86 => 4,  69 => 3,  64 => 255,  61 => 247,  58 => 239,  55 => 231,  52 => 226,  43 => 218,  40 => 197,  37 => 171,  34 => 103,  31 => 80,  28 => 63,  25 => 36,  22 => 22,  19 => 2,);
+        return array (  1006 => 277,  995 => 273,  988 => 272,  981 => 269,  979 => 268,  975 => 266,  969 => 263,  966 => 262,  964 => 261,  958 => 257,  943 => 256,  930 => 251,  926 => 249,  914 => 248,  901 => 243,  897 => 241,  885 => 240,  872 => 235,  868 => 233,  856 => 232,  847 => 229,  845 => 228,  833 => 227,  814 => 213,  805 => 212,  797 => 210,  795 => 209,  788 => 207,  785 => 206,  782 => 205,  779 => 204,  776 => 203,  773 => 202,  770 => 201,  768 => 200,  765 => 199,  748 => 198,  737 => 194,  733 => 192,  731 => 191,  728 => 190,  725 => 189,  710 => 187,  706 => 186,  703 => 185,  701 => 184,  693 => 183,  686 => 181,  683 => 180,  680 => 179,  677 => 178,  674 => 177,  671 => 176,  668 => 175,  666 => 174,  663 => 173,  647 => 172,  633 => 166,  628 => 163,  624 => 161,  622 => 160,  619 => 159,  617 => 158,  608 => 154,  600 => 153,  591 => 150,  587 => 148,  584 => 147,  578 => 145,  576 => 144,  567 => 140,  562 => 137,  559 => 136,  556 => 135,  553 => 134,  550 => 133,  547 => 132,  544 => 131,  541 => 129,  538 => 128,  535 => 127,  532 => 126,  529 => 125,  526 => 124,  523 => 123,  520 => 122,  517 => 121,  515 => 120,  510 => 119,  507 => 118,  504 => 117,  501 => 116,  498 => 114,  495 => 113,  492 => 112,  489 => 111,  486 => 110,  483 => 109,  481 => 108,  478 => 107,  475 => 105,  458 => 104,  437 => 97,  434 => 96,  428 => 94,  426 => 93,  418 => 90,  415 => 89,  412 => 88,  409 => 87,  406 => 86,  403 => 85,  400 => 84,  398 => 83,  395 => 82,  379 => 81,  357 => 75,  350 => 73,  347 => 72,  344 => 71,  341 => 70,  338 => 69,  335 => 68,  332 => 67,  330 => 66,  327 => 65,  312 => 64,  302 => 61,  297 => 58,  294 => 57,  290 => 55,  286 => 53,  284 => 52,  271 => 51,  263 => 48,  260 => 47,  258 => 46,  255 => 45,  252 => 44,  249 => 43,  246 => 42,  243 => 41,  240 => 40,  238 => 39,  235 => 38,  218 => 37,  206 => 33,  192 => 32,  189 => 31,  186 => 30,  183 => 29,  180 => 28,  177 => 27,  174 => 26,  172 => 25,  169 => 24,  153 => 23,  142 => 19,  136 => 17,  134 => 16,  130 => 15,  116 => 14,  109 => 12,  106 => 11,  103 => 10,  100 => 9,  97 => 8,  94 => 7,  91 => 6,  89 => 5,  86 => 4,  69 => 3,  64 => 255,  61 => 247,  58 => 239,  55 => 231,  52 => 226,  43 => 218,  40 => 197,  37 => 171,  34 => 103,  31 => 80,  28 => 63,  25 => 36,  22 => 22,  19 => 2,);
     }
 
     public function getSourceContext()
@@ -1229,7 +1232,7 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
     </div>
 {% endmacro %}
 
-{% macro agreement(title, name, value, errors=null, hint=null) %}
+{% macro agreement(title, name, legalStatement, value, errors=null, legalPrint=null) %}
     {% if errors == null %}
         {# Do nothing. #}
     {% elseif errors.passed %}
@@ -1240,12 +1243,12 @@ class __TwigTemplate_8f3098d5702daeaea306348df904f616a14796cfdb875062add76c8b6e6
     <div class=\"form-group row mt-3\">
         <label for=\"{{name}}\" class=\"col-sm-3 col-form-label\">{{title}}</label>
         <div class=\"col-sm\">
-            {% if hint %}
-                <p class=\"{{validation_class}}\">{{hint}}</p>
+            {% if legalPrint %}
+                <p class=\"{{validation_class}}\">{{legalPrint}}</p>
             {% endif %}
             <input id=\"{{name}}\" name=\"{{name}}\" type=\"checkbox\" value=\"1\" {% if value == '1' %}checked{% endif %}
-            > <label for=\"{{name}}\" class=\"{{validation_class}}\">I Agree</label>
-            <small class=\"form-text scoopm-error\">You must agree to these terms</small>
+            > <label for=\"{{name}}\" class=\"{{validation_class}}\">{{legalStatement}}</label>
+            <small class=\"form-text scoopm-error\">Required in order to apply</small>
         </div>
     </div>
 {% endmacro %}

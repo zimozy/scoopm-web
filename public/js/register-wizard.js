@@ -1,5 +1,5 @@
 $(function() {
-    var pages       = ["aboutYou", "yourCar", "insurance", "application", "references"];
+    var pages       = ["aboutYou", "yourCar", "insurance", "application", "disclosure", "authorization", "references"];
     var currentPage = pages[0];
     
     function goTo(newPage) {

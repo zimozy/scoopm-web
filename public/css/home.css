@@ -6,22 +6,6 @@ body.ad-background {
   color: black;  
 }
 
-/* .logo-font {
-    text-shadow: 3px 3px 1px  rgba(0,0,0,0.07);
-} */
-
-.sign-up-box {
-    background-color: white; 
-    border-radius: 3px;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.9);
-    padding: 1rem 2rem;
-    opacity: 0;
-}
-
-.sign-up-box .alert {
-    border: 2px solid #999;
-}
-
 .card {
     margin: 2rem 0 -2rem 0;
     opacity: 0;
@@ -40,10 +24,26 @@ body.ad-background {
     color: rgb(0, 55, 85);
 }
 
+.card p {
+    margin-bottom: 0px !important;
+}
+
 @media (max-width: 991.98px) {
     .col-lg { padding: 0.3rem ; }
     .card-body { padding: 1rem; }
     .card span {display: inline; text-align: left; font-size: 1.2rem; font-weight: normal;}
+}
+
+.sign-up-box {
+    background-color: white; 
+    border-radius: 3px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.9);
+    padding: 1rem 2rem;
+    opacity: 0;
+}
+
+.sign-up-box .alert {
+    border: 2px solid #999;
 }
 
 .sign-up-box input,
