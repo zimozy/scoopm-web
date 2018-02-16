@@ -1,2 +1,11 @@
-vendor/
-templates/cache/
+/vendor/
+/templates/cache/
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
