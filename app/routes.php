@@ -33,7 +33,6 @@ $app->get("/admin", function (Request $request, Response $response) {
     return $this->view->render($response, 'admin.twig.html');
 })->setName('admin');
 
-
 $app->get('/register', function (Request $request, Response $response) {
     return $this->view->render($response, 'register.twig.html');
 })->setName("register");

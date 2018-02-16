@@ -4,7 +4,8 @@
         "slim/twig-view": "^2.3",
         "giggsey/libphonenumber-for-php": "^8.8",
         "ktamas77/firebase-php": "^2.2",
-        "phpmailer/phpmailer": "^6.0"
+        "phpmailer/phpmailer": "^6.0",
+        "mrclay/minify": "^3.0"
     },
     "autoload": {
         "classmap": [

@@ -4,13 +4,16 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 
+//Error handling
 $config['displayErrorDetails'] = true;
+
 $config['addContentLengthHeader'] = false;
 
 $app = new \Slim\App(['settings' => $config]);
 
 $container = $app->getContainer();
 
+//Twig view
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig('../templates', [
         'cache' => '../templates/cache',
@@ -26,7 +29,7 @@ $container['view'] = function ($container) {
     return $view;
 };
 
-//Override the default Not Found Handler
+//Not Found Handler
 $container['notFoundHandler'] = function ($c) {
     return function ($request, $response) use ($c) {
         $response = $c->get('view')->render($response, '404.html.twig');
