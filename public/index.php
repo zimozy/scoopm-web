@@ -26,6 +26,15 @@ $container['view'] = function ($container) {
     return $view;
 };
 
+//Override the default Not Found Handler
+$container['notFoundHandler'] = function ($c) {
+    return function ($request, $response) use ($c) {
+        $response = $c->get('view')->render($response, '404.html.twig');
+        $response = $response->withStatus(404);
+        return $response;
+    };
+};
+
 require '../app/middleware.php';
 require '../app/routes.php';
 

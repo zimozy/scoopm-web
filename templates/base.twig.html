@@ -17,22 +17,6 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
-    {% block car_query %}
-        <!-- CAR QUERY -->
-        <script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                var carquery = new CarQuery();
-                carquery.init();
-                carquery.setFilters( {sold_in_us:true} );
-                carquery.initYearMakeModelTrim('year', 'make', 'model', 'na');
-            });
-        </script>
-    {% endblock %}
-
-    {# <!-- POPPER --> #}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
@@ -48,9 +32,16 @@
 <body {% block body_class %}{% endblock %}>
     {% block body_content %}
         <div class="container-fluid">
+            {% block logo %}
+                <div class="row mt-sm-4">
+                    <div class="col">
+                        <h1 class="display-4 text-center logo-font text-muted my-3"><a href="{{path_for('home')}}">ScoopM</a></h1>
+                    </div>
+                </div>
+            {% endblock %}
+
             <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <h1 class="display-2 text-center logo-font blue-text mt-4"><a href="{{path_for('home')}}">ScoopM</a><small>&nbsp;</small></h1>
+                <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 text-center">
                     {% block content %}{% endblock %}
                 </div>
             </div>

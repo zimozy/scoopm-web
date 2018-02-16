@@ -260,18 +260,18 @@
 
         {% if goingBack %}
             <div class="col">
-                <button id="{{thisPage}}Back" class="back-button btn btn-outline-secondary mb-4 mb-sm-0 px-5"><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;&nbsp;Back&nbsp;</button>
+                <button id="{{thisPage}}Back" class="back-button btn btn-outline-secondary mb-4 mb-sm-0"><i class="fas fa-chevron-left fa-xs" aria-hidden="true"></i>&nbsp;Back</button>
             </div>
         {% endif %}
 
         <div class="col">
             {% if not submitting %}
-                <button id="{{thisPage}}Next" class="next-button btn btn-outline-primary px-5">&nbsp;Next&nbsp;&nbsp;<i class="fas fa-chevron-right"></i></button>
+                <button id="{{thisPage}}Next" class="next-button btn btn-outline-primary">Next&nbsp;<i class="fas fa-chevron-right fa-xs"></i></button>
                 
             {% else %}
-                <input id="submit-button" type="submit" class="btn btn-primary px-5 {% if disabled %}d-none{% endif %}" value="Submit" />
+                <input id="submit-button" type="submit" class="btn btn-primary submit-button {% if disabled %}d-none{% endif %}" value="Submit" />
                 <span id="disabled-submit-button-tooltip" class="{% if disabled %}d-inline-block{% else %}d-none{% endif %}" tabindex="0" data-toggle="tooltip" title="You must upload all files to submit the application." data-placement="top">
-                    <button type="button" class="btn btn-primary px-5" style="pointer-events: none;" disabled>Submit</a>
+                    <button type="button" class="btn btn-primary submit-button" style="pointer-events: none;" disabled>Submit</a>
                 </span>
             {% endif %}
         </div>
