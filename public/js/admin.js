@@ -6,27 +6,8 @@ $(function() {
     var database = firebase.database();
     var storage = firebase.storage().ref();
     
-    // FUNCTIONS
+    // SEND HOME FUNCTION
     function sendHome() { window.location.replace('/'); }
-
-    function updateFileLink(linkObject, folder, uid) {
-
-        var image = storage.child(folder + '/' + uid);
-        
-        image.getMetadata().then(function(metadata) {
-            image.getDownloadURL().then(function(url) {                
-                if (/image\/.+/.test(metadata.contentType)) {
-                    //it's an image
-                    linkObject.html('<a href="' + url + '" target="_blank"><img src="' + url + '"></a>'); 
-                } else {
-                    //it's a PDF/DOC
-                    linkObject.html('<a href="' + url + '" target="_blank"><i class="fas fa-folder-open"></i> Open File</a>'); 
-                }
-            }).catch(function(error) {});
-        }).catch(function(error) {
-            linkObject.html('<p>No file</p>');
-        });
-    }
 
     // CHECK THEY'RE AN ADMIN
     firebase.auth().onAuthStateChanged(function(user) {
@@ -70,6 +51,27 @@ $(function() {
                 applicationModal.update($(this).prop('id'));
                 applicationModal.modal('show');
             });
+        });
+    }
+
+    // UPDATE FILE LINK FUNCTION
+    function updateFileLink(linkObject, folder, uid) {
+
+        var image = storage.child(folder + '/' + uid);
+        
+        image.getMetadata().then(function(metadata) {
+            image.getDownloadURL().then(function(url) {                
+                if (/image\/.+/.test(metadata.contentType)) {
+                    //it's an image
+                    linkObject.html('<a href="' + url + '" target="_blank"><img src="' + url + '"></a>'); 
+                } else {
+                    //it's a PDF/DOC
+                    targetText = metadata.contentType == 'application/pdf' ? ' target="_blank"' : '';
+                    linkObject.html('<a href="' + url + '"' + targetText + '><i class="fas fa-folder-open"></i> Open File</a>'); 
+                }
+            }).catch(function(error) {});
+        }).catch(function(error) {
+            linkObject.html('<p>No file</p>');
         });
     }
     
