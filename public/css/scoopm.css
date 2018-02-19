@@ -55,8 +55,8 @@ html {
   min-height: 100%;
 }
 
-body { margin-bottom: 50px; }
-@media (max-width: 991.98px) { body { margin-bottom: 250px; } } /* Friendlier for phones*/
+body { margin-bottom: 250px; } /* Friendlier for phones*/
+@media (min-width: 768px) { body { margin-bottom: 50px; } }
 
 .footer {
   position: absolute;
