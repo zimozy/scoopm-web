@@ -2,6 +2,7 @@
 ## Ubuntu Linux
 
 ### More info can be found at /usr/share/doc/apache2/README.Debian
+[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/SSL-on-an-instance.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/SSL-on-an-instance.html "AWS Article")
 
 1. SSH into the server.
 2. sudo a2enmod default-ssl
