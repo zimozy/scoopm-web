@@ -69,7 +69,7 @@
   #progress-links {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0.4rem 0.5rem 0;
     background: #444;
     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4) inset;  
   }
