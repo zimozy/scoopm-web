@@ -7,7 +7,7 @@ body {
 }
 
 .deep-blue {
-    color: rgb(0, 55, 85);
+    color: #003755;
 }
 
 .card {
@@ -52,6 +52,10 @@ body {
 
 .sign-up-box .alert {
     border: 2px solid #999;
+}
+
+.form-control {
+    border-color: #003755 !important;
 }
 
 .footer {
