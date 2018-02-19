@@ -1,4 +1,4 @@
-INSTALLATION
+# INSTALLATION
 
 - Run "./composer install" in root directory
 - Install Docker
