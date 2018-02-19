@@ -1,5 +1,3 @@
-body {background-color: #555}
-
 /* WIZARD */
 .page { display: none; }
 .current-page { display: block; }
@@ -61,7 +59,9 @@ body {background-color: #555}
   color: white;
 }
 
-@media (min-width: 768px) { /* Size "sm" */
+@media (min-width: 768px) {
+  body {background-color: #555}
+  
   #progress-links a:not(.current-page) {
     display: block;
   }

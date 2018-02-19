@@ -56,10 +56,7 @@ html {
 }
 
 body { margin-bottom: 50px; }
-
-@media (max-width: 991.98px) {
-  body { margin-bottom: 250px; } /* Friendlier for phones*/
-}
+@media (max-width: 991.98px) { body { margin-bottom: 250px; } } /* Friendlier for phones*/
 
 .footer {
   position: absolute;

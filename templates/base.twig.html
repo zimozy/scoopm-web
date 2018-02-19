@@ -7,6 +7,8 @@
 
     <title>{% block title %}{% endblock %} | ScoopM</title>
 
+    {% block head_scripts_first %}{% endblock %}
+
     <!-- FONT AWESOME -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/v4-shims.js"></script><!--upgrade from v.4-->
@@ -19,7 +21,6 @@
 
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- OURS -->
@@ -29,7 +30,7 @@
 
     {% block head_scripts %}{% endblock %}
 </head>
-<body {% block body_class %}{% endblock %}>
+<body>
     {% block body_content %}
         <div class="container-fluid">
             {% block logo %}

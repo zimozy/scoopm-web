@@ -15,16 +15,12 @@ $(function() {
         var currentPageObj = $('#' + currentPage + 'Page');
         var newPageObj = $('#' + newPage + 'Page');
 
-        if ( (document.documentElement.scrollTop || document.body.scrollTop) > scrollPoint) {        
-            $('html,body').animate({
-                    scrollTop: scrollPoint
-                },
-                150);
+        if ( (document.documentElement.scrollTop || document.body.scrollTop) > scrollPoint) {
+            $('html,body').scrollTop(scrollPoint);
         }
         
-        currentPageObj.fadeOut(150, function() {
-            newPageObj.fadeIn(200);
-        });
+        currentPageObj.hide();
+        newPageObj.show();
 
         currentPage = newPage;
         updateProgressLinks();
