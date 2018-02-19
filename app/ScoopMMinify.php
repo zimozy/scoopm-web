@@ -85,7 +85,9 @@ class Minifier
         $minifiedBodyContent = $this->minifyHTML((string)$oldBody);
 
 
-        $newBody = new Body(fopen('php://temp', 'r+'));
+        die( $test = fopen('php://temp', 'r+'));
+
+        $newBody = new Body();
 
         //write the minified html content to the new \Slim\Http\Body instance
         $newBody->write($minifiedBodyContent);
