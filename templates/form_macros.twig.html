@@ -147,7 +147,7 @@
 
             <div class="input-group {{validation_class}} upload-input-group">
                 {# This field uses the name attribute so it can re-display the file name if the field is returned with errors #}
-                <input type="text" class="form-control upload-text" name="{{name}}" value="{{value}}">
+                <input id="{{name}}" name="{{name}}" type="text" class="form-control upload-text" value="{{value}}">
 
                 <div class="input-group-addon p-0">
                     <input id="{{name}}-input" type="file" name="{{name}}-actual" class="d-none" accept="{{allowed_types}}">

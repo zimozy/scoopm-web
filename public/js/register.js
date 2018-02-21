@@ -1,19 +1,21 @@
 firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {    
+    if (user) { //logged in
 
         // GET USER DETAILS
-        //email
-        email.val(user.email);
-        //userID
-        $('#userID').val(user.uid);
+        email.val(user.email); //email
+        $('#userID').val(user.uid); //userID
+        
         //userId Token (logins)
         user.getIdToken(true).then(function(idToken) {
             $('#userIdToken').val(idToken);
-        }).catch(function(error) {
-            // console.log(error);
         });
 
-    } else {
+        //POPULATE FORM (only happens in GET method, not POST)
+        if ($('#populateForm').length) {
+            populateForm(user);
+        }
+
+    } else { // not logged in
         // REDIRECT TO SIGN-IN SCREEN
         window.location.replace('/application-login');
     }
