@@ -60,7 +60,7 @@
 }
 
 @media (min-width: 768px) {
-  body {background-color: #222222}
+  body {background-color: #eee}
   .footer {color: #666666;}
   
   #progress-links a:not(.current-page) {
