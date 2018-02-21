@@ -3,9 +3,6 @@
 ## Install Apache/PHP
 - sudo apt-get install apache2 php git
 
-## Enable Rewrite Module
-- sudo  a2enmod rewrite
-
 ## Change WebRoot
 - sudo sed -ri -e 's!/var/www/html!/var/www/public!g' /etc/apache2/sites-available/*.conf
 - sudo sed -ri -e 's!/var/www/!/var/www/public!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
@@ -24,6 +21,9 @@
 
 - **./composer.phar install**
 
+
+## Enable Rewrite Module
+- sudo  a2enmod rewrite
 ### Change AllowOverrides to all:
 - sudo nano /etc/apache2/apache2.conf 
 - sudo service apache2 restart
