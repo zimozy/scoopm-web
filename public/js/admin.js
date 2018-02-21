@@ -13,10 +13,33 @@ $(function() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             database.ref('admin/' + user.uid).once('value', function() {
-                //success
-                usersTBody.populate();
+                //user is logged in as an admin
+
+                database.ref('users').on('value', function(snapshot) { //.limitToFirst(10).orderByKey();
+                    
+                    usersTBody.children('tr').remove(); //empty the table body and reload the rows
+
+                    snapshot.forEach(function(data) {
+                        var user = data.val();
+                        // console.log(user);
+                        var acceptedText  = user.accepted ? "Yes": "No";
+                        var acceptedClass = user.accepted ? "accepted" : "not-accepted";
+                        usersTBody.append(
+                            '<tr id="' + data.key + '" class="' + acceptedClass + '">'
+                                + '<th scope="row">' + user.firstName + ' ' + user.lastName + '</th>'
+                                + '<td>' + user.email + '</td>'
+                                + '<td>' + user.year + ' ' + user.make + ' ' + user.model + '</td>'
+                                + '<td>' + acceptedText + '</td>'
+                            + '</tr>'
+                        );
+                    });
+                    $('tr').click(function() {
+                        applicationModal.update($(this).prop('id'));
+                        applicationModal.modal('show');
+                    });
+                });
+
             }, function() {
-                alert('is not admin');
                 //not an admin
                 sendHome();
             });
@@ -25,34 +48,6 @@ $(function() {
             sendHome();
         }
     });
-
-    // DATA LOAD
-    usersTBody.populate = function() {
-        //.limitToFirst(10).orderByKey();
-        database.ref('users').on('value', function(snapshot) {
-            
-            usersTBody.children('tr').remove(); //empty the table body and reload the rows
-
-            snapshot.forEach(function(data) {
-                var user = data.val();
-                // console.log(user);
-                var acceptedText  = user.accepted ? "Yes": "No";
-                var acceptedClass = user.accepted ? "accepted" : "not-accepted";
-                usersTBody.append(
-                    '<tr id="' + data.key + '" class="' + acceptedClass + '">'
-                        + '<th scope="row">' + user.firstName + ' ' + user.lastName + '</th>'
-                        + '<td>' + user.email + '</td>'
-                        + '<td>' + user.year + ' ' + user.make + ' ' + user.model + '</td>'
-                        + '<td>' + acceptedText + '</td>'
-                    + '</tr>'
-                );
-            });
-            $('tr').click(function() {
-                applicationModal.update($(this).prop('id'));
-                applicationModal.modal('show');
-            });
-        });
-    }
 
     // UPDATE FILE LINK FUNCTION
     function updateFileLink(linkObject, folder, uid) {
