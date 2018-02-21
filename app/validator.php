@@ -14,10 +14,25 @@ class Validator
         $this->fields_array   = $fields_array;
         $this->errors_boolean = false;
         $this->errors_array   = [];
+        return $this;
     }
 
     public function hasErrors() {
         return $this->errors_boolean;
+    }
+
+    public function success($success_callback) {
+        if (! $this->hasErrors()) {
+            call_user_func($success_callback);
+        }
+        return $this;
+    }
+
+    public function failure($failure_callback) {
+        if ($this->hasErrors()) {
+            call_user_func($failure_callback);
+        }
+        return $this;
     }
 
     public function getErrors() {
@@ -178,6 +193,8 @@ class Validator
             $this->setAsPassed($make_field_name);
             $this->setAsPassed($model_field_name);
         }
+
+        return $this;
     }
 
     public function validateSelect($field_name, $possibilities) {

@@ -1,48 +1,77 @@
 <?php
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
-
 use scoopm\Validator;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$app->get("/", function (Request $request, Response $response) {
-    // return $response->getBody()->write("Home page.<br> <h1><a href=\"/register\">Register</a></h1>.");
-    return $this->view->render($response, 'home.twig.html', []);
+$app->get("/", function ($request, $response) {
+    return $this->view->render($response, 'home.twig.html');
 })->setName('home');
 
-$app->get("/thanks", function (Request $request, Response $response) {
+// WHEN THEY SIGN-UP, VALIDATE THE CAR INFO
+$app->post('/', function($request, $response) {
+
+    $parsedBody = $request->getParsedBody();
+    
+    $theApp = $this;
+
+    (new Validator($parsedBody))
+        ->validateCar('year', 'make', 'model')
+
+        ->success(function() use ($theApp, $response, $parsedBody) {
+            //save car info to Firebase DB
+            $data = [
+                'year' => $parsedBody['year'],
+                'make' => $parsedBody['make'],
+                'model' => $parsedBody['model']
+            ];
+            $firebase = new \Firebase\FirebaseLib('https://scoopm-8975f.firebaseio.com/');
+            $firebase->setToken($parsedBody['userIdToken']);
+            $firebase->set('users/' . $parsedBody['userId'], $data);
+
+            //redirect
+            return $response->withStatus(307)->withHeader('Location', 'your-new-uri');
+        })
+
+        ->failure(function() use ($response) {
+            //return with error
+            return $this->view->render($response, 'home.twig.html', ['invalidCarData' => TRUE]);
+        });
+});
+
+$app->get("/thanks", function ($request, $response) {
     return $this->view->render($response, 'thanks.twig.html');
 })->setName('thanks');
 
-$app->get("/application-login", function (Request $request, Response $response) {
+$app->get("/application-login", function ($request, $response) {
     return $this->view->render($response, 'application-login.twig.html');
 })->setName('application-login');
 
-/*$app->get("/signup", function (Request $request, Response $response) {
+/*$app->get("/signup", function ($request, $response) {
     return $this->view->render($response, 'signup.twig.html');
 })->setName('signup');
 */
-$app->get("/profile", function (Request $request, Response $response) {
+$app->get("/profile", function ($request, $response) {
     return $response->withRedirect($this->router->pathFor('home'));
     // return $this->view->render($response, 'profile.twig.html');
 })->setName('profile');
 
-$app->get("/admin", function (Request $request, Response $response) {
+$app->get("/admin", function ($request, $response) {
     return $this->view->render($response, 'admin.twig.html');
 })->setName('admin');
 
-$app->get('/register', function (Request $request, Response $response) {
-    return $this->view->render($response, 'register.twig.html');
+// REGISTER PAGE
+$app->get('/register', function ($request, $response) {
+    return $this->view->render($response, 'register.twig.html', ['populateForm' => TRUE]);
 })->setName("register");
 
-$app->post('/register', function (Request $request, Response $response) {
+// REGISTER PAGE POST
+$app->post('/register', function ($request, $response) {
 
-    $response_array          = $request->getParsedBody();
-    // $response_array['files'] = $request->getUploadedFiles(); -- not using files anymore
+    $parsedBody = $request->getParsedBody();
+    // $parsedBody['files'] = $request->getUploadedFiles(); -- not using files anymore
 
-    $validator = new Validator($response_array);
+    $validator = new Validator($parsedBody);
     
     $theStates = [ 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY' ];
 
@@ -59,15 +88,13 @@ $app->post('/register', function (Request $request, Response $response) {
     $validator->validateSelect('state', $theStates);
     $validator->validateRegex('zip', '/\d{5}/');
     $validator->validateRegex('dob', '/(19|20)\d{2}-(0|1)\d-[0-3]\d/'); // YYYY-MM-DD
-    // $validator->validateEmail('email');
-    // $validator->validatePassword('password','confirmPassword');
+    $validator->validateText('photo');//this is just the file name (used in re-populating the form)
 
     // YOUR CAR //
-    // $validator->validateImage('licenseImage');
-    // $validator->validateImage('registration');
+    $validator->validateText('licenseImage');
     $validator->validateText('licenseNumber');
     $validator->validateSelect('licenseState', $theStates);
-    $validator->validateCar('year', 'make', 'model');
+    $validator->validateText('registration');
     $validator->validateSelect('color',
         ['Beige','Black','Blue','Brown','Burgundy','Charcoal','Gold','Gray','Green','Off White','Orange','Pink','Purple' ,'Red','Silver','Tan','Turquoise','White','Yellow']
     );
@@ -76,16 +103,15 @@ $app->post('/register', function (Request $request, Response $response) {
     // INSURANCE INFO //
     $validator->validateText('policyProvider');
     $validator->validateText('policyNumber');
-    // $validator->validateImage('insurance');
+    $validator->validateText('insuranceImage');
 
     // APPLICATION //
-    // $validator->validateImage('photo');
     $validator->validateRegex('ssn', '/\d{3}-\d{2}-\d{4}/');
-    // $validator->validateImageOrPDF('w9');
-    // $validator->validateDoc('resume');
-    // $validator->validateImageOrPDF('fingerprints');
+    $validator->validateText('w9');
+    $validator->validateText('resume');
+    $validator->validateText('fingerprints');
     $validator->validateText('felonies', true);
-    $validator->validateAgreement('backgroundCheck');
+    // $validator->validateAgreement('backgroundCheck');
 
     // REFERENCES //
     //ref1
@@ -98,65 +124,69 @@ $app->post('/register', function (Request $request, Response $response) {
     $validator->validateEmail('ref2Email');
     
     if($validator->hasErrors()) {
-        // if (true) {
+    // if (true) { // (DEBUGGING)
 
-        $response_array['errors'] = $validator->getErrors();
-        $response_array['resubmitting'] = true;
-
-        return $this->view->render($response, 'register.twig.html', $response_array);
+        $parsedBody['errors'] = $validator->getErrors();
+        return $this->view->render($response, 'register.twig.html', $parsedBody);
 
     } else {
 
         $firebase = new \Firebase\FirebaseLib('https://scoopm-8975f.firebaseio.com/');
 
-        // We don't want to submit all the fields, so we select the appropriate ones here
+        // We don't want to submit all the fields, so we apply the appropriate ones here
         $data = array(
             // ABOUT YOU //
-            'firstName' => $response_array['firstName'],
-            'middleName'=> $response_array['middleName'],
-            'lastName'  => $response_array['lastName'],
-            'phone'     => $response_array['phone'],
-            'address'   => $response_array['address'],
-            'city'     => $response_array['city'],
-            'state'     => $response_array['state'],
-            'zip'       => $response_array['zip'],
-            'dob'       => $response_array['dob'],
+            'firstName'      => $parsedBody['firstName'],
+            'middleName'     => $parsedBody['middleName'],
+            'lastName'       => $parsedBody['lastName'],
+            'phone'          => $parsedBody['phone'],
+            'address'        => $parsedBody['address'],
+            'city'           => $parsedBody['city'],
+            'state'          => $parsedBody['state'],
+            'zip'            => $parsedBody['zip'],
+            'dob'            => $parsedBody['dob'],
+            'photo'          => $parsedBody['photo'],
 
             // YOUR CAR //
-            'licenseNumber' => $response_array['licenseNumber'],
-            'licenseState'  => $response_array['licenseState'],
-            'year'          => $response_array['year'],
-            'make'          => $response_array['make'],
-            'model'         => $response_array['model'],
-            'color'         =>  $response_array['color'],
-            'licensePlateNumber'=> $response_array['licensePlateNumber'],
+            'licenseImage'   => $parsedBody['licenseImage'],
+            'licenseNumber'  => $parsedBody['licenseNumber'],
+            'licenseState'   => $parsedBody['licenseState'],
+            'registration'   => $parsedBody['registration'],
+            'color'          =>  $parsedBody['color'],
+            'licensePlateNumber'=> $parsedBody['licensePlateNumber'],
 
             // INSURANCE INFO //
-            'policyProvider' => $response_array['policyProvider'],
-            'policyNumber'   => $response_array['policyNumber'],
+            'policyProvider' => $parsedBody['policyProvider'],
+            'policyNumber'   => $parsedBody['policyNumber'],
+            'insuranceImage' => $parsedBody['insuranceImage'],
 
             // APPLICATION //
-            'ssn'      => $response_array['ssn'],
-            'felonies' => $response_array['felonies'],
+            'ssn'            => $parsedBody['ssn'],
+            'w9'             => $parsedBody['w9'],
+            'resume'         => $parsedBody['resume'],
+            'fingerprints'   => $parsedBody['fingerprints'],
+            'felonies'       => $parsedBody['felonies'],
 
             // REFERENCES //
             //ref1
-            'ref1Name'  => $response_array['ref1Name'],
-            'ref1Phone' => $response_array['ref1Phone'],
-            'ref1Email' => $response_array['ref1Email'],
+            'ref1Name'       => $parsedBody['ref1Name'],
+            'ref1Phone'      => $parsedBody['ref1Phone'],
+            'ref1Email'      => $parsedBody['ref1Email'],
             //ref2
-            'ref2Name'  => $response_array['ref2Name'],
-            'ref2Phone' => $response_array['ref2Phone'],
-            'ref2Email' => $response_array['ref2Email'],
+            'ref2Name'       => $parsedBody['ref2Name'],
+            'ref2Phone'      => $parsedBody['ref2Phone'],
+            'ref2Email'      => $parsedBody['ref2Email'],
 
-            //NOW WE CAN FIND THIS WITHOUT HAVING TO BE LOGGED IN (Cant use auth().currentUser for other users)
-            'email' => $response_array['email']
+            //NOW WE CAN FIND THIS WITHOUT HAVING TO BE LOGGED IN (On the Admin page, we can't use auth().currentUser for other users)
+            'email'          => $parsedBody['email'],
+
+            'submitted'      => TRUE //their submission is now done
         );
 
-        $firebase->setToken($response_array['userIdToken']);
-        $firebase->set('users/' . $response_array['userID'], $data);
+        $firebase->setToken($parsedBody['userIdToken']);
+        $firebase->update('users/' . $parsedBody['userID'], $data);
 
-        // return $this->view->render($response, 'new_user.twig.html', array('email'=>$response_array['email'], 'password'=>$response_array['password']));
+        // return $this->view->render($response, 'new_user.twig.html', array('email'=>$parsedBody['email'], 'password'=>$parsedBody['password']));
 
         /*
         $curl = curl_init();
@@ -165,16 +195,16 @@ $app->post('/register', function (Request $request, Response $response) {
             CURLOPT_POST => 1,
             CURLOPT_USERNAME => '83ebeabdec09f6670863766f792ead24d61fe3f9',
             CURLOPT_POSTFIELDS => array(
-                'first_name' => $response_array['firstName'],
-                'middle_name' => $response_array['middleName'],
-                'last_name' => $response_array['lastName'],
-                'email' => $response_array['email'],
-                'phone' => $response_array['phone'],
-                'zipcode' => $response_array['zipcode'],
-                'dob' => $response_array['dob'],
-                'ssn' => $response_array['ssn'],
-                'driver_license_number' => $response_array['licenseNumber'],
-                'driver_license_state' => $response_array['licenseState']
+                'first_name' => $parsedBody['firstName'],
+                'middle_name' => $parsedBody['middleName'],
+                'last_name' => $parsedBody['lastName'],
+                'email' => $parsedBody['email'],
+                'phone' => $parsedBody['phone'],
+                'zipcode' => $parsedBody['zipcode'],
+                'dob' => $parsedBody['dob'],
+                'ssn' => $parsedBody['ssn'],
+                'driver_license_number' => $parsedBody['licenseNumber'],
+                'driver_license_state' => $parsedBody['licenseState']
             ),
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_FAILONERROR => true, //if we get a 404, for example
@@ -218,7 +248,7 @@ $app->post('/register', function (Request $request, Response $response) {
 
 
         //3. save to Firebase
-        $firebase->update('users/' . $response_array['userID'], array(
+        $firebase->update('users/' . $parsedBody['userID'], array(
             "checkrCandidateId" => $candidateId,
             "checkrReportId"    => $reportId
             // ... more id's?
@@ -228,6 +258,7 @@ $app->post('/register', function (Request $request, Response $response) {
         // return $response->getBody()->write('----');
         */
 
-        return $response->withRedirect($this->router->pathFor('thanks'));
+        $newResponse = $response->withRedirect('/new-url', 301);
+        return $newResponse->getBody()->write($newResponse->getStatusCode());
     }
 });

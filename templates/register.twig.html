@@ -12,19 +12,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 {% endblock %}
 
-{% block head_scripts %}
-    <!-- CAR QUERY -->
-    <script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var carquery = new CarQuery();
-            carquery.init();
-            carquery.setFilters( {sold_in_us:true} );
-            carquery.initYearMakeModelTrim('year', 'make', 'model', 'na');
-        });
-    </script>
-{% endblock %}
-
 {% set theStates = { 'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas', 'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware', 'DC': 'District Of Columbia', 'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois', 'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana', 'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan', 'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana', 'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire', 'NJ': 'New Jersey', 'NM': 'New Mexico', 'NY': 'New York', 'NC': 'North Carolina', 'ND': 'North Dakota', 'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania', 'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington', 'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming' } %}
 
 {% block body_class %}class="register"{% endblock %}
@@ -36,8 +23,7 @@
 
             <div class="text-center mb-4">
                 <a href="{{path_for('home')}}" class="h1 d-inline logo-font blue-text">ScoopM</a>
-                <span>&nbsp;&nbsp;</span>
-                <span class="h3 d-inline">Driver&nbsp;Application</span>
+                <span class="h3 d-block d-sm-inline ml-0 ml-sm-3">Driver&nbsp;Application</span>
             </div>
 
             <div id="progress-links" class="row"> {# {% if errors %}DISABLE-re-visit{% endif %} #}
@@ -68,17 +54,10 @@
 
             <div class="clearfix"></div>
 
-            <form id="application-form" method="post" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-was-validated"{% endif %} autocomplete="off" novalidate>
+            <form id="application-form" method="POST" action="{{ path_for('register') }}"  enctype="multipart/form-data" {% if errors %}class="scoopm-was-validated"{% endif %} autocomplete="off" novalidate>
                     
-                {# <input type="submit">  #}
                 {# Used for testing purposes #}
-                {# <button onclick="firebase.auth().signOut().then(function() {
-                    alert('signed out');
-                    // Sign-out successful.
-                  }).catch(function(error) {
-                      alert('error');
-                    // An error happened.
-                  });">Sign Out</button> #}
+                {# <input type="submit">  #}
 
                 <!-- ABOUT YOU -->
                 <div id="aboutYouPage" class="current-page page">
@@ -96,7 +75,7 @@
                     {{form.textInput('Street Address', 'address', address, errors.address)}}
                     {{form.textInput('City', 'city', city, errors.city)}}
                     {{form.select('State', 'state', errors.state, theStates, state)}}
-                    {{form.textInput('ZIP Code', 'zip', zip, errors.zip, null, 'number')}}
+                    {{form.textInput('ZIP Code', 'zip', zip, errors.zip)}}
 
                     {{form.textInput('Date of Birth', 'dob', dob, errors.dob, 'If typing: YYYY-MM-DD', 'date')}}
 
@@ -116,11 +95,11 @@
 
                     {{form.upload('Registration', 'registration', registration, 'img', errors.registration)}}
                     
-                    {{form.select('Year', 'year', errors.year)}}
+                    {# {{form.select('Year', 'year', errors.year)}}
                     {{form.select('Make', 'make', errors.make)}}
-                    {{form.select('Model', 'model', errors.model)}}
+                    {{form.select('Model', 'model', errors.model)}} #}
                     {# {{form.select('Trim', 'trim', errors.trim)}} #}
-                    {{form.select('Color', 'color', errors.color, {
+                    {{form.select('Car Color', 'color', errors.color, {
                         'Beige': 'Beige',
                         'Black': 'Black',
                         'Blue': 'Blue',
@@ -213,7 +192,11 @@
 
 
                 {# HIDDEN INPUTS #}
-                {# <input id="userKey" name="userKey" type="hidden" value="{{userKey}}"> #}
+
+                {# RATHER HACKY WAY OF NOTIFYING register-load-data.js THAT WE SHOULD POPULATE THE FIELDS #}
+                {% if populateForm %}
+                    <div id="populateForm" class="d-none"></div>
+                {% endif %}
                 <input id="email" name="email" type="hidden" value="{{email}}">
                 <input id="userID" name="userID" type="hidden" value="{{userID}}">
                 <input id="userIdToken" name="userIdToken" type="hidden" value="{{userIdToken}}">
@@ -230,6 +213,7 @@
     {{parent()}}
     <script type="text/javascript" src="/minify/f=js/variables.js"></script>
     <script type="text/javascript" src="/minify/f=js/register-wizard.js"></script>
+    <script type="text/javascript" src="/minify/f=js/register-populate-form.js"></script>
     <script type="text/javascript" src="/minify/f=js/register.js"></script>
     <script type="text/javascript" src="/minify/f=js/uploader.js"></script>
 {% endblock %}
