@@ -43,30 +43,27 @@ class Minifier
      */
     private function minifyHTML($html)
     {
-        $search = array(
-            '/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\|\'|\")\/\/.*))/',
-             '/\n/',
-            '/\>[^\S ]+/s',
-            '/[^\S ]+\</s',
-            '/(\s)+/s',
-            '/<!--.*?-->/',
-            '/>\s+</'
+        return preg_replace(
+            array(
+                '/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\|\'|\")\/\/.*))/',
+                 '/\n/',
+                '/\>[^\S ]+/s',
+                '/[^\S ]+\</s',
+                '/(\s)+/s',
+                '/<!--.*?-->/',
+                '/>\s+</'
+            ),
+            array(
+                '',
+                '',
+                '>',
+                '<',
+                '\\1',
+                '',
+                '><'
+            ),
+            $html
         );
-        
-        $replace = array(
-            '',
-            '',
-            '>',
-            '<',
-            '\\1',
-            '',
-            '><'
-        );
-
-        $squeezedHTML = preg_replace($search, $replace, $html);
-
-        return $squeezedHTML;
-
     }
 
     /**
@@ -77,18 +74,15 @@ class Minifier
      */
     public function __invoke(Request $request, Response $response,callable $next)
     {
-        $next($request,$response);
+        $newBody = new Body(
+            fopen('php://temp', 'r+')
+        );
 
-
-        $oldBody = $response->getBody();
-
-        $minifiedBodyContent = $this->minifyHTML((string)$oldBody);
-
-
-        $newBody = new Body(fopen('php://temp', 'r+'));
-
-        //write the minified html content to the new \Slim\Http\Body instance
-        $newBody->write($minifiedBodyContent);
+        $newBody->write(
+            $this->minifyHTML(
+                (string) $next($request,$response)->getBody()
+            )
+        );
 
         return $response->withBody($newBody);
 
