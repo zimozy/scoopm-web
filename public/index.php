@@ -41,7 +41,7 @@ $container['notFoundHandler'] = function ($c) {
 //Minify HTML (36% reduction!)
 $app->add(new \ScoopM\Middleware\Minifier());
 
-require '../app/middleware.php';
+// require '../app/middleware.php';
 require '../app/routes.php';
 
 $app->run();
