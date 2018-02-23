@@ -17,10 +17,12 @@ $app->post('/', function($request, $response) {
     $validator->validateCar('year', 'make', 'model');
 
     if ($validator->hasErrors()) {
+
         //return with error
         return $this->view->render($response, 'home.twig.html', ['invalidCarData' => TRUE]);
 
     } else {
+
         //save car info to Firebase DB
         $data = [
             'year' => $parsedBody['year'],
@@ -33,6 +35,7 @@ $app->post('/', function($request, $response) {
 
         //redirect
         return $response->withRedirect($this->router->pathFor('register'));
+        
     }
 });
 
