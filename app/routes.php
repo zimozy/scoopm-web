@@ -3,6 +3,7 @@ use scoopm\Validator;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use ScoopM\CheckrAPI\CheckrCandidate;
 
 $app->get("/", function ($request, $response) {
     return $this->view->render($response, 'home.twig.html');
@@ -186,58 +187,14 @@ $app->post('/register', function ($request, $response) {
         $firebase->setToken($parsedBody['userIdToken']);
         $firebase->update('users/' . $parsedBody['userID'], $data);
 
-        // return $this->view->render($response, 'new_user.twig.html', array('email'=>$parsedBody['email'], 'password'=>$parsedBody['password']));
-
-        /*
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.checkr.com/v1/candidates',
-            CURLOPT_POST => 1,
-            CURLOPT_USERNAME => '83ebeabdec09f6670863766f792ead24d61fe3f9',
-            CURLOPT_POSTFIELDS => array(
-                'first_name' => $parsedBody['firstName'],
-                'middle_name' => $parsedBody['middleName'],
-                'last_name' => $parsedBody['lastName'],
-                'email' => $parsedBody['email'],
-                'phone' => $parsedBody['phone'],
-                'zipcode' => $parsedBody['zipcode'],
-                'dob' => $parsedBody['dob'],
-                'ssn' => $parsedBody['ssn'],
-                'driver_license_number' => $parsedBody['licenseNumber'],
-                'driver_license_state' => $parsedBody['licenseState']
-            ),
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_FAILONERROR => true, //if we get a 404, for example
-            CURLOPT_USERAGENT => 'ScoopM REST'
-        ));
-        $curl_response = curl_exec($curl);
-        curl_close($curl);
-
-        //1. get candidate id
-        $candidateArray = array();
-        $candidateArray = json_decode($curl_response);
-        $candidateId = $candidateArray->id;
-
-        //2. request report using candidate id
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.checkr.com/v1/reports',
-            CURLOPT_POST => 1,
-            CURLOPT_USERNAME => '83ebeabdec09f6670863766f792ead24d61fe3f9',
-            CURLOPT_POSTFIELDS => array(
-                "packages" => "driver_pro",
-                "candidate" => $candidateId
-            ),
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_FAILONERROR => true, //if we get a 404, for example
-            CURLOPT_USERAGENT => 'ScoopM REST'
-        ));
-        $curl_response = curl_exec($curl);
-        curl_close($curl);
-
-        $reportArray = array();
-        $reportArray = json_decode($curl_response);
-        $reportId = $reportArray->id;
+        //CHECKR CANDIDATE CREATION
+        $candidateID = (new CheckrCandidate(
+                array($parsedBody['firstName'], $parsedBody['middleName'], $parsedBody['lastName'], $parsedBody['email'], $parsedBody['phone'], $parsedBody['zipcode'], $parsedBody['dob'], $parsedBody['ssn'], $parsedBody['licenseNumber'], $parsedBody['licenseState'])
+                )
+            )->execute()
+            ->getID();
+        // echo $candidateID;
+        return $response->getBody()->write(var_dump($candidateID));
         // $ssn_trace_id                = $reportArray->ssn_trace_id;
         // $sex_offender_search_id      = $reportArray->sex_offender_search_id;
         // $national_criminal_search_id = $reportArray->national_criminal_search_id;
@@ -247,17 +204,17 @@ $app->post('/register', function ($request, $response) {
         // $state_criminal_search_ids   = $reportArray->state_criminal_search_ids;
 
 
-        //3. save to Firebase
-        $firebase->update('users/' . $parsedBody['userID'], array(
-            "checkrCandidateId" => $candidateId,
-            "checkrReportId"    => $reportId
-            // ... more id's?
-        ));
+        // //3. save to Firebase
+        // $firebase->update('users/' . $parsedBody['userID'], array(
+        //     "checkrCandidateId" => $candidateId,
+        //     "checkrReportId"    => $reportId
+        //     // ... more id's?
+        // ));
 
         // var_dump($curl_response);
         // return $response->getBody()->write('----');
-        */
+        
 
-        return $response->withRedirect($this->router->pathFor('thanks'));
+        // return $response->withRedirect($this->router->pathFor('thanks'));
     }
 });
