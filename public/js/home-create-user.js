@@ -7,7 +7,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             .once('value',
                 function(snapshot) {
                     if (snapshot.val()) { //if 'submitted' is true...
-                        $('#application-entrypoint').html('<h3>Thanks!</h3>Application Submitted.');
+                        $('#application-entrypoint').html('<h1 class="deep-blue">Thanks!</h1>Application Submitted.');
                     } else {
                         $('#application-entrypoint').html('<a href="/register" class="btn btn-lg btn-outline-primary">Continue Application</a>');
                     }   
