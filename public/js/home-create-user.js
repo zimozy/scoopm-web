@@ -43,6 +43,7 @@ $(function() {
     signUpForm.submit(function(event) {
 
         if (readyToSubmit || $('#invalid-car-data').length) {
+            $('#sign-up-form').hide();
             //...submit the form...
         } else {
 
