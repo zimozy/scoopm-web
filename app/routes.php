@@ -13,30 +13,27 @@ $app->post('/', function($request, $response) {
 
     $parsedBody = $request->getParsedBody();
     
-    $theApp = $this;
+    $validator = new Validator($parsedBody);
+    $validator->validateCar('year', 'make', 'model');
 
-    (new Validator($parsedBody))
-        ->validateCar('year', 'make', 'model')
+    if ($validator->hasErrors()) {
+        //return with error
+        return $this->view->render($response, 'home.twig.html', ['invalidCarData' => TRUE]);
 
-        ->success(function() use ($theApp, $response, $parsedBody) {
-            //save car info to Firebase DB
-            $data = [
-                'year' => $parsedBody['year'],
-                'make' => $parsedBody['make'],
-                'model' => $parsedBody['model']
-            ];
-            $firebase = new \Firebase\FirebaseLib('https://scoopm-8975f.firebaseio.com/');
-            $firebase->setToken($parsedBody['userIdToken']);
-            $firebase->set('users/' . $parsedBody['userId'], $data);
+    } else {
+        //save car info to Firebase DB
+        $data = [
+            'year' => $parsedBody['year'],
+            'make' => $parsedBody['make'],
+            'model' => $parsedBody['model']
+        ];
+        $firebase = new \Firebase\FirebaseLib('https://scoopm-8975f.firebaseio.com/');
+        $firebase->setToken($parsedBody['userIdToken']);
+        $firebase->set('users/' . $parsedBody['userId'], $data);
 
-            //redirect
-            return $response->withStatus(307)->withHeader('Location', 'your-new-uri');
-        })
-
-        ->failure(function() use ($response) {
-            //return with error
-            return $this->view->render($response, 'home.twig.html', ['invalidCarData' => TRUE]);
-        });
+        //redirect
+        return $response->withRedirect($this->router->pathFor('register'));
+    }
 });
 
 $app->get("/thanks", function ($request, $response) {
@@ -258,7 +255,6 @@ $app->post('/register', function ($request, $response) {
         // return $response->getBody()->write('----');
         */
 
-        $newResponse = $response->withRedirect('/new-url', 301);
-        return $newResponse->getBody()->write($newResponse->getStatusCode());
+        return $response->withRedirect($this->router->pathFor('thanks'));
     }
 });

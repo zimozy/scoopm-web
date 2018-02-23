@@ -21,7 +21,7 @@ class Validator
         return $this->errors_boolean;
     }
 
-    public function success($success_callback) {
+    /*public function success($success_callback) {
         if (! $this->hasErrors()) {
             call_user_func($success_callback);
         }
@@ -33,7 +33,7 @@ class Validator
             call_user_func($failure_callback);
         }
         return $this;
-    }
+    }*/
 
     public function getErrors() {
         return $this->errors_array;
