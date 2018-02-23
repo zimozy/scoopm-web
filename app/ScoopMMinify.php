@@ -72,20 +72,21 @@ class Minifier
      * @param callable $next
      * @return static
      */
-    public function __invoke(Request $request, Response $response,callable $next)
-    {
+    public function __invoke(Request $request, Response $response, callable $next) {
+        
+        $newResponse = $next($request,$response);
+
         $newBody = new Body(
             fopen('php://temp', 'r+')
         );
 
         $newBody->write(
             $this->minifyHTML(
-                (string) $next($request,$response)->getBody()
+                (string) ($newResponse->getBody())
             )
         );
 
-        return $response->withBody($newBody);
-
+        return $newResponse->withBody($newBody);
     }
 }
 
