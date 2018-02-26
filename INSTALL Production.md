@@ -1,7 +1,8 @@
 # Installing ScoopM on Server
 
-## Install Apache/PHP
-- sudo apt-get install apache2 php git
+## Install Dependency Packages
+- sudo apt-get install apache2 php git php7.0-curl 
+
 
 ## Change WebRoot
 - sudo sed -ri -e 's!/var/www/html!/var/www/public!g' /etc/apache2/sites-available/*.conf
