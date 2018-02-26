@@ -213,8 +213,8 @@ $app->post('/register', function ($request, $response) {
 
 
             //CHECKR
-            'CheckrCandidateID'=> $candidateID,
-            'CheckrReportID' => $reportID,
+            'checkrCandidateID'=> $candidateID,
+            'checkrReportID' => $reportID,
             
             'email'          => $parsedBody['email'], //Required for our admin page to be able to get everybody's emails
             'submitted'      => TRUE //their submission is now done

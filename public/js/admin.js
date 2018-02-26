@@ -82,6 +82,7 @@ $(function() {
             $('#lastName').text(data.lastName);
             $('#phone').text(data.phone).attr('href', 'tel:'+data.phone);
             $('#email').text(data.email).attr('href', 'mailto:'+data.email);
+            $('#checkrLink').prop('href', 'https://dashboard.checkr.com/candidates/' + data.checkrCandidateID);
             $('#ssn').text(data.ssn);
             updateFileLink($('#profilePhoto'), 'profiles', uid);
             updateFileLink($('#resume'), 'resumes', uid);
