@@ -4,6 +4,7 @@ use scoopm\Validator;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use ScoopM\CheckrAPI\CheckrCandidate;
+use ScoopM\CheckrAPI\CheckrReport;
 
 $app->get("/", function ($request, $response) {
     return $this->view->render($response, 'home.twig.html');
@@ -132,6 +133,38 @@ $app->post('/register', function ($request, $response) {
 
     } else {
 
+        //CHECKR
+        // Might be better to do this during the validation stage, so they can check their license number or any mistakes along with validation mistakes. But we don't want to create multiple candidates if they resubmit the form a couple of times.
+        try {
+            $candidate = new CheckrCandidate(
+                array(
+                    'first_name' => $parsedBody['firstName'],
+                    'middle_name' => $parsedBody['middleName'],
+                    'last_name' => $parsedBody['lastName'],
+                    'email' => $parsedBody['email'],
+                    'phone' => $parsedBody['phone'],
+                    'zipcode' => $parsedBody['zip'],
+                    'dob' => $parsedBody['dob'],
+                    'ssn' => $parsedBody['ssn'],
+                    'driver_license_number' => $parsedBody['licenseNumber'],
+                    'driver_license_state' => $parsedBody['licenseState']
+                )
+            );
+            $candidate->execute();
+            $candidateID = $candidate->getID();
+
+            // die(print_r($candidate));
+            
+            $report = $candidate->getReport();
+            $report->execute();
+            $reportID = $report->getID();
+            
+        } catch (\Exception $e) {
+            if ($e->getCode() === 1) {
+                return $this->view->render($response, 'register.twig.html', ['populateForm' => TRUE, 'checkrError' => TRUE]);
+            }
+        }
+
         $firebase = new \Firebase\FirebaseLib('https://scoopm-8975f.firebaseio.com/');
 
         // We don't want to submit all the fields, so we apply the appropriate ones here
@@ -178,43 +211,20 @@ $app->post('/register', function ($request, $response) {
             'ref2Phone'      => $parsedBody['ref2Phone'],
             'ref2Email'      => $parsedBody['ref2Email'],
 
-            //NOW WE CAN FIND THIS WITHOUT HAVING TO BE LOGGED IN (On the Admin page, we can't use auth().currentUser for other users)
-            'email'          => $parsedBody['email'],
 
+            //CHECKR
+            'CheckrCandidateID'=> $candidateID,
+            'CheckrReportID' => $reportID,
+            
+            'email'          => $parsedBody['email'], //Required for our admin page to be able to get everybody's emails
             'submitted'      => TRUE //their submission is now done
         );
 
         $firebase->setToken($parsedBody['userIdToken']);
         $firebase->update('users/' . $parsedBody['userID'], $data);
 
-        //CHECKR CANDIDATE CREATION
-        $candidateID = (new CheckrCandidate(
-                array($parsedBody['firstName'], $parsedBody['middleName'], $parsedBody['lastName'], $parsedBody['email'], $parsedBody['phone'], $parsedBody['zipcode'], $parsedBody['dob'], $parsedBody['ssn'], $parsedBody['licenseNumber'], $parsedBody['licenseState'])
-                )
-            )->execute()
-            ->getID();
-        // echo $candidateID;
-        return $response->getBody()->write(var_dump($candidateID));
-        // $ssn_trace_id                = $reportArray->ssn_trace_id;
-        // $sex_offender_search_id      = $reportArray->sex_offender_search_id;
-        // $national_criminal_search_id = $reportArray->national_criminal_search_id;
-        // $federal_criminal_search_id  = $reportArray->federal_criminal_search_id;
-        // $county_criminal_search_ids  = $reportArray->county_criminal_search_ids;
-        // $motor_vehicle_report_id     = $reportArray->motor_vehicle_report_id;
-        // $state_criminal_search_ids   = $reportArray->state_criminal_search_ids;
+        // return $response->getBody()->write(var_dump($candidateID));
 
-
-        // //3. save to Firebase
-        // $firebase->update('users/' . $parsedBody['userID'], array(
-        //     "checkrCandidateId" => $candidateId,
-        //     "checkrReportId"    => $reportId
-        //     // ... more id's?
-        // ));
-
-        // var_dump($curl_response);
-        // return $response->getBody()->write('----');
-        
-
-        // return $response->withRedirect($this->router->pathFor('thanks'));
+        return $response->withRedirect($this->router->pathFor('thanks'));
     }
 });

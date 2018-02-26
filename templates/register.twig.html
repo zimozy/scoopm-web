@@ -66,6 +66,10 @@
                         <h6 class="error scoopm-is-invalid my-4">Woops, something went wrong. If you have disabled JavaScript in your web browser, please enable it and try again. If the problem continues, please contact us.</h6>
                     {% endif %}
 
+                    {% if checkrError %}
+                        <h6 class="error scoopm-is-invalid my-4">We had an issue creating your background check. Please check your information and try again.</h6>
+                    {% endif %}
+
                     {{form.title('About You')}}  
                     {{form.textInput('First Name', 'firstName', firstName, errors.firstName)}}
                     {{form.textInput('Middle Name', 'middleName', middleName, errors.middleName)}}
