@@ -70,18 +70,18 @@
                         <h6 class="error scoopm-is-invalid my-4">We had an issue creating your background check. Please check your information and try again.</h6>
                     {% endif %}
 
-                    {{form.title('About You')}}  
                     {{form.textInput('First Name', 'firstName', firstName, errors.firstName)}}
                     {{form.textInput('Middle Name', 'middleName', middleName, errors.middleName)}}
+                    {{form.agreement(null, 'noMiddleName', 'I do not have a middle name', noMiddleName, errors.noMiddleName)}}
                     {{form.textInput('Last Name', 'lastName', lastName, errors.lastName)}}
-                    {{form.textInput('Phone Number', 'phone', phone, errors.phone, null, 'tel')}}
+                    {{form.textInput('Phone Number', 'phone', phone, errors.phone, null, null, 'tel')}}
 
                     {{form.textInput('Street Address', 'address', address, errors.address)}}
                     {{form.textInput('City', 'city', city, errors.city)}}
                     {{form.select('State', 'state', errors.state, theStates, state)}}
                     {{form.textInput('ZIP Code', 'zip', zip, errors.zip)}}
 
-                    {{form.textInput('Date of Birth', 'dob', dob, errors.dob, 'If typing: YYYY-MM-DD', 'date')}}
+                    {{form.textInput('Date of Birth', 'dob', dob, errors.dob, 'If typing: YYYY-MM-DD', null, 'date')}}
 
                     {{form.upload('Profile Photo', 'photo', photo, 'img', errors.photo)}}
 
@@ -90,9 +90,7 @@
 
 
                 <!-- YOUR CAR -->
-                <div id="yourCarPage" class="page">
-                    {{form.title('About your car')}}  
-                    
+                <div id="yourCarPage" class="page">                    
                     {{form.upload('Driver\'s License', 'licenseImage', licenseImage, 'img', errors.licenseImage)}}
                     {{form.textInput('Driver\'s License Number', 'licenseNumber', licenseNumber, errors.licenseNumber)}}
                     {{form.select('Driver\'s License State', 'licenseState', errors.licenseState, theStates, licenseState)}}
@@ -133,7 +131,6 @@
 
                 <!-- INSURANCE -->
                 <div id="insurancePage" class="page">
-                    {{form.title('Insurance info')}}
                     {{form.textInput('Policy provider', 'policyProvider', policyProvider, errors.policyProvider)}}
                     {{form.textInput('Policy number', 'policyNumber', policyNumber, errors.policyNumber)}}
                     {{form.upload('Insurance card', 'insuranceImage', insuranceImage, 'img', errors.insurance)}}
@@ -144,7 +141,6 @@
 
                     <!-- APPLICATION -->
                 <div id="applicationPage" class="page">
-                    {{form.title('Application')}}
                     {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn, 'Format: ###-##-####')}}
                     {{form.upload('Upload W-9', 'w9', w9, 'img/pdf', errors.w9, '<a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf"  target="_blank">Download</a> and fill out a blank copy of the W-9.')}}
                     {{form.upload('Upload Resume', 'resume', resume, 'doc', errors.resume)}}
@@ -158,7 +154,7 @@
                 <!-- DISCLOSURE -->
                 <div id="disclosurePage" class="page">
                     {{form.heading('Disclosure regarding background check investigation')}}
-                    {{form.agreement('', 'disclosure', 'LEGAL TEXT GOES HERE', disclosure, errors.disclosure, '<<<PASTE DISCLOSURE CONTENT HERE>>>')}}
+                    {{form.agreement(null, 'disclosure', 'LEGAL TEXT GOES HERE', disclosure, errors.disclosure, '<<<PASTE DISCLOSURE CONTENT HERE>>>')}}
                     {{form.buttons('disclosure', true)}}
                 </div>
                         
@@ -166,7 +162,9 @@
                 <!-- AUTHORIZATION -->
                 <div id="authorizationPage" class="page">
                     {{form.heading('Acknowledgment and Authorization for Background Check')}}
-                    {{form.agreement('', 'authorization', 'LEGAL TEXT GOES HERE', authorization, errors.authorization, '<<<PASTE authorization CONTENT HERE>>>')}}
+                    {{form.agreement(null, 'authorization', 'LEGAL TEXT GOES HERE', authorization, errors.authorization, '<<<PASTE authorization CONTENT HERE>>>')}}
+                    {{form.subHeading('Electronic signature')}}
+                    {{form.textInput('', 'signature', signature, errors.signature, null, 'Full name')}}
                     {{form.buttons('authorization', true)}}
                 </div>
 
@@ -176,12 +174,12 @@
                     {{form.heading('Please provide two references.')}}
                     {{form.subHeading('Reference 1')}}
                     {{form.textInput('Name', 'ref1Name', ref1Name, errors.ref1Name)}}
-                    {{form.textInput('Phone Number', 'ref1Phone', ref1Phone, errors.ref1Phone, null, 'tel')}}
+                    {{form.textInput('Phone Number', 'ref1Phone', ref1Phone, errors.ref1Phone, null, null, 'tel')}}
                     {{form.email('Email Address', 'ref1Email', ref1Email, errors.ref1Email)}}
                     
                     {{form.subHeading('Reference 2')}}
                     {{form.textInput('Name', 'ref2Name', ref2Name, errors.ref2Name)}}
-                    {{form.textInput('Phone Number', 'ref2Phone', ref2Phone, errors.ref2Phone, null, 'tel')}}
+                    {{form.textInput('Phone Number', 'ref2Phone', ref2Phone, errors.ref2Phone, null, null, 'tel')}}
                     {{form.email('Email Address', 'ref2Email', ref2Email, errors.ref2Email)}}
                 
                     {# {{form.buttons('references', true)}} #}

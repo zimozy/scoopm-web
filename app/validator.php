@@ -61,15 +61,14 @@ class Validator
     }
 
     public function validateText($field_name, $optional = false) {
-
-        //essentially skip this check if the field is optional
-        if ($optional) $first_condition = false;
-        else $first_condition = $this->isEmpty($this->fields_array[$field_name]);
-
         if (
-            $first_condition
-            or
-            strlen($this->fields_array[$field_name]) > 5000
+            !$optional
+            &&
+            (
+                $this->isEmpty($this->fields_array[$field_name])
+                or
+                strlen($this->fields_array[$field_name]) > 5000
+            ) 
         ) {
             $this->setError($field_name, 'tooLong');
         } else {
