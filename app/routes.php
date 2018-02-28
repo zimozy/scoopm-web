@@ -82,13 +82,13 @@ $app->post('/register', function ($request, $response) {
 
     // ABOUT YOU //
     $validator->validateText('firstName');
-    $validator->validateText('middleName', true);
+    $validator->validateText('middleName', $parsedBody['noMiddleName']); //optionality determined by the noMiddleName check box
     $validator->validateText('lastName');
     $validator->validatePhone('phone');
     $validator->validateText('address');
     $validator->validateText('city');
     $validator->validateSelect('state', $theStates);
-    $validator->validateRegex('zip', '/\d{5}/');
+    $validator->validateRegex('zip', '/\d{5}/'); // #####
     $validator->validateRegex('dob', '/(19|20)\d{2}-(0|1)\d-[0-3]\d/'); // YYYY-MM-DD
     $validator->validateText('photo');//this is just the file name (used in re-populating the form)
 
@@ -108,12 +108,13 @@ $app->post('/register', function ($request, $response) {
     $validator->validateText('insuranceImage');
 
     // APPLICATION //
-    $validator->validateRegex('ssn', '/\d{3}-\d{2}-\d{4}/');
+    $validator->validateRegex('ssn', '/\d{3}-\d{2}-\d{4}/'); // ###-##-####
     $validator->validateText('w9');
     $validator->validateText('resume');
     $validator->validateText('fingerprints');
     $validator->validateText('felonies', true);
     // $validator->validateAgreement('backgroundCheck');
+    $validator->validateText('signature');
 
     // REFERENCES //
     //ref1
@@ -136,25 +137,30 @@ $app->post('/register', function ($request, $response) {
         //CHECKR
         // Might be better to do this during the validation stage, so they can check their license number or any mistakes along with validation mistakes. But we don't want to create multiple candidates if they resubmit the form a couple of times.
         try {
-            $candidate = new CheckrCandidate(
-                array(
-                    'first_name' => $parsedBody['firstName'],
-                    'middle_name' => $parsedBody['middleName'],
-                    'last_name' => $parsedBody['lastName'],
-                    'email' => $parsedBody['email'],
-                    'phone' => $parsedBody['phone'],
-                    'zipcode' => $parsedBody['zip'],
-                    'dob' => $parsedBody['dob'],
-                    'ssn' => $parsedBody['ssn'],
-                    'driver_license_number' => $parsedBody['licenseNumber'],
-                    'driver_license_state' => $parsedBody['licenseState']
-                )
+            $candidateData = array(
+                'first_name' => $parsedBody['firstName'],
+                //middle name later on...
+                'last_name' => $parsedBody['lastName'],
+                'email' => $parsedBody['email'],
+                'phone' => $parsedBody['phone'],
+                'zipcode' => $parsedBody['zip'],
+                'dob' => $parsedBody['dob'],
+                'ssn' => $parsedBody['ssn'],
+                'driver_license_number' => $parsedBody['licenseNumber'],
+                'driver_license_state' => $parsedBody['licenseState']
             );
+
+            //Determine whether they have a middle name
+            if ($parsedBody['noMiddleName']) {
+                $candidateData['no_middle_name'] = 'true';
+            } else {
+                $candidateData['middle_name'] = $parsedBody['middleName'];
+            }
+            
+            $candidate = new CheckrCandidate($candidateData);
             $candidate->execute();
             $candidateID = $candidate->getID();
 
-            // die(print_r($candidate));
-            
             $report = $candidate->getReport();
             $report->execute();
             $reportID = $report->getID();
@@ -165,13 +171,13 @@ $app->post('/register', function ($request, $response) {
             }
         }
 
-        $firebase = new \Firebase\FirebaseLib('https://scoopm-8975f.firebaseio.com/');
+        $firebase = new \Firebase\FirebaseLib('https://scoopm-8975f.firebaseio.com/', $parsedBody['userIdToken']);
 
         // We don't want to submit all the fields, so we apply the appropriate ones here
         $data = array(
             // ABOUT YOU //
             'firstName'      => $parsedBody['firstName'],
-            'middleName'     => $parsedBody['middleName'],
+            //middle name later
             'lastName'       => $parsedBody['lastName'],
             'phone'          => $parsedBody['phone'],
             'address'        => $parsedBody['address'],
@@ -200,6 +206,11 @@ $app->post('/register', function ($request, $response) {
             'resume'         => $parsedBody['resume'],
             'fingerprints'   => $parsedBody['fingerprints'],
             'felonies'       => $parsedBody['felonies'],
+            'signature'      => $parsedBody['signature'],
+            //aditional fields for Checkr electronic signature
+            'signatureTimestamp'=> time(),
+            'signatureIP'    => $_SERVER['REMOTE_ADDR'], //reliable unless using proxy
+            'signatureIPFromHeaders'=>$_SERVER['HTTP_X_FORWARDED_FOR'], // can be set by client -- not reliable
 
             // REFERENCES //
             //ref1
@@ -216,15 +227,36 @@ $app->post('/register', function ($request, $response) {
             'checkrCandidateID'=> $candidateID,
             'checkrReportID' => $reportID,
             
-            'email'          => $parsedBody['email'], //Required for our admin page to be able to get everybody's emails
-            'submitted'      => TRUE //their submission is now done
+            //Required for our admin page to be able to get everybody's emails
+            'email'          => $parsedBody['email'],
+
+            //their submission is now done
+            'submitted'      => TRUE
         );
 
-        $firebase->setToken($parsedBody['userIdToken']);
-        $firebase->update('users/' . $parsedBody['userID'], $data);
+        //check middle name status
+        if ($parsedBody['noMiddleName']) {
+            $data['noMiddleName'] = 'true';
+        } else {
+            $data['middleName'] = $parsedBody['middleName'];
+        }
 
-        // return $response->getBody()->write(var_dump($candidateID));
+        $firebase->update('users/' . $parsedBody['userID'], $data);
 
         return $response->withRedirect($this->router->pathFor('thanks'));
     }
 });
+
+// $app->get("/authorizationPDF/{userID}", function ($request, $response, $args) {
+
+//     $firebase = new \Firebase\FirebaseLib('https://scoopm-8975f.firebaseio.com/', $_COOKIE['userIDToken']);
+    
+//     $user = $firebase->get('users/' . $args['userID']);
+//     // die(var_dump($user));
+
+//     $proof = new ProofOfAuthorization($user->signature, $user->signatureTimestamp, $user->signatureIP, $user->signatureIPFromHeaders);
+
+//     $proof->Output();
+
+//     return $response;
+// });
