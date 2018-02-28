@@ -1,6 +1,7 @@
 /vendor/
 /templates/cache/
 /.idea/
+/public/test.php
 
 # OS generated files #
 ######################
