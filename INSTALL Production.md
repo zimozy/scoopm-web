@@ -6,7 +6,7 @@
 
 
 ## Install Dependency Packages
- - sudo apt-get install apache2 php git php7.0-curl php7.0-mbstring php7.0-zip
+ - sudo apt-get install apache2 php7.0 git php7.0-curl php7.0-mbstring php7.0-zip libapache2-mod-php7.0
 
 
 ## Change WebRoot
@@ -70,6 +70,9 @@ BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown</pre>
     RewriteRule .* https://%{HTTP:Host}%{REQUEST_URI} [L,R]
 </pre>
 
+# May need to change permissions for Twig templates cache
+- mkdir templates/cache
+- ubuntu@ip-172-31-19-157:/var/www$ chgrp www-data ./templates/cache/
 
 # After everything, restart the server
 ## sudo service apache2 restart
