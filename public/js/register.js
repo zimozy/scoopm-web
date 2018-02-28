@@ -25,6 +25,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 $(function() {
 
     //// SUBMIT BUTTON ////
+
     //TOOLTIP
     disabledSubmitButtonTooltip = $('#disabled-submit-button-tooltip');
     disabledSubmitButtonTooltip.tooltip();
@@ -44,5 +45,13 @@ $(function() {
     mForm.submit(function(event) {
         $('input:file').remove(); // don't want to upload these
     })
+
+
+    ////MISC
+    //Disable checkbox when clicked
+    var middleName = $("#middleName");
+    $('#noMiddleName').on('change', function() {
+        middleName.prop('disabled', (this.checked ? true : false));
+    });
 
 });
