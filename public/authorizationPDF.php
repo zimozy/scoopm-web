@@ -2,7 +2,7 @@
 require '../vendor/autoload.php';
 use Firebase\FirebaseLib;
 
-$firebase = new \Firebase\FirebaseLib('https://scoopm-8975f.firebaseio.com/', $_COOKIE['usferIDToken']);
+$firebase = new \Firebase\FirebaseLib('https://scoopm-8975f.firebaseio.com/', $_COOKIE['userIDToken']);
 
 $user = $firebase->get('users/' . $_GET['id']);
 $user = json_decode($user);
