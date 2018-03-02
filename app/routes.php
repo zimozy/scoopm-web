@@ -1,5 +1,5 @@
 <?php
-use scoopm\Validator;
+use ScoopM\Validator;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
