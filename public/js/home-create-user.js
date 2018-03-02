@@ -1,27 +1,34 @@
 //HIDE THE SIGN-UP BOX IF THEY'RE LOGGED IN
 firebase.auth().onAuthStateChanged(function(user) {    
     if (user) {
-        //THEY'VE LOGGED IN
-        firebase.database()
-            .ref('users/' + user.uid + '/submitted')
-            .once('value',
-                function(snapshot) {
-                    if (snapshot.val()) { //if 'submitted' is true...
-                        $('#application-entrypoint').html('<h1 class="deep-blue">Thanks!</h1>Application Submitted.');
-                    } else {
-                        $('#application-entrypoint').html('<a href="/register" class="btn btn-lg btn-outline-primary">Continue Application</a>');
-                    }   
-                }
-            );
+        if (readyToSubmit) {
+            $('#dialog-div').hide();
+        } else {
+            //THEY'VE LOGGED IN
+            firebase.database()
+                .ref('users/' + user.uid + '/submitted')
+                .once('value',
+                    function(snapshot) {
+                        //if 'submitted' is true...
+                        if (snapshot.val()) {
+                            //say thanks
+                            $('#application-entrypoint').html('<h1 class="deep-blue">Thanks!</h1>Application Submitted.');
+                        } else {
+                            //let them continue their application
+                            $('#application-entrypoint').html('<a href="/register" class="btn btn-lg btn-outline-primary">Continue Application</a>');
+                        }   
+                    }
+                );
 
-        //SHOW/HIDE SECTIONS
-        $('#sign-up-section').hide();
-        
-        if (! $('#invalid-car-data').length) { //if were no problems with CarQuery validation, hide the car fields
-            $('#sign-up-form').hide();
-            $('#alternate-message-section').removeClass('d-none');
+            //SHOW/HIDE SECTIONS
+            $('#sign-up-section').hide();
+            
+            //if were no problems with CarQuery validation, hide the car fields
+            if (! $('#invalid-car-data').length) { 
+                $('#sign-up-form').hide();
+                $('#alternate-message-section').removeClass('d-none');
+            }
         }
-        
     } else {
         //THEY LOGGED OUT
         $('#alternate-message-section').addClass('d-none');//hide alternate message
@@ -41,11 +48,8 @@ $(function() {
     var readyToSubmit = false;
 
     signUpForm.submit(function(event) {
-
-        if (readyToSubmit || $('#invalid-car-data').length) {
-            $('#sign-up-form').hide();
-            //...submit the form...
-        } else {
+        //submit unless...
+        if (!readyToSubmit) {
 
             //don't submit form
             event.preventDefault();

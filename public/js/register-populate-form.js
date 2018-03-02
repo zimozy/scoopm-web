@@ -1,12 +1,24 @@
 function populateForm(user) {
-    firebase.database()
-        .ref('users/' + user.uid )
-        .once('value')
+    //get user data
+    firebase.database().ref('users/' + user.uid ).once('value')
         .then(function(snapshot) {
+            //set each field
             snapshot.forEach(function(data) {
-                $('#' + data.key).val(data.val());
+                //get input field
+                var inputField = $('#' + data.key);
+
+                //check if it's a checkbox
+                if (inputField.prop('type') == 'checkbox') {
+                    //check/uncheck the box
+                    inputField.prop('checked', data.val());
+
+                } else {
+                    //for other types of inputs, set the value
+                    inputField.val(data.val());
+                }
             });
 
+            //check if uploads are valid
             $('.upload-input-group').each(function() {
                 uploadsAreValid = true;
 
@@ -15,7 +27,11 @@ function populateForm(user) {
                     return false; //break the .each() loop
                 }
 
+                //update submit button
                 submitButton.updateDisabled();
             });
+
+            //update on first page load
+            middleName.updateDisabled();
         });
 }

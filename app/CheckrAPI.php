@@ -14,7 +14,7 @@ class CheckrAPI
         return $this;
     }
 
-    public function execute() {
+    public function executeQuery() {
 
         //CURL
         //init

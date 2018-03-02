@@ -89,6 +89,7 @@ $app->post('/register', function ($request, $response) {
     $validator->validateText('city');
     $validator->validateSelect('state', $theStates);
     $validator->validateRegex('zip', '/\d{5}/'); // #####
+    $validator->validateRegex('ssn', '/\d{3}-\d{2}-\d{4}/'); // ###-##-####
     $validator->validateRegex('dob', '/(19|20)\d{2}-(0|1)\d-[0-3]\d/'); // YYYY-MM-DD
     $validator->validateText('photo');//this is just the file name (used in re-populating the form)
 
@@ -108,12 +109,18 @@ $app->post('/register', function ($request, $response) {
     $validator->validateText('insuranceImage');
 
     // APPLICATION //
-    $validator->validateRegex('ssn', '/\d{3}-\d{2}-\d{4}/'); // ###-##-####
     $validator->validateText('w9');
     $validator->validateText('resume');
     $validator->validateText('fingerprints');
     $validator->validateText('felonies', true);
-    // $validator->validateAgreement('backgroundCheck');
+    //FCRA
+    $validator->validateAgreement('fcra');
+
+    // DISCLOSURE //
+    $validator->validateAgreement('disclosure');
+
+    // AUTHORIZATION //
+    $validator->validateAgreement('copyRequested', true /*optional*/);
     $validator->validateText('signature');
 
     // REFERENCES //
@@ -156,13 +163,16 @@ $app->post('/register', function ($request, $response) {
             } else {
                 $candidateData['middle_name'] = $parsedBody['middleName'];
             }
+
+            //determine if they requested a consumer report copy
+            if ($parsedBody['copyRequested'] == 'on') $candidateData['copy_requested'] = 'true';
             
             $candidate = new CheckrCandidate($candidateData);
-            $candidate->execute();
+            $candidate->executeQuery();
             $candidateID = $candidate->getID();
 
             $report = $candidate->getReport();
-            $report->execute();
+            $report->executeQuery();
             $reportID = $report->getID();
             
         } catch (\Exception $e) {
@@ -184,6 +194,7 @@ $app->post('/register', function ($request, $response) {
             'city'           => $parsedBody['city'],
             'state'          => $parsedBody['state'],
             'zip'            => $parsedBody['zip'],
+            'ssn'            => $parsedBody['ssn'],
             'dob'            => $parsedBody['dob'],
             'photo'          => $parsedBody['photo'],
 
@@ -201,12 +212,19 @@ $app->post('/register', function ($request, $response) {
             'insuranceImage' => $parsedBody['insuranceImage'],
 
             // APPLICATION //
-            'ssn'            => $parsedBody['ssn'],
             'w9'             => $parsedBody['w9'],
             'resume'         => $parsedBody['resume'],
             'fingerprints'   => $parsedBody['fingerprints'],
             'felonies'       => $parsedBody['felonies'],
+            'agreedToFCRA'   => $parsedBody['fcra'] == 'on' ? true : false, 
+
+            // DISCLOSURE //
+            'agreedToDisclosure'=> $parsedBody['disclosure'] == 'on' ? true : false, 
+
+            // AUTHORIZATION //
+            'copyRequested'  => $parsedBody['copyRequested'] == 'on' ? true : false, 
             'signature'      => $parsedBody['signature'],
+            
             //aditional fields for Checkr electronic signature
             'signatureTimestamp'=> time(),
             'signatureIP'    => $_SERVER['REMOTE_ADDR'], //reliable unless using proxy

@@ -106,7 +106,7 @@
 
             <div class="input-group {{validation_class}} upload-input-group">
                 {# This field uses the name attribute so it can re-display the file name if the field is returned with errors #}
-                <input id="{{name}}" name="{{name}}" type="text" class="form-control upload-text" value="{{value}}">
+                <input id="{{name}}" name="{{name}}" type="text" class="form-control upload-text" value="{{value}}" tabindex="-1">
 
                 <div class="input-group-addon p-0">
                     <input id="{{name}}-input" type="file" name="{{name}}-actual" class="d-none" accept="{{allowed_types}}">
@@ -168,9 +168,23 @@
             {% if legalPrint %}
                 <p class="{{validation_class}}">{{legalPrint}}</p>
             {% endif %}
-            <input id="{{name}}" name="{{name}}" type="checkbox" value="1" {% if value == '1' %}checked{% endif %}
-            >&nbsp;<label for="{{name}}" class="{{validation_class}}">{{legalStatement}}</label>
+            <input id="{{name}}" name="{{name}}" type="checkbox" {% if value == 'on' %}checked{% endif %}
+            >&nbsp;<label for="{{name}}" class="{{validation_class}} d-inline">{{legalStatement}}</label>
             <small class="form-text scoopm-error">Required in order to apply</small>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro legalBox(file, compact = false) %}
+    <div class="form-group row">
+        <div class="col-sm-9 offset-sm-3">
+            {% if compact %}
+            <div class="legal-box">
+            {% endif %}
+                {% include file %}
+            {% if compact %}
+            </div>
+            {% endif %}
         </div>
     </div>
 {% endmacro %}
@@ -180,8 +194,15 @@
 
 
 
-
 {# FORMATTING #}
+
+{% macro other(content) %}
+    <div class="row">
+        <div class="col-sm-9 offset-sm-3">
+                {{content|raw}}
+        </div>
+    </div>
+{% endmacro %}
 
 {% macro heading(text) %}
     <div class="row">

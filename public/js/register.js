@@ -21,11 +21,10 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
-
+var middleName = null; // global context
 $(function() {
 
     //// SUBMIT BUTTON ////
-
     //TOOLTIP
     disabledSubmitButtonTooltip = $('#disabled-submit-button-tooltip');
     disabledSubmitButtonTooltip.tooltip();
@@ -46,12 +45,19 @@ $(function() {
         $('input:file').remove(); // don't want to upload these
     })
 
-
     ////MISC
     //Disable checkbox when clicked
-    var middleName = $("#middleName");
-    $('#noMiddleName').on('change', function() {
-        middleName.prop('disabled', (this.checked ? true : false));
-    });
+    middleName = $("#middleName");
+    var noMiddleName = $('#noMiddleName');
 
+    middleName.updateDisabled = function() {
+        console.log('nomiddlename: '+ noMiddleName.prop('checked'));
+        
+        this.prop('disabled', noMiddleName.prop('checked'));
+    }
+
+    noMiddleName.on('change', function() {
+        middleName.updateDisabled();
+    });
+    
 });

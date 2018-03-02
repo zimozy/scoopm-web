@@ -30,7 +30,7 @@ a:hover { color: rgb(0, 139, 214); }
 .scoopm-is-invalid .input-group-addon,
 .scoopm-is-invalid .form-control { border-color: #dc3545 !important; }
 
-p.scoopm-is-invalid {color: #dc3545;}
+p.scoopm-is-invalid, label.scoopm-is-invalid {color: #dc3545;}
 
 .scoopm-is-valid,
 .scoopm-is-valid .input-group-addon,

@@ -81,6 +81,7 @@
                     {{form.select('State', 'state', errors.state, theStates, state)}}
                     {{form.textInput('ZIP Code', 'zip', zip, errors.zip)}}
 
+                    {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn, 'Format: ###-##-####')}}
                     {{form.textInput('Date of Birth', 'dob', dob, errors.dob, 'If typing: YYYY-MM-DD', null, 'date')}}
 
                     {{form.upload('Profile Photo', 'photo', photo, 'img', errors.photo)}}
@@ -139,33 +140,36 @@
                 </div>
 
 
-                    <!-- APPLICATION -->
+                <!-- APPLICATION -->
                 <div id="applicationPage" class="page">
-                    {{form.textInput('Social Security Number', 'ssn', ssn, errors.ssn, 'Format: ###-##-####')}}
                     {{form.upload('Upload W-9', 'w9', w9, 'img/pdf', errors.w9, '<a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf"  target="_blank">Download</a> and fill out a blank copy of the W-9.')}}
                     {{form.upload('Upload Resume', 'resume', resume, 'doc', errors.resume)}}
                     {{form.upload('Fingerprints', 'fingerprints', fingerprints, 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station. Scan the fingerprint document or upload a PDF.')}}
+                    
                     {{form.textArea('Felonies Committed, if applicable', 'felonies', felonies, errors.felonies)}}
-                    {% include 'checkr/fcra.html' %}
-                    {{form.agreement('Rights under the FCRA', 'fcra', 'LEGAL TEXT GOES HERE', fcra, errors.fcra)}}
+                    
+                    {# FCRA #}
+                    {{form.other('<hr>')}}
+                    {{form.legalBox('checkr/fcra.html', true)}}
+                    {{form.agreement(null, 'fcra', 'I acknowledge receipt of the Summary of Your Rights Under the Fair Credit Reporting Act', fcra, errors.fcra)}}
                     {{form.buttons('application', true)}}
                 </div>
 
 
                 <!-- DISCLOSURE -->
                 <div id="disclosurePage" class="page">
-                    {{form.heading('Disclosure regarding background check investigation')}}
-                    {{form.agreement(null, 'disclosure', 'LEGAL TEXT GOES HERE', disclosure, errors.disclosure, '<<<PASTE DISCLOSURE CONTENT HERE>>>')}}
+                    {{form.legalBox('checkr/disclosure.html')}}
+                    {{form.agreement(null, 'disclosure', 'I acknowledge receipt of the Disclosure Regarding Background Investigation and certify that I have read and understand this document', disclosure, errors.disclosure)}}
                     {{form.buttons('disclosure', true)}}
                 </div>
                         
                     
                 <!-- AUTHORIZATION -->
                 <div id="authorizationPage" class="page">
-                    {{form.heading('Acknowledgment and Authorization for Background Check')}}
-                    {{form.agreement(null, 'authorization', 'LEGAL TEXT GOES HERE', authorization, errors.authorization, '<<<PASTE authorization CONTENT HERE>>>')}}
-                    {{form.subHeading('Electronic signature')}}
-                    {{form.textInput('', 'signature', signature, errors.signature, null, 'Full name')}}
+                    {{form.legalBox('checkr/authorization.html', true)}}
+                    {# {{form.agreement(null, 'authorization', 'LEGAL TEXT GOES HERE', authorization, errors.authorization)}} #}
+                    {{form.heading('Electronic signature')}}
+                    {{form.textInput(null, 'signature', signature, errors.signature, null, 'Full name')}}
                     {{form.buttons('authorization', true)}}
                 </div>
 
@@ -215,8 +219,8 @@
 {% block body_scripts %}
     {{parent()}}
     <script type="text/javascript" src="/minify/f=js/variables.js"></script>
+    <script type="text/javascript" src="/minify/f=js/register.js"></script>
     <script type="text/javascript" src="/minify/f=js/register-wizard.js"></script>
     <script type="text/javascript" src="/minify/f=js/register-populate-form.js"></script>
-    <script type="text/javascript" src="/minify/f=js/register.js"></script>
     <script type="text/javascript" src="/minify/f=js/uploader.js"></script>
 {% endblock %}

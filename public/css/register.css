@@ -138,3 +138,12 @@ background-color: rgb(192, 212, 223);
 .submit-button svg {
   padding-bottom: 1px; /* I think the font baseline is too low */
 }
+
+.legal-box {
+  height: 400px;
+  overflow-y: scroll;
+
+  padding: 1rem 1rem 0rem 0.5rem;
+
+  border: 1px solid #dadada;
+}

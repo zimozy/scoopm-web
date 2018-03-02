@@ -207,8 +207,11 @@ class Validator
         }   
     }
 
-    public function validateAgreement($field_name) {
-        if ($this->fields_array[$field_name] != '1') {
+    public function validateAgreement($field_name, $optional = false) {
+        if (
+            $this->fields_array[$field_name] != 'on'
+            && !$optional
+        ) {
             $this->setError($field_name, 'invalid');
         } else {
             $this->setAsPassed($field_name);

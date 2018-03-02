@@ -6,8 +6,8 @@ class CheckrCandidate extends CheckrAPI
     protected $urlEnding = 'candidates';
     private $report;
 
-    public function execute() {
-        parent::execute();
+    public function executeQuery() {
+        parent::executeQuery();
         $this->report = new CheckrReport(
             [ 
                 'candidate_id' => $this->id,
