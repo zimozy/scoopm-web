@@ -51,8 +51,6 @@ $(function() {
     var noMiddleName = $('#noMiddleName');
 
     middleName.updateDisabled = function() {
-        console.log('nomiddlename: '+ noMiddleName.prop('checked'));
-        
         this.prop('disabled', noMiddleName.prop('checked'));
     }
 
