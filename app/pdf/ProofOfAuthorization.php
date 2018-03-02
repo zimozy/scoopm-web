@@ -6,7 +6,7 @@ class ProofOfAuthorization extends Fpdi {
     public function __construct($signature, $time, $ip, $ipFromHeaders) {
         parent::__construct('P', 'in', 'letter');
 
-        $this->setSourceFile("/var/www/app/testAuthorization.pdf");
+        $this->setSourceFile("/var/www/app/pdf/testAuthorization.pdf");
         
         $this->AddPage();
         $this->useTemplate($this->importPage(1));

@@ -51,10 +51,12 @@ $(function() {
     var noMiddleName = $('#noMiddleName');
 
     middleName.updateDisabled = function() {
+        
         this.prop('disabled', noMiddleName.prop('checked'));
     }
 
     noMiddleName.on('change', function() {
+
         middleName.updateDisabled();
     });
     

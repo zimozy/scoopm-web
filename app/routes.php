@@ -49,10 +49,6 @@ $app->get("/application-login", function ($request, $response) {
     return $this->view->render($response, 'application-login.twig.html');
 })->setName('application-login');
 
-/*$app->get("/signup", function ($request, $response) {
-    return $this->view->render($response, 'signup.twig.html');
-})->setName('signup');
-*/
 $app->get("/profile", function ($request, $response) {
     return $response->withRedirect($this->router->pathFor('home'));
     // return $this->view->render($response, 'profile.twig.html');
@@ -71,7 +67,6 @@ $app->get('/register', function ($request, $response) {
 $app->post('/register', function ($request, $response) {
 
     $parsedBody = $request->getParsedBody();
-    // $parsedBody['files'] = $request->getUploadedFiles(); -- not using files anymore
 
     $validator = new Validator($parsedBody);
     
@@ -264,17 +259,3 @@ $app->post('/register', function ($request, $response) {
         return $response->withRedirect($this->router->pathFor('thanks'));
     }
 });
-
-// $app->get("/authorizationPDF/{userID}", function ($request, $response, $args) {
-
-//     $firebase = new \Firebase\FirebaseLib('https://scoopm-8975f.firebaseio.com/', $_COOKIE['userIDToken']);
-    
-//     $user = $firebase->get('users/' . $args['userID']);
-//     // die(var_dump($user));
-
-//     $proof = new ProofOfAuthorization($user->signature, $user->signatureTimestamp, $user->signatureIP, $user->signatureIPFromHeaders);
-
-//     $proof->Output();
-
-//     return $response;
-// });

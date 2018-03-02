@@ -1,5 +1,5 @@
 <?php
-namespace scoopm;
+namespace ScoopM;
 
 use libphonenumber\PhoneNumberUtil;
 use Twig\Cache\NullCache;

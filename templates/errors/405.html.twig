@@ -1,0 +1,8 @@
+{% extends 'base.twig.html' %}
+
+{% block title %}Not Allowed{% endblock %}
+
+{% block content %}
+    <p class="my-5 py-2 py-md-4 py-lg-5"><h1 class="d-inline">405.</h1> You don't have access to that URL.</p>
+    <p class="mt-5"><a href="{{ path_for('home')}}" class="btn btn-outline-primary">Home</a></p>
+{% endblock %}
