@@ -3,7 +3,7 @@
 /.idea/
 /public/test.php
 /composer.lock
-/app/debugStatus.php
+#/app/debugStatus.php
 
 # OS generated files #
 ######################
