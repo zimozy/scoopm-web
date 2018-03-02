@@ -146,7 +146,8 @@
                     {{form.upload('Upload Resume', 'resume', resume, 'doc', errors.resume)}}
                     {{form.upload('Fingerprints', 'fingerprints', fingerprints, 'img/pdf', errors.fingerprints, 'You can get your fingerprints taken at the local police station. Scan the fingerprint document or upload a PDF.')}}
                     {{form.textArea('Felonies Committed, if applicable', 'felonies', felonies, errors.felonies)}}
-                    {{form.agreement('Rights under the FCRA', 'fcra', 'LEGAL TEXT GOES HERE', fcra, errors.fcra, '<<<PASTE LEGAL AUTHORIZATION HERE>>>')}}
+                    {% include 'checkr/fcra.html' %}
+                    {{form.agreement('Rights under the FCRA', 'fcra', 'LEGAL TEXT GOES HERE', fcra, errors.fcra)}}
                     {{form.buttons('application', true)}}
                 </div>
 
