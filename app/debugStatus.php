@@ -1,1 +1,1 @@
-<? $debugging = true;
+<? $debugging = false;
