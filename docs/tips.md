@@ -1,2 +1,3 @@
 # Ignore git file:
-git update-index --skip-worktree app/debugStatus.php 
+ git update-index --assume-unchanged app/debugStatus.php 
+ 
