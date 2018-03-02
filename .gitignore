@@ -2,6 +2,7 @@
 /templates/cache/
 /.idea/
 /public/test.php
+/composer.lock
 
 # OS generated files #
 ######################
